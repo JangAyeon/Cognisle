@@ -3,6 +3,8 @@ import { useInput } from "@/hooks/useInput"
 import { FormEvent, useEffect, useState } from "react"
 import LogoutBtn from "@/components/LogoutBtn"
 import { useRouter } from "next/router"
+import { setUserInfo } from "@/utils/auth"
+import { IAuthInfo } from "@/types/common/authProps"
 
 const SignupForm = () => {
   const [email, onChangeEmail, setEmail] = useInput("")
@@ -31,12 +33,16 @@ const SignupForm = () => {
       password: signupForm.get("password"),
     }
 
-    console.log("handleLogin", params)
     handleLocalStorageEmail()
 
     try {
-      const { data, error } = await authApi.login(params)
-      alert(data.user)
+      const {
+        data: { user, session },
+        error,
+      } = await authApi.login(params)
+      setUserInfo({ user, session } as IAuthInfo)
+
+      alert("로그인에 성공함")
     } catch (error) {
       alert(error)
     }

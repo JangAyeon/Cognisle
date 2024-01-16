@@ -1,4 +1,3 @@
-import axios from "axios"
 import { supabase, _axios } from "./instance"
 import {
   SignInWithPasswordCredentials,
