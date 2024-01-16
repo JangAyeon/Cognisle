@@ -1,6 +1,7 @@
-import { IAuthInfo, IUserInfo } from "@/types/common/authProps"
-
-export const setUserInfo = ({ user, session }: IAuthInfo) => {
+import { store } from "@/redux/store/store"
+import { IAuthSBInfo, IUserInfo } from "@/types/common/authProps"
+import { setUserInfo as _setUserInfo } from "@/redux/common/userSlice"
+export const setUserInfo = ({ user, session }: IAuthSBInfo) => {
   console.log(user, session)
 
   const userInfo: IUserInfo = {
@@ -15,4 +16,5 @@ export const setUserInfo = ({ user, session }: IAuthInfo) => {
   console.log("setAuthInfo", userInfo)
 
   // 리덕스 디스 패치
+  store.dispatch(_setUserInfo(userInfo))
 }
