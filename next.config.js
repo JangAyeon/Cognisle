@@ -2,18 +2,34 @@
 const nextConfig = {
   reactStrictMode: true,
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
   },
   typescript: {
     ignoreBuildErrors: true,
   },
-  async rewrites(){
+  async rewrites() {
     return [
-           {
+      {
         source: "/api/:path*",
         destination: `http://localhost:3000/api/:path*`,
       },
-    ] 
+    ]
+  },
+
+  async redirects() {
+    return [
+      {
+        source: "/auth",
+        missing:[
+          {type:"query",
+        key:"type",
+        
+        }
+        ],
+        destination: "/auth?type=login",
+        permanent: false,
+      }
+    ]
   },
   webpack: (config) => {
     config.module.rules.push({

@@ -2,44 +2,49 @@ import { authApi } from "@/apis/authApi"
 import { useInput } from "@/hooks/useInput"
 import { FormEvent, useEffect, useState } from "react"
 import LogoutBtn from "@/components/LogoutBtn"
+import { useRouter } from "next/router"
 
 const SignupForm = () => {
   const [email, onChangeEmail, setEmail] = useInput("")
   const [emailFlagCheck, setEmailFlagCheck] = useState(false)
   const LS_EMAIL = localStorage.getItem("LS_EMAIL")
+  const router = useRouter()
 
   const handleEmailFlagCheck = () => {
     setEmailFlagCheck((prev) => !prev)
   }
 
-  const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
+  const handleLocalStorageEmail = () => {
+    if (emailFlagCheck) {
+      localStorage.setItem("LS_EMAIL", email)
+    } else {
+      localStorage.removeItem("LS_EMAIL")
+    }
+  }
+
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     const signupForm = new FormData(e.currentTarget)
     const params = {
       email: signupForm.get("email"),
       password: signupForm.get("password"),
-      options: {
-        data: {
-          name: signupForm.get("name"),
-          dsId: signupForm.get("dsId") || "",
-        },
-      },
-    }
-    if (emailFlagCheck) {
-      localStorage.setItem("LS_EMAIL", email)
-    } else {
-      localStorage.remove("LS_EMAIL")
     }
 
-    console.log("handleSignup", params)
+    console.log("handleLogin", params)
+    handleLocalStorageEmail()
 
     try {
-      const { data, error } = await authApi.signup(params)
+      const { data, error } = await authApi.login(params)
       alert(data.user)
     } catch (error) {
       alert(error)
     }
+  }
+
+  const handleSignupBtn = () => {
+    console.log("handleSignupBtn")
+    router.push({ href: router.pathname, query: { type: "signup" } })
   }
 
   useEffect(() => {
@@ -52,7 +57,7 @@ const SignupForm = () => {
   return (
     <>
       <div>
-        <form onSubmit={handleSignup}>
+        <form onSubmit={handleLogin}>
           <input
             value={email}
             onChange={onChangeEmail}
@@ -67,9 +72,7 @@ const SignupForm = () => {
             name="password"
             autoComplete="current-password"
           />
-          <input placeholder="사용자 이름 입력" type="text" name="name" />
-          <input placeholder="디스코드 아이디" type="text" name="dsId" />
-          <button type="submit">회원가입 </button>
+          <button type="submit">로그인 </button>
         </form>
       </div>
       <div>
@@ -82,8 +85,12 @@ const SignupForm = () => {
           />
           <label htmlFor="rememberId"> 아이디 저장</label>
         </div>
+        <div>
+          <button type="button" onClick={handleSignupBtn}>
+            회원가입
+          </button>
+        </div>
       </div>
-      <LogoutBtn />
     </>
   )
 }
