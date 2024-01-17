@@ -2,8 +2,6 @@ import { store } from "@/redux/store/store"
 import { IAuthSBInfo, IUserInfo } from "@/types/common/authProps"
 import { setUserInfo as _setUserInfo } from "@/redux/common/userSlice"
 export const setUserInfo = ({ user, session }: IAuthSBInfo) => {
-  console.log(user, session)
-
   const userInfo: IUserInfo = {
     access_token: session.access_token,
     refresh_token: session.refresh_token,
