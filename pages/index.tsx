@@ -27,5 +27,5 @@ export default function Home() {
     getSessionInfo()
   }, [])
 
-  return <>Main</>
+  return <div>Main</div>
 }
