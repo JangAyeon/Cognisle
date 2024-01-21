@@ -1,5 +1,6 @@
-// 로그인/회원가입 페이지는 비로그인 사용자만 접근 간으
+// 로그인/회원가입 페이지는 비로그인 사용자만 접근 가능
 // 메인 페이지는 로그인 사용자만 접근가능
+// 사용자에게 화면을 비춰지지 않고 우선으로 응답 수정 가능
 
 import {} from "@supabase/auth-helpers-nextjs"
 import { NextResponse } from "next/server"

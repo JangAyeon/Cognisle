@@ -1,5 +1,6 @@
 import { authApi } from "@/apis/authApi"
 import { removeUserInfo } from "@/utils/auth"
+import styled from "@emotion/styled"
 import { useRouter } from "next/router"
 
 const LogoutBtn = () => {
@@ -15,7 +16,12 @@ const LogoutBtn = () => {
     }
   }
 
-  return <button onClick={handleLogout}>로그아웃</button>
+  return <Button onClick={handleLogout}>로그아웃</Button>
 }
 
 export default LogoutBtn
+
+const Button = styled.button`
+  font-weight: bold;
+  font-size: 24px;
+`

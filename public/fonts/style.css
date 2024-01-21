@@ -1,0 +1,27 @@
+/*@font-face{
+    font-family:"MundialBold";
+    font-style:normal;
+    font-weight:bold;
+    src:url(MundialBold.otf) format("opentype");
+}*/
+
+@font-face {
+    font-family: "GmarketSans";
+    font-style: normal;
+    font-weight: light;
+    src: url('GmarketSansLight.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "GmarketSans";
+    font-style: normal;
+    font-weight: normal;
+    src: url('GmarketSansMedium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: "GmarketSans";
+    font-style: normal;
+    font-weight: bold;
+    src: url('GmarketSansBold.otf') format('opentype');
+}
