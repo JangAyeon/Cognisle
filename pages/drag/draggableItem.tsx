@@ -1,6 +1,6 @@
 import DraggableContext, {
   DraggableContextInterface,
-} from "@/pages/drag/draggableContext"
+} from "@/utils/draggableContext"
 import styled from "@emotion/styled"
 import { useContext, useState } from "react"
 import Draggable, {
