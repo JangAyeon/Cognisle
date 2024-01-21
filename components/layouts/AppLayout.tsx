@@ -8,7 +8,6 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
       <Head>
         <title>Cognisle</title>
         <meta name="description" content="Cognisle" />
-        <meta name="viewport" content="width=device-width, initial scale=1" />
       </Head>
       <AppLayoutWrapper>
         <main>{children}</main>
