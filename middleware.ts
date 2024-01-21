@@ -8,18 +8,18 @@ import { NextRequest } from "next/server"
 
 export async function middleware(request: NextRequest) {
   const refreshToken = request.cookies.get("refreshToken")
-    const userAgent = request.headers.get("user-agent")
-    const { pathname } = request.nextUrl
-    console.log("session middleware refreshToken", refreshToken)
-    console.log("pathname", pathname)
-    // 회원가입/로그인 페이지는 이미 로그인된 유저라면 메인 페이지로 리다이렉트
-    if (userAgent && pathname.includes("favicon"))
-      if (pathname === "/auth") {
-        if (refreshToken) {
-          return NextResponse.redirect(new URL(`/`, request.url))
-        }
-        return NextResponse.next()
+  const userAgent = request.headers.get("user-agent")
+  const { pathname } = request.nextUrl
+  console.log("session middleware refreshToken", refreshToken)
+  console.log("pathname", pathname)
+  // 회원가입/로그인 페이지는 이미 로그인된 유저라면 메인 페이지로 리다이렉트
+  if (userAgent && !pathname.includes("favicon"))
+    if (pathname === "/auth") {
+      if (refreshToken) {
+        return NextResponse.redirect(new URL(`/`, request.url))
       }
+      return NextResponse.next()
+    }
 
   if (!refreshToken) {
     return NextResponse.redirect(new URL("/auth?type=login", request.url))
@@ -28,16 +28,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [
-    ,
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     
-    "/((?!api|_next/static|_next/image|favicon.ico).*)"*/
-    "/auth",
-  ],
+  matcher: ["/auth", "/"],
 }
