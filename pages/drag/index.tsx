@@ -1,4 +1,4 @@
-import { DraggableContext } from "@/pages/drag/draggableContext"
+import DraggableContext from "@/pages/drag/draggableContext"
 import DragItem from "@/pages/drag/draggableItem"
 import Bear from "@/public/image/fasd.svg"
 import Btn from "@/public/image/saf.svg"

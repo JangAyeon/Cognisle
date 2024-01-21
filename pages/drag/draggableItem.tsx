@@ -1,5 +1,4 @@
-import {
-  DraggableContext,
+import DraggableContext, {
   DraggableContextInterface,
 } from "@/pages/drag/draggableContext"
 import styled from "@emotion/styled"
