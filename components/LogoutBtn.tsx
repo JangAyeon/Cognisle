@@ -1,11 +1,15 @@
 import { authApi } from "@/apis/authApi"
+import { removeUserInfo } from "@/utils/auth"
+import { useRouter } from "next/router"
 
 const LogoutBtn = () => {
+  const router = useRouter()
   const handleLogout = async () => {
-
     try {
       const { error } = await authApi.logout()
-      console.log("로그아웃")
+      removeUserInfo()
+      alert("로그아웃")
+      router.replace("/")
     } catch (error) {
       alert(error)
     }

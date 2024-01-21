@@ -1,7 +1,6 @@
 import { authApi } from "@/apis/authApi"
 import { useInput } from "@/hooks/useInput"
 import { FormEvent, useEffect, useState } from "react"
-import LogoutBtn from "@/components/LogoutBtn"
 import { useRouter } from "next/router"
 import { IAuthSBInfo } from "@/types/common/authProps"
 import { setUserInfo } from "@/utils/auth"
@@ -56,6 +55,7 @@ const SignupForm = () => {
         router.replace("/")
       }
     } catch (error) {
+      console.log(error)
       alert(error)
     }
   }
