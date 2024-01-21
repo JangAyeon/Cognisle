@@ -1,6 +1,7 @@
 import { store } from "@/redux/store/store"
 import { IAuthSBInfo, IUserInfo } from "@/types/common/authProps"
 import { setUserInfo as _setUserInfo } from "@/redux/common/userSlice"
+import { setRefreshToken } from "@/utils/token"
 export const setUserInfo = ({ user, session }: IAuthSBInfo) => {
   const userInfo: IUserInfo = {
     access_token: session.access_token,
@@ -15,4 +16,5 @@ export const setUserInfo = ({ user, session }: IAuthSBInfo) => {
 
   // 리덕스 디스 패치
   store.dispatch(_setUserInfo(userInfo))
+  setRefreshToken(userInfo.refresh_token)
 }
