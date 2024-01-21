@@ -3,9 +3,9 @@ import Head from "next/head"
 import localFont from "next/font/local"
 import { ReactElement } from "react"
 
-const mundialVariable = localFont({
-  src: "../../public/fonts/MundialBold.otf",
-})
+/*const mundialVariable = localFont({
+  src: "/public/fonts/MundialBold.otf",
+})*/
 
 const AppLayout = ({ children }: { children: ReactElement }) => {
   return (
