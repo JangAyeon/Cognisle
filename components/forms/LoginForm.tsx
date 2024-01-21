@@ -4,7 +4,7 @@ import { FormEvent, useEffect, useState } from "react"
 import LogoutBtn from "@/components/LogoutBtn"
 import { useRouter } from "next/router"
 import { setUserInfo } from "@/utils/auth"
-import { IAuthInfo } from "@/types/common/authProps"
+import { IAuthSBInfo } from "@/types/common/authProps"
 
 const SignupForm = () => {
   const [email, onChangeEmail, setEmail] = useInput("")
@@ -40,9 +40,11 @@ const SignupForm = () => {
         data: { user, session },
         error,
       } = await authApi.login(params)
-      setUserInfo({ user, session } as IAuthInfo)
-
-      alert("로그인에 성공함")
+      if (user && session) {
+        setUserInfo({ user, session } as IAuthSBInfo)
+        alert("로그인에 성공함")
+        router.replace("/")
+      }
     } catch (error) {
       alert(error)
     }

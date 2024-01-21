@@ -3,7 +3,7 @@ import { useInput } from "@/hooks/useInput"
 import { FormEvent, useEffect, useState } from "react"
 import LogoutBtn from "@/components/LogoutBtn"
 import { useRouter } from "next/router"
-import { IAuthInfo } from "@/types/common/authProps"
+import { IAuthSBInfo } from "@/types/common/authProps"
 import { setUserInfo } from "@/utils/auth"
 
 const SignupForm = () => {
@@ -50,8 +50,11 @@ const SignupForm = () => {
         data: { user, session },
         error,
       } = await authApi.signup(params)
-      setUserInfo({ user, session } as IAuthInfo)
-      alert("회원가입 성공함")
+      if (user && session) {
+        setUserInfo({ user, session } as IAuthSBInfo)
+        alert("회원가입 성공함")
+        router.replace("/")
+      }
     } catch (error) {
       alert(error)
     }
@@ -103,7 +106,6 @@ const SignupForm = () => {
           </button>
         </div>
       </div>
-      <LogoutBtn />
     </>
   )
 }

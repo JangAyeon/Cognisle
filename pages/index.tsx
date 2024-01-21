@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { supabase } from "@/apis/instance"
 import { useEffect } from "react"
+import LogoutBtn from "@/components/LogoutBtn"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -27,5 +28,10 @@ export default function Home() {
     getSessionInfo()
   }, [])
 
-  return <div>Main</div>
+  return (
+    <div>
+      Main
+      <LogoutBtn />
+    </div>
+  )
 }
