@@ -148,17 +148,35 @@ table {
 }
 
 :root {
-  --color-main: #e04b47;
-  --color-text: #323232;
-  --color-text2: #545454;
-  --color-button: #42464d;
-  --color-button-text: #787878;
-  --color-button-text2: #9d9d9d;
-  --color-button-text3: #c4c4c4;
-  --color-boxline: #d9d9d9;
-  --color-background: #f6f7f9;
-  --color-background-red: #fff6f6;
-  --color-anchor: #000aff;
+  --color-yellow1:rgba(255, 249, 188, 1);
+  --color-yellow2:rgba(255, 249, 189, 1);
+
+
+  --color-orange-01:rgba(255, 195, 97, 1);
+  --color-orange-02:rgba(255, 107, 87, 1);
+
+  --color-pink-01:rgba(249, 140, 189, 1);
+
+  --color-green-01:rgba(195, 235, 164, 1);
+  --color-green-02:rgba(174, 216, 147, 1);
+  --color-green-03:rgba(115, 216, 156, 1);
+  --color-green-04:rgba(3, 107, 87, 1);
+
+
+  --shadow-orange-01:rgba(255, 174, 39, 1);
+
+  --shadow-pink-01:rgba(247, 169, 160, 1);
+  --shadow-pink-02:rgba(242, 104, 166, 1);
+
+  --shadow-blue-01:rgba(28, 103, 211, 1);
+
+  --color-blue1:rgba(105, 191, 255, 1);
+  --color-blue2:#2B72D8;
+  --color-blue3:#1C67D3;
+
+
+  --color-grey:#CECECE;
+
 }
 
 input,
