@@ -1,6 +1,6 @@
 import { createContext } from "react"
 
-export interface DraggableContextInterface {
+interface DraggableContextInterface {
   index: number
   setIndex: (index: number) => void
 }
@@ -10,4 +10,7 @@ const initialState: DraggableContextInterface = {
   setIndex: (index: number) => {},
 }
 
-export const DraggableContext = createContext(initialState)
+const DraggableContext = createContext(initialState)
+
+export { initialState, DraggableContext }
+export type { DraggableContextInterface }
