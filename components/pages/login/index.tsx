@@ -1,39 +1,26 @@
-import Image from "next/image"
 import LoginForm from "@/components/forms/LoginForm"
-import styled from "@emotion/styled"
-import BackgroundTriangle from "@/public/image/triangle/background.svg"
+import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import TitleTraingle from "@/public/image/triangle/title.svg"
 import MainLogo from "@/public/image/logo/mainLogo.svg"
+import Text from "@/components/typo/text"
 
 const Login = () => {
   return (
-    <LoginLayout bg={BackgroundTriangle}>
+    <BackgroundLayout
+      imgSrc={"/image/triangle/background.svg"}
+      startColor="--gradient-yellow"
+      endColor="--color-green-03"
+      degree="180deg"
+      imgWidth={430}
+      height={1100}
+    >
       <MainLogo />
-      <Title>LOGIN</Title>
+      <Text weight="bold" size={24} color="--color-green-04" text="LOGIN" />
+
       <TitleTraingle />
       <LoginForm />
-    </LoginLayout>
+    </BackgroundLayout>
   )
 }
 
 export default Login
-
-const LoginLayout = styled.div<{ bg: string }>`
-  width: 100%;
-  height: 1100px;
-  background: linear-gradient(
-      180deg,
-      var(--gradient-yellow),
-      var(--color-green-02)
-    ),
-    url("/image/background/triangle.svg");
-  background-blend-mode: overlay;
-  background-size: 430px auto;
-  background-position: left bottom;
-  background-repeat: no-repeat;
-`
-const Title = styled.div`
-  font-weight: bold;
-  font-size: 24px;
-  color: var(--color-green-04);
-`
