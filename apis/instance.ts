@@ -8,6 +8,7 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
 )
 
+// supabase Client Side Rendering
 const supabaseClient = createClientComponentClient()
 
 // public API Instance

@@ -1,7 +1,6 @@
 import { authApi } from "@/apis/authApi"
 import { useInput } from "@/hooks/useInput"
 import { FormEvent, useEffect, useState } from "react"
-import LogoutBtn from "@/components/LogoutBtn"
 import { useRouter } from "next/router"
 import { setUserInfo } from "@/utils/auth"
 import { IAuthSBInfo } from "@/types/common/authProps"
@@ -27,10 +26,10 @@ const SignupForm = () => {
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const signupForm = new FormData(e.currentTarget)
+    const loginForm = new FormData(e.currentTarget)
     const params = {
-      email: signupForm.get("email"),
-      password: signupForm.get("password"),
+      email: loginForm.get("email"),
+      password: loginForm.get("password"),
     }
 
     handleLocalStorageEmail()
@@ -43,7 +42,7 @@ const SignupForm = () => {
       if (user && session) {
         setUserInfo({ user, session } as IAuthSBInfo)
         alert("로그인에 성공함")
-        router.reload()
+        router.reload() // middleware.ts 거쳐 가기 위함
       }
     } catch (error) {
       alert(error)
