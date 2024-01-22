@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { setUserInfo } from "@/utils/auth"
 import { IAuthSBInfo } from "@/types/common/authProps"
+import styled from "@emotion/styled"
 
 const SignupForm = () => {
   const [email, onChangeEmail, setEmail] = useInput("")
@@ -65,26 +66,28 @@ const SignupForm = () => {
     <>
       <div>
         <form onSubmit={handleLogin}>
-          <input
+          <Input
             value={email}
             onChange={onChangeEmail}
-            placeholder="이메일 입력"
+            placeholder="이메일"
             type="email"
             name="email"
             autoComplete="email"
           />
-          <input
-            placeholder="비밀번호 입력"
+          <Input
+            placeholder="비밀번호"
             type="password"
             name="password"
             autoComplete="current-password"
           />
-          <button type="submit">로그인 </button>
+          <Button width={280} height={40} type="submit">
+            로그인{" "}
+          </Button>
         </form>
       </div>
       <div>
         <div>
-          <input
+          <CheckBox
             type="checkbox"
             id="rememberEmail"
             checked={emailFlagCheck}
@@ -93,9 +96,14 @@ const SignupForm = () => {
           <label htmlFor="rememberId"> 아이디 저장</label>
         </div>
         <div>
-          <button type="button" onClick={handleSignupBtn}>
+          <Button
+            type="button"
+            width={280}
+            height={40}
+            onClick={handleSignupBtn}
+          >
             회원가입
-          </button>
+          </Button>
         </div>
       </div>
     </>
@@ -103,3 +111,27 @@ const SignupForm = () => {
 }
 
 export default SignupForm
+
+const Input = styled.input`
+  color: var(--color-green-04);
+  background-color: var(--color-yellow-01);
+
+  width: 280px;
+  height: 40px;
+  &::placeholder {
+    padding-left: 16px;
+    color: var(--color-green-04);
+    font-size: 16px;
+  }
+`
+
+const Button = styled.button<{ height: number; width: number }>`
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
+  color: var(--color-yellow-01);
+  background-color: var(--color-green-04);
+`
+
+const CheckBox = styled.input`
+  border: solid 7px black;
+`
