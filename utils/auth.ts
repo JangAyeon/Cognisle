@@ -2,8 +2,9 @@ import { store } from "@/redux/store/store"
 import { IAuthSBInfo, IUserInfo } from "@/types/common/authProps"
 import { setUserInfo as _setUserInfo, signout } from "@/redux/common/userSlice"
 import { removeRefreshToken, setRefreshToken } from "@/utils/token"
+import { authApi } from "@/apis/authApi"
 
-export const setUserInfo = ({ user, session }: IAuthSBInfo) => {
+export const setUserInfo = async ({ user, session }: IAuthSBInfo) => {
   const userInfo: IUserInfo = {
     access_token: session.access_token,
     refresh_token: session.refresh_token,
@@ -19,6 +20,10 @@ export const setUserInfo = ({ user, session }: IAuthSBInfo) => {
   store.dispatch(_setUserInfo(userInfo))
   // 리프레시 토큰 쿠키 값 세팅
   setRefreshToken(userInfo.refresh_token)
+  await authApi.setSession({
+    access_token: userInfo.access_token,
+    refresh_token: userInfo.refresh_token,
+  })
 }
 
 

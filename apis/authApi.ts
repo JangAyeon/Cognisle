@@ -1,21 +1,26 @@
-import { supabase, _axios } from "./instance"
+import { supabase, _axios, supabaseClient } from "./instance"
 import {
   SignInWithPasswordCredentials,
   SignUpWithPasswordCredentials,
 } from "@supabase/supabase-js"
+import { Session } from "@supabase/auth-helpers-nextjs"
 
 const signup = (data: object) =>
-  supabase.auth.signUp(data as SignUpWithPasswordCredentials)
+  supabaseClient.auth.signUp(data as SignUpWithPasswordCredentials)
 
-const logout = () => supabase.auth.signOut()
+const logout = () => supabaseClient.auth.signOut()
 
 const login = (data: object) =>
-  supabase.auth.signInWithPassword(data as SignInWithPasswordCredentials)
+  supabaseClient.auth.signInWithPassword(data as SignInWithPasswordCredentials)
+
+const setSession = (data: object) =>
+  supabaseClient.auth.setSession(data as Session)
 
 const authApi = {
   signup,
   login,
   logout,
+  setSession,
 }
 
 export { authApi }

@@ -43,7 +43,7 @@ const SignupForm = () => {
       if (user && session) {
         setUserInfo({ user, session } as IAuthSBInfo)
         alert("로그인에 성공함")
-        router.replace("/")
+        router.reload()
       }
     } catch (error) {
       alert(error)
