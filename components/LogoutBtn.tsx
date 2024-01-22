@@ -10,7 +10,7 @@ const LogoutBtn = () => {
       const { error } = await authApi.logout()
       removeUserInfo()
       alert("로그아웃")
-      router.push("/auth?type=login")
+      router.reload()
     } catch (error) {
       alert(error)
     }

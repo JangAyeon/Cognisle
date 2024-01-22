@@ -1,4 +1,5 @@
-import { createClient } from "@supabase/supabase-js/"
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import { createClient } from "@supabase/supabase-js"
 import axios, { AxiosError } from "axios"
 
 // supabase
@@ -6,6 +7,8 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
 )
+
+const supabaseClient = createClientComponentClient()
 
 // public API Instance
 const _axios = axios.create({})
@@ -22,4 +25,4 @@ _axios.interceptors.response.use(
   }
 )
 
-export { supabase, _axios }
+export { supabaseClient, supabase, _axios }
