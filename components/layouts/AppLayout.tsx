@@ -9,9 +9,7 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
         <title>Cognisle</title>
         <meta name="description" content="Cognisle" />
       </Head>
-      <AppLayoutWrapper>
-        <main>{children}</main>
-      </AppLayoutWrapper>
+      <AppLayoutWrapper>{children}</AppLayoutWrapper>
     </>
   )
 }
@@ -19,10 +17,10 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
 export default AppLayout
 
 const AppLayoutWrapper = styled.section`
-  max-width: 375px;
+  max-width: 430px;
   width: 100%;
   min-height: 100vh;
   max-height: fit-content;
   margin: auto;
-  background-color: red;
+  background-color: var(--color-yellow-01);
 `
