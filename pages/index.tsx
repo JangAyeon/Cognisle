@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from "next/head"
+import Image from "next/image"
 
 import { supabase } from "@/apis/instance"
 import { useEffect } from "react"
 import LogoutBtn from "@/components/LogoutBtn"
-
+import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 
 export default function Home() {
   const getUsers = async () => {
@@ -28,9 +28,15 @@ export default function Home() {
   }, [])
 
   return (
-    <div>
-      Main
+    <BackgroundLayout
+      imgSrc={"/assets/image/background/pinetree.svg"}
+      startColor="--gradient-yellow"
+      endColor="--color-pink-01"
+      degree="180deg"
+      imgWidth={430}
+      height={1100}
+    >
       <LogoutBtn />
-    </div>
+    </BackgroundLayout>
   )
 }
