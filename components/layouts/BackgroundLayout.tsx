@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { ReactNode } from "react"
 
 interface IBackgroundLayout {
   height?: number
@@ -9,7 +10,7 @@ interface IBackgroundLayout {
   imgWidth: number
   imgHeight?: number
   degree: string
-  children: JSX.Element | JSX.Element[]
+  children: ReactNode
 }
 const BackgroundLayout = ({
   height,
