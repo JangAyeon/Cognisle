@@ -6,7 +6,7 @@ import Text from "@/components/typo/Text"
 const Login = () => {
   return (
     <BackgroundLayout
-      imgSrc={"/assets/image/triangle/background.svg"}
+      imgSrc={"/assets/image/background/triangle.svg"}
       startColor="--gradient-yellow"
       endColor="--color-green-03"
       degree="180deg"
