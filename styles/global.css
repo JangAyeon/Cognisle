@@ -179,11 +179,11 @@ table {
 
   --shadow-blue-01: rgba(28, 103, 211, 1);
 
-  --color-blue1: rgba(105, 191, 255, 1);
-  --color-blue2: #2b72d8;
-  --color-blue3: #1c67d3;
+  --color-blue-01: rgba(105, 191, 255, 1);
+  --color-blue-02: #2b72d8;
+  --color-blue-03: #1c67d3;
   --gradient-yellow: rgba(115, 216, 156, 0);
-  --color-grey: #cecece;
+  --color-grey-01: #cecece;
 }
 
 input,

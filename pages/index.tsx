@@ -7,6 +7,7 @@ import LogoutBtn from "@/components/LogoutBtn"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import BorderPointBtn from "@/components/button/BottomPointBtn"
 import { useRouter } from "next/router"
+import BottomTab from "@/components/layouts/BottomTab"
 
 export default function Home() {
   const router = useRouter()

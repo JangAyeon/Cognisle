@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import Text from "@/components/typo/Text"
 import Image from "next/image"
 import Link from "next/link"
-
+import { Color } from "@/types/common/styleProps"
 interface IBorderPointBtn {
   width: number
   height: number
