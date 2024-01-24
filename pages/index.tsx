@@ -5,9 +5,8 @@ import { supabase } from "@/apis/instance"
 import { useEffect } from "react"
 import LogoutBtn from "@/components/LogoutBtn"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
-import BorderPointBtn from "@/components/button/BottomPointBtn"
+import BorderPointBtn from "@/components/atoms/button/BottomPointBtn"
 import { useRouter } from "next/router"
-import BottomTab from "@/components/layouts/BottomTab"
 
 const MenuButtons = [
   {
