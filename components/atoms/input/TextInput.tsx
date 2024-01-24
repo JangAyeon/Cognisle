@@ -18,7 +18,7 @@ interface ITextInput {
   imgHeigth?: number
   size: number
   padding: number
-  btnType: "submit"
+  btnType?: "submit"
 }
 
 const TextInput = ({
