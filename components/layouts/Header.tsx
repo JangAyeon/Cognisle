@@ -1,5 +1,5 @@
-import HeaderLogo from "@/public/assets/image/logo/headerLogo.svg"
-import Triangle from "@/public/assets//image/triangle/header.svg"
+import HeaderLogo from "@/public/assets/logo/headerLogo.svg"
+import Triangle from "@/public/assets/triangle/header.svg"
 import styled from "@emotion/styled"
 
 const Header = () => {

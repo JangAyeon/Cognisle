@@ -22,7 +22,7 @@ const MenuButtons = [
     textSize: 14,
     borderRadius: 16,
     link: "/game",
-    imgSrc: "/assets/image/yellow/game.svg",
+    imgSrc: "/assets/yellow/game.svg",
     imgWidth: 29,
     imgHeight: 39,
   },
@@ -38,7 +38,7 @@ const MenuButtons = [
     textSize: 14,
     borderRadius: 16,
     link: "/myland",
-    imgSrc: "/assets/image/yellow/myland.svg",
+    imgSrc: "/assets/yellow/myland.svg",
     imgWidth: 48,
     imgHeight: 33,
   },
@@ -54,7 +54,7 @@ const MenuButtons = [
     textSize: 14,
     borderRadius: 16,
     link: "/island",
-    imgSrc: "/assets/image/yellow/island.svg",
+    imgSrc: "/assets/yellow/island.svg",
     imgWidth: 48,
     imgHeight: 33,
   },
@@ -70,7 +70,7 @@ const MenuButtons = [
     textSize: 14,
     borderRadius: 16,
     link: "/collection",
-    imgSrc: "/assets/image/yellow/collection.svg",
+    imgSrc: "/assets/yellow/collection.svg",
     imgWidth: 35,
     imgHeight: 37,
   },
@@ -105,7 +105,7 @@ export default function Home() {
 
   return (
     <BackgroundLayout
-      imgSrc={"/assets/image/background/island.svg"}
+      imgSrc={"/assets/background/island.svg"}
       startColor="--gradient-yellow"
       endColor="--color-pink-01"
       degree="180deg"
