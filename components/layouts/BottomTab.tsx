@@ -53,7 +53,7 @@ const BottomTab = () => {
           idx
         ) => (
           <>
-            <Link href={link}>
+            <Link href={link} key={idx}>
               <Image
                 src={link === pathname ? activeImgSrc : inactiveImgSrc}
                 alt={link}

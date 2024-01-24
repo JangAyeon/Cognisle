@@ -9,6 +9,73 @@ import BorderPointBtn from "@/components/button/BottomPointBtn"
 import { useRouter } from "next/router"
 import BottomTab from "@/components/layouts/BottomTab"
 
+const MenuButtons = [
+  {
+    width: 108,
+    height: 108,
+    pointHeight: 20,
+    pointWidth: 20,
+    mainColor: "--color-green-04",
+    pointColor: "--color-pink-01",
+    textColor: "--color-yellow-01",
+    text: "카드 게임",
+    textSize: 14,
+    borderRadius: 16,
+    link: "/game",
+    imgSrc: "/assets/image/yellow/game.svg",
+    imgWidth: 29,
+    imgHeight: 39,
+  },
+  {
+    width: 108,
+    height: 108,
+    pointHeight: 20,
+    pointWidth: 20,
+    mainColor: "--color-green-04",
+    pointColor: "--color-pink-01",
+    textColor: "--color-yellow-01",
+    text: "나의 섬",
+    textSize: 14,
+    borderRadius: 16,
+    link: "/myland",
+    imgSrc: "/assets/image/yellow/myland.svg",
+    imgWidth: 48,
+    imgHeight: 33,
+  },
+  {
+    width: 108,
+    height: 108,
+    pointHeight: 20,
+    pointWidth: 20,
+    mainColor: "--color-green-04",
+    pointColor: "--color-pink-01",
+    textColor: "--color-yellow-01",
+    text: "놀러가기",
+    textSize: 14,
+    borderRadius: 16,
+    link: "/island",
+    imgSrc: "/assets/image/yellow/island.svg",
+    imgWidth: 48,
+    imgHeight: 33,
+  },
+  {
+    width: 108,
+    height: 108,
+    pointHeight: 20,
+    pointWidth: 20,
+    mainColor: "--color-green-04",
+    pointColor: "--color-pink-01",
+    textColor: "--color-yellow-01",
+    text: "모아보기",
+    textSize: 14,
+    borderRadius: 16,
+    link: "/collection",
+    imgSrc: "/assets/image/yellow/collection.svg",
+    imgWidth: 35,
+    imgHeight: 37,
+  },
+]
+
 export default function Home() {
   const router = useRouter()
   const getUsers = async () => {
@@ -36,73 +103,6 @@ export default function Home() {
     router.push(url)
   }
 
-  const Buttons = [
-    {
-      width: 108,
-      height: 108,
-      pointHeight: 20,
-      pointWidth: 20,
-      mainColor: "--color-green-04",
-      pointColor: "--color-pink-01",
-      textColor: "--color-yellow-01",
-      text: "카드 게임",
-      textSize: 14,
-      borderRadius: 16,
-      link: "/game",
-      imgSrc: "/assets/image/yellow/game.svg",
-      imgWidth: 29,
-      imgHeight: 39,
-    },
-    {
-      width: 108,
-      height: 108,
-      pointHeight: 20,
-      pointWidth: 20,
-      mainColor: "--color-green-04",
-      pointColor: "--color-pink-01",
-      textColor: "--color-yellow-01",
-      text: "나의 섬",
-      textSize: 14,
-      borderRadius: 16,
-      link: "/myland",
-      imgSrc: "/assets/image/yellow/myland.svg",
-      imgWidth: 48,
-      imgHeight: 33,
-    },
-    {
-      width: 108,
-      height: 108,
-      pointHeight: 20,
-      pointWidth: 20,
-      mainColor: "--color-green-04",
-      pointColor: "--color-pink-01",
-      textColor: "--color-yellow-01",
-      text: "놀러가기",
-      textSize: 14,
-      borderRadius: 16,
-      link: "/island",
-      imgSrc: "/assets/image/yellow/island.svg",
-      imgWidth: 48,
-      imgHeight: 33,
-    },
-    {
-      width: 108,
-      height: 108,
-      pointHeight: 20,
-      pointWidth: 20,
-      mainColor: "--color-green-04",
-      pointColor: "--color-pink-01",
-      textColor: "--color-yellow-01",
-      text: "모아보기",
-      textSize: 14,
-      borderRadius: 16,
-      link: "/collection",
-      imgSrc: "/assets/image/yellow/collection.svg",
-      imgWidth: 35,
-      imgHeight: 37,
-    },
-  ]
-
   return (
     <BackgroundLayout
       imgSrc={"/assets/image/background/island.svg"}
@@ -124,24 +124,28 @@ export default function Home() {
         text="이름이름닉네임"
         borderRadius={15}
       />
-      {Buttons.map(
-        ({
-          width,
-          height,
-          pointHeight,
-          pointWidth,
-          mainColor,
-          pointColor,
-          textColor,
-          text,
-          textSize,
-          borderRadius,
-          link,
-          imgSrc,
-          imgWidth,
-          imgHeight,
-        }) => (
+      {MenuButtons.map(
+        (
+          {
+            width,
+            height,
+            pointHeight,
+            pointWidth,
+            mainColor,
+            pointColor,
+            textColor,
+            text,
+            textSize,
+            borderRadius,
+            link,
+            imgSrc,
+            imgWidth,
+            imgHeight,
+          },
+          idx
+        ) => (
           <BorderPointBtn
+            key={idx}
             width={width}
             height={height}
             pointHeight={pointHeight}

@@ -1,12 +1,7 @@
 import BottomTab from "@/components/layouts/BottomTab"
 
 const Myland = () => {
-  return (
-    <div>
-      Myland
-      <BottomTab />
-    </div>
-  )
+  return <div>Myland</div>
 }
 
 export default Myland
