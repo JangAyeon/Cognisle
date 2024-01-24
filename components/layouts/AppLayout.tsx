@@ -5,8 +5,8 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import { ReactElement } from "react"
 
-const needBottomTab = ["/game", "/myland", "/island", "/collection"]
-const needHeader = ["/game", "/myland", "/island", "/collection"]
+const needBottomTab = ["/game", "/myland", "/visit", "/collection"]
+const needHeader = ["/game", "/myland", "/visit", "/collection"]
 
 const AppLayout = ({ children }: { children: ReactElement }) => {
   const { pathname } = useRouter()
