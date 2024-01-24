@@ -33,4 +33,5 @@ const AppLayoutWrapper = styled.section`
   min-height: 100vh;
   max-height: fit-content;
   margin: auto;
+  background-color: var(--color-yellow-01);
 `
