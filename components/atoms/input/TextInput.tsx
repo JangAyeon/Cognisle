@@ -18,6 +18,7 @@ interface ITextInput {
   imgHeigth?: number
   size: number
   padding: number
+  btnType: "submit"
 }
 
 const TextInput = ({
@@ -36,8 +37,8 @@ const TextInput = ({
   imgHeigth,
   size,
   padding,
+  btnType,
 }: ITextInput) => {
-  console.log(padding)
   return (
     <InputWrapper
       backgroundColor={backgroundColor}
@@ -56,12 +57,14 @@ const TextInput = ({
         size={size}
       />
       {imgSrc && (
-        <Image
-          src={imgSrc}
-          width={imgWidth}
-          height={imgHeigth}
-          alt="input 아이콘"
-        />
+        <button type={btnType}>
+          <Image
+            src={imgSrc}
+            width={imgWidth}
+            height={imgHeigth}
+            alt="input 아이콘"
+          />
+        </button>
       )}
     </InputWrapper>
   )
@@ -76,12 +79,17 @@ const InputWrapper = styled.div<InputWrapperStyle>`
   width: ${({ width }) => `${width}px`};
   height: ${({ height }) => `${height}px`};
   background-color: ${({ backgroundColor }) => `var(${backgroundColor})`};
-  padding-left: ${({ padding }) => `${padding}px`};
+  padding: ${({ padding }) => `0 ${padding}px`};
+  display: flex;
+  flex-direction: row;
+  justify-items: space-between;
+  align-items: center;
 `
 const Input = styled.input<InputStyle>`
   height: 100%;
   width: 100%;
   background-color: transparent;
+  color: ${({ color }) => `var(${color})`};
 
   &::placeholder {
     color: ${({ color }) => `var(${color})`};

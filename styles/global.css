@@ -191,6 +191,8 @@ textarea,
 select,
 button {
   font-family: inherit;
+  border: 0;
+  background-color: transparent;
 }
 
 /* input 기본 스타일 초기화 */
