@@ -1,5 +1,6 @@
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import styled from "@emotion/styled"
+import ContentContainer from "@/components/pages/collection"
 
 const Collection = () => {
   return (
@@ -9,7 +10,7 @@ const Collection = () => {
         endColor="--color-orange-02"
         degree="180deg"
       >
-        Collection
+        <ContentContainer />
       </BackgroundLayout>
     </PageWrapper>
   )
