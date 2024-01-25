@@ -1,5 +1,4 @@
-import BottomTab from "@/components/layouts/BottomTab"
-import styled from "@emotion/styled/macro"
+import styled from "@emotion/styled"
 
 const Myland = () => {
   return <PageWrapper>Myland</PageWrapper>
