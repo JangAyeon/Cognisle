@@ -37,13 +37,13 @@ const BorderPointBtn = ({
   link,
 }: IBorderPointBtn) => {
   return (
-    <Link href={link ? link : {}}>
-      <BtnWrapper
-        width={width}
-        height={height}
-        mainColor={mainColor}
-        borderRadius={borderRadius}
-      >
+    <BtnWrapper
+      width={width}
+      height={height}
+      mainColor={mainColor}
+      borderRadius={borderRadius}
+    >
+      <Link href={link ? link : {}}>
         <Point
           pointColor={pointColor}
           width={width}
@@ -62,8 +62,8 @@ const BorderPointBtn = ({
           )}
           <Text size={textSize} weight="bold" color={textColor} text={text} />
         </ContentWrapper>
-      </BtnWrapper>
-    </Link>
+      </Link>
+    </BtnWrapper>
   )
 }
 
