@@ -1,5 +1,5 @@
+import Logo from "@/components/atoms/logo/Logo"
 import Triangle from "@/components/atoms/triangle/Triangle"
-import MainLogo from "@/public/assets/logo/mainLogo.svg"
 import styled from "@emotion/styled"
 
 const Loading = () => {
@@ -11,7 +11,7 @@ const Loading = () => {
         height={212}
         alt="loading Upper triangle"
       />
-      <MainLogo width={430} height={212} />
+      <Logo type="main" width={240} height={124} alt="loading logo" />
       <Triangle
         type="reversed"
         width={430}

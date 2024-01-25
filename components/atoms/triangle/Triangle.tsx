@@ -1,3 +1,4 @@
+import styled from "@emotion/styled"
 import Image from "next/image"
 
 interface ITriangle {
@@ -14,8 +15,15 @@ const TriangleSrc = {
 
 const Triangle = ({ width, height, alt, type }: ITriangle) => {
   return (
-    <Image src={TriangleSrc[type]} width={width} height={height} alt={alt} />
+    <TraingleWrapper>
+      <Image src={TriangleSrc[type]} width={width} height={height} alt={alt} />
+    </TraingleWrapper>
   )
 }
 
 export default Triangle
+
+const TraingleWrapper = styled.div`
+  min-width: fit-content;
+  min-height: fit-content;
+`
