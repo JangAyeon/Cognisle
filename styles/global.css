@@ -163,7 +163,8 @@ table {
   --color-yellow-02: rgba(255, 249, 189, 1);
 
   --color-orange-01: rgba(255, 195, 97, 1);
-  --color-orange-02: rgba(255, 107, 87, 1);
+  --color-orange-02: rgba(254, 195, 97, 1);
+  --color-orange-03: rgba(255, 107, 87, 1);
 
   --color-pink-01: rgba(249, 140, 189, 1);
 
@@ -180,7 +181,7 @@ table {
   --shadow-blue-01: rgba(28, 103, 211, 1);
 
   --color-blue-01: rgba(105, 191, 255, 1);
-  --color-blue-02: #2b72d8;
+  --color-blue-02: rgba(43, 114, 216, 1);
   --color-blue-03: #1c67d3;
   --gradient-yellow: rgba(115, 216, 156, 0);
   --color-grey-01: #cecece;

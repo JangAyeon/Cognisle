@@ -19,7 +19,6 @@ const Island = () => {
         startColor="--gradient-yellow"
         endColor="--color-green-03"
         degree="180deg"
-        height={1000}
       >
         <div>
           <Text
@@ -58,4 +57,5 @@ export default Island
 
 const PageWrapper = styled.div`
   background-color: var(--color-blue-01);
+  min-height: inherit;
 `
