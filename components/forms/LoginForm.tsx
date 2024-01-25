@@ -93,21 +93,21 @@ const SignupForm = () => {
             size={16}
             padding={16}
           />
+          <div>
+            <CheckBox
+              type="checkbox"
+              id="rememberEmail"
+              checked={emailFlagCheck}
+              onChange={() => handleEmailFlagCheck()}
+            />
+            <label htmlFor="rememberId"> 아이디 저장</label>
+          </div>
           <Button width={280} height={40} type="submit">
             로그인{" "}
           </Button>
         </form>
       </div>
       <div>
-        <div>
-          <CheckBox
-            type="checkbox"
-            id="rememberEmail"
-            checked={emailFlagCheck}
-            onChange={() => handleEmailFlagCheck()}
-          />
-          <label htmlFor="rememberId"> 아이디 저장</label>
-        </div>
         <div>
           <Button
             type="button"
