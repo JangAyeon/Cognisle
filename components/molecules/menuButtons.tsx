@@ -120,6 +120,4 @@ const MenuBtnContianer = styled.div`
   display: grid;
   grid-template-columns: min-content min-content;
   gap: 28px;
-
-  /* row-gap: 10px; column-gap: 20px; */
 `
