@@ -16,7 +16,7 @@ const Main = () => {
       height={1100}
     >
       <ContentWrapper>
-        <MainLogo />
+        <MainLogo width={240} height={124} />
         <ButtonsWrapper>
           <BorderPointBtn
             width={200}
