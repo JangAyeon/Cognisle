@@ -4,11 +4,12 @@ interface ITriangle {
   width: number
   height: number
   alt: string
-  type: "header"
+  type: "original" | "reversed"
 }
 
 const TriangleSrc = {
-  header: "/assets/triangle/header.svg",
+  original: "/assets/triangle/original.svg",
+  reversed: "/assets/triangle/reversed.svg",
 }
 
 const Triangle = ({ width, height, alt, type }: ITriangle) => {

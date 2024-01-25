@@ -34,7 +34,7 @@ const Main = () => {
         </ButtonsWrapper>
       </ContentWrapper>
 
-      {/* <LogoutBtn />*/}
+      <LogoutBtn />
     </BackgroundLayout>
   )
 }
