@@ -44,6 +44,7 @@ type Style = Omit<IBackgroundLayout, "children">
 const Wrapper = styled.div<Style>`
   width: ${({ width }) => (width ? `${width}px` : "auto")};
   height: ${({ height }) => (height ? `${height}px` : "auto")};
+  min-height: inherit;
   background: ${({ imgSrc, degree, startColor, endColor }) => `linear-gradient(
  ${degree},
       var(${startColor}),
