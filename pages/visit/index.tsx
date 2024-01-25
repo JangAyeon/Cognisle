@@ -2,7 +2,7 @@ import TextInput from "@/components/atoms/input/TextInput"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import Text from "@/components/typo/Text"
 import { useInput } from "@/hooks/useInput"
-import Friend from "@/public/assets/image/friend.svg"
+import Friend from "@/public/assets/green/friend.svg"
 import styled from "@emotion/styled"
 import { FormEvent } from "react"
 

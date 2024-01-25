@@ -230,3 +230,8 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
 }
+
+/* 이미지 불필요한 공백 제거*/
+img {
+  display: block;
+}

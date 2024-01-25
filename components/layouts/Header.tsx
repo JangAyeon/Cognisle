@@ -1,12 +1,12 @@
+import Triangle from "@/components/atoms/triangle/Triangle"
 import HeaderLogo from "@/public/assets/logo/headerLogo.svg"
-import Triangle from "@/public/assets/triangle/header.svg"
 import styled from "@emotion/styled"
 import Link from "next/link"
 
 const Header = () => {
   return (
     <HeaderWrapper>
-      <Triangle />
+      <Triangle type="header" width={139} height={72} alt="header triangle" />
       <Link href={"/"}>
         <HeaderLogo height={32} width={185} />
       </Link>
