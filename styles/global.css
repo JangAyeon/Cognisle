@@ -179,11 +179,11 @@ table {
 
   --shadow-blue-01: rgba(28, 103, 211, 1);
 
-  --color-blue1: rgba(105, 191, 255, 1);
-  --color-blue2: #2b72d8;
-  --color-blue3: #1c67d3;
+  --color-blue-01: rgba(105, 191, 255, 1);
+  --color-blue-02: #2b72d8;
+  --color-blue-03: #1c67d3;
   --gradient-yellow: rgba(115, 216, 156, 0);
-  --color-grey: #cecece;
+  --color-grey-01: #cecece;
 }
 
 input,
@@ -191,6 +191,8 @@ textarea,
 select,
 button {
   font-family: inherit;
+  border: 0;
+  background-color: transparent;
 }
 
 /* input 기본 스타일 초기화 */
@@ -214,4 +216,16 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+/* input 자동 완성시 배경 파란색 제거 */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px transparent inset;
+  -webkit-text-fill-color: auto;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
 }

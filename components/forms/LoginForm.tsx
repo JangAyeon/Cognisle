@@ -5,6 +5,7 @@ import { useRouter } from "next/router"
 import { setUserInfo } from "@/utils/auth"
 import { IAuthSBInfo } from "@/types/common/authProps"
 import styled from "@emotion/styled"
+import TextInput from "@/components/atoms/input/TextInput"
 
 const SignupForm = () => {
   const [email, onChangeEmail, setEmail] = useInput("")
@@ -66,19 +67,31 @@ const SignupForm = () => {
     <>
       <div>
         <form onSubmit={handleLogin}>
-          <Input
+          <TextInput
             value={email}
             onChange={onChangeEmail}
             placeholder="이메일"
             type="email"
             name="email"
             autoComplete="email"
+            color="--color-green-04"
+            backgroundColor="--color-yellow-01"
+            width={280}
+            height={40}
+            size={16}
+            padding={16}
           />
-          <Input
+          <TextInput
             placeholder="비밀번호"
             type="password"
             name="password"
             autoComplete="current-password"
+            color="--color-green-04"
+            backgroundColor="--color-yellow-01"
+            width={280}
+            height={40}
+            size={16}
+            padding={16}
           />
           <Button width={280} height={40} type="submit">
             로그인{" "}
@@ -111,19 +124,6 @@ const SignupForm = () => {
 }
 
 export default SignupForm
-
-const Input = styled.input`
-  color: var(--color-green-04);
-  background-color: var(--color-yellow-01);
-
-  width: 280px;
-  height: 40px;
-  &::placeholder {
-    padding-left: 16px;
-    color: var(--color-green-04);
-    font-size: 16px;
-  }
-`
 
 const Button = styled.button<{ height: number; width: number }>`
   width: ${({ width }) => `${width}px`};

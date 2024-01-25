@@ -1,13 +1,17 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from "next/head"
+import Image from "next/image"
 
 import { supabase } from "@/apis/instance"
-import { useEffect } from "react"
-import LogoutBtn from "@/components/LogoutBtn"
+import { useEffect, useState } from "react"
 
+import { useRouter } from "next/router"
+import Loading from "@/components/pages/loading"
+import Main from "@/components/pages/main"
 
 export default function Home() {
-  const getUsers = async () => {
+  const [loading, setLoading] = useState(true)
+  const router = useRouter()
+  /*const getUsers = async () => {
     const { data, error } = await supabase.from("user").select()
     console.log(data)
   }
@@ -25,12 +29,27 @@ export default function Home() {
     getUsers()
     getUserProfile()
     getSessionInfo()
+  }, [])*/
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+
+    return () => {
+      clearTimeout(timer)
+    }
   }, [])
 
   return (
-    <div>
-      Main
-      <LogoutBtn />
-    </div>
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Main />
+        </>
+      )}
+    </>
   )
 }
