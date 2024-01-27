@@ -5,7 +5,10 @@ import MenuButtons from "@/components/molecules/menuButtons"
 import styled from "@emotion/styled"
 import Logo from "@/components/atoms/logo/Logo"
 
+import useUserProfile from "@/hooks/useUser"
+
 const Main = () => {
+  const { userName } = useUserProfile()
   return (
     <BackgroundLayout
       imgSrc={"/assets/background/island.svg"}
@@ -27,7 +30,7 @@ const Main = () => {
             mainColor="--color-pink-01"
             pointColor="--color-green-04"
             textColor="--color-yellow-01"
-            text="이름이름닉네임"
+            text={userName}
             borderRadius={15}
           />
           <MenuButtons />{" "}

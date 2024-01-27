@@ -5,6 +5,7 @@ export interface IUserInfo {
   refresh_token: Session["refresh_token"]
   expires_in: Session["expires_in"]
   token_type: Session["token_type"]
+
   email: User["email"]
   dsId: User["user_metadata"]["dsId"]
   name: User["user_metadata"]["name"]

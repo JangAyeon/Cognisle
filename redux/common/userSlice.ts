@@ -31,13 +31,15 @@ export const selectAccessToken = (state: AppState) =>
   state.user.userInfo.access_token
 export const selectRefreshToken = (state: AppState) =>
   state.user.userInfo.refresh_token
-export const selectUserProfile = (state: AppState) => {
-  state.user.userInfo.dsId.state.user.userInfo.name, state.user.userInfo.email
-}
-export const selectAuthInfo = (state: AppState) => {
-  state.user.userInfo.access_token,
-    state.user.userInfo.expires_in,
-    state.user.userInfo.refresh_token,
-    state.user.userInfo.token_type
-}
+export const selectUserDsId = (state: AppState) => state.user.userInfo.dsId
+
+export const selectUserName = (state: AppState) => state.user.userInfo.name
+
+export const selectUserEmail = (state: AppState) => state.user.userInfo.email
+
+export const selectExpire = (state: AppState) => state.user.userInfo.expires_in
+
+export const selectTokenType = (state: AppState) =>
+  state.user.userInfo.token_type
+
 export default userSlice.reducer
