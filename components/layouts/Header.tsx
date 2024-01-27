@@ -19,6 +19,8 @@ export default Header
 const HeaderWrapper = styled.div`
   height: 72px;
   background-color: var(--color-yellow-01);
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: row;
   padding-right: 32px;

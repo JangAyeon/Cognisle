@@ -72,7 +72,9 @@ const BottomTab = () => {
 export default BottomTab
 
 const TabsWrapper = styled.div`
-  width: 100%;
+  position: fixed;
+  bottom: 0;
+  width: inherit;
   height: 72px;
   background-color: var(--color-green-04);
   display: flex;

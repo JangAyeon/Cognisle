@@ -1,3 +1,4 @@
+import ItemStats from "@/components/molecules/ItemStats"
 import MyStats from "@/components/molecules/MyStats"
 import PublicStats from "@/components/molecules/PublicStats"
 
@@ -10,7 +11,7 @@ const Collection = () => {
   return (
     <div>
       {userDsId ? <MyStats /> : <PublicStats />}
-      Collection in component Page
+      <ItemStats />
     </div>
   )
 }
