@@ -16,11 +16,16 @@ const login = (data: object) =>
 const setSession = (data: object) =>
   supabaseClient.auth.setSession(data as Session)
 
+const getSession = () => supabaseClient.auth.getSession()
+
+const getUserProfile = () => supabaseClient.auth.getUser()
 const authApi = {
   signup,
   login,
   logout,
   setSession,
+  getSession,
+  getUserProfile,
 }
 
 export { authApi }

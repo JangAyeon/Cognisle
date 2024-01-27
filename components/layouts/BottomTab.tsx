@@ -44,7 +44,7 @@ const TabsInfo: ITabInfo[] = [
 
 const BottomTab = () => {
   const { pathname } = useRouter()
-  console.log(pathname)
+  // console.log(pathname)
   return (
     <TabsWrapper>
       {TabsInfo.map(

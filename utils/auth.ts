@@ -14,7 +14,6 @@ export const setUserInfo = async ({ user, session }: IAuthSBInfo) => {
     email: user.email,
     name: user.user_metadata.name,
   }
-  console.log("setAuthInfo", userInfo)
 
   // 리덕스 디스 패치
   store.dispatch(_setUserInfo(userInfo))
@@ -25,7 +24,6 @@ export const setUserInfo = async ({ user, session }: IAuthSBInfo) => {
     refresh_token: userInfo.refresh_token,
   })
 }
-
 
 export const removeUserInfo = () => {
   // 리덕스 내 사용자 및 세션 정보 모두 제거

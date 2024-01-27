@@ -50,7 +50,7 @@ const SignupForm = () => {
   }
 
   const handleSignupBtn = () => {
-    console.log("handleSignupBtn")
+    // console.log("handleSignupBtn")
     router.push({ href: router.pathname, query: { type: "signup" } })
   }
 

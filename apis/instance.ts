@@ -1,4 +1,4 @@
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
+import { createPagesBrowserClient } from "@supabase/auth-helpers-nextjs"
 import { createClient } from "@supabase/supabase-js"
 import axios, { AxiosError } from "axios"
 
@@ -9,7 +9,7 @@ const supabase = createClient(
 )
 
 // supabase Client Side Rendering
-const supabaseClient = createClientComponentClient()
+const supabaseClient = createPagesBrowserClient()
 
 // public API Instance
 const _axios = axios.create({})
