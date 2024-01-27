@@ -10,7 +10,7 @@ interface IItem {
 const StatItem = ({ name, status, imgSrc }: IItem) => {
   return (
     <StatItemWrapper>
-      <Image src={imgSrc} height={120} width={120} alt={name} />
+      <Image src={imgSrc} height={102} width={102} alt={name} />
       <Text
         text={name}
         size={16}

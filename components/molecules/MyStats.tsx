@@ -1,7 +1,6 @@
 import BorderPointBtn from "@/components/atoms/button/BottomPointBtn"
 import useUserProfile from "@/hooks/useUser"
 import styled from "@emotion/styled"
-import Image from "next/image"
 import Text from "@/components/typo/Text"
 
 const MyStats = () => {
@@ -28,13 +27,6 @@ const MyStats = () => {
           text={userName}
         />
       </TextWrapper>
-
-      <Image
-        src="/assets/yellow/dotLine.svg"
-        width={292}
-        height={4}
-        alt="public state Dot Line"
-      />
     </MyStatsWrapper>
   )
 }
@@ -47,7 +39,6 @@ const MyStatsWrapper = styled.div`
 
 const TextWrapper = styled.div`
   padding-top: 17px;
-  padding-bottom: 31px;
 `
 
 export default MyStats

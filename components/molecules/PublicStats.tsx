@@ -21,12 +21,6 @@ const PublicStats = () => {
           text={userName}
         />
       </TextWrapper>
-      <Image
-        src="/assets/yellow/dotLine.svg"
-        width={292}
-        height={4}
-        alt="public state Dot Line"
-      />
     </PublicStatsWrapper>
   )
 }
@@ -41,5 +35,4 @@ const PublicStatsWrapper = styled.div`
 
 const TextWrapper = styled.div`
   padding-top: 17px;
-  padding-bottom: 31px;
 `
