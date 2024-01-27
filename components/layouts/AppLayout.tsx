@@ -3,12 +3,7 @@ import Header from "@/components/layouts/Header"
 import styled from "@emotion/styled"
 import Head from "next/head"
 import { useRouter } from "next/router"
-import { ReactElement, useEffect } from "react"
-import localFont from "next/font/local"
-import { GetServerSideProps } from "next"
-import { createPagesServerClient } from "@supabase/auth-helpers-nextjs"
-import { IAuthInfo, IAuthSBInfo } from "@/types/common/authProps"
-import { setUserInfo } from "@/utils/auth"
+import { ReactElement } from "react"
 
 const needBottomTab = ["/game", "/myland", "/visit", "/collection"]
 const needHeader = ["/game", "/myland", "/visit", "/collection"]
