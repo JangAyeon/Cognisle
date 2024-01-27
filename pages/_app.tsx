@@ -7,6 +7,7 @@ import { store } from "@/redux/store/store"
 import AppLayout from "@/components/layouts/AppLayout"
 
 export default function App({ Component, pageProps }: AppProps) {
+  console.log("app")
   return (
     <CookiesProvider>
       <Provider store={store}>

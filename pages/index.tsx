@@ -14,7 +14,7 @@ import { setUserInfo } from "@/utils/auth"
 import { IAuthSBInfo } from "@/types/common/authProps"
 
 export default function Home({ user, session }: IAuthSBInfo) {
-  console.log("Home", user, session)
+  console.log("Home")
   const [loading, setLoading] = useState(true)
   const router = useRouter()
   const refreshToken = getCookie("refreshToken")

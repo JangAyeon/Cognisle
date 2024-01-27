@@ -3,14 +3,19 @@ import Header from "@/components/layouts/Header"
 import styled from "@emotion/styled"
 import Head from "next/head"
 import { useRouter } from "next/router"
-import { ReactElement } from "react"
+import { ReactElement, useEffect } from "react"
 import localFont from "next/font/local"
+import { GetServerSideProps } from "next"
+import { createPagesServerClient } from "@supabase/auth-helpers-nextjs"
+import { IAuthInfo, IAuthSBInfo } from "@/types/common/authProps"
+import { setUserInfo } from "@/utils/auth"
 
 const needBottomTab = ["/game", "/myland", "/visit", "/collection"]
 const needHeader = ["/game", "/myland", "/visit", "/collection"]
 
 const AppLayout = ({ children }: { children: ReactElement }) => {
   const { pathname } = useRouter()
+
   return (
     <>
       <Head>
