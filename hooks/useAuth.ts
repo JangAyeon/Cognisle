@@ -12,7 +12,7 @@ export const useAuth = () => {
   const accessToken = useSelector(selectAccessToken)
   const expireDate = useSelector(selectExpire)
   const tokenType = useSelector(selectTokenType)
-  console.log("useAuth", refreshToken, accessToken, expireDate, tokenType)
+  // console.log("useAuth", refreshToken, accessToken, expireDate, tokenType)
 
   return {
     refreshToken,

@@ -1,15 +1,38 @@
+import { authApi } from "@/apis/authApi"
 import BottomTab from "@/components/layouts/BottomTab"
 import Header from "@/components/layouts/Header"
+import useAuth from "@/hooks/useAuth"
+import { setUserInfo } from "@/utils/auth"
 import styled from "@emotion/styled"
 import Head from "next/head"
 import { useRouter } from "next/router"
-import { ReactElement } from "react"
+import { ReactElement, useEffect } from "react"
 
 const needBottomTab = ["/game", "/myland", "/visit", "/collection"]
 const needHeader = ["/game", "/myland", "/visit", "/collection"]
 
 const AppLayout = ({ children }: { children: ReactElement }) => {
   const { pathname } = useRouter()
+
+  const { accessToken } = useAuth()
+  const setUserProfile = async () => {
+    const {
+      data: { user },
+    } = await authApi.getUserProfile()
+    const {
+      data: { session },
+    } = await authApi.getSession()
+    if (session && user) {
+      setUserInfo({ user, session })
+    } else {
+    }
+  }
+
+  useEffect(() => {
+    if (!accessToken && !pathname.includes("/auth")) {
+      setUserProfile()
+    }
+  }, [children])
 
   return (
     <>

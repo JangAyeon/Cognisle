@@ -11,7 +11,7 @@ export const useUserProfile = () => {
   const userEmail = useSelector(selectUserEmail)
   const userName = useSelector(selectUserName)
 
-  console.log("useUserProfile", userDsId, userEmail, userName)
+  // console.log("useUserProfile", userDsId, userEmail, userName)
 
   return {
     userDsId,

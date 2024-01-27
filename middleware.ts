@@ -18,12 +18,12 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser()
   const { pathname } = request.nextUrl
 
-  console.log("pathname", pathname)
+  // console.log("pathname", pathname)
   // 회원가입/로그인 페이지는 이미 로그인된 유저라면 메인 페이지로 리다이렉트
   if (userAgent && !pathname.includes("favicon"))
     if (pathname === "/auth") {
       if (session) {
-        console.log("session middleware refreshToken", session, user)
+        // console.log("session middleware refreshToken", session, user)
         return NextResponse.redirect(new URL(`/`, request.url))
       }
       return NextResponse.next()

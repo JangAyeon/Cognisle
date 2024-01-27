@@ -8,7 +8,7 @@ import styled from "@emotion/styled"
 
 const Collection = () => {
   const { userDsId } = useUserProfile()
-  console.log("Collection", userDsId)
+  // console.log("Collection", userDsId)
 
   return (
     <CollectionWrapper>

@@ -14,7 +14,7 @@ export interface IUserInfo {
   expires_in: Session["expires_in"]
   token_type: Session["token_type"]
 
-  email: TEmail
+  email: User["email"]
   dsId: TdsId
   name: TName
 }

@@ -22,7 +22,7 @@ const SignupForm = () => {
     }
   }
   const handleLoginBtn = () => {
-    console.log("handleSignupBtn")
+    // console.log("handleSignupBtn")
     router.push({ href: router.pathname, query: { type: "login" } })
   }
 
@@ -41,7 +41,7 @@ const SignupForm = () => {
       },
     }
 
-    console.log("handleSignup", params)
+    // console.log("handleSignup", params)
     handleLocalStorageEmail()
 
     try {
