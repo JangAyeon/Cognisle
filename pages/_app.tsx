@@ -1,4 +1,5 @@
 import "@/styles/global.css"
+import "@/public/fonts/style.css"
 import type { AppProps } from "next/app"
 import { CookiesProvider } from "react-cookie"
 import { Provider } from "react-redux"
