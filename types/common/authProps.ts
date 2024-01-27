@@ -1,13 +1,22 @@
 import { Session, User } from "@supabase/supabase-js"
 
+type TEmail = string
+type TdsId = string
+type TName = string
+export interface IProfileInfo {
+  email: TEmail
+  dsId: TdsId
+  name: TName
+}
 export interface IUserInfo {
   access_token: Session["access_token"]
   refresh_token: Session["refresh_token"]
   expires_in: Session["expires_in"]
   token_type: Session["token_type"]
-  email: User["email"]
-  dsId: User["user_metadata"]["dsId"]
-  name: User["user_metadata"]["name"]
+
+  email: TEmail
+  dsId: TdsId
+  name: TName
 }
 
 export interface IAuthSBInfo {
@@ -20,12 +29,6 @@ export interface ILoginInfo {
   refresh_token: Session["refresh_token"]
   expires_in: Session["expires_in"]
   token_type: Session["token_type"]
-}
-
-export interface IProfileInfo {
-  email: User["email"]
-  dsId: User["user_metadata"]["dsId"]
-  name: User["user_metadata"]["name"]
 }
 
 export interface IAuthInfo {

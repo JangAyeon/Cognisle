@@ -2,10 +2,13 @@ import LogoutBtn from "@/components/LogoutBtn"
 import BorderPointBtn from "@/components/atoms/button/BottomPointBtn"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import MenuButtons from "@/components/molecules/menuButtons"
-import MainLogo from "@/public/assets/logo/mainLogo.svg"
 import styled from "@emotion/styled"
+import Logo from "@/components/atoms/logo/Logo"
+
+import useUserProfile from "@/hooks/useUser"
 
 const Main = () => {
+  const { userName } = useUserProfile()
   return (
     <BackgroundLayout
       imgSrc={"/assets/background/island.svg"}
@@ -16,7 +19,7 @@ const Main = () => {
       height={1100}
     >
       <ContentWrapper>
-        <MainLogo width={240} height={124} />
+        <Logo type="main" width={240} height={124} alt="main logo" />
         <ButtonsWrapper>
           <BorderPointBtn
             width={200}
@@ -27,14 +30,14 @@ const Main = () => {
             mainColor="--color-pink-01"
             pointColor="--color-green-04"
             textColor="--color-yellow-01"
-            text="이름이름닉네임"
+            text={userName}
             borderRadius={15}
           />
           <MenuButtons />{" "}
         </ButtonsWrapper>
       </ContentWrapper>
 
-      {/* <LogoutBtn />*/}
+      <LogoutBtn />
     </BackgroundLayout>
   )
 }

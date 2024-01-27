@@ -2,8 +2,6 @@ import { authApi } from "@/apis/authApi"
 import { useInput } from "@/hooks/useInput"
 import { FormEvent, useEffect, useState } from "react"
 import { useRouter } from "next/router"
-import { setUserInfo } from "@/utils/auth"
-import { IAuthSBInfo } from "@/types/common/authProps"
 import styled from "@emotion/styled"
 import TextInput from "@/components/atoms/input/TextInput"
 
@@ -42,8 +40,8 @@ const SignupForm = () => {
         error,
       } = await authApi.login(params)
       if (user && session) {
-        setUserInfo({ user, session } as IAuthSBInfo)
         alert("로그인에 성공함")
+
         router.reload() // middleware.ts 거쳐 가기 위함
       }
     } catch (error) {
@@ -93,21 +91,21 @@ const SignupForm = () => {
             size={16}
             padding={16}
           />
+          <div>
+            <CheckBox
+              type="checkbox"
+              id="rememberEmail"
+              checked={emailFlagCheck}
+              onChange={() => handleEmailFlagCheck()}
+            />
+            <label htmlFor="rememberId"> 아이디 저장</label>
+          </div>
           <Button width={280} height={40} type="submit">
             로그인{" "}
           </Button>
         </form>
       </div>
       <div>
-        <div>
-          <CheckBox
-            type="checkbox"
-            id="rememberEmail"
-            checked={emailFlagCheck}
-            onChange={() => handleEmailFlagCheck()}
-          />
-          <label htmlFor="rememberId"> 아이디 저장</label>
-        </div>
         <div>
           <Button
             type="button"

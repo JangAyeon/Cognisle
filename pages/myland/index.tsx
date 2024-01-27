@@ -1,7 +1,11 @@
-import BottomTab from "@/components/layouts/BottomTab"
+import styled from "@emotion/styled"
 
 const Myland = () => {
-  return <div>Myland</div>
+  return <PageWrapper>Myland</PageWrapper>
 }
 
 export default Myland
+
+const PageWrapper = styled.div`
+  min-height: inherit;
+`

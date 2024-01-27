@@ -10,6 +10,7 @@ const needHeader = ["/game", "/myland", "/visit", "/collection"]
 
 const AppLayout = ({ children }: { children: ReactElement }) => {
   const { pathname } = useRouter()
+
   return (
     <>
       <Head>
@@ -28,8 +29,9 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
 export default AppLayout
 
 const AppLayoutWrapper = styled.section`
-  max-width: 430px;
-  width: 100%;
+  /*max-width: 430px;
+  width: 100%;*/
+  width: 430px;
   min-height: 100vh;
   max-height: fit-content;
   margin: auto;

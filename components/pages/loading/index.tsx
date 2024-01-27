@@ -1,14 +1,23 @@
-import MainLogo from "@/public/assets/logo/mainLogo.svg"
-import OriginalTriangle from "@/public/assets/triangle/original.svg"
-import ReverseTriangle from "@/public/assets/triangle/reversed.svg"
+import Logo from "@/components/atoms/logo/Logo"
+import Triangle from "@/components/atoms/triangle/Triangle"
 import styled from "@emotion/styled"
 
 const Loading = () => {
   return (
     <PageWrapper>
-      <OriginalTriangle />
-      <MainLogo width={240} height={124} />
-      <ReverseTriangle />
+      <Triangle
+        type="original"
+        width={430}
+        height={212}
+        alt="loading Upper triangle"
+      />
+      <Logo type="main" width={240} height={124} alt="loading logo" />
+      <Triangle
+        type="reversed"
+        width={430}
+        height={212}
+        alt="loading lower triangle"
+      />
     </PageWrapper>
   )
 }

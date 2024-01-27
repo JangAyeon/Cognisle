@@ -7,33 +7,32 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import Loading from "@/components/pages/loading"
 import Main from "@/components/pages/main"
+import { getCookie } from "@/utils/cookie"
+import { GetServerSideProps } from "next"
+import { createPagesServerClient } from "@supabase/auth-helpers-nextjs"
+import { setUserInfo } from "@/utils/auth"
+import { IAuthSBInfo } from "@/types/common/authProps"
 
-export default function Home() {
+export default function Home({ user, session }: IAuthSBInfo) {
+  console.log("Home")
   const [loading, setLoading] = useState(true)
   const router = useRouter()
-  /*const getUsers = async () => {
+  const refreshToken = getCookie("refreshToken")
+  const getUsers = async () => {
     const { data, error } = await supabase.from("user").select()
     console.log(data)
   }
 
-  const getUserProfile = async () => {
-    const { data, error } = await supabase.auth.getUser()
-    console.log("getUserProfile", data)
-  }
-
-  const getSessionInfo = async () => {
-    const { data, error } = await supabase.auth.getSession()
-    console.log("getSesssion", data)
-  }
   useEffect(() => {
     getUsers()
-    getUserProfile()
-    getSessionInfo()
-  }, [])*/
+    if (user && session) {
+      setUserInfo({ user, session })
+    }
+  }, [])
 
   useEffect(() => {
     let timer = setTimeout(() => {
-      //setLoading(false)
+      setLoading(false)
     }, 2000)
 
     return () => {
@@ -52,4 +51,32 @@ export default function Home() {
       )}
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  // Create authenticated Supabase Client
+  const supabase = createPagesServerClient(ctx)
+  // Check if we have a user
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
+
+  if (user && session) {
+    return {
+      props: {
+        user,
+        session,
+      },
+    }
+  } else {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    }
+  }
 }
