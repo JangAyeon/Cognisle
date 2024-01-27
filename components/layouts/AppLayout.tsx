@@ -8,9 +8,6 @@ import localFont from "next/font/local"
 
 const needBottomTab = ["/game", "/myland", "/visit", "/collection"]
 const needHeader = ["/game", "/myland", "/visit", "/collection"]
-const mundialVariable = localFont({
-  src: "../../public/fonts/MundialBold.otf",
-})
 
 const AppLayout = ({ children }: { children: ReactElement }) => {
   const { pathname } = useRouter()
