@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import { ChangeEvent } from "react"
 import Image from "next/image"
 
-interface ITextInput {
+export interface ITextInput {
   type: string
   value?: string
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
@@ -69,13 +69,14 @@ const TextInput = ({
     </InputWrapper>
   )
 }
-type InputWrapperStyle = Pick<
+
+export type InputWrapperStyle = Pick<
   ITextInput,
   "backgroundColor" | "padding" | "width" | "height"
 >
 type InputStyle = Pick<ITextInput, "color" | "size">
 
-const InputWrapper = styled.div<InputWrapperStyle>`
+export const InputWrapper = styled.div<InputWrapperStyle>`
   width: ${({ width }) => `${width}px`};
   height: ${({ height }) => `${height}px`};
   background-color: ${({ backgroundColor }) => `var(${backgroundColor})`};
@@ -85,7 +86,7 @@ const InputWrapper = styled.div<InputWrapperStyle>`
   justify-items: space-between;
   align-items: center;
 `
-const Input = styled.input<InputStyle>`
+export const Input = styled.input<InputStyle>`
   height: 100%;
   width: 100%;
   background-color: transparent;
