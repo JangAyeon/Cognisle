@@ -13,7 +13,7 @@ const Input_Common = {
   borderColor: "--color-green-04",
   color: "--color-green-04",
   padding: 4.5,
-  size: 12,
+  fontSize: 12,
   opacity: 50,
 }
 

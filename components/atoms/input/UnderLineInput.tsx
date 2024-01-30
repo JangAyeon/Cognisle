@@ -23,7 +23,7 @@ const UnderLineInput = ({
   height,
   color,
   backgroundColor,
-  size,
+  fontSize,
   padding,
   borderColor,
   opacity,
@@ -44,7 +44,7 @@ const UnderLineInput = ({
         name={name}
         autoComplete={autoComplete}
         color={color}
-        size={size}
+        fontSize={fontSize}
         opacity={opacity}
       />
     </UnderLineInputWrapper>

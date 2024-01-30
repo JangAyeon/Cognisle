@@ -16,7 +16,7 @@ export interface ITextInput {
   imgSrc?: string
   imgWidth?: number
   imgHeigth?: number
-  size: number
+  fontSize: number
   padding: number
   btnType?: "submit"
 }
@@ -35,7 +35,7 @@ const TextInput = ({
   imgSrc,
   imgWidth,
   imgHeigth,
-  size,
+  fontSize,
   padding,
   btnType,
 }: ITextInput) => {
@@ -54,7 +54,7 @@ const TextInput = ({
         name={name}
         autoComplete={autoComplete}
         color={color}
-        size={size}
+        fontSize={fontSize}
       />
       {imgSrc && (
         <button type={btnType}>
@@ -74,7 +74,7 @@ export type InputWrapperStyle = Pick<
   ITextInput,
   "backgroundColor" | "padding" | "width" | "height"
 >
-export type InputStyle = Pick<ITextInput, "color" | "size">
+export type InputStyle = Pick<ITextInput, "color" | "fontSize">
 
 export const InputWrapper = styled.div<InputWrapperStyle>`
   width: ${({ width }) => `${width}px`};
@@ -94,7 +94,7 @@ export const Input = styled.input<InputStyle>`
 
   &::placeholder {
     color: ${({ color }) => `var(${color})`};
-    font-size: ${({ size }) => `${size}px`};
+    font-size: ${({ fontSize }) => `${fontSize}px`};
   }
 `
 export default TextInput

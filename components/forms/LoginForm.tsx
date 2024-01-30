@@ -76,7 +76,7 @@ const SignupForm = () => {
             backgroundColor="--color-yellow-01"
             width={280}
             height={40}
-            size={16}
+            fontSize={16}
             padding={16}
           />
           <TextInput
@@ -88,7 +88,7 @@ const SignupForm = () => {
             backgroundColor="--color-yellow-01"
             width={280}
             height={40}
-            size={16}
+            fontSize={16}
             padding={16}
           />
           <div>
