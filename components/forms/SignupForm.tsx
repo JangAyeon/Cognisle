@@ -1,6 +1,5 @@
 import { authApi } from "@/apis/authApi"
-import { useInput } from "@/hooks/useInput"
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent } from "react"
 import { useRouter } from "next/router"
 import { IAuthSBInfo } from "@/types/common/authProps"
 import { setUserInfo } from "@/utils/auth"
