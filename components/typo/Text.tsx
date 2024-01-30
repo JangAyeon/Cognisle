@@ -4,7 +4,7 @@ interface IText {
   weight: string
   color: string
   size: number
-  text: string
+  text: (string | JSX.Element)[] | string
 }
 
 const Text = ({ weight, size, color, text }: IText) => {

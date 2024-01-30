@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import { IAuthSBInfo } from "@/types/common/authProps"
 import { setUserInfo } from "@/utils/auth"
 import UnderLineInput from "@/components/atoms/input/UnderLineInput"
+import Text from "@/components/typo/Text"
 
 const Input_Common = {
   width: 203,
@@ -18,6 +19,7 @@ const Input_Common = {
 
 const Input_List = [
   {
+    label: "이메일",
     placeholder: "이메일 입력",
     type: "email",
     name: "email",
@@ -25,18 +27,21 @@ const Input_List = [
     ...Input_Common,
   },
   {
+    label: "비밀번호",
     placeholder: "비밀번호",
     type: "password",
     name: "password",
     ...Input_Common,
   },
   {
+    label: "이름",
     placeholder: "사용자 이름",
     type: "text",
     name: "name",
     ...Input_Common,
   },
   {
+    label: ["디스코드", <br />, "아이디"],
     placeholder: "디스코드 아이디",
     type: "text",
     name: "dsId",
@@ -88,7 +93,15 @@ const SignupForm = () => {
       <div>
         <form onSubmit={handleSignup}>
           {Input_List.map((item, idx) => (
-            <UnderLineInput {...item} key={idx} />
+            <>
+              <Text
+                size={16}
+                text={item.label}
+                weight="bold"
+                color={"--color-green-04"}
+              />
+              <UnderLineInput {...item} key={idx} />
+            </>
           ))}
           <button type="submit">회원가입 </button>
         </form>

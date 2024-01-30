@@ -3,13 +3,13 @@ import Text from "@/components/typo/Text"
 import styled from "@emotion/styled"
 
 interface IAuthTitle {
-  text: "LOGIN" | "SIGNUP"
+  text: "로그인" | "회원가입"
 }
 
 const AuthTitle = ({ text }: IAuthTitle) => {
   return (
     <AuthTitleWrapper>
-      <Text weight="bold" size={24} color="--color-green-04" text={text} />
+      <Text weight="bold" size={20} color="--color-green-04" text={text} />
       <Triangle type="original" width={80} height={38} alt="title triangle" />
     </AuthTitleWrapper>
   )

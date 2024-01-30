@@ -1,3 +1,4 @@
+import Logo from "@/components/atoms/logo/Logo"
 import SignupForm from "@/components/forms/SignupForm"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import AuthTitle from "@/components/molecules/AuthTitle"
@@ -12,7 +13,8 @@ const Signup = () => {
       imgWidth={430}
       imgHeight={849}
     >
-      <AuthTitle text="SIGNUP" />
+      <Logo type="main" width={240} height={124} alt="loading logo" />
+      <AuthTitle text="회원가입" />
       <SignupForm />
     </BackgroundLayout>
   )

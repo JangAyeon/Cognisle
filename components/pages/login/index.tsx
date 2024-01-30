@@ -14,7 +14,7 @@ const Login = () => {
       imgHeight={849}
     >
       <Logo type="main" width={240} height={124} alt="loading logo" />
-      <AuthTitle text="LOGIN" />
+      <AuthTitle text="로그인" />
 
       <LoginForm />
     </BackgroundLayout>
