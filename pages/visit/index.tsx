@@ -3,6 +3,7 @@ import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import Text from "@/components/typo/Text"
 import { useInput } from "@/hooks/useInput"
 import Friend from "@/public/assets/green/friend.svg"
+import Squiggly from "@/public/assets/green/squiggly.svg"
 import styled from "@emotion/styled"
 import { FormEvent } from "react"
 
@@ -16,38 +17,49 @@ const Island = () => {
   return (
     <PageWrapper>
       <BackgroundLayout
+        imgSrc={"/assets/background/bubble.svg"}
+        imgWidth={430}
+        imgHeight={849}
         startColor="--gradient-yellow"
         endColor="--color-green-03"
         degree="180deg"
       >
-        <div>
-          <Text
-            text="친구의 섬 ID"
-            weight="bold"
-            size={24}
-            color="--color-green-04"
-          />
-          <form onSubmit={handleFriendSubmit}>
-            <TextInput
-              value={friendId}
-              onChange={onChangeFriendId}
-              placeholder="친구 아이디"
-              type="text"
-              name="friendId"
-              color="--color-green-04"
-              backgroundColor="--color-yellow-01"
-              width={280}
-              height={40}
-              size={16}
-              padding={16}
-              imgSrc="/assets/image/search.svg"
-              imgHeigth={21}
-              imgWidth={21}
-              btnType="submit"
-            />
-          </form>
-        </div>
-        <Friend width={420} height={420} />
+        <ContentContainer>
+          <FormContainer>
+            <TitleWrapper>
+              <Text
+                text="친구의 섬 ID"
+                weight="bold"
+                size={24}
+                color="--color-green-04"
+              />
+              <Squiggly width={51} height={21} />
+            </TitleWrapper>
+
+            <form onSubmit={handleFriendSubmit}>
+              <TextInput
+                value={friendId}
+                onChange={onChangeFriendId}
+                placeholder="친구 아이디"
+                type="text"
+                name="friendId"
+                color="--color-green-04"
+                backgroundColor="--color-yellow-01"
+                width={280}
+                height={40}
+                size={16}
+                padding={16}
+                imgSrc="/assets/image/search.svg"
+                imgHeigth={21}
+                imgWidth={21}
+                btnType="submit"
+              />
+            </form>
+          </FormContainer>
+          <ImageWrapper>
+            <Friend width={280} height={381} />
+          </ImageWrapper>
+        </ContentContainer>
       </BackgroundLayout>
     </PageWrapper>
   )
@@ -57,5 +69,26 @@ export default Island
 
 const PageWrapper = styled.div`
   background-color: var(--color-blue-01);
-  min-height: inherit;
+  max-height: 100vh;
 `
+
+const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8.4rem;
+  padding-top: 10.7rem;
+`
+const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.8rem;
+`
+
+const ImageWrapper = styled.div``
