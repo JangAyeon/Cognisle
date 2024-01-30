@@ -12,7 +12,7 @@ const Login = () => {
       endColor="--color-green-03"
       degree="180deg"
       imgWidth={430}
-      height={1000}
+      imgHeight={849}
     >
       <Logo type="main" width={240} height={124} alt="loading logo" />
       <Text weight="bold" size={24} color="--color-green-04" text="LOGIN" />

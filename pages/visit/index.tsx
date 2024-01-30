@@ -17,6 +17,9 @@ const Island = () => {
   return (
     <PageWrapper>
       <BackgroundLayout
+        imgSrc={"/assets/background/bubble.svg"}
+        imgWidth={430}
+        imgHeight={849}
         startColor="--gradient-yellow"
         endColor="--color-green-03"
         degree="180deg"
