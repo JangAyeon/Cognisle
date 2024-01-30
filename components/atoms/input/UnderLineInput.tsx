@@ -1,6 +1,5 @@
-import { ChangeEvent } from "react"
 import { InputWrapper, InputWrapperStyle, ITextInput, Input } from "./TextInput"
-import styled from "@emotion/styled/macro"
+import styled from "@emotion/styled"
 
 interface IUnderLineInput extends ITextInput {
   borderColor: string
@@ -50,5 +49,5 @@ type UnderLineWrapperStyle = InputWrapperStyle & {
 }
 
 const UnderLineInputWrapper = styled(InputWrapper)<UnderLineWrapperStyle>`
-  border-bottom: 1px solid red;
+  border-bottom: ${({ borderColor }) => `0.2rem solid var(${borderColor})`};
 `

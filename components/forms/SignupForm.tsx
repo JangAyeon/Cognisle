@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import { IAuthSBInfo } from "@/types/common/authProps"
 import { setUserInfo } from "@/utils/auth"
+import UnderLineInput from "@/components/atoms/input/UnderLineInput"
 
 const SignupForm = () => {
   const [email, onChangeEmail, setEmail] = useInput("")
@@ -71,13 +72,20 @@ const SignupForm = () => {
     <>
       <div>
         <form onSubmit={handleSignup}>
-          <input
+          <UnderLineInput
             value={email}
             onChange={onChangeEmail}
             placeholder="이메일 입력"
             type="email"
             name="email"
             autoComplete="email"
+            width={280}
+            height={40}
+            backgroundColor="transparent"
+            borderColor="--color-green-04"
+            color="--color-green-04"
+            padding={4.5}
+            size={12}
           />
           <input
             placeholder="비밀번호 입력"
