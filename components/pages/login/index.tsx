@@ -1,8 +1,7 @@
 import LoginForm from "@/components/forms/LoginForm"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
-import Text from "@/components/typo/Text"
-import Triangle from "@/components/atoms/triangle/Triangle"
 import Logo from "@/components/atoms/logo/Logo"
+import AuthTitle from "@/components/molecules/AuthTitle"
 
 const Login = () => {
   return (
@@ -15,8 +14,8 @@ const Login = () => {
       imgHeight={849}
     >
       <Logo type="main" width={240} height={124} alt="loading logo" />
-      <Text weight="bold" size={24} color="--color-green-04" text="LOGIN" />
-      <Triangle type="original" width={76} height={38} alt="title triangle" />
+      <AuthTitle text="LOGIN" />
+
       <LoginForm />
     </BackgroundLayout>
   )
