@@ -1,8 +1,15 @@
-import { InputWrapper, InputWrapperStyle, ITextInput, Input } from "./TextInput"
+import {
+  InputWrapper,
+  InputWrapperStyle,
+  ITextInput,
+  Input as Input_,
+  InputStyle,
+} from "./TextInput"
 import styled from "@emotion/styled"
 
 interface IUnderLineInput extends ITextInput {
   borderColor: string
+  opacity: number
 }
 
 const UnderLineInput = ({
@@ -19,6 +26,7 @@ const UnderLineInput = ({
   size,
   padding,
   borderColor,
+  opacity,
 }: IUnderLineInput) => {
   return (
     <UnderLineInputWrapper
@@ -37,6 +45,7 @@ const UnderLineInput = ({
         autoComplete={autoComplete}
         color={color}
         size={size}
+        opacity={opacity}
       />
     </UnderLineInputWrapper>
   )
@@ -48,6 +57,16 @@ type UnderLineWrapperStyle = InputWrapperStyle & {
   borderColor: string
 }
 
+type UnderLineInputStyle = InputStyle & {
+  opacity: number
+}
+
 const UnderLineInputWrapper = styled(InputWrapper)<UnderLineWrapperStyle>`
-  border-bottom: ${({ borderColor }) => `0.2rem solid var(${borderColor})`};
+  border-bottom: ${({ borderColor }) => `0.1rem solid var(${borderColor})`};
+`
+
+const Input = styled(Input_)<UnderLineInputStyle>`
+  &::placeholder {
+    opacity: ${({ opacity }) => `${opacity}%`};
+  }
 `

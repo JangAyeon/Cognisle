@@ -74,7 +74,7 @@ export type InputWrapperStyle = Pick<
   ITextInput,
   "backgroundColor" | "padding" | "width" | "height"
 >
-type InputStyle = Pick<ITextInput, "color" | "size">
+export type InputStyle = Pick<ITextInput, "color" | "size">
 
 export const InputWrapper = styled.div<InputWrapperStyle>`
   width: ${({ width }) => `${width}px`};

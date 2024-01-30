@@ -79,35 +79,59 @@ const SignupForm = () => {
             type="email"
             name="email"
             autoComplete="email"
-            width={280}
+            width={203}
             height={40}
             backgroundColor="transparent"
             borderColor="--color-green-04"
             color="--color-green-04"
             padding={4.5}
             size={12}
+            opacity={50}
           />
-          <input
+          <UnderLineInput
             placeholder="비밀번호 입력"
             type="password"
             name="password"
-            autoComplete="current-password"
+            autoComplete="email"
+            width={203}
+            height={40}
+            backgroundColor="transparent"
+            borderColor="--color-green-04"
+            color="--color-green-04"
+            padding={4.5}
+            size={12}
+            opacity={50}
+          />{" "}
+          <UnderLineInput
+            placeholder="사용자 이름 입력"
+            type="text"
+            name="name"
+            width={203}
+            height={40}
+            backgroundColor="transparent"
+            borderColor="--color-green-04"
+            color="--color-green-04"
+            padding={4.5}
+            size={12}
+            opacity={50}
           />
-          <input placeholder="사용자 이름 입력" type="text" name="name" />
-          <input placeholder="디스코드 아이디" type="text" name="dsId" />
+          <UnderLineInput
+            placeholder="디스코드 아이디 입력"
+            type="text"
+            name="dsId"
+            width={203}
+            height={40}
+            backgroundColor="transparent"
+            borderColor="--color-green-04"
+            color="--color-green-04"
+            padding={4.5}
+            size={12}
+            opacity={50}
+          />
           <button type="submit">회원가입 </button>
         </form>
       </div>
       <div>
-        <div>
-          <input
-            type="checkbox"
-            id="rememberEmail"
-            checked={emailFlagCheck}
-            onChange={() => handleEmailFlagCheck()}
-          />
-          <label htmlFor="rememberId"> 아이디 저장</label>
-        </div>
         <div>
           <button type="button" onClick={handleLoginBtn}>
             로그인
