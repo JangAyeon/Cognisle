@@ -5,6 +5,7 @@ import { IAuthSBInfo } from "@/types/common/authProps"
 import { setUserInfo } from "@/utils/auth"
 import UnderLineInput from "@/components/atoms/input/UnderLineInput"
 import Text from "@/components/typo/Text"
+import styled from "@emotion/styled"
 
 const Input_Common = {
   width: 203,
@@ -93,7 +94,7 @@ const SignupForm = () => {
       <div>
         <form onSubmit={handleSignup}>
           {Input_List.map((item, idx) => (
-            <>
+            <FormInputWrapper key={idx}>
               <Text
                 size={16}
                 text={item.label}
@@ -101,7 +102,7 @@ const SignupForm = () => {
                 color={"--color-green-04"}
               />
               <UnderLineInput {...item} key={idx} />
-            </>
+            </FormInputWrapper>
           ))}
           <button type="submit">회원가입 </button>
         </form>
@@ -118,3 +119,9 @@ const SignupForm = () => {
 }
 
 export default SignupForm
+
+const FormInputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
