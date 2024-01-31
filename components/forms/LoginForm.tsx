@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import styled from "@emotion/styled"
 import TextInput from "@/components/atoms/input/TextInput"
+import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 
 const SignupForm = () => {
   const [email, onChangeEmail, setEmail] = useInput("")
@@ -100,21 +101,29 @@ const SignupForm = () => {
             />
             <label htmlFor="rememberId"> 아이디 저장</label>
           </div>
-          <Button width={280} height={40} type="submit">
-            로그인{" "}
-          </Button>
+          <BorderPointBtn
+            pointHeight={40}
+            pointWidth={40}
+            mainColor="--color-green-04"
+            text="로그인"
+            textSize={16}
+            width={280}
+            height={40}
+            textColor="--color-yellow-01"
+          />
         </form>
       </div>
       <div>
         <div>
-          <Button
-            type="button"
+          <BorderPointBtn
             width={280}
             height={40}
+            mainColor="transparent"
+            text="회원가입"
+            textSize={16}
+            textColor="--color-green-04"
             onClick={handleSignupBtn}
-          >
-            회원가입
-          </Button>
+          />
         </div>
       </div>
     </>

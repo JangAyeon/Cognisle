@@ -4,20 +4,21 @@ import Image from "next/image"
 import Link from "next/link"
 
 interface IBorderPointBtn {
-  width: number
-  height: number
+  width?: number
+  height?: number
   mainColor: string
-  pointColor: string
+  pointColor?: string
   text: string
   textColor: string
   textSize: number
-  pointWidth: number
-  pointHeight: number
-  borderRadius: number
+  pointWidth?: number
+  pointHeight?: number
+  borderRadius?: number
   link?: string
   imgSrc?: string
   imgHeight?: number
   imgWidth?: number
+  onClick?: () => void
 }
 
 const BorderPointBtn = ({
@@ -35,21 +36,23 @@ const BorderPointBtn = ({
   imgWidth,
   imgHeight,
   link,
+  onClick,
 }: IBorderPointBtn) => {
   return (
     <BtnWrapper
       width={width}
       height={height}
       mainColor={mainColor}
-      borderRadius={borderRadius}
+      borderRadius={borderRadius ?? 15}
+      onClick={onClick}
     >
       <Link href={link ? link : {}}>
         <Point
-          pointColor={pointColor}
+          pointColor={pointColor ?? mainColor}
           width={width}
           height={height}
-          pointHeight={pointHeight}
-          pointWidth={pointWidth}
+          pointHeight={pointHeight ?? 20}
+          pointWidth={pointWidth ?? 20}
         />
         <ContentWrapper>
           {imgSrc && (
