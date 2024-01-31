@@ -6,6 +6,15 @@ import styled from "@emotion/styled"
 import TextInput from "@/components/atoms/input/TextInput"
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 
+const TextInputStyles = {
+  color: "--color-green-04",
+  backgroundColor: "--color-yellow-01",
+  width: 280,
+  height: 40,
+  size: 16,
+  padding: 16,
+}
+
 const SignupForm = () => {
   const [email, onChangeEmail, setEmail] = useInput("")
   const [emailFlagCheck, setEmailFlagCheck] = useState(false)
@@ -73,24 +82,14 @@ const SignupForm = () => {
             type="email"
             name="email"
             autoComplete="email"
-            color="--color-green-04"
-            backgroundColor="--color-yellow-01"
-            width={280}
-            height={40}
-            size={16}
-            padding={16}
+            {...TextInputStyles}
           />
           <TextInput
             placeholder="비밀번호"
             type="password"
             name="password"
             autoComplete="current-password"
-            color="--color-green-04"
-            backgroundColor="--color-yellow-01"
-            width={280}
-            height={40}
-            size={16}
-            padding={16}
+            {...TextInputStyles}
           />
           <div>
             <CheckBox
