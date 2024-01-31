@@ -1,4 +1,4 @@
-import BorderPointBtn from "@/components/atoms/button/BottomPointBtn"
+import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import useUserProfile from "@/hooks/useUser"
 import styled from "@emotion/styled"
 import Text from "@/components/typo/Text"

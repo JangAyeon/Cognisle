@@ -1,5 +1,5 @@
 import LogoutBtn from "@/components/LogoutBtn"
-import BorderPointBtn from "@/components/atoms/button/BottomPointBtn"
+import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import MenuButtons from "@/components/molecules/menuButtons"
 import styled from "@emotion/styled"

@@ -4,6 +4,16 @@ import { FormEvent, useEffect, useState } from "react"
 import { useRouter } from "next/router"
 import styled from "@emotion/styled"
 import TextInput from "@/components/atoms/input/TextInput"
+import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
+
+const TextInputStyles = {
+  color: "--color-green-04",
+  backgroundColor: "--color-yellow-01",
+  width: 280,
+  height: 40,
+  size: 16,
+  padding: 16,
+}
 
 const SignupForm = () => {
   const [email, onChangeEmail, setEmail] = useInput("")
@@ -72,24 +82,15 @@ const SignupForm = () => {
             type="email"
             name="email"
             autoComplete="email"
-            color="--color-green-04"
-            backgroundColor="--color-yellow-01"
-            width={280}
-            height={40}
-            fontSize={16}
-            padding={16}
+            {...TextInputStyles}
+
           />
           <TextInput
             placeholder="비밀번호"
             type="password"
             name="password"
             autoComplete="current-password"
-            color="--color-green-04"
-            backgroundColor="--color-yellow-01"
-            width={280}
-            height={40}
-            fontSize={16}
-            padding={16}
+            {...TextInputStyles}
           />
           <div>
             <CheckBox
@@ -100,21 +101,29 @@ const SignupForm = () => {
             />
             <label htmlFor="rememberId"> 아이디 저장</label>
           </div>
-          <Button width={280} height={40} type="submit">
-            로그인{" "}
-          </Button>
+          <BorderPointBtn
+            pointHeight={40}
+            pointWidth={40}
+            mainColor="--color-green-04"
+            text="로그인"
+            textSize={16}
+            width={280}
+            height={40}
+            textColor="--color-yellow-01"
+          />
         </form>
       </div>
       <div>
         <div>
-          <Button
-            type="button"
+          <BorderPointBtn
             width={280}
             height={40}
+            mainColor="transparent"
+            text="회원가입"
+            textSize={16}
+            textColor="--color-green-04"
             onClick={handleSignupBtn}
-          >
-            회원가입
-          </Button>
+          />
         </div>
       </div>
     </>
