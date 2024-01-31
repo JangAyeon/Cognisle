@@ -11,7 +11,7 @@ const TextInputStyles = {
   backgroundColor: "--color-yellow-01",
   width: 280,
   height: 40,
-  size: 16,
+  fontSize: 16,
   padding: 16,
 }
 
@@ -83,7 +83,6 @@ const SignupForm = () => {
             name="email"
             autoComplete="email"
             {...TextInputStyles}
-
           />
           <TextInput
             placeholder="비밀번호"
