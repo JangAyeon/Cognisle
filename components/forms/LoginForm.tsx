@@ -83,6 +83,7 @@ const SignupForm = () => {
             name="email"
             autoComplete="email"
             {...TextInputStyles}
+
           />
           <TextInput
             placeholder="비밀번호"

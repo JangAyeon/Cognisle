@@ -4,7 +4,7 @@ interface IText {
   weight: string
   color: string
   size: number
-  text: string
+  text: (string | JSX.Element)[] | string // <br> 태그 사용을 위함...
 }
 
 const Text = ({ weight, size, color, text }: IText) => {
@@ -17,7 +17,7 @@ const Text = ({ weight, size, color, text }: IText) => {
 export default Text
 
 type Style = Omit<IText, "text">
-const TextWrapper = styled.div<Style>`
+export const TextWrapper = styled.div<Style>`
   font-weight: ${({ weight }) => weight};
   font-size: ${({ size }) => `${size}px`};
   color: ${({ color }) => `var(${color})`};

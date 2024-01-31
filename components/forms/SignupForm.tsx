@@ -1,26 +1,58 @@
 import { authApi } from "@/apis/authApi"
-import { useInput } from "@/hooks/useInput"
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent } from "react"
 import { useRouter } from "next/router"
 import { IAuthSBInfo } from "@/types/common/authProps"
 import { setUserInfo } from "@/utils/auth"
+import UnderLineInput from "@/components/atoms/input/UnderLineInput"
+import Text from "@/components/typo/Text"
+import styled from "@emotion/styled"
+
+const Input_Common = {
+  width: 203,
+  height: 40,
+  backgroundColor: "transparent",
+  borderColor: "--color-green-04",
+  color: "--color-green-04",
+  padding: 4.5,
+  fontSize: 12,
+  opacity: 50,
+}
+
+const Input_List = [
+  {
+    label: "이메일",
+    placeholder: "이메일 입력",
+    type: "email",
+    name: "email",
+    autoComplete: "email",
+    ...Input_Common,
+  },
+  {
+    label: "비밀번호",
+    placeholder: "비밀번호",
+    type: "password",
+    name: "password",
+    ...Input_Common,
+  },
+  {
+    label: "이름",
+    placeholder: "사용자 이름",
+    type: "text",
+    name: "name",
+    ...Input_Common,
+  },
+  {
+    label: ["디스코드", <br />, "아이디"],
+    placeholder: "디스코드 아이디",
+    type: "text",
+    name: "dsId",
+    ...Input_Common,
+  },
+]
 
 const SignupForm = () => {
-  const [email, onChangeEmail, setEmail] = useInput("")
-  const [emailFlagCheck, setEmailFlagCheck] = useState(false)
-  const LS_EMAIL = localStorage.getItem("LS_EMAIL")
   const router = useRouter()
-  const handleEmailFlagCheck = () => {
-    setEmailFlagCheck((prev) => !prev)
-  }
 
-  const handleLocalStorageEmail = () => {
-    if (emailFlagCheck) {
-      localStorage.setItem("LS_EMAIL", email)
-    } else {
-      localStorage.removeItem("LS_EMAIL")
-    }
-  }
   const handleLoginBtn = () => {
     // console.log("handleSignupBtn")
     router.push({ href: router.pathname, query: { type: "login" } })
@@ -41,9 +73,6 @@ const SignupForm = () => {
       },
     }
 
-    // console.log("handleSignup", params)
-    handleLocalStorageEmail()
-
     try {
       const {
         data: { user, session },
@@ -60,46 +89,25 @@ const SignupForm = () => {
     }
   }
 
-  useEffect(() => {
-    if (LS_EMAIL) {
-      setEmail(LS_EMAIL)
-      setEmailFlagCheck(true)
-    }
-  }, [LS_EMAIL, setEmail])
-
   return (
     <>
       <div>
         <form onSubmit={handleSignup}>
-          <input
-            value={email}
-            onChange={onChangeEmail}
-            placeholder="이메일 입력"
-            type="email"
-            name="email"
-            autoComplete="email"
-          />
-          <input
-            placeholder="비밀번호 입력"
-            type="password"
-            name="password"
-            autoComplete="current-password"
-          />
-          <input placeholder="사용자 이름 입력" type="text" name="name" />
-          <input placeholder="디스코드 아이디" type="text" name="dsId" />
+          {Input_List.map((item, idx) => (
+            <FormInputWrapper key={idx}>
+              <Text
+                size={16}
+                text={item.label}
+                weight="bold"
+                color={"--color-green-04"}
+              />
+              <UnderLineInput {...item} key={idx} />
+            </FormInputWrapper>
+          ))}
           <button type="submit">회원가입 </button>
         </form>
       </div>
       <div>
-        <div>
-          <input
-            type="checkbox"
-            id="rememberEmail"
-            checked={emailFlagCheck}
-            onChange={() => handleEmailFlagCheck()}
-          />
-          <label htmlFor="rememberId"> 아이디 저장</label>
-        </div>
         <div>
           <button type="button" onClick={handleLoginBtn}>
             로그인
@@ -111,3 +119,9 @@ const SignupForm = () => {
 }
 
 export default SignupForm
+
+const FormInputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`

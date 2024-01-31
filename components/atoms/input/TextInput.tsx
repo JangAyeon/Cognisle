@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import { ChangeEvent } from "react"
 import Image from "next/image"
 
-interface ITextInput {
+export interface ITextInput {
   type: string
   value?: string
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
@@ -16,7 +16,7 @@ interface ITextInput {
   imgSrc?: string
   imgWidth?: number
   imgHeigth?: number
-  size: number
+  fontSize: number
   padding: number
   btnType?: "submit"
 }
@@ -35,7 +35,7 @@ const TextInput = ({
   imgSrc,
   imgWidth,
   imgHeigth,
-  size,
+  fontSize,
   padding,
   btnType,
 }: ITextInput) => {
@@ -54,7 +54,7 @@ const TextInput = ({
         name={name}
         autoComplete={autoComplete}
         color={color}
-        size={size}
+        fontSize={fontSize}
       />
       {imgSrc && (
         <button type={btnType}>
@@ -69,13 +69,14 @@ const TextInput = ({
     </InputWrapper>
   )
 }
-type InputWrapperStyle = Pick<
+
+export type InputWrapperStyle = Pick<
   ITextInput,
   "backgroundColor" | "padding" | "width" | "height"
 >
-type InputStyle = Pick<ITextInput, "color" | "size">
+export type InputStyle = Pick<ITextInput, "color" | "fontSize">
 
-const InputWrapper = styled.div<InputWrapperStyle>`
+export const InputWrapper = styled.div<InputWrapperStyle>`
   width: ${({ width }) => `${width}px`};
   height: ${({ height }) => `${height}px`};
   background-color: ${({ backgroundColor }) => `var(${backgroundColor})`};
@@ -85,7 +86,7 @@ const InputWrapper = styled.div<InputWrapperStyle>`
   justify-items: space-between;
   align-items: center;
 `
-const Input = styled.input<InputStyle>`
+export const Input = styled.input<InputStyle>`
   height: 100%;
   width: 100%;
   background-color: transparent;
@@ -93,7 +94,7 @@ const Input = styled.input<InputStyle>`
 
   &::placeholder {
     color: ${({ color }) => `var(${color})`};
-    font-size: ${({ size }) => `${size}px`};
+    font-size: ${({ fontSize }) => `${fontSize}px`};
   }
 `
 export default TextInput

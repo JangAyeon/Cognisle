@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
-import SignupForm from "@/components/forms/SignupForm"
 import Login from "@/components/pages/login"
+import Signup from "@/components/pages/signup"
 
 const Auth = () => {
   const router = useRouter()
@@ -8,7 +8,7 @@ const Auth = () => {
 
   return (
     <>
-      {type === "signup" && <SignupForm />}
+      {type === "signup" && <Signup />}
       {type === "login" && <Login />}
     </>
   )
