@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import Text from "@/components/typo/Text"
+import Text from "@/components/atoms/typo/Text"
 import Image from "next/image"
 import Link from "next/link"
 

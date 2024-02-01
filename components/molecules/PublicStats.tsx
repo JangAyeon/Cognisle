@@ -1,7 +1,7 @@
 import useUserProfile from "@/hooks/useUser"
 import styled from "@emotion/styled"
 import Image from "next/image"
-import Text from "@/components/typo/Text"
+import Text from "@/components/atoms/typo/Text"
 
 const PublicStats = () => {
   const { userName } = useUserProfile()

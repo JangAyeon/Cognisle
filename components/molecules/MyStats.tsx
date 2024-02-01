@@ -1,7 +1,7 @@
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import useUserProfile from "@/hooks/useUser"
 import styled from "@emotion/styled"
-import Text from "@/components/typo/Text"
+import Text from "@/components/atoms/typo/Text"
 
 const MyStats = () => {
   const { userName } = useUserProfile()

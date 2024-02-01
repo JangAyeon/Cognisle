@@ -4,7 +4,7 @@ import { useRouter } from "next/router"
 import { IAuthSBInfo } from "@/types/common/authProps"
 import { setUserInfo } from "@/utils/auth"
 import UnderLineInput from "@/components/atoms/input/UnderLineInput"
-import Text from "@/components/typo/Text"
+import Text from "@/components/atoms/typo/Text"
 import styled from "@emotion/styled"
 
 const Input_Common = {
