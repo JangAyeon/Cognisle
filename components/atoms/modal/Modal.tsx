@@ -99,13 +99,41 @@ const ModalContent = ({ children }: { children: ReactNode }) => {
 
 type ModalInnerStyle = Pick<ModalContextProps, "isOverlayClicked">
 
-const ModalBody = styled.div``
+const ModalBody = styled.div`
+  &.scroll {
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 
-const Container = styled.div<ModalInnerStyle>``
+  &.scroll::-webkit-scrollbar {
+    display: none;
+  }
+`
 
-const Content = styled.div<ModalInnerStyle>``
+const Container = styled.div<ModalInnerStyle>`
+  z-index: 100;
+  animation: ${({ isOverlayClicked }) =>
+    isOverlayClicked ? `${FADE_IN} 200ms` : `${FADE_OUT} 250ms`};
+`
 
-const CloseButtonWrapper = styled.div``
+const Content = styled.div<ModalInnerStyle>`
+  overflow: hidden;
+  position: absolute;
+  border-radius: 15px;
+  animation: ${({ isOverlayClicked }) =>
+    isOverlayClicked ? `${POP_IN} 200ms` : `${POP_OUT} 250ms`};
+`
+
+const CloseButtonWrapper = styled.div`
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 3.2rem;
+  margin-right: 3.2rem;
+  background-color: transparent;
+`
 
 const Modal = Object.assign(
   {},
