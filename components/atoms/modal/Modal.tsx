@@ -1,8 +1,16 @@
 import { FADE_IN, FADE_OUT, POP_IN, POP_OUT } from "@/constants/animations"
-import { ReactNode, createContext, useEffect, useRef, useState } from "react"
-
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
+import Image from "next/image"
 import { ModalContextProps, ModalRootProps } from "@/types/common/modalProps"
 import styled from "@emotion/styled"
+import Close from "@/public/assets/image/close.svg"
 
 const ModalContext = createContext<ModalContextProps>({})
 const ModalRoot = ({
@@ -58,12 +66,36 @@ const ModalRoot = ({
     </ModalContext.Provider>
   )
 }
-const ModalCloseButton = () => {}
+const ModalCloseButton = ({ imgSrc }: { imgSrc: string }) => {
+  const { onClose, setOverlayClicked } = useContext(ModalContext)
+  if (!setOverlayClicked || !onClose) {
+    return null
+  }
+  const handleClick = () => {
+    setOverlayClicked(true)
+    setTimeout(() => {
+      onClose()
+      setOverlayClicked(false)
+    }, 150)
+  }
+
+  return (
+    <CloseButtonWrapper onClick={handleClick}>
+      {imgSrc ? (
+        <Close size={32} />
+      ) : (
+        <Image src={imgSrc} width={32} height={32} alt="close icon" />
+      )}
+    </CloseButtonWrapper>
+  )
+}
 const ModalContent = {}
 
 const ModalBody = styled.div``
 
 const Container = styled.div<{ isOverlayClicked: Boolean }>``
+
+const CloseButtonWrapper = styled.div``
 
 const Modal = Object.assign(
   {},
