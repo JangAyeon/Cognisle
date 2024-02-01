@@ -89,11 +89,21 @@ const ModalCloseButton = ({ imgSrc }: { imgSrc: string }) => {
     </CloseButtonWrapper>
   )
 }
-const ModalContent = {}
+const ModalContent = ({ children }: { children: ReactNode }) => {
+  const { isOverlayClicked } = useContext(ModalContext)
+  if (!isOverlayClicked) {
+    return null
+  }
+  return <Content isOverlayClicked={isOverlayClicked}>{children}</Content>
+}
+
+type ModalInnerStyle = Pick<ModalContextProps, "isOverlayClicked">
 
 const ModalBody = styled.div``
 
-const Container = styled.div<{ isOverlayClicked: Boolean }>``
+const Container = styled.div<ModalInnerStyle>``
+
+const Content = styled.div<ModalInnerStyle>``
 
 const CloseButtonWrapper = styled.div``
 
