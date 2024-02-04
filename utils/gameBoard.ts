@@ -4,13 +4,22 @@ type boardSpots = {
   [randomSpot: string]: { x: number; y: number }
 }
 
-export const getRandomNumnber = (max_: number, min_: number): number => {
+interface BoardValue {
+  max_: number
+  min_: number
+  count: number
+}
+
+export const getRandomNumnber = (
+  max_: BoardValue["max_"],
+  min_: BoardValue["min_"]
+): number => {
   return Math.floor(Math.random() * max_) + min_
 }
 export const getRandomArray = (
-  max_: number,
-  min_: number,
-  count: number
+  max_: BoardValue["max_"],
+  min_: BoardValue["min_"],
+  count: BoardValue["count"]
 ): Array<number> => {
   const randomArray: number[] = []
   while (randomArray.length < count) {
