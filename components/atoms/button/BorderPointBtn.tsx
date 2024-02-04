@@ -2,6 +2,7 @@ import styled from "@emotion/styled"
 import Text from "@/components/atoms/typo/Text"
 import Image from "next/image"
 import Link from "next/link"
+import { MouseEvent } from "react"
 
 interface IBorderPointBtn {
   width?: number
@@ -18,7 +19,7 @@ interface IBorderPointBtn {
   imgSrc?: string
   imgHeight?: number
   imgWidth?: number
-  onClick?: () => void
+  onClick?: ((e: any) => void) | (() => void)
 }
 
 const BorderPointBtn = ({
@@ -44,7 +45,6 @@ const BorderPointBtn = ({
       height={height}
       mainColor={mainColor}
       borderRadius={borderRadius ?? 15}
-      onClick={onClick}
     >
       <Link href={link ? link : {}}>
         <Point
@@ -54,7 +54,7 @@ const BorderPointBtn = ({
           pointHeight={pointHeight ?? 20}
           pointWidth={pointWidth ?? 20}
         />
-        <ContentWrapper>
+        <ContentWrapper onClick={onClick}>
           {imgSrc && (
             <Image
               src={imgSrc}
@@ -97,7 +97,7 @@ const Point = styled.div<PointStyle>`
     `polygon(${pointWidth}% 0%, 0% 0%, 0% ${pointHeight}%);`};
 `
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.button`
   position: absolute;
   top: 50%;
   left: 50%;

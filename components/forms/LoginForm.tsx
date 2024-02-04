@@ -100,16 +100,9 @@ const SignupForm = () => {
             />
             <label htmlFor="rememberId"> 아이디 저장</label>
           </div>
-          <BorderPointBtn
-            pointHeight={40}
-            pointWidth={40}
-            mainColor="--color-green-04"
-            text="로그인"
-            textSize={16}
-            width={280}
-            height={40}
-            textColor="--color-yellow-01"
-          />
+          <Button width={280} height={40} type="submit">
+            로그인{" "}
+          </Button>
         </form>
       </div>
       <div>
