@@ -8,7 +8,7 @@ const CardGame = () => {
         computedBoardState={computedBoardState}
         onChipClick={onChipClick}
       />
-      <GameState count={count} time={time} moves={moves} />
+      <GameState items={items} time={time} moves={moves} />
     </>
   )
 }
