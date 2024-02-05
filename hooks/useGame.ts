@@ -10,22 +10,31 @@ export interface CardData extends Card {
   position: [number, number]
 }
 
-interface IonClick {
+export interface IOnClick {
   data: CardData
   cardPosition: [number, number]
   value: number
 }
 
+export interface IGameInfo {
+  score: number
+  moves: number
+  time: number
+  boardFreeze: boolean
+  startTimer: boolean
+}
+
 const useGame = () => {
   const [board, setBoard] = useState<Board>(makeGameBoard())
 
-  const [time, setTime] = useState(0)
-  const [moves, setMoves] = useState(0)
-  const [score, setScore] = useState(0)
+  const [time, setTime] = useState<IGameInfo["time"]>(0)
+  const [moves, setMoves] = useState<IGameInfo["moves"]>(0)
+  const [score, setScore] = useState<IGameInfo["score"]>(0)
   const [selectedCards, setSelectedCards] = useState<CardData[]>([])
   const [computedBoardState, setComputedBoardState] = useState<Card[][]>()
-  const [boardFreeze, setBoardFreeze] = useState(false)
-  const [startTimer, setStartTimer] = useState(false)
+  const [boardFreeze, setBoardFreeze] =
+    useState<IGameInfo["boardFreeze"]>(false)
+  const [startTimer, setStartTimer] = useState<IGameInfo["startTimer"]>(false)
 
   const isGameFinished = useMemo(
     () =>
@@ -36,7 +45,7 @@ const useGame = () => {
   )
 
   const onFirstChipClick = useCallback(
-    ({ data, cardPosition, value }: IonClick) => {
+    ({ data, cardPosition, value }: IOnClick) => {
       setComputedBoardState((prev) => {
         let stateTemp = prev?.map((row) => row.map((cell) => cell))
         if (stateTemp) {
@@ -53,7 +62,7 @@ const useGame = () => {
     []
   )
   const onSecondChipClick = useCallback(
-    ({ cardPosition, value }: Omit<IonClick, "data">) => {
+    ({ cardPosition, value }: Omit<IOnClick, "data">) => {
       const firstSelectedCard = selectedCards[0]
       if (selectedCards[0].value === value) {
         setComputedBoardState((prev) => {

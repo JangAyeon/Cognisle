@@ -89,18 +89,19 @@ export const insertRandomNumbers = (Board: Board): Board => {
     let counter = 2
     const spotMax_ = 30
     const spotMin_ = 1
-    const currNumber = getRandomArray(spotMax_, spotMin_, totalSpots / 2)
+    // console.log("randomSpots", randomSpots)
+    const currNumberArr = getRandomArray(spotMax_, spotMin_, totalSpots / 2)
+    let idx = 0
 
-    Object.values(randomSpots).forEach((spot, idx) => {
-      computedBoard[spot.x][spot.y] = currNumber[idx]
+    Object.values(randomSpots).forEach((spot) => {
+      computedBoard[spot.x][spot.y] = currNumberArr[idx]
       counter--
       if (counter === 0) {
         counter = 2
+        idx += 1
       }
     })
   }
-
-  console.log(computedBoard)
 
   return Board
 }
