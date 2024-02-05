@@ -12,6 +12,7 @@ export interface CardData extends Card {
 
 interface IonClick {
   data: CardData
+  cardPosition: [number, number]
   value: number
 }
 
@@ -20,9 +21,10 @@ const useGame = () => {
 
   const [time, setTime] = useState(0)
   const [moves, setMoves] = useState(0)
-  const [selectedChips, setSelectedChips] = useState<CardData[]>([])
+  const [score, setScore] = useState(0)
+  const [selectedCards, setSelectedCards] = useState<CardData[]>([])
   const [computedBoardState, setComputedBoardState] = useState<Card[][]>()
-
+  const [boardFreeze, setBoardFreeze] = useState(false)
   const [startTimer, setStartTimer] = useState(false)
 
   const isGameFinished = useMemo(
@@ -33,8 +35,87 @@ const useGame = () => {
     [computedBoardState]
   )
 
-  const onFirstChipClick = useCallback(() => {}, [])
-  const onSecondChipClick = useCallback(() => {}, [])
+  const onFirstChipClick = useCallback(
+    ({ data, cardPosition, value }: IonClick) => {
+      setComputedBoardState((prev) => {
+        let stateTemp = prev?.map((row) => row.map((cell) => cell))
+        if (stateTemp) {
+          stateTemp[cardPosition[0]][cardPosition[1]] = {
+            value,
+            state: "selected",
+          }
+          return stateTemp
+        }
+        return prev
+      })
+      setSelectedCards((prev) => [...prev, data])
+    },
+    []
+  )
+  const onSecondChipClick = useCallback(
+    ({ cardPosition, value }: Omit<IonClick, "data">) => {
+      const firstSelectedCard = selectedCards[0]
+      if (selectedCards[0].value === value) {
+        setComputedBoardState((prev) => {
+          let stateTemp = prev?.map((row) => row.map((cell) => cell))
+          if (stateTemp) {
+            stateTemp[cardPosition[0]][cardPosition[1]] = {
+              value,
+              state: "revealed",
+            }
+            stateTemp[firstSelectedCard.position[0]][
+              firstSelectedCard.position[1]
+            ] = {
+              value,
+              state: "revealed",
+            }
+            return stateTemp
+          }
+        })
+        setSelectedCards([])
+        setScore((prev) => prev + 1)
+      } else {
+        setBoardFreeze(true)
+        setComputedBoardState((prev) => {
+          let stateTemp = prev?.map((row) => row.map((cell) => cell))
+          if (stateTemp) {
+            stateTemp[cardPosition[0]][cardPosition[1]] = {
+              value,
+              state: "selected",
+            }
+            stateTemp[firstSelectedCard.position[0]][
+              firstSelectedCard.position[1]
+            ] = {
+              value: firstSelectedCard.value,
+              state: "selected",
+            }
+            return stateTemp
+          }
+        })
+      }
+      setTimeout(() => {
+        setComputedBoardState((prev) => {
+          let stateTemp = prev?.map((row) => row.map((cell) => cell))
+          if (stateTemp) {
+            stateTemp[cardPosition[0]][cardPosition[1]] = {
+              value,
+              state: "hidden",
+            }
+            stateTemp[firstSelectedCard.position[0]][
+              firstSelectedCard.position[1]
+            ] = {
+              value: firstSelectedCard.value,
+              state: "hidden",
+            }
+            return stateTemp
+          }
+        })
+        setSelectedCards([])
+        setBoardFreeze(false)
+      }, 1000)
+    },
+    [selectedCards, boardFreeze]
+  )
 
   const onCardClick = useCallback(
     (_: React.MouseEvent<HTMLSpanElement, MouseEvent>, data: CardData) => {
@@ -42,21 +123,24 @@ const useGame = () => {
       if (!computedBoardState) {
         return
       }
+      if (boardFreeze) {
+        return
+      }
       if (!startTimer) {
         setStartTimer(true)
       }
-      if (selectedChips.length === 0) {
+      if (selectedCards.length === 0) {
         if (state === "hidden") {
           onFirstChipClick({ data, position, value })
         }
-      } else if (selectedChips.length === 1) {
+      } else if (selectedCards.length === 1) {
         if (state === "hidden") {
           onSecondChipClick({ chipPosition, value })
           setMoves((prev) => prev + 1)
         }
       }
     },
-    [selectedChips, computedBoardState]
+    [selectedCards, computedBoardState]
   )
 }
 
