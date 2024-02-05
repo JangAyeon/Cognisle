@@ -166,6 +166,20 @@ const useGame = () => {
       clearInterval(timerInterval)
     }
   }, [startTimer, isGameFinished])
+
+  return {
+    board,
+    setBoard,
+    computedBoardState,
+    setComputedBoardState,
+    time,
+    setTime,
+    moves,
+    setMoves,
+    onCardClick,
+    setStartTimer,
+    score,
+  }
 }
 
 export default useGame
