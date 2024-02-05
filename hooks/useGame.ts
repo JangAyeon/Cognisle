@@ -1,5 +1,5 @@
 import { Board, makeGameBoard } from "@/utils/gameBoard"
-import { useCallback, useMemo, useState } from "react"
+import { useCallback, useEffect, useMemo, useState } from "react"
 
 export interface Card {
   value: number
@@ -142,6 +142,30 @@ const useGame = () => {
     },
     [selectedCards, computedBoardState]
   )
+
+  useEffect(() => {
+    setComputedBoardState(
+      board.map((row) => {
+        return row.map((value) => ({ value, state: "hidden" }))
+      })
+    )
+  }, [board])
+  useEffect(() => {
+    let timerInterval = setInterval(() => {}, 0)
+    if (startTimer) {
+      timerInterval = setInterval(() => {
+        setTime((prev) => prev + 1)
+      }, 1000)
+    } else {
+      clearInterval(timerInterval)
+    }
+    if (isGameFinished) {
+      clearInterval(timerInterval)
+    }
+    return () => {
+      clearInterval(timerInterval)
+    }
+  }, [startTimer, isGameFinished])
 }
 
 export default useGame
