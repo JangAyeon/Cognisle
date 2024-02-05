@@ -7,7 +7,7 @@ export interface Card {
 }
 
 export interface CardData extends Card {
-  position: [number, number]
+  cardPosition: [number, number]
 }
 
 export interface IOnClick {
@@ -48,6 +48,7 @@ const useGame = () => {
     ({ data, cardPosition, value }: IOnClick) => {
       setComputedBoardState((prev) => {
         let stateTemp = prev?.map((row) => row.map((cell) => cell))
+        console.log(stateTemp)
         if (stateTemp) {
           stateTemp[cardPosition[0]][cardPosition[1]] = {
             value,
@@ -72,8 +73,8 @@ const useGame = () => {
               value,
               state: "revealed",
             }
-            stateTemp[firstSelectedCard.position[0]][
-              firstSelectedCard.position[1]
+            stateTemp[firstSelectedCard.cardPosition[0]][
+              firstSelectedCard.cardPosition[1]
             ] = {
               value,
               state: "revealed",
@@ -92,8 +93,8 @@ const useGame = () => {
               value,
               state: "selected",
             }
-            stateTemp[firstSelectedCard.position[0]][
-              firstSelectedCard.position[1]
+            stateTemp[firstSelectedCard.cardPosition[0]][
+              firstSelectedCard.cardPosition[1]
             ] = {
               value: firstSelectedCard.value,
               state: "selected",
@@ -110,8 +111,8 @@ const useGame = () => {
               value,
               state: "hidden",
             }
-            stateTemp[firstSelectedCard.position[0]][
-              firstSelectedCard.position[1]
+            stateTemp[firstSelectedCard.cardPosition[0]][
+              firstSelectedCard.cardPosition[1]
             ] = {
               value: firstSelectedCard.value,
               state: "hidden",
@@ -128,7 +129,8 @@ const useGame = () => {
 
   const onCardClick = useCallback(
     (_: React.MouseEvent<HTMLSpanElement, MouseEvent>, data: CardData) => {
-      const { position, state, value } = data
+      const { cardPosition, state, value } = data
+      console.log(cardPosition, state, value)
       if (!computedBoardState) {
         return
       }
@@ -140,11 +142,11 @@ const useGame = () => {
       }
       if (selectedCards.length === 0) {
         if (state === "hidden") {
-          onFirstChipClick({ data, position, value })
+          onFirstChipClick({ data, cardPosition, value })
         }
       } else if (selectedCards.length === 1) {
         if (state === "hidden") {
-          onSecondChipClick({ chipPosition, value })
+          onSecondChipClick({ cardPosition, value })
           setMoves((prev) => prev + 1)
         }
       }

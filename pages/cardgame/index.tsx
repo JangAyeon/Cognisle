@@ -14,10 +14,12 @@ const CardGame = () => {
   } = useGame()
   return (
     <>
-      <PlayBoard
-        computedBoardState={computedBoardState}
-        onCardClick={onCardClick}
-      />
+      {computedBoardState && (
+        <PlayBoard
+          computedBoardState={computedBoardState}
+          onCardClick={onCardClick}
+        />
+      )}{" "}
       <GameState score={score} time={time} moves={moves} />
     </>
   )
