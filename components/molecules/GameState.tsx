@@ -34,4 +34,5 @@ const StateWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-bottom: 1.5rem;
 `

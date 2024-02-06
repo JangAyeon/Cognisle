@@ -16,9 +16,9 @@ const PlayBoard = ({ computedBoardState, onCardClick }: IPlayBoard) => {
     console.log("게임 개발 중 확인용 콘솔", computedBoardState)
   }, [])
   return (
-    <div>
+    <BoardWrapper>
       {computedBoardState.map((row, r) => (
-        <Row key={r}>
+        <>
           {row.map((card, c) => (
             <FlipCard
               key={c}
@@ -30,18 +30,19 @@ const PlayBoard = ({ computedBoardState, onCardClick }: IPlayBoard) => {
               <GameCard key={c} state={card.state} value={card.value} />
             </FlipCard>
           ))}
-        </Row>
+        </>
       ))}
-    </div>
+    </BoardWrapper>
   )
 }
 
 export default PlayBoard
 
-const Row = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1.6rem;
+const BoardWrapper = styled.div`
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.4rem 1.2rem;
 `
 
 const FlipCard = styled.div<{ state: ICard["state"] }>`

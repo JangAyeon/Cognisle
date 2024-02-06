@@ -77,6 +77,7 @@ const ContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 8.4rem;
+  height: 100vh;
   padding-top: 10.7rem;
 `
 const TitleWrapper = styled.div`

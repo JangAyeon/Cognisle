@@ -52,11 +52,11 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
 export default AppLayout
 
 const AppLayoutWrapper = styled.section`
-  /*max-width: 430px;
-  width: 100%;*/
   width: 43rem;
+  scrollbar-width: none;
   min-height: 100vh;
   max-height: fit-content;
+  overflow-y: scroll;
   margin: auto;
   background-color: var(--color-yellow-01);
 `
