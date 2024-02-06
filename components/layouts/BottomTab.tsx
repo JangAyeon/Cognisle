@@ -75,7 +75,7 @@ const TabsWrapper = styled.div`
   position: fixed;
   bottom: 0;
   width: inherit;
-  height: 72px;
+  height: 7.2rem;
   background-color: var(--color-green-04);
   display: flex;
   flex-direction: row;
@@ -84,7 +84,7 @@ const TabsWrapper = styled.div`
 `
 
 const Divider = styled.div`
-  height: 35px;
-  width: 1px;
+  height: 3.5rem;
+  width: 0.1rem;
   background-color: var(--color-green-02);
 `

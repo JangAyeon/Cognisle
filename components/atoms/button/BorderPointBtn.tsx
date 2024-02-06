@@ -57,9 +57,9 @@ const BorderPointBtn = ({
           {imgSrc && (
             <Image
               src={imgSrc}
-              alt={text}
               width={imgWidth}
               height={imgHeight}
+              alt={text}
             />
           )}
           <Text size={textSize} weight="bold" color={textColor} text={text} />

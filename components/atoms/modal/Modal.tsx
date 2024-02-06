@@ -157,8 +157,8 @@ const Content = styled.div<ModalContentStyle>`
   border-radius: 1.5rem;
   animation: ${POP_IN} 200ms;
   background-color: white;
-  width: ${({ width }) => `${width}px`};
-  height: ${({ height }) => `${height}px`};
+  width: ${({ width }) => `${width}rem`};
+  height: ${({ height }) => `${height}rem`};
   ${(props) =>
     props.isOverlayClicked &&
     css`

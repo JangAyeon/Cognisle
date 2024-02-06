@@ -42,7 +42,7 @@ const ItemStats = () => {
 const ItemStatsWrapper = styled.div`
   display: grid;
   grid-template-columns: min-content min-content min-content;
-  column-gap: 26px;
-  row-gap: 31px;
+  column-gap: 2.6rem;
+  row-gap: 3.1rem;
 `
 export default ItemStats

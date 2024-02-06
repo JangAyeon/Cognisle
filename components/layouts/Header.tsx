@@ -17,13 +17,13 @@ const Header = () => {
 export default Header
 
 const HeaderWrapper = styled.div`
-  height: 72px;
+  height: 7.2rem;
   background-color: var(--color-yellow-01);
   position: sticky;
   top: 0;
   display: flex;
   flex-direction: row;
-  padding-right: 32px;
+  padding-right: 3.2rem;
   justify-content: space-between;
   align-items: center;
 `

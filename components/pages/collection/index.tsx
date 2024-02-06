@@ -30,11 +30,11 @@ const CollectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 64px;
-  padding-bottom: 80px;
+  padding-top: 6.4rem;
+  padding-bottom: 8rem;
 `
 const DividerWrapper = styled.div`
-  margin-top: 31px;
-  margin-bottom: 48px;
+  margin-top: 3rem;
+  margin-bottom: 4.8rem;
 `
 export default Collection

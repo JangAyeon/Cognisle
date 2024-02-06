@@ -30,7 +30,7 @@ const Island = () => {
               <Text
                 text="친구의 섬 ID"
                 weight="bold"
-                size={24}
+                size={2.4}
                 color="--color-green-04"
               />
               <Squiggly width={51} height={21} />
@@ -45,10 +45,10 @@ const Island = () => {
                 name="friendId"
                 color="--color-green-04"
                 backgroundColor="--color-yellow-01"
-                width={280}
-                height={40}
-                size={16}
-                padding={16}
+                width={28.0}
+                height={4.0}
+                fontSize={1.6}
+                padding={1.6}
                 imgSrc="/assets/image/search.svg"
                 imgHeigth={21}
                 imgWidth={21}

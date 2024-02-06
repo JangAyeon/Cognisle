@@ -16,22 +16,22 @@ const Main = () => {
       endColor="--color-pink-01"
       degree="180deg"
       imgWidth={430}
-      height={1100}
+      height={110}
     >
       <ContentWrapper>
         <Logo type="main" width={240} height={124} alt="main logo" />
         <ButtonsWrapper>
           <BorderPointBtn
-            width={200}
-            height={48}
+            width={20}
+            height={4.8}
             pointHeight={50}
             pointWidth={20}
-            textSize={16}
+            textSize={1.6}
             mainColor="--color-pink-01"
             pointColor="--color-green-04"
             textColor="--color-yellow-01"
             text={userName}
-            borderRadius={15}
+            borderRadius={1.5}
           />
           <MenuButtons />{" "}
         </ButtonsWrapper>
@@ -49,13 +49,13 @@ const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 118px;
-  gap: 72px;
+  padding-top: 11.8rem;
+  gap: 7.2rem;
 `
 
 const ButtonsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 44px;
+  gap: 4.4rem;
 `

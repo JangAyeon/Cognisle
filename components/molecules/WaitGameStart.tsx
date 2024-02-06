@@ -9,7 +9,7 @@ const WaitGameStart = () => {
       pointColor={"--color-orange-03"}
       textColor={"--color-orange-03"}
       text="게임 시작"
-      textSize={36}
+      textSize={3.6}
       borderRadius={1.6}
     />
   )

@@ -42,8 +42,8 @@ const BackgroundLayout = ({
 export default BackgroundLayout
 type Style = Omit<IBackgroundLayout, "children">
 const Wrapper = styled.div<Style>`
-  width: ${({ width }) => (width ? `${width}px` : "auto")};
-  height: ${({ height }) => (height ? `${height}px` : "auto")};
+  width: ${({ width }) => (width ? `${width}rem` : "auto")};
+  height: ${({ height }) => (height ? `${height}rem` : "auto")};
   min-height: inherit;
   background: ${({ imgSrc, degree, startColor, endColor }) => `linear-gradient(
  ${degree},
@@ -51,7 +51,7 @@ const Wrapper = styled.div<Style>`
       var(${endColor})
     ),
     url(${imgSrc})`};
-  background-size: ${({ imgWidth }) => `${imgWidth}px auto`};
+  background-size: ${({ imgWidth }) => `${imgWidth}rem auto`};
   background-blend-mode: overlay;
   background-position: left bottom;
   background-repeat: no-repeat;
