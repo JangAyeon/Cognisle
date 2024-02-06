@@ -48,18 +48,18 @@ const useGame = () => {
 
       if (selectedCards[0].value === value) {
         const state = "revealed"
-        console.log("mathch!!! ", value)
+        // console.log("mathch!!! ", value)
         setComputedBoardState((prev) => {
           const originalBoard = prev?.map((row) => row.map((cell) => cell))
           if (originalBoard) {
-            const firstChangeBoard = getComputedBoard(
+            const firstChangedBoard = getComputedBoard(
               originalBoard,
               firstSelectedCard,
               state
             )
             const secondChangedBoard = getComputedBoard(
-              firstChangeBoard,
-              { cardPosition, value, state },
+              firstChangedBoard,
+              { ...secondSelectedCard, state },
               state
             )
             return secondChangedBoard
@@ -72,25 +72,24 @@ const useGame = () => {
         setBoardFreeze(true)
         setComputedBoardState((prev) => {
           const state = "selected"
-          let stateTemp = prev?.map((row) => row.map((cell) => cell))
-          if (stateTemp) {
-            stateTemp[secondSelectedCard.cardPosition[0]][
-              secondSelectedCard.cardPosition[1]
-            ] = {
-              value: secondSelectedCard.value,
-              state,
-            }
-            stateTemp[firstSelectedCard.cardPosition[0]][
-              firstSelectedCard.cardPosition[1]
-            ] = {
-              value: firstSelectedCard.value,
-              state,
-            }
-            return stateTemp
+
+          let originalBoard = prev?.map((row) => row.map((cell) => cell))
+          if (originalBoard) {
+            const firstChangedBoard = getComputedBoard(
+              originalBoard,
+              firstSelectedCard,
+              state
+            )
+            const secondChangedBoard = getComputedBoard(
+              firstChangedBoard,
+              { ...secondSelectedCard, state },
+              state
+            )
+            return secondChangedBoard
           }
         })
         setTimeout(() => {
-          console.log("tiemoute")
+          // console.log("time out")
           setComputedBoardState((prev) => {
             const state = "hidden"
             let stateCopy = prev?.map((row) => row.map((cell) => cell))
@@ -123,7 +122,7 @@ const useGame = () => {
   const onCardClick = useCallback(
     (_: React.MouseEvent<HTMLSpanElement, MouseEvent>, data: ICardData) => {
       const { cardPosition, state, value } = data
-      console.log(cardPosition, state, value)
+      // console.log(cardPosition, state, value)
 
       // 카드 맞추기가 아닌 경우
       if (!computedBoardState || boardFreeze) {
@@ -168,7 +167,7 @@ const useGame = () => {
         return row.map((chip) => ({ value: chip, state: "hidden" }))
       })
     )
-    console.log("useEffect board", board)
+    // console.log("useEffect board", board)
   }, [board])
 
   useEffect(() => {

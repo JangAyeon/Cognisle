@@ -13,7 +13,7 @@ const dragContainer = () => {
   const [Items, setItems] = useState(defaultItem)
 
   const ItemSelected = (item: JSX.Element) => {
-    console.log("ItemSelected")
+    // console.log("ItemSelected")
     setItems([...Items, item])
   }
   return (

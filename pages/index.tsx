@@ -9,7 +9,7 @@ export default function Home() {
 
   const getUsers = async () => {
     const { data, error } = await supabase.from("user").select()
-    console.log(data)
+    // console.log(data)
   }
 
   useEffect(() => {

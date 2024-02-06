@@ -110,8 +110,8 @@ export const getComputedBoard = (
 ) => {
   const changedBoard = originalBoard.map((row) => row.map((cell) => cell))
   const cardInfo = { value: selectedCard.value, state: state }
-  console.log(selectedCard.cardPosition[0], selectedCard.cardPosition[1], state)
-  changedBoard[selectedCard.cardPosition[0]][selectedCard.cardPosition[0]] =
+  // console.log(selectedCard.cardPosition[0], selectedCard.cardPosition[1], state)
+  changedBoard[selectedCard.cardPosition[0]][selectedCard.cardPosition[1]] =
     cardInfo
 
   return changedBoard
