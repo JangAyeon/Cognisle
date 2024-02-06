@@ -8,20 +8,20 @@ const MyStats = () => {
   return (
     <MyStatsWrapper>
       <BorderPointBtn
-        width={120}
-        height={120}
+        width={12}
+        height={12}
         pointHeight={20}
         pointWidth={20}
         mainColor="--color-yellow-01"
         pointColor="--color-blue-01"
-        borderRadius={16}
+        borderRadius={1.6}
         text={"미정미정미정"}
         textColor="--color-blue-02"
-        textSize={15}
+        textSize={1.5}
       />
       <TextWrapper>
         <Text
-          size={24}
+          size={2.4}
           weight="bold"
           color="--color-yellow-01"
           text={userName}
@@ -38,7 +38,7 @@ const MyStatsWrapper = styled.div`
 `
 
 const TextWrapper = styled.div`
-  padding-top: 17px;
+  padding-top: 1.7rem;
 `
 
 export default MyStats

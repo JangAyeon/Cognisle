@@ -13,7 +13,7 @@ const StatItem = ({ name, status, imgSrc }: IItem) => {
       <Image src={imgSrc} height={102} width={102} alt={name} />
       <Text
         text={name}
-        size={16}
+        size={1.6}
         weight="bold"
         color={status ? "--color-orange-01" : "--color-grey-01"}
       />
@@ -28,5 +28,5 @@ const StatItemWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 14px;
+  gap: 1.4rem;
 `

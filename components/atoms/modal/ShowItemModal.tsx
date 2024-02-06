@@ -26,7 +26,7 @@ const ShowItemModal = ({
 
   return (
     <Modal.Root isOpen={isOpen} onClose={onClose}>
-      <Modal.Content width={300} height={300}>
+      <Modal.Content width={30.0} height={30.0}>
         <Modal.CloseButton />
         <Modal.Body>
           <Container>My id: {id}</Container>

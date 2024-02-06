@@ -36,7 +36,7 @@ export default PlayBoard
 const Row = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-bottom: 16px;
+  margin-bottom: 1.6rem;
 `
 
 const FlipCard = styled.span<{ state: ICard["state"] }>`
@@ -50,11 +50,11 @@ const FlipCard = styled.span<{ state: ICard["state"] }>`
       ? "orange"
       : "#bcceda"};
   border-radius: 50%;
-  width: 70px;
-  height: 70px;
+  width: 7rem;
+  height: 7rem;
   cursor: pointer;
   color: #f5f9fa;
-  font-size: 28px;
+  font-size: 2.8rem;
   font-weight: bold;
   border: none;
 

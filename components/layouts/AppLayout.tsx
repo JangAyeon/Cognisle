@@ -54,7 +54,7 @@ export default AppLayout
 const AppLayoutWrapper = styled.section`
   /*max-width: 430px;
   width: 100%;*/
-  width: 430px;
+  width: 43rem;
   min-height: 100vh;
   max-height: fit-content;
   margin: auto;

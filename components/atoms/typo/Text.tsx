@@ -19,6 +19,6 @@ export default Text
 type Style = Omit<IText, "text">
 export const TextWrapper = styled.div<Style>`
   font-weight: ${({ weight }) => weight};
-  font-size: ${({ size }) => `${size}px`};
+  font-size: ${({ size }) => `${size}rem`};
   color: ${({ color }) => `var(${color})`};
 `

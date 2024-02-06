@@ -1,70 +1,63 @@
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import styled from "@emotion/styled"
 
+const defaultStyle = {
+  width: 10.8,
+  height: 10.8,
+  pointHeight: 2,
+  pointWidth: 2,
+  textSize: 1.4,
+  borderRadius: 1.6,
+}
+
 const MenuButtonsInfo = [
   {
-    width: 108,
-    height: 108,
-    pointHeight: 20,
-    pointWidth: 20,
     mainColor: "--color-green-04",
     pointColor: "--color-pink-01",
     textColor: "--color-yellow-01",
     text: "카드 게임",
-    textSize: 14,
-    borderRadius: 16,
+
     link: "/game",
     imgSrc: "/assets/yellow/game.svg",
     imgWidth: 29,
     imgHeight: 39,
+    ...defaultStyle,
   },
   {
-    width: 108,
-    height: 108,
-    pointHeight: 20,
-    pointWidth: 20,
     mainColor: "--color-green-04",
     pointColor: "--color-pink-01",
     textColor: "--color-yellow-01",
     text: "나의 섬",
-    textSize: 14,
-    borderRadius: 16,
+
     link: "/myland",
     imgSrc: "/assets/yellow/myland.svg",
     imgWidth: 48,
     imgHeight: 33,
+    ...defaultStyle,
   },
   {
-    width: 108,
-    height: 108,
-    pointHeight: 20,
-    pointWidth: 20,
     mainColor: "--color-green-04",
     pointColor: "--color-pink-01",
     textColor: "--color-yellow-01",
     text: "놀러가기",
-    textSize: 14,
-    borderRadius: 16,
+
     link: "/visit",
     imgSrc: "/assets/yellow/visit.svg",
     imgWidth: 48,
     imgHeight: 33,
+    ...defaultStyle,
   },
   {
-    width: 108,
-    height: 108,
-    pointHeight: 20,
-    pointWidth: 20,
     mainColor: "--color-green-04",
     pointColor: "--color-pink-01",
     textColor: "--color-yellow-01",
     text: "모아보기",
-    textSize: 14,
-    borderRadius: 16,
+
     link: "/collection",
     imgSrc: "/assets/yellow/collection.svg",
     imgWidth: 35,
     imgHeight: 37,
+    ...defaultStyle,
   },
 ]
 
@@ -119,5 +112,5 @@ export default MenuButtons
 const MenuBtnContianer = styled.div`
   display: grid;
   grid-template-columns: min-content min-content;
-  gap: 28px;
+  gap: 2.8rem;
 `

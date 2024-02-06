@@ -125,8 +125,8 @@ const SignupForm = () => {
 export default SignupForm
 
 const Button = styled.button<{ height: number; width: number }>`
-  width: ${({ width }) => `${width}px`};
-  height: ${({ height }) => `${height}px`};
+  width: ${({ width }) => `${width}rem`};
+  height: ${({ height }) => `${height}rem`};
   color: var(--color-yellow-01);
   background-color: var(--color-green-04);
 `
