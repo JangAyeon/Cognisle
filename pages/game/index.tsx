@@ -1,6 +1,8 @@
+import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import WaitGameStart from "@/components/molecules/WaitGameStart"
 import CardGameBoard from "@/components/pages/cardgame"
 import Timer from "@/utils/timer"
+import styled from "@emotion/styled"
 import { useEffect, useState } from "react"
 
 const Game = () => {
@@ -13,11 +15,22 @@ const Game = () => {
     }
   }, [])
   return (
-    <>
-      <WaitGameStart />
-      <CardGameBoard />
-    </>
+    <PageWrapper>
+      <BackgroundLayout
+        startColor="--gradient-yellow"
+        endColor="--color-pink-01"
+        degree="180deg"
+      >
+        <WaitGameStart />
+        <CardGameBoard />
+      </BackgroundLayout>
+    </PageWrapper>
   )
 }
 
 export default Game
+
+const PageWrapper = styled.div`
+  min-height: inherit;
+  background-color: var(--color-orange-01);
+`
