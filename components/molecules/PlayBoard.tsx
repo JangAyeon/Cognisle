@@ -1,18 +1,18 @@
-import { Card, CardData } from "@/hooks/useGame"
+import { ICard, ICardData } from "@/types/common/gameProps"
 import styled from "@emotion/styled"
 
 interface IPlayBoard {
-  computedBoardState: Card[][] | undefined
+  computedBoardState: ICard[][]
   onCardClick: (
     _: React.MouseEvent<HTMLSpanElement, MouseEvent>,
-    data: CardData
+    data: ICardData
   ) => void
 }
 
 const PlayBoard = ({ computedBoardState, onCardClick }: IPlayBoard) => {
   return (
     <div>
-      {computedBoardState?.map((row, r) => (
+      {computedBoardState.map((row, r) => (
         <Row key={r}>
           {row.map((card, c) => (
             <FlipCard
@@ -39,7 +39,7 @@ const Row = styled.div`
   margin-bottom: 16px;
 `
 
-const FlipCard = styled.span<{ state: Card["state"] }>`
+const FlipCard = styled.span<{ state: ICard["state"] }>`
   display: flex;
   align-items: center;
   justify-content: center;
