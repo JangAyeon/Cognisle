@@ -32,7 +32,7 @@ export const getRandomArray = (
   return randomArray
 }
 
-export const makeGameBoard = (type: BoardType = "4x4"): Board => {
+export const makeInitalBoard = (type: BoardType = "4x4"): Board => {
   let ROWS: number
   let COLS: number
 

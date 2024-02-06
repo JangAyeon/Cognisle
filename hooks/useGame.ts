@@ -1,4 +1,4 @@
-import { Board, makeGameBoard } from "@/utils/gameBoard"
+import { Board, makeInitalBoard } from "@/utils/gameBoard"
 import { useCallback, useEffect, useMemo, useState } from "react"
 
 export interface Card {
@@ -25,7 +25,7 @@ export interface IGameInfo {
 }
 
 const useGame = () => {
-  const [board, setBoard] = useState<Board>(makeGameBoard())
+  const [board, setBoard] = useState<Board>(makeInitalBoard())
 
   const [time, setTime] = useState<IGameInfo["time"]>(0)
   const [moves, setMoves] = useState<IGameInfo["moves"]>(0)
@@ -135,13 +135,13 @@ const useGame = () => {
     (_: React.MouseEvent<HTMLSpanElement, MouseEvent>, data: CardData) => {
       const { cardPosition, state, value } = data
       console.log(cardPosition, state, value)
-      if (!computedBoardState) {
+
+      // 카드 맞추기가 아닌 경우
+      if (!computedBoardState || boardFreeze) {
         return
       }
-      if (boardFreeze) {
-        return
-      }
-      if (startTimer == false) {
+      // 타이머 아직 시작 되지 않은 경우
+      if (!startTimer) {
         setStartTimer(true)
       }
       if (selectedCards.length === 0) {
@@ -166,7 +166,7 @@ const useGame = () => {
   }, [computedBoardState])
 
   const onNewGame = useCallback(() => {
-    setBoard(makeGameBoard())
+    setBoard(makeInitalBoard())
     setComputedBoardState(
       board?.map((row) => row.map((chip) => ({ value: chip, state: "hidden" })))
     )
