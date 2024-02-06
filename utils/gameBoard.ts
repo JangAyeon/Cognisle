@@ -1,25 +1,21 @@
-export type BoardType = "4x4"
-export type Board = Array<Array<number>>
-type boardSpots = {
-  [randomSpot: string]: { x: number; y: number }
-}
-
-interface BoardValue {
-  max_: number
-  min_: number
-  count: number
-}
+import type {
+  TBoardArrayType,
+  ICard,
+  TBoard,
+  TBoardSpots,
+  IBoardValue,
+} from "@/types/common/gameProps"
 
 export const getRandomNumnber = (
-  max_: BoardValue["max_"],
-  min_: BoardValue["min_"]
+  max_: IBoardValue["max_"],
+  min_: IBoardValue["min_"]
 ): number => {
   return Math.floor(Math.random() * max_) + min_
 }
 export const getRandomArray = (
-  max_: BoardValue["max_"],
-  min_: BoardValue["min_"],
-  count: BoardValue["count"]
+  max_: IBoardValue["max_"],
+  min_: IBoardValue["min_"],
+  count: IBoardValue["count"]
 ): Array<number> => {
   const randomArray: number[] = []
   while (randomArray.length < count) {
@@ -32,7 +28,7 @@ export const getRandomArray = (
   return randomArray
 }
 
-export const makeInitalBoard = (type: BoardType = "4x4"): Board => {
+export const makeInitalBoard = (type: TBoardArrayType = "4x4"): TBoard => {
   let ROWS: number
   let COLS: number
 
@@ -45,7 +41,7 @@ export const makeInitalBoard = (type: BoardType = "4x4"): Board => {
     COLS = 4
   }
 
-  const Board: Board = []
+  const Board: TBoard = []
 
   for (let r = 0; r < ROWS; r++) {
     Board.push([])
@@ -57,7 +53,7 @@ export const makeInitalBoard = (type: BoardType = "4x4"): Board => {
   return insertRandomNumbers(Board)
 }
 
-export const insertRandomNumbers = (Board: Board): Board => {
+export const insertRandomNumbers = (Board: TBoard): TBoard => {
   let computedBoard = Board
   let totalSpots: number
   let maxNumber: number
@@ -70,7 +66,7 @@ export const insertRandomNumbers = (Board: Board): Board => {
     maxNumber = 4
   }
 
-  const randomSpots: boardSpots = {}
+  const randomSpots: TBoardSpots = {}
 
   while (true) {
     if (Object.keys(randomSpots).length === totalSpots) {
@@ -105,3 +101,5 @@ export const insertRandomNumbers = (Board: Board): Board => {
 
   return Board
 }
+
+export const getBoardState = (computedBoardState: ICard[][]) => {}

@@ -1,37 +1,21 @@
-import { Board, makeInitalBoard } from "@/utils/gameBoard"
+import { makeInitalBoard } from "@/utils/gameBoard"
+import type {
+  ICard,
+  TBoard,
+  ICardData,
+  IGameInfo,
+  IOnClick,
+} from "@/types/common/gameProps"
 import { useCallback, useEffect, useMemo, useState } from "react"
 
-export interface Card {
-  value: number
-  state: "hidden" | "selected" | "revealed"
-}
-
-export interface CardData extends Card {
-  cardPosition: [number, number]
-}
-
-export interface IOnClick {
-  data: CardData
-  cardPosition: [number, number]
-  value: number
-}
-
-export interface IGameInfo {
-  score: number
-  moves: number
-  time: number
-  boardFreeze: boolean
-  startTimer: boolean
-}
-
 const useGame = () => {
-  const [board, setBoard] = useState<Board>(makeInitalBoard())
+  const [board, setBoard] = useState<TBoard>(makeInitalBoard())
 
   const [time, setTime] = useState<IGameInfo["time"]>(0)
   const [moves, setMoves] = useState<IGameInfo["moves"]>(0)
   const [score, setScore] = useState<IGameInfo["score"]>(0)
-  const [selectedCards, setSelectedCards] = useState<CardData[]>([])
-  const [computedBoardState, setComputedBoardState] = useState<Card[][]>()
+  const [selectedCards, setSelectedCards] = useState<ICardData[]>([])
+  const [computedBoardState, setComputedBoardState] = useState<ICard[][]>()
   const [boardFreeze, setBoardFreeze] =
     useState<IGameInfo["boardFreeze"]>(false)
   const [startTimer, setStartTimer] = useState<IGameInfo["startTimer"]>(false)
@@ -132,7 +116,7 @@ const useGame = () => {
   )
 
   const onCardClick = useCallback(
-    (_: React.MouseEvent<HTMLSpanElement, MouseEvent>, data: CardData) => {
+    (_: React.MouseEvent<HTMLSpanElement, MouseEvent>, data: ICardData) => {
       const { cardPosition, state, value } = data
       console.log(cardPosition, state, value)
 
