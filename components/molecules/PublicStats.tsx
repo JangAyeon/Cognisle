@@ -34,5 +34,5 @@ const PublicStatsWrapper = styled.div`
 `
 
 const TextWrapper = styled.div`
-  padding-top: 17px;
+  padding-top: 1.7rem;
 `

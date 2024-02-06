@@ -9,10 +9,10 @@ import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 const TextInputStyles = {
   color: "--color-green-04",
   backgroundColor: "--color-yellow-01",
-  width: 280,
-  height: 40,
-  fontSize: 16,
-  padding: 16,
+  width: 28.0,
+  height: 4.0,
+  fontSize: 1.6,
+  padding: 1.6,
 }
 
 const SignupForm = () => {
@@ -59,11 +59,6 @@ const SignupForm = () => {
     }
   }
 
-  const handleSignupBtn = () => {
-    // console.log("handleSignupBtn")
-    router.push({ href: router.pathname, query: { type: "signup" } })
-  }
-
   useEffect(() => {
     if (LS_EMAIL) {
       setEmail(LS_EMAIL)
@@ -100,7 +95,7 @@ const SignupForm = () => {
             />
             <label htmlFor="rememberId"> 아이디 저장</label>
           </div>
-          <Button width={280} height={40} type="submit">
+          <Button width={28} height={4.0} type="submit">
             로그인{" "}
           </Button>
         </form>
@@ -108,13 +103,13 @@ const SignupForm = () => {
       <div>
         <div>
           <BorderPointBtn
-            width={280}
-            height={40}
+            width={28.0}
+            height={4.0}
             mainColor="transparent"
             text="회원가입"
-            textSize={16}
+            textSize={1.6}
             textColor="--color-green-04"
-            onClick={handleSignupBtn}
+            link="/auth?type=signup"
           />
         </div>
       </div>
@@ -132,5 +127,5 @@ const Button = styled.button<{ height: number; width: number }>`
 `
 
 const CheckBox = styled.input`
-  border: solid 7px black;
+  border: solid 0.7rem black;
 `
