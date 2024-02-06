@@ -10,8 +10,8 @@ const Login = () => {
       startColor="--gradient-yellow"
       endColor="--color-green-03"
       degree="180deg"
-      imgWidth={430}
-      imgHeight={849}
+      imgWidth={43}
+      imgHeight={84.9}
     >
       <Logo type="main" width={240} height={124} alt="loading logo" />
       <AuthTitle text="로그인" />
