@@ -8,12 +8,14 @@ const CardGameBoard = () => {
   return (
     <>
       {computedBoardState && (
-        <PlayBoard
-          computedBoardState={computedBoardState}
-          onCardClick={onCardClick}
-        />
+        <>
+          <GameState score={score} time={time} moves={moves} />
+          <PlayBoard
+            computedBoardState={computedBoardState}
+            onCardClick={onCardClick}
+          />
+        </>
       )}{" "}
-      <GameState score={score} time={time} moves={moves} />
     </>
   )
 }
