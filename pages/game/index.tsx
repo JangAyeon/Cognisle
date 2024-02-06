@@ -32,6 +32,5 @@ export default Game
 
 const PageWrapper = styled.div`
   min-height: inherit;
-  width: inherit;
   background-color: var(--color-orange-01);
 `

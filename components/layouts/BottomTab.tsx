@@ -72,7 +72,7 @@ const BottomTab = () => {
 export default BottomTab
 
 const TabsWrapper = styled.div`
-  position: fixed;
+  position: sticky;
   bottom: 0;
   width: inherit;
   height: 7.2rem;

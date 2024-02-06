@@ -69,8 +69,7 @@ export default Island
 
 const PageWrapper = styled.div`
   background-color: var(--color-blue-01);
-  max-height: 100vh;
-
+  min-height: inherit;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -82,9 +81,8 @@ const ContentContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 8.4rem;
-  height: 100vh;
-  padding-top: 27.2rem;
-  padding-bottom: 7.2rem;
+  min-height: inherit;
+  padding-top: 7.2rem;
 `
 const TitleWrapper = styled.div`
   display: flex;
@@ -96,6 +94,7 @@ const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2.8rem;
+  padding-top: 20rem;
 `
 
 const ImageWrapper = styled.div``
