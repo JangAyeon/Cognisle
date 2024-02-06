@@ -66,6 +66,7 @@ const useGame = () => {
     ({ cardPosition, value }: Omit<IOnClick, "data">) => {
       const firstSelectedCard = selectedCards[0]
       if (selectedCards[0].value === value) {
+        console.log("mathch!!! ", value)
         setComputedBoardState((prev) => {
           let stateTemp = prev?.map((row) => row.map((cell) => cell))
           if (stateTemp) {
@@ -102,27 +103,30 @@ const useGame = () => {
             return stateTemp
           }
         })
+        setTimeout(() => {
+          console.log("tiemoute")
+          setComputedBoardState((prev) => {
+            let stateCopy = prev?.map((row) => row.map((cell) => cell))
+
+            if (stateCopy) {
+              stateCopy[cardPosition[0]][cardPosition[1]] = {
+                value,
+                state: "hidden",
+              }
+              stateCopy[firstSelectedCard.cardPosition[0]][
+                firstSelectedCard.cardPosition[1]
+              ] = {
+                value: firstSelectedCard.value,
+                state: "hidden",
+              }
+              return stateCopy
+            }
+          })
+
+          setSelectedCards([])
+          setBoardFreeze(false)
+        }, 1000)
       }
-      setTimeout(() => {
-        setComputedBoardState((prev) => {
-          let stateTemp = prev?.map((row) => row.map((cell) => cell))
-          if (stateTemp) {
-            stateTemp[cardPosition[0]][cardPosition[1]] = {
-              value,
-              state: "hidden",
-            }
-            stateTemp[firstSelectedCard.cardPosition[0]][
-              firstSelectedCard.cardPosition[1]
-            ] = {
-              value: firstSelectedCard.value,
-              state: "hidden",
-            }
-            return stateTemp
-          }
-        })
-        setSelectedCards([])
-        setBoardFreeze(false)
-      }, 1000)
     },
     [selectedCards, boardFreeze]
   )
@@ -137,7 +141,7 @@ const useGame = () => {
       if (boardFreeze) {
         return
       }
-      if (!startTimer) {
+      if (startTimer == false) {
         setStartTimer(true)
       }
       if (selectedCards.length === 0) {
@@ -154,13 +158,30 @@ const useGame = () => {
     [selectedCards, computedBoardState]
   )
 
+  const onRestart = useCallback(() => {
+    setComputedBoardState((prev) =>
+      prev?.map((row) => row.map((cell) => ({ ...cell, state: "hidden" })))
+    )
+    setSelectedCards([])
+  }, [computedBoardState])
+
+  const onNewGame = useCallback(() => {
+    setBoard(makeGameBoard())
+    setComputedBoardState(
+      board?.map((row) => row.map((chip) => ({ value: chip, state: "hidden" })))
+    )
+    setSelectedCards([])
+  }, [board, computedBoardState])
+
   useEffect(() => {
     setComputedBoardState(
-      board.map((row) => {
-        return row.map((value) => ({ value, state: "hidden" }))
+      board?.map((row) => {
+        return row.map((chip) => ({ value: chip, state: "hidden" }))
       })
     )
+    console.log("useEffect board", board)
   }, [board])
+
   useEffect(() => {
     let timerInterval = setInterval(() => {}, 0)
     if (startTimer) {

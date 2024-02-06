@@ -1,4 +1,4 @@
-import { Card, CardData } from "@/hooks/useGame"
+import useGame, { Card, CardData } from "@/hooks/useGame"
 import styled from "@emotion/styled"
 
 interface IPlayBoard {
@@ -10,7 +10,6 @@ interface IPlayBoard {
 }
 
 const PlayBoard = ({ computedBoardState, onCardClick }: IPlayBoard) => {
-  console.log(computedBoardState)
   return (
     <div>
       {computedBoardState?.map((row, r) => (
