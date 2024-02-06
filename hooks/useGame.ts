@@ -1,4 +1,4 @@
-import { makeInitalBoard } from "@/utils/gameBoard"
+import { makeInitalBoard, getComputedBoard } from "@/utils/gameBoard"
 import type {
   ICard,
   TBoard,
@@ -32,15 +32,10 @@ const useGame = () => {
     ({ data, cardPosition, value }: IOnClick) => {
       setComputedBoardState((prev) => {
         let stateTemp = prev?.map((row) => row.map((cell) => cell))
-        console.log(stateTemp)
-        if (stateTemp) {
-          stateTemp[cardPosition[0]][cardPosition[1]] = {
-            value,
-            state: "selected",
-          }
-          return stateTemp
-        }
-        return prev
+        const state = "selected"
+        return stateTemp
+          ? getComputedBoard(stateTemp, { cardPosition, value, state }, state)
+          : prev
       })
       setSelectedCards((prev) => [...prev, data])
     },
@@ -49,40 +44,47 @@ const useGame = () => {
   const onSecondChipClick = useCallback(
     ({ cardPosition, value }: Omit<IOnClick, "data">) => {
       const firstSelectedCard = selectedCards[0]
+      const secondSelectedCard = { cardPosition, value }
+
       if (selectedCards[0].value === value) {
+        const state = "revealed"
         console.log("mathch!!! ", value)
         setComputedBoardState((prev) => {
-          let stateTemp = prev?.map((row) => row.map((cell) => cell))
-          if (stateTemp) {
-            stateTemp[cardPosition[0]][cardPosition[1]] = {
-              value,
-              state: "revealed",
-            }
-            stateTemp[firstSelectedCard.cardPosition[0]][
-              firstSelectedCard.cardPosition[1]
-            ] = {
-              value,
-              state: "revealed",
-            }
-            return stateTemp
+          const originalBoard = prev?.map((row) => row.map((cell) => cell))
+          if (originalBoard) {
+            const firstChangeBoard = getComputedBoard(
+              originalBoard,
+              firstSelectedCard,
+              state
+            )
+            const secondChangedBoard = getComputedBoard(
+              firstChangeBoard,
+              { cardPosition, value, state },
+              state
+            )
+            return secondChangedBoard
           }
         })
+
         setSelectedCards([])
         setScore((prev) => prev + 1)
       } else {
         setBoardFreeze(true)
         setComputedBoardState((prev) => {
+          const state = "selected"
           let stateTemp = prev?.map((row) => row.map((cell) => cell))
           if (stateTemp) {
-            stateTemp[cardPosition[0]][cardPosition[1]] = {
-              value,
-              state: "selected",
+            stateTemp[secondSelectedCard.cardPosition[0]][
+              secondSelectedCard.cardPosition[1]
+            ] = {
+              value: secondSelectedCard.value,
+              state,
             }
             stateTemp[firstSelectedCard.cardPosition[0]][
               firstSelectedCard.cardPosition[1]
             ] = {
               value: firstSelectedCard.value,
-              state: "selected",
+              state,
             }
             return stateTemp
           }
@@ -90,18 +92,21 @@ const useGame = () => {
         setTimeout(() => {
           console.log("tiemoute")
           setComputedBoardState((prev) => {
+            const state = "hidden"
             let stateCopy = prev?.map((row) => row.map((cell) => cell))
 
             if (stateCopy) {
-              stateCopy[cardPosition[0]][cardPosition[1]] = {
-                value,
-                state: "hidden",
+              stateCopy[secondSelectedCard.cardPosition[0]][
+                secondSelectedCard.cardPosition[1]
+              ] = {
+                value: secondSelectedCard.value,
+                state,
               }
               stateCopy[firstSelectedCard.cardPosition[0]][
                 firstSelectedCard.cardPosition[1]
               ] = {
                 value: firstSelectedCard.value,
-                state: "hidden",
+                state,
               }
               return stateCopy
             }

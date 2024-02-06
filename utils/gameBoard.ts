@@ -4,6 +4,7 @@ import type {
   TBoard,
   TBoardSpots,
   IBoardValue,
+  ICardData,
 } from "@/types/common/gameProps"
 
 export const getRandomNumnber = (
@@ -102,4 +103,16 @@ export const insertRandomNumbers = (Board: TBoard): TBoard => {
   return Board
 }
 
-export const getBoardState = (computedBoardState: ICard[][]) => {}
+export const getComputedBoard = (
+  originalBoard: ICard[][],
+  selectedCard: ICardData,
+  state: ICard["state"]
+) => {
+  const changedBoard = originalBoard.map((row) => row.map((cell) => cell))
+  const cardInfo = { value: selectedCard.value, state: state }
+  console.log(selectedCard.cardPosition[0], selectedCard.cardPosition[1], state)
+  changedBoard[selectedCard.cardPosition[0]][selectedCard.cardPosition[0]] =
+    cardInfo
+
+  return changedBoard
+}
