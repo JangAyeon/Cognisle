@@ -1,5 +1,7 @@
+import CardGameBoard from "@/components/pages/cardgame"
+
 const Game = () => {
-  return <div>Game</div>
+  return <CardGameBoard />
 }
 
 export default Game

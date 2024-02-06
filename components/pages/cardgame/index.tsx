@@ -12,6 +12,7 @@ const CardGameBoard = () => {
     moves,
     setMoves,
   } = useGame()
+
   return (
     <>
       {computedBoardState && (
@@ -20,7 +21,7 @@ const CardGameBoard = () => {
           onCardClick={onCardClick}
         />
       )}{" "}
-      <GameState /*score={score} time={time} moves={moves}*/ />
+      <GameState score={score} time={time} moves={moves} />
     </>
   )
 }

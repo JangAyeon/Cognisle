@@ -1,4 +1,4 @@
-import useGame, { Card, CardData } from "@/hooks/useGame"
+import { Card, CardData } from "@/hooks/useGame"
 import styled from "@emotion/styled"
 
 interface IPlayBoard {

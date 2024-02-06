@@ -1,11 +1,10 @@
-import useGame, { IGameInfo } from "@/hooks/useGame"
+import { IGameInfo } from "@/hooks/useGame"
 
-const GameState = (/*{
+const GameState = ({
   score,
   time,
   moves,
-}: Pick<IGameInfo, "moves" | "score" | "time">*/) => {
-  const { score, time, moves } = useGame()
+}: Pick<IGameInfo, "moves" | "score" | "time">) => {
   return (
     <>
       {score} {time} {moves}
