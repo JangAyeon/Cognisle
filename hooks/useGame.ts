@@ -62,6 +62,7 @@ const useGame = () => {
               { ...secondSelectedCard, state },
               state
             )
+            console.log(secondChangedBoard)
             return secondChangedBoard
           }
         })
@@ -85,6 +86,7 @@ const useGame = () => {
               { ...secondSelectedCard, state },
               state
             )
+            console.log(secondChangedBoard)
             return secondChangedBoard
           }
         })
@@ -92,22 +94,21 @@ const useGame = () => {
           // console.log("time out")
           setComputedBoardState((prev) => {
             const state = "hidden"
-            let stateCopy = prev?.map((row) => row.map((cell) => cell))
+            let originalBoard = prev?.map((row) => row.map((cell) => cell))
 
-            if (stateCopy) {
-              stateCopy[secondSelectedCard.cardPosition[0]][
-                secondSelectedCard.cardPosition[1]
-              ] = {
-                value: secondSelectedCard.value,
-                state,
-              }
-              stateCopy[firstSelectedCard.cardPosition[0]][
-                firstSelectedCard.cardPosition[1]
-              ] = {
-                value: firstSelectedCard.value,
-                state,
-              }
-              return stateCopy
+            if (originalBoard) {
+              const firstChangedBoard = getComputedBoard(
+                originalBoard,
+                firstSelectedCard,
+                state
+              )
+              const secondChangedBoard = getComputedBoard(
+                firstChangedBoard,
+                { ...secondSelectedCard, state },
+                state
+              )
+              console.log(secondChangedBoard)
+              return secondChangedBoard
             }
           })
 

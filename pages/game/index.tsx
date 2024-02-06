@@ -6,7 +6,7 @@ import styled from "@emotion/styled"
 import { useEffect, useState } from "react"
 
 const Game = () => {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
     const timer = Timer(setLoading(false), 10000)
 
@@ -21,7 +21,7 @@ const Game = () => {
         endColor="--color-pink-01"
         degree="180deg"
       >
-        <WaitGameStart />
+        {loading && <WaitGameStart />}
         <CardGameBoard />
       </BackgroundLayout>
     </PageWrapper>

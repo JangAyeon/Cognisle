@@ -3,15 +3,7 @@ import PlayBoard from "@/components/molecules/PlayBoard"
 import useGame from "@/hooks/useGame"
 
 const CardGameBoard = () => {
-  const {
-    computedBoardState,
-    onCardClick,
-    score,
-    time,
-    setTime,
-    moves,
-    setMoves,
-  } = useGame()
+  const { computedBoardState, onCardClick, score, time, moves } = useGame()
 
   return (
     <>
