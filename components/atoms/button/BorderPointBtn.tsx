@@ -2,7 +2,6 @@ import styled from "@emotion/styled"
 import Text from "@/components/atoms/typo/Text"
 import Image from "next/image"
 import Link from "next/link"
-import { MouseEvent } from "react"
 
 interface IBorderPointBtn {
   width?: number
@@ -82,16 +81,16 @@ type PointStyle = Pick<
 >
 
 const BtnWrapper = styled.div<BtnWrapperStyle>`
-  width: ${({ width }) => (width ? `${width}px` : "auto")};
-  height: ${({ height }) => (height ? `${height}px` : "auto")};
+  width: ${({ width }) => (width ? `${width}rem` : "auto")};
+  height: ${({ height }) => (height ? `${height}rem` : "auto")};
   position: relative;
   background-color: ${({ mainColor }) => `var(${mainColor})`};
-  border-radius: ${({ borderRadius }) => `${borderRadius}px`};
+  border-radius: ${({ borderRadius }) => `${borderRadius}rem`};
 `
 
 const Point = styled.div<PointStyle>`
-  width: ${({ width }) => (width ? `${width}px` : "auto")};
-  height: ${({ height }) => (height ? `${height}px` : "auto")};
+  width: ${({ width }) => (width ? `${width}rem` : "auto")};
+  height: ${({ height }) => (height ? `${height}rem` : "auto")};
   background-color: ${({ pointColor }) => `var(${pointColor})`};
   clip-path: ${({ pointHeight, pointWidth }) =>
     `polygon(${pointWidth}% 0%, 0% 0%, 0% ${pointHeight}%);`};
@@ -107,5 +106,5 @@ const ContentWrapper = styled.button`
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 12px;
+  gap: 1.2rem;
 `

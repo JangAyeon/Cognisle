@@ -12,7 +12,7 @@ const Island = () => {
 
   const handleFriendSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(friendId)
+    // console.log(friendId)
   }
   return (
     <PageWrapper>

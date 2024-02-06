@@ -5,7 +5,7 @@ const Test = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleModalOpen = () => {
-    console.log("open")
+    // console.log("open")
     setIsModalOpen(true)
   }
   return (

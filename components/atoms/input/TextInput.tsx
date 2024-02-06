@@ -77,10 +77,10 @@ export type InputWrapperStyle = Pick<
 export type InputStyle = Pick<ITextInput, "color" | "fontSize">
 
 export const InputWrapper = styled.div<InputWrapperStyle>`
-  width: ${({ width }) => `${width}px`};
-  height: ${({ height }) => `${height}px`};
+  width: ${({ width }) => `${width}rem`};
+  height: ${({ height }) => `${height}rem`};
   background-color: ${({ backgroundColor }) => `var(${backgroundColor})`};
-  padding: ${({ padding }) => `0 ${padding}px`};
+  padding: ${({ padding }) => `0 ${padding}rem`};
   display: flex;
   flex-direction: row;
   justify-items: space-between;
@@ -94,7 +94,7 @@ export const Input = styled.input<InputStyle>`
 
   &::placeholder {
     color: ${({ color }) => `var(${color})`};
-    font-size: ${({ fontSize }) => `${fontSize}px`};
+    font-size: ${({ fontSize }) => `${fontSize}rem`};
   }
 `
 export default TextInput

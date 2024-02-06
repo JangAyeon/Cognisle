@@ -26,7 +26,7 @@ const DragItem = ({ child }: { child: JSX.Element }) => {
     active: false,
   })
   const trackPos = (data: DraggableData) => {
-    console.log(data.x, data.y, state.active, state.zIndex)
+    // console.log(data.x, data.y, state.active, state.zIndex)
     setState({ x: data.x, y: data.y, active: true, zIndex: state.zIndex })
   }
   const onStart: DraggableEventHandler | undefined = () => {
