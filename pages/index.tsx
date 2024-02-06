@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 
 import Loading from "@/components/pages/loading"
 import Main from "@/components/pages/main"
+import Timer from "@/utils/timer"
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
@@ -17,9 +18,7 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    let timer = setTimeout(() => {
-      setLoading(false)
-    }, 2000)
+    const timer = Timer(setLoading(false), 2000)
 
     return () => {
       clearTimeout(timer)
