@@ -8,13 +8,13 @@ import Text from "@/components/atoms/typo/Text"
 import styled from "@emotion/styled"
 
 const Input_Common = {
-  width: 203,
-  height: 40,
+  width: 20.3,
+  height: 4.0,
   backgroundColor: "transparent",
   borderColor: "--color-green-04",
   color: "--color-green-04",
   padding: 4.5,
-  fontSize: 12,
+  fontSize: 1.2,
   opacity: 50,
 }
 
@@ -55,7 +55,7 @@ const SignupForm = () => {
 
   const handleLoginBtn = () => {
     // console.log("handleSignupBtn")
-    router.push({ href: router.pathname, query: { type: "login" } })
+    router.push("auth?type=login")
   }
 
   const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
@@ -96,7 +96,7 @@ const SignupForm = () => {
           {Input_List.map((item, idx) => (
             <FormInputWrapper key={idx}>
               <Text
-                size={16}
+                size={1.6}
                 text={item.label}
                 weight="bold"
                 color={"--color-green-04"}

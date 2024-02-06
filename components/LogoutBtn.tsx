@@ -17,11 +17,11 @@ const LogoutBtn = () => {
   }
 
   return <Button onClick={handleLogout}>로그아웃 logout</Button>
-} 
+}
 
 export default LogoutBtn
 
 const Button = styled.button`
   font-weight: bold;
-  font-size: 24px;
+  font-size: 2.4px;
 `

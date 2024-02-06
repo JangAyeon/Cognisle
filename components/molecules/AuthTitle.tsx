@@ -9,7 +9,7 @@ interface IAuthTitle {
 const AuthTitle = ({ text }: IAuthTitle) => {
   return (
     <AuthTitleWrapper>
-      <Text weight="bold" size={20} color="--color-green-04" text={text} />
+      <Text weight="bold" size={2.0} color="--color-green-04" text={text} />
       <Triangle type="original" width={80} height={38} alt="title triangle" />
     </AuthTitleWrapper>
   )
