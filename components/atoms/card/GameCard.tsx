@@ -1,5 +1,7 @@
-import { ICard } from "@/types/common/gameProps"
+import ShowItemModal from "@/components/atoms/modal/ShowItemModal"
+import { ICard, IGameInfo } from "@/types/common/gameProps"
 import Image from "next/image"
+import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
 type TCardSrc = {
   [id in ICard["state"]]: string

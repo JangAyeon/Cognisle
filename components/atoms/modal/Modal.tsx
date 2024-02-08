@@ -55,7 +55,6 @@ const ModalRoot = ({
       }
     }
   }, [isOverlayClicked, onClose])
-  console.log(isOpen)
 
   if (!isOpen) return null
   return (

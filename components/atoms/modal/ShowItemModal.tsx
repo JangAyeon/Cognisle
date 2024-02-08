@@ -13,11 +13,11 @@ const Loading = () => {
 }
 
 const ShowItemModal = ({
-  id,
+  itemId,
   isOpen,
   onClose,
 }: {
-  id: number
+  itemId: number
   isOpen: boolean
   onClose: () => void
 }) => {
@@ -29,7 +29,7 @@ const ShowItemModal = ({
       <Modal.Content width={30.0} height={30.0}>
         <Modal.CloseButton />
         <Modal.Body>
-          <Container>My id: {id}</Container>
+          <Container>My id: {itemId}</Container>
         </Modal.Body>
       </Modal.Content>
     </Modal.Root>

@@ -6,7 +6,14 @@ import type {
   IGameInfo,
   IOnClick,
 } from "@/types/common/gameProps"
-import { useCallback, useEffect, useMemo, useState } from "react"
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from "react"
 
 const useGame = () => {
   const [board, setBoard] = useState<TBoard>(makeInitalBoard())
@@ -42,13 +49,16 @@ const useGame = () => {
     []
   )
   const onSecondChipClick = useCallback(
-    ({ cardPosition, value }: Omit<IOnClick, "data">) => {
+    (
+      { cardPosition, value }: Omit<IOnClick, "data">,
+      handleModalOpen: (id: number) => void
+    ) => {
       const firstSelectedCard = selectedCards[0]
       const secondSelectedCard = { cardPosition, value }
 
       if (selectedCards[0].value === value) {
         const state = "revealed"
-        // console.log("mathch!!! ", value)
+
         setComputedBoardState((prev) => {
           const originalBoard = prev?.map((row) => row.map((cell) => cell))
           if (originalBoard) {
@@ -66,6 +76,9 @@ const useGame = () => {
             return secondChangedBoard
           }
         })
+
+        console.log("mathch!!! ", value)
+        handleModalOpen(value)
 
         setSelectedCards([])
         setScore((prev) => prev + 1)
@@ -121,7 +134,11 @@ const useGame = () => {
   )
 
   const onCardClick = useCallback(
-    (_: React.MouseEvent<HTMLSpanElement, MouseEvent>, data: ICardData) => {
+    (
+      _: React.MouseEvent<HTMLSpanElement, MouseEvent>,
+      data: ICardData,
+      handleModalOpen: (id: number) => void
+    ) => {
       const { cardPosition, state, value } = data
       // console.log(cardPosition, state, value)
 
@@ -139,7 +156,7 @@ const useGame = () => {
         }
       } else if (selectedCards.length === 1) {
         if (state === "hidden") {
-          onSecondChipClick({ cardPosition, value })
+          onSecondChipClick({ cardPosition, value }, handleModalOpen)
           setMoves((prev) => prev + 1)
         }
       }
@@ -200,6 +217,7 @@ const useGame = () => {
     onCardClick,
     setStartTimer,
     score,
+    selectedCards,
   }
 }
 

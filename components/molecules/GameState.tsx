@@ -8,7 +8,7 @@ const GameState = ({
   time,
   moves,
 }: Pick<IGameInfo, "moves" | "score" | "time">) => {
-  console.log(score, time, moves)
+  // console.log(score, time, moves)
   return (
     <StateWrapper>
       <Image

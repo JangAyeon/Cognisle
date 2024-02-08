@@ -4,7 +4,8 @@ import useGame from "@/hooks/useGame"
 import styled from "@emotion/styled"
 
 const CardGameBoard = () => {
-  const { computedBoardState, onCardClick, score, time, moves } = useGame()
+  const { computedBoardState, onCardClick, score, time, moves, selectedCards } =
+    useGame()
 
   return (
     <GameContainer>
@@ -14,6 +15,8 @@ const CardGameBoard = () => {
           <PlayBoard
             computedBoardState={computedBoardState}
             onCardClick={onCardClick}
+            score={score}
+            selectedCards={selectedCards}
           />
         </>
       )}{" "}
