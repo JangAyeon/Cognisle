@@ -17,7 +17,7 @@ const ShowItemModal = ({
   isOpen,
   onClose,
 }: {
-  itemId: number
+  itemId: number | string
   isOpen: boolean
   onClose: () => void
 }) => {
