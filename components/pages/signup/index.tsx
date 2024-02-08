@@ -10,8 +10,8 @@ const Signup = () => {
       startColor="--gradient-yellow"
       endColor="--color-blue-01"
       degree="180deg"
-      imgWidth={430}
-      imgHeight={849}
+      imgWidth={43}
+      imgHeight={84.9}
     >
       <Logo type="main" width={24} height={12.4} alt="loading logo" />
       <AuthTitle text="회원가입" />

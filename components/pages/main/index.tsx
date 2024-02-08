@@ -15,8 +15,8 @@ const Main = () => {
       startColor="--gradient-yellow"
       endColor="--color-pink-01"
       degree="180deg"
-      imgWidth={430}
-      height={110}
+      imgWidth={43}
+      height={93.2}
     >
       <ContentWrapper>
         <Logo type="main" width={240} height={124} alt="main logo" />

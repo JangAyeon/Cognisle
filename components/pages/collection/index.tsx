@@ -30,6 +30,7 @@ const CollectionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 7.2rem;
   padding-top: 6.4rem;
   padding-bottom: 8rem;
 `

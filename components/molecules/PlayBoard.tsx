@@ -1,69 +1,80 @@
-import { ICard, ICardData } from "@/types/common/gameProps"
+import GameCard from "@/components/atoms/card/GameCard"
+import ShowItemModal from "@/components/atoms/modal/ShowItemModal"
+import { ICard, ICardData, IGameInfo } from "@/types/common/gameProps"
 import styled from "@emotion/styled"
+import { useEffect, useState } from "react"
 
 interface IPlayBoard {
   computedBoardState: ICard[][]
   onCardClick: (
     _: React.MouseEvent<HTMLSpanElement, MouseEvent>,
-    data: ICardData
+    data: ICardData,
+    handleModalOpen: any
   ) => void
+  score: IGameInfo["score"]
+  selectedCards: ICardData[]
 }
 
-const PlayBoard = ({ computedBoardState, onCardClick }: IPlayBoard) => {
+const PlayBoard = ({
+  computedBoardState,
+  onCardClick,
+  score,
+  selectedCards,
+}: IPlayBoard) => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalId, setModalId] = useState(-1)
+
+  const handleModalOpen = (id: number) => {
+    // console.log("open")
+    setModalId(id)
+    setIsModalOpen(true)
+  }
+  useEffect(() => {
+    console.log("게임 개발 중 확인용 콘솔", computedBoardState)
+  }, [])
+
   return (
-    <div>
+    <BoardWrapper>
+      {isModalOpen && (
+        <ShowItemModal
+          itemId={modalId}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
       {computedBoardState.map((row, r) => (
-        <Row key={r}>
+        <>
           {row.map((card, c) => (
             <FlipCard
               key={c}
               state={card.state}
               onClick={(e: React.MouseEvent<HTMLSpanElement, MouseEvent>) =>
-                onCardClick(e, { cardPosition: [r, c], ...card })
+                onCardClick(
+                  e,
+                  { cardPosition: [r, c], ...card },
+                  handleModalOpen
+                )
               }
             >
-              {card.state === "hidden" ? null : card.value}
+              {" "}
+              <GameCard key={c} state={card.state} value={card.value} />
             </FlipCard>
           ))}
-        </Row>
+        </>
       ))}
-    </div>
+    </BoardWrapper>
   )
 }
 
 export default PlayBoard
 
-const Row = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 1.6rem;
+const BoardWrapper = styled.div`
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.4rem 1.2rem;
 `
 
-const FlipCard = styled.span<{ state: ICard["state"] }>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${({ state }) =>
-    state === "hidden"
-      ? "#31485a"
-      : state === "selected"
-      ? "orange"
-      : "#bcceda"};
-  border-radius: 50%;
-  width: 7rem;
-  height: 7rem;
+const FlipCard = styled.div<{ state: ICard["state"] }>`
   cursor: pointer;
-  color: #f5f9fa;
-  font-size: 2.8rem;
-  font-weight: bold;
-  border: none;
-
-  &:hover {
-    background-color: ${({ state }) =>
-      state === "hidden"
-        ? "#182c3a"
-        : state === "selected"
-        ? "orange"
-        : "#bcceda"};
-  }
 `

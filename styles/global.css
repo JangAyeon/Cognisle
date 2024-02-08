@@ -132,7 +132,6 @@ section {
 
 body {
   /* font-size 1em = 10px on default browser settings */
-  line-height: 1;
   background-color: #f6f7f9;
   font-family: var(--font-Ydestreet), var(--font-Mundial), "Noto Sans",
     sans-serif;

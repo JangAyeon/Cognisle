@@ -18,8 +18,8 @@ const Island = () => {
     <PageWrapper>
       <BackgroundLayout
         imgSrc={"/assets/background/bubble.svg"}
-        imgWidth={430}
-        imgHeight={849}
+        imgWidth={43}
+        imgHeight={84.9}
         startColor="--gradient-yellow"
         endColor="--color-green-03"
         degree="180deg"
@@ -69,15 +69,20 @@ export default Island
 
 const PageWrapper = styled.div`
   background-color: var(--color-blue-01);
-  max-height: 100vh;
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   gap: 8.4rem;
-  padding-top: 10.7rem;
+  min-height: inherit;
+  padding-top: 7.2rem;
 `
 const TitleWrapper = styled.div`
   display: flex;
@@ -89,6 +94,7 @@ const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2.8rem;
+  padding-top: 20rem;
 `
 
 const ImageWrapper = styled.div``
