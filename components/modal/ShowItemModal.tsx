@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
+import { supabase } from "@/apis/instance"
 import Modal from "@/components/modal/Modal"
 import styled from "@emotion/styled"
+import { useEffect } from "react"
 
 interface IItemModal {
   itemId: number | string
@@ -16,6 +17,19 @@ const Loading = () => {
 const ShowItemModal = ({ itemId, isOpen, onClose, pointColor }: IItemModal) => {
   // const [loading, setLoading] = useState<boolean>(true)
   // const [data, setData] = useState<ItemProps>()
+
+  const getItem = async () => {
+    const { data, error } = await supabase
+      .from("recordItem")
+      .select("*")
+      .eq("id", itemId)
+      .maybeSingle()
+    console.log(data)
+  }
+
+  useEffect(() => {
+    getItem()
+  }, [])
 
   return (
     <Modal.Root isOpen={isOpen} onClose={onClose}>

@@ -6,7 +6,7 @@ import type {
   IBoardValue,
   ICardData,
 } from "@/types/common/gameProps"
-
+import { spotMax_, spotMin_ } from "@/constants/game"
 export const getRandomNumnber = (
   max_: IBoardValue["max_"],
   min_: IBoardValue["min_"]
@@ -84,8 +84,6 @@ export const insertRandomNumbers = (Board: TBoard): TBoard => {
     }
 
     let counter = 2
-    const spotMax_ = 30
-    const spotMin_ = 1
     // console.log("randomSpots", randomSpots)
     const currNumberArr = getRandomArray(spotMax_, spotMin_, totalSpots / 2)
     let idx = 0
