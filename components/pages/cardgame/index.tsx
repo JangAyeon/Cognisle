@@ -3,59 +3,81 @@ import PlayBoard from "@/components/molecules/PlayBoard"
 import useGame from "@/hooks/useGame"
 import styled from "@emotion/styled"
 import { useEffect, useState } from "react"
-import Image from "next/image"
+
 import recordApi from "@/apis/recordApi"
+import Loading from "./loading"
+import { GameLoadingProps, IGameResult } from "@/types/common/gameProps"
 
 const CardGameBoard = () => {
   const { computedBoardState, onCardClick, score, time, moves, cards } =
     useGame()
-  const [isLoading, setIsLoading] = useState(false)
-  const [gameResult, setGameResult] = useState()
+  const [isLoading, setIsLoading] = useState(true)
+  const [gameResult, setGameResult] = useState<IGameResult>({
+    moves: 0,
+    items: [],
+    time: 0,
+  })
 
+  const postGameResult = async (idArray: number[]) => {
+    const data = {}
+    console.log("서버에 전송")
+    console.log(data)
+  }
   const getItems = async (idArray: number[]) => {
     const { data, error } = await recordApi.getItemsByIdArray(idArray)
+    // await new Promise((resolve) => setTimeout(resolve, 3000))
     console.log(data)
+    if (data?.length) {
+      setGameResult({ moves, time, items: data })
+    }
+  }
+
+  const wait = async (type: GameLoadingProps) => {
+    setIsLoading(true)
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
+    if (type === "end") {
+      getItems(cards)
+      // postGameResult(cards)
+    }
+    setIsLoading(false)
   }
   useEffect(() => {
     if (score === 8) {
       console.log("획득한 카드", cards)
-      getItems(cards)
-      setIsLoading(true)
+      wait("end")
     } else if (score == 0) {
       console.log("게임 시작 로딩 중")
-      setIsLoading(true)
+      wait("start")
     }
   }, [score])
   return (
-    <GameContainer>
+    <>
       {isLoading && (
-        <>
-          <LoadingWrapper>
-            {score === 0 ? (
-              <div>게임 시작 로딩</div>
-            ) : (
-              <Image
-                src="/assets/green/friend.svg"
-                width={292}
-                height={300}
-                alt="state Dot Line Divider"
-                style={{ opacity: 1 }}
-              />
-            )}
-          </LoadingWrapper>
-        </>
+        <Loading
+          type={
+            score === 0
+              ? "start"
+              : gameResult.items.length > 0
+              ? "result"
+              : "end"
+          }
+        />
       )}
-      {computedBoardState && (
-        <>
-          <GameState score={score} time={time} moves={moves} />
-          <PlayBoard
-            computedBoardState={computedBoardState}
-            onCardClick={onCardClick}
-            score={score}
-          />
-        </>
-      )}{" "}
-    </GameContainer>
+
+      <GameContainer>
+        {computedBoardState && (
+          <>
+            <GameState score={score} time={time} moves={moves} />
+            <PlayBoard
+              computedBoardState={computedBoardState}
+              onCardClick={onCardClick}
+              score={score}
+            />
+          </>
+        )}{" "}
+      </GameContainer>
+    </>
   )
 }
 
@@ -65,17 +87,4 @@ const GameContainer = styled.div`
   margin-top: 7.2rem;
   padding: 0 3.2rem;
   padding-top: 6rem;
-`
-
-const LoadingWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 43rem;
-  height: 100%;
-  background-color: rgba(254, 195, 97, 0.7);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `

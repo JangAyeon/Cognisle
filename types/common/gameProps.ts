@@ -1,3 +1,5 @@
+import { IRecordItem } from "@/types/recordItem"
+
 type TBoardArrayType = "4x4"
 type TBoard = Array<Array<number>>
 type TBoardSpots = {
@@ -33,6 +35,13 @@ interface IGameInfo {
   startTimer: boolean
 }
 
+type GameLoadingProps = "start" | "end" | "result"
+
+interface IGameResult {
+  time: IGameInfo["time"]
+  moves: IGameInfo["moves"]
+  items: { title: IRecordItem["title"] }[]
+}
 export type {
   TBoardArrayType,
   ICard,
@@ -42,4 +51,6 @@ export type {
   IBoardValue,
   IOnClick,
   IGameInfo,
+  GameLoadingProps,
+  IGameResult,
 }
