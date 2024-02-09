@@ -1,4 +1,4 @@
-import ShowItemModal from "@/components/atoms/modal/ShowItemModal"
+import ShowItemModal from "@/components/modal/ShowItemModal"
 import { ICard, IGameInfo } from "@/types/common/gameProps"
 import Image from "next/image"
 import { Dispatch, SetStateAction, useEffect, useState } from "react"

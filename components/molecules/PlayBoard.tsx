@@ -1,5 +1,5 @@
 import GameCard from "@/components/atoms/card/GameCard"
-import ShowItemModal from "@/components/atoms/modal/ShowItemModal"
+import ShowItemModal from "@/components/modal/ShowItemModal"
 import { ICard, ICardData, IGameInfo } from "@/types/common/gameProps"
 import styled from "@emotion/styled"
 import { useEffect, useState } from "react"
@@ -40,6 +40,7 @@ const PlayBoard = ({
           itemId={modalId}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
+          pointColor="--color-orange-03"
         />
       )}
       {computedBoardState.map((row, r) => (

@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import Image from "next/image"
 import Text from "@/components/atoms/typo/Text"
 import { useState } from "react"
-import ShowItemModal from "@/components/atoms/modal/ShowItemModal"
+import ShowItemModal from "@/components/modal/ShowItemModal"
 interface IItem {
   name: string
   status: boolean
@@ -25,6 +25,7 @@ const StatItem = ({ name, status, imgSrc }: IItem) => {
           itemId={name}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
+          pointColor="--color-blue-01"
         />
       )}
       <StatItemWrapper onClick={handleModalOpen}>

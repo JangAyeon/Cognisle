@@ -8,7 +8,11 @@ import {
   useState,
 } from "react"
 import Image from "next/image"
-import { ModalContextProps, ModalRootProps } from "@/types/common/modalProps"
+import {
+  ModalContentProps,
+  ModalContextProps,
+  ModalRootProps,
+} from "@/types/common/modalProps"
 import styled from "@emotion/styled"
 import Close from "@/public/assets/image/close.svg"
 import { css } from "@emotion/react"
@@ -18,6 +22,7 @@ const ModalRoot = ({
   children,
   isOpen,
   closeOnOverlayClick,
+
   onClose,
 }: ModalRootProps) => {
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -94,28 +99,26 @@ const ModalContent = ({
   children,
   height,
   width,
-}: {
-  children: ReactNode
-  height: number
-  width: number
-}) => {
+  pointColor,
+}: ModalContentProps) => {
   const { isOverlayClicked } = useContext(ModalContext)
   if (isOverlayClicked) {
     return null
   }
   return (
     <Content height={height} width={width} isOverlayClicked={isOverlayClicked}>
+      <Point pointColor={pointColor} />
       {children}
     </Content>
   )
 }
 
+type ModalPointStyle = Pick<ModalContentProps, "pointColor">
+
 type ModalInnerStyle = Pick<ModalContextProps, "isOverlayClicked">
 
-type ModalContentStyle = ModalInnerStyle & {
-  width: number
-  height: number
-}
+type ModalContentStyle = ModalInnerStyle &
+  Pick<ModalContentProps, "width" | "height">
 
 const ModalBody = styled.div`
   background-color: white;
@@ -153,9 +156,10 @@ const Content = styled.div<ModalContentStyle>`
   overflow: hidden;
   position: absolute;
   padding-top: 5rem;
-  border-radius: 1.5rem;
+  border-radius: 0 1.5rem 1.5rem 1.5rem;
   animation: ${POP_IN} 200ms;
-  background-color: white;
+  background-color: var(--color-yellow-01);
+
   width: ${({ width }) => `${width}rem`};
   height: ${({ height }) => `${height}rem`};
   ${(props) =>
@@ -163,6 +167,16 @@ const Content = styled.div<ModalContentStyle>`
     css`
       animation: ${POP_OUT} 250ms;
     `}
+`
+
+const Point = styled.div<ModalPointStyle>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: ${({ pointColor }) => `var(${pointColor})`};
+  clip-path: polygon(100% 0%, 0% 0%, 0% 100%);
+  width: 5rem;
+  height: 5.7rem;
 `
 
 const CloseButtonWrapper = styled.div`

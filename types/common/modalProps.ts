@@ -15,4 +15,11 @@ type ModalRootProps = {
   onClose: () => void
 }
 
-export type { ModalContextProps, ModalRootProps }
+type ModalContentProps = {
+  children: ReactNode
+  height: number
+  width: number
+  pointColor: string
+}
+
+export type { ModalContextProps, ModalRootProps, ModalContentProps }

@@ -7,9 +7,8 @@ import styled from "@emotion/styled"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { ReactElement, useEffect } from "react"
-
-const needBottomTab = ["/game", "/myland", "/visit", "/collection"]
-const needHeader = ["/game", "/myland", "/visit", "/collection"]
+import needBottomTab from "@/constants/bottomTab"
+import needHeader from "@/constants/header"
 
 const AppLayout = ({ children }: { children: ReactElement }) => {
   const { pathname } = useRouter()
