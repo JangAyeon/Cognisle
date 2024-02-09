@@ -9,7 +9,7 @@ import recordApi from "@/apis/recordApi"
 const CardGameBoard = () => {
   const { computedBoardState, onCardClick, score, time, moves, cards } =
     useGame()
-  const [isEndLoading, setIsEndLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [gameResult, setGameResult] = useState()
 
   const getItems = async (idArray: number[]) => {
@@ -20,22 +20,29 @@ const CardGameBoard = () => {
     if (score === 8) {
       console.log("획득한 카드", cards)
       getItems(cards)
-      setIsEndLoading(true)
+      setIsLoading(true)
+    } else if (score == 0) {
+      console.log("게임 시작 로딩 중")
+      setIsLoading(true)
     }
   }, [score])
   return (
     <GameContainer>
-      {isEndLoading && (
+      {isLoading && (
         <>
-          <GameEndWrapper>
-            <Image
-              src="/assets/green/friend.svg"
-              width={292}
-              height={300}
-              alt="state Dot Line Divider"
-              style={{ opacity: 1 }}
-            />
-          </GameEndWrapper>
+          <LoadingWrapper>
+            {score === 0 ? (
+              <div>게임 시작 로딩</div>
+            ) : (
+              <Image
+                src="/assets/green/friend.svg"
+                width={292}
+                height={300}
+                alt="state Dot Line Divider"
+                style={{ opacity: 1 }}
+              />
+            )}
+          </LoadingWrapper>
         </>
       )}
       {computedBoardState && (
@@ -60,7 +67,7 @@ const GameContainer = styled.div`
   padding-top: 6rem;
 `
 
-const GameEndWrapper = styled.div`
+const LoadingWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
