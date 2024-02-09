@@ -1,3 +1,4 @@
+import { IRecordItem } from "@/types/recordItem"
 import { ReactNode } from "react"
 
 type ModalContextProps = {
@@ -15,4 +16,22 @@ type ModalRootProps = {
   onClose: () => void
 }
 
-export type { ModalContextProps, ModalRootProps }
+type ModalContentProps = {
+  children: ReactNode
+  height: number
+  width: number
+  pointColor: string
+}
+
+type ShowItemModalProps = {
+  itemId: IRecordItem["id"]
+  isOpen: boolean
+  onClose: () => void
+}
+
+export type {
+  ModalContextProps,
+  ModalRootProps,
+  ModalContentProps,
+  ShowItemModalProps,
+}

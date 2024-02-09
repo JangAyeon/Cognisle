@@ -6,14 +6,8 @@ import type {
   IGameInfo,
   IOnClick,
 } from "@/types/common/gameProps"
-import {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from "react"
+
+import { useCallback, useEffect, useMemo, useState } from "react"
 
 const useGame = () => {
   const [board, setBoard] = useState<TBoard>(makeInitalBoard())

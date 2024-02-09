@@ -1,4 +1,4 @@
-import ShowItemModal from "@/components/atoms/modal/ShowItemModal"
+import ShowItemModal from "@/components/modal/ShowItemModal"
 import { useState } from "react"
 
 const Test = () => {
@@ -12,7 +12,7 @@ const Test = () => {
     <>
       {isModalOpen && (
         <ShowItemModal
-          id={123}
+          itemId={23413}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />

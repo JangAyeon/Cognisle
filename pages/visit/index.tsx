@@ -82,6 +82,7 @@ const ContentContainer = styled.div`
   justify-content: space-between;
   gap: 8.4rem;
   min-height: inherit;
+  height: inherit;
   padding-top: 7.2rem;
 `
 const TitleWrapper = styled.div`
@@ -97,4 +98,6 @@ const FormContainer = styled.div`
   padding-top: 20rem;
 `
 
-const ImageWrapper = styled.div``
+const ImageWrapper = styled.div`
+  padding-bottom: 3.6rem;
+`
