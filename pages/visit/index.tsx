@@ -95,7 +95,7 @@ const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2.8rem;
-  padding-top: 20rem;
+  padding-top: 18rem;
 `
 
 const ImageWrapper = styled.div`

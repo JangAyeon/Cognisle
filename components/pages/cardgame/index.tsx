@@ -4,20 +4,28 @@ import useGame from "@/hooks/useGame"
 import styled from "@emotion/styled"
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import recordApi from "@/apis/recordApi"
 
 const CardGameBoard = () => {
   const { computedBoardState, onCardClick, score, time, moves, cards } =
     useGame()
-  const [isGameEnd, setIsGameEnd] = useState(false)
+  const [isEndLoading, setIsEndLoading] = useState(false)
+  const [gameResult, setGameResult] = useState()
+
+  const getItems = async (idArray: number[]) => {
+    const { data, error } = await recordApi.getItemsByIdArray(idArray)
+    console.log(data)
+  }
   useEffect(() => {
     if (score === 8) {
       console.log("획득한 카드", cards)
-      setIsGameEnd(true)
+      getItems(cards)
+      setIsEndLoading(true)
     }
   }, [score])
   return (
     <GameContainer>
-      {isGameEnd && (
+      {isEndLoading && (
         <>
           <GameEndWrapper>
             <Image
@@ -56,7 +64,7 @@ const GameEndWrapper = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 43rem;
   height: 100%;
   background-color: rgba(254, 195, 97, 0.7);
 
