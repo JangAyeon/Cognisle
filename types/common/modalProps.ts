@@ -27,7 +27,6 @@ type ShowItemModalProps = {
   itemId: IRecordItem["id"]
   isOpen: boolean
   onClose: () => void
-  pointColor: string
 }
 
 export type {

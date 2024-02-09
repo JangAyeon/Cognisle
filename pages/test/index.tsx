@@ -12,7 +12,7 @@ const Test = () => {
     <>
       {isModalOpen && (
         <ShowItemModal
-          id={123}
+          itemId={23413}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
         />

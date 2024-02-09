@@ -26,7 +26,6 @@ const StatItem = ({ name, status, imgSrc, content }: IItem) => {
           itemId={content}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
-          pointColor="--color-blue-01"
         />
       )}
       <StatItemWrapper onClick={handleModalOpen}>

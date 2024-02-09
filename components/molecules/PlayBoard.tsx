@@ -40,7 +40,6 @@ const PlayBoard = ({
           itemId={modalId}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
-          pointColor="--color-orange-03"
         />
       )}
       {computedBoardState.map((row, r) => (
