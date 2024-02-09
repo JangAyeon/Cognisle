@@ -39,8 +39,9 @@ const CardGameBoard = () => {
     if (type === "end") {
       getItems(cards)
       // postGameResult(cards)
+    } else {
+      setIsLoading(false)
     }
-    setIsLoading(false)
   }
   useEffect(() => {
     if (score === 8) {
@@ -62,6 +63,7 @@ const CardGameBoard = () => {
               ? "result"
               : "end"
           }
+          gameResult={gameResult}
         />
       )}
 

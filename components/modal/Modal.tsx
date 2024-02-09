@@ -9,6 +9,7 @@ import {
 } from "react"
 import Image from "next/image"
 import {
+  ModalCloseProps,
   ModalContentProps,
   ModalContextProps,
   ModalRootProps,
@@ -72,7 +73,7 @@ const ModalRoot = ({
     </ModalContext.Provider>
   )
 }
-const ModalCloseButton = ({ imgSrc }: { imgSrc?: string }) => {
+const ModalCloseButton = ({ imgSrc, needClose = true }: ModalCloseProps) => {
   const { onClose, setOverlayClicked } = useContext(ModalContext)
   if (!setOverlayClicked || !onClose) {
     return null
@@ -86,13 +87,15 @@ const ModalCloseButton = ({ imgSrc }: { imgSrc?: string }) => {
   }
 
   return (
-    <CloseButtonWrapper onClick={handleClick}>
-      {imgSrc ? (
-        <Image src={imgSrc} width={32} height={32} alt="close icon" />
-      ) : (
-        <Close size={32} alt="close icon" />
-      )}
-    </CloseButtonWrapper>
+    needClose && (
+      <CloseButtonWrapper onClick={handleClick}>
+        {imgSrc ? (
+          <Image src={imgSrc} width={32} height={32} alt="close icon" />
+        ) : (
+          <Close size={32} alt="close icon" />
+        )}
+      </CloseButtonWrapper>
+    )
   )
 }
 const ModalContent = ({

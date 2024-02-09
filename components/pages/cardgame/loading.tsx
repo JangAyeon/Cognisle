@@ -1,12 +1,28 @@
-import { GameLoadingProps } from "@/types/common/gameProps"
+import GameResultModal from "@/components/modal/GameResultModal"
+import { GameLoadingProps, IGameResult } from "@/types/common/gameProps"
 import styled from "@emotion/styled"
 import Image from "next/image"
+import { useEffect, useState } from "react"
 
 interface IGameLoading {
   type: GameLoadingProps
+  gameResult: IGameResult
 }
 
-const Loading = ({ type }: IGameLoading) => {
+const Loading = ({ type, gameResult }: IGameLoading) => {
+  console.log(type)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleModalOpen = () => {
+    // console.log("open")
+
+    setIsModalOpen(true)
+  }
+  useEffect(() => {
+    if (type === "result") {
+      handleModalOpen()
+    }
+  }, [type])
   return (
     <LoadingWrapper>
       {type === "start" && (
@@ -23,6 +39,13 @@ const Loading = ({ type }: IGameLoading) => {
           width={292}
           height={300}
           alt="state Dot Line Divider"
+        />
+      )}
+      {type === "result" && (
+        <GameResultModal
+          gameResult={gameResult}
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
         />
       )}
     </LoadingWrapper>
