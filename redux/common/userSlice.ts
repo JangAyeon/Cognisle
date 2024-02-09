@@ -11,6 +11,7 @@ const initialState: { userInfo: IUserInfo } = {
     email: "",
     dsId: "",
     name: "",
+    sbId: "",
   },
 }
 
@@ -31,6 +32,8 @@ export const selectAccessToken = (state: AppState) =>
   state.user.userInfo.access_token
 export const selectRefreshToken = (state: AppState) =>
   state.user.userInfo.refresh_token
+
+export const selectUserSbId = (state: AppState) => state.user.userInfo.sbId
 export const selectUserDsId = (state: AppState) => state.user.userInfo.dsId
 
 export const selectUserName = (state: AppState) => state.user.userInfo.name

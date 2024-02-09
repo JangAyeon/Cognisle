@@ -1,4 +1,6 @@
+import { supabase } from "@/apis/instance"
 import GameResultModal from "@/components/modal/GameResultModal"
+import useUserProfile from "@/hooks/useUser"
 import { GameLoadingProps, IGameResult } from "@/types/common/gameProps"
 import styled from "@emotion/styled"
 import Image from "next/image"
@@ -10,10 +12,20 @@ interface IGameLoading {
   gameResult: IGameResult
 }
 
+const createData = (idArray: IGameLoading["gameResult"]["items"]) => {
+  const data: { [key: string]: boolean } = {}
+  for (let { id } of idArray) {
+    data[`exist_${id}`] = true
+  }
+
+  return data
+}
+
 const Loading = ({ type, gameResult }: IGameLoading) => {
   console.log(type)
   const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const { userEmail, userSbId } = useUserProfile()
 
   const handleModalOpen = () => {
     // console.log("open")
@@ -21,9 +33,24 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
     setIsModalOpen(true)
   }
 
+  const postGameResult = async () => {
+    console.log("post", userSbId)
+    const data = createData(gameResult.items)
+    await supabase
+      .from("itemStatus")
+
+      .upsert(
+        {
+          userId: userSbId,
+          ...data,
+        },
+        { onConflict: "userId" }
+      )
+  }
+
   const handleModalClose = () => {
     setIsModalOpen(false)
-    console.log("서버 전송")
+    postGameResult()
     router.replace("/")
   }
   useEffect(() => {

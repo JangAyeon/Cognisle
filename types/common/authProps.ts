@@ -17,6 +17,7 @@ export interface IUserInfo {
   email: User["email"]
   dsId: TdsId
   name: TName
+  sbId: User["id"]
 }
 
 export interface IAuthSBInfo {

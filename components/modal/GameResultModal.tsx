@@ -11,7 +11,7 @@ const GameResultModal = ({
   isOpen,
   onClose,
 }: GameResultModalProps) => {
-  console.log("game result", gameResult)
+  // console.log("game result", gameResult)
   const { userName } = useUserProfile()
   return (
     <>
@@ -117,6 +117,7 @@ const ItemResultContianer = styled.div`
 const ItemListContainer = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   div {
     margin: 0 0.5rem;
   }

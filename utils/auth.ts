@@ -5,6 +5,7 @@ import { removeRefreshToken, setRefreshToken } from "@/utils/token"
 import { authApi } from "@/apis/authApi"
 
 export const setUserInfo = async ({ user, session }: IAuthSBInfo) => {
+  //console.log(user)
   const userInfo: IUserInfo = {
     access_token: session.access_token,
     refresh_token: session.refresh_token,
@@ -13,6 +14,7 @@ export const setUserInfo = async ({ user, session }: IAuthSBInfo) => {
     dsId: user.user_metadata.dsId,
     email: user.email,
     name: user.user_metadata.name,
+    sbId: user.id,
   }
 
   // 리덕스 디스 패치
