@@ -7,9 +7,10 @@ interface IItem {
   name: string
   status: boolean
   imgSrc: string
+  content: number
 }
 
-const StatItem = ({ name, status, imgSrc }: IItem) => {
+const StatItem = ({ name, status, imgSrc, content }: IItem) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleModalOpen = () => {
@@ -22,7 +23,7 @@ const StatItem = ({ name, status, imgSrc }: IItem) => {
     <>
       {isModalOpen && (
         <ShowItemModal
-          itemId={name}
+          itemId={content}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           pointColor="--color-blue-01"

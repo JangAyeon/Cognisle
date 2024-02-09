@@ -1,3 +1,4 @@
+import { IRecordItem } from "@/types/recordItem"
 import { ReactNode } from "react"
 
 type ModalContextProps = {
@@ -22,4 +23,16 @@ type ModalContentProps = {
   pointColor: string
 }
 
-export type { ModalContextProps, ModalRootProps, ModalContentProps }
+type ShowItemModalProps = {
+  itemId: IRecordItem["id"]
+  isOpen: boolean
+  onClose: () => void
+  pointColor: string
+}
+
+export type {
+  ModalContextProps,
+  ModalRootProps,
+  ModalContentProps,
+  ShowItemModalProps,
+}

@@ -1,30 +1,30 @@
-import { supabase } from "@/apis/instance"
+import recordApi from "@/apis/recordApi"
 import Modal from "@/components/modal/Modal"
 import styled from "@emotion/styled"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import Image from "next/image"
+import Triangle from "@/components/atoms/triangle/Triangle"
+import { IRecordItem } from "@/types/recordItem"
+import { ShowItemModalProps } from "@/types/common/modalProps"
 
-interface IItemModal {
-  itemId: number | string
-  isOpen: boolean
-  onClose: () => void
-  pointColor: string
-}
-
-const Loading = () => {
-  return <div>I am loading</div>
-}
-
-const ShowItemModal = ({ itemId, isOpen, onClose, pointColor }: IItemModal) => {
+const ShowItemModal = ({
+  itemId,
+  isOpen,
+  onClose,
+  pointColor,
+}: ShowItemModalProps) => {
   // const [loading, setLoading] = useState<boolean>(true)
-  // const [data, setData] = useState<ItemProps>()
+  const [data, setData] = useState<IRecordItem>({
+    title: "",
+    id: 0,
+    description: "",
+    subject: "",
+    time: "",
+  })
 
   const getItem = async () => {
-    const { data, error } = await supabase
-      .from("recordItem")
-      .select("*")
-      .eq("id", itemId)
-      .maybeSingle()
-    console.log(data)
+    const { data, error } = await recordApi.getItemById(itemId)
+    setData(data)
   }
 
   useEffect(() => {
@@ -36,7 +36,28 @@ const ShowItemModal = ({ itemId, isOpen, onClose, pointColor }: IItemModal) => {
       <Modal.Content width={30.0} height={48.0} pointColor={pointColor}>
         <Modal.CloseButton />
         <Modal.Body>
-          <Container>My id: {itemId}</Container>
+          <Container>
+            <Image
+              src="/assets/grey/circle.svg"
+              height={180}
+              width={180}
+              alt="circle"
+            />
+            {data.title}
+            <Image
+              src="/assets/yellow/dotLine.svg"
+              width={84}
+              height={21}
+              alt="state Dot Line Divider"
+            />
+            <div>
+              <Triangle type="leftRed" alt="leftRed" width={57} height={28} />
+              {data.subject}
+              <Triangle type="rightRed" alt="rightRed" width={57} height={28} />
+            </div>
+            <div>{data.description}</div>
+            <div>{data.time}</div>
+          </Container>
         </Modal.Body>
       </Modal.Content>
     </Modal.Root>
@@ -46,5 +67,5 @@ const ShowItemModal = ({ itemId, isOpen, onClose, pointColor }: IItemModal) => {
 export default ShowItemModal
 
 const Container = styled.div`
-  background-color: var(--color-yellow-01);
+  background-color: var(--color-pink-01);
 `
