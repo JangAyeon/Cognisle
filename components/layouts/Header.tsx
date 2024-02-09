@@ -27,4 +27,5 @@ const HeaderWrapper = styled.div`
   padding-right: 3.2rem;
   justify-content: space-between;
   align-items: center;
+  z-index: 100;
 `

@@ -11,6 +11,7 @@ import { useCallback, useEffect, useMemo, useState } from "react"
 
 const useGame = () => {
   const [board, setBoard] = useState<TBoard>(makeInitalBoard())
+  const [cards, setCards] = useState<number[]>([])
 
   const [time, setTime] = useState<IGameInfo["time"]>(0)
   const [moves, setMoves] = useState<IGameInfo["moves"]>(0)
@@ -73,7 +74,7 @@ const useGame = () => {
 
         console.log("mathch!!! ", value)
         handleModalOpen(value)
-
+        setCards((prev) => [...prev, value])
         setSelectedCards([])
         setScore((prev) => prev + 1)
       } else {
@@ -208,6 +209,7 @@ const useGame = () => {
     setTime,
     moves,
     setMoves,
+    cards,
     onCardClick,
     setStartTimer,
     score,
