@@ -15,7 +15,7 @@ const Collection = () => {
       {userDsId ? <MyStats /> : <PublicStats />}
       <DividerWrapper>
         <Image
-          src="/assets/yellow/dotLine.svg"
+          src="/assets/divider/yellow.svg"
           width={292}
           height={4}
           alt="state Dot Line Divider"
