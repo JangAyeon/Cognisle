@@ -98,10 +98,6 @@ const GameResultModal = ({
 
 export default GameResultModal
 
-type Style = {
-  color: string
-}
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
