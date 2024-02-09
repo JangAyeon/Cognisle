@@ -32,32 +32,54 @@ const CardGameBoard = () => {
     }
   }
 
+  const tempget = () => {
+    const temp = {
+      moves: 9,
+      time: 20,
+      items: [
+        { title: "dnknl" },
+        { title: "dnknl" },
+        { title: "dnknl" },
+        { title: "dnknl" },
+        { title: "dnknl" },
+      ],
+    }
+    setGameResult(temp)
+  }
+
+  useEffect(() => {
+    tempget()
+  }, [])
+
   const wait = async (type: GameLoadingProps) => {
     setIsLoading(true)
     await new Promise((resolve) => setTimeout(resolve, 2000))
 
     if (type === "end") {
-      getItems(cards)
+      // getItems(cards)
+      tempget()
       // postGameResult(cards)
     } else {
       setIsLoading(false)
     }
   }
+  /*
   useEffect(() => {
-    if (score === 8) {
+    if (score === 0) {
       console.log("획득한 카드", cards)
       wait("end")
-    } else if (score == 0) {
+    } else if (score == 8) {
       console.log("게임 시작 로딩 중")
       wait("start")
     }
   }, [score])
+  */
   return (
     <>
       {isLoading && (
         <Loading
           type={
-            score === 0
+            score === 8
               ? "start"
               : gameResult.items.length > 0
               ? "result"

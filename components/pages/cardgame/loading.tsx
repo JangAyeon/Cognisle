@@ -2,6 +2,7 @@ import GameResultModal from "@/components/modal/GameResultModal"
 import { GameLoadingProps, IGameResult } from "@/types/common/gameProps"
 import styled from "@emotion/styled"
 import Image from "next/image"
+import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
 interface IGameLoading {
@@ -11,12 +12,19 @@ interface IGameLoading {
 
 const Loading = ({ type, gameResult }: IGameLoading) => {
   console.log(type)
+  const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleModalOpen = () => {
     // console.log("open")
 
     setIsModalOpen(true)
+  }
+
+  const handleModalClose = () => {
+    setIsModalOpen(false)
+    console.log("서버 전송")
+    router.replace("/")
   }
   useEffect(() => {
     if (type === "result") {
@@ -45,7 +53,7 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
         <GameResultModal
           gameResult={gameResult}
           isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
+          onClose={handleModalClose}
         />
       )}
     </LoadingWrapper>
