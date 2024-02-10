@@ -2,7 +2,7 @@ import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 
 import styled from "@emotion/styled"
 
-import MyLandControl from "@/components/molecules/MylandControl"
+import Island from "@/components/pages/island"
 
 const Myland = () => {
   return (
@@ -13,7 +13,7 @@ const Myland = () => {
         endColor="--color-green-03"
         degree="180deg"
       >
-        <MyLandControl />
+        <Island />
       </BackgroundLayout>
     </PageWrapper>
   )

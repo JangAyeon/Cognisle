@@ -2,28 +2,21 @@ import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import styled from "@emotion/styled"
 import Image from "next/image"
 import Text from "@/components/atoms/typo/Text"
-import useUserProfile from "@/hooks/useUser"
-import { useState } from "react"
+import { Dispatch, SetStateAction } from "react"
 
-const MyLandControl = () => {
-  const { userName } = useUserProfile()
-  /*const {
-    query: { mode, id },
-  } = useRouter()*/
+interface IMyLandControl {
+  name: string
+  isEdit: boolean
+  handleSaveBtn: () => void
+  setIsEdit: Dispatch<SetStateAction<boolean>>
+}
 
-  const [isEdit, setIsEdit] = useState(false)
-  /*useEffect(() => {
-    if (mode === "view") {
-      setIsEdit(false)
-    } else {
-      setIsEdit(true)
-    }
-  }, [mode])
-  console.log(mode, id)*/
-
-  const handleSaveBtn = () => {
-    console.log("저장")
-  }
+const MyLandControl = ({
+  name,
+  isEdit,
+  handleSaveBtn,
+  setIsEdit,
+}: IMyLandControl) => {
   return (
     <TopMenu>
       {" "}
@@ -35,7 +28,7 @@ const MyLandControl = () => {
         mainColor={"--color-yellow-01"}
         pointColor={"--color-green-04"}
         textColor={"--color-green-04"}
-        text={userName}
+        text={name}
         textSize={1.6}
         borderRadius={1.5}
       />

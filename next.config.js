@@ -25,9 +25,9 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: "/myland",
+        source: "/island",
         missing: [{ type: "query", key: "mode" }],
-        destination: "/myland?mode=view",
+        destination: "/island?mode=view",
         permanent: false,
       },
     ]

@@ -1,2 +1,2 @@
-const needBottomTab = ["/game", "/myland", "/visit", "/collection"]
+const needBottomTab = ["/game", "/island", "/visit", "/collection"]
 export default needBottomTab
