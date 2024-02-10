@@ -4,21 +4,27 @@ import useUserProfile from "@/hooks/useUser"
 import styled from "@emotion/styled"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import Image from "next/image"
+import Text from "@/components/atoms/typo/Text"
 
 const Myland = () => {
   const { userName } = useUserProfile()
-  const {
+  /*const {
     query: { mode, id },
-  } = useRouter()
+  } = useRouter()*/
   const [isEdit, setIsEdit] = useState(false)
-  useEffect(() => {
+  /*useEffect(() => {
     if (mode === "view") {
       setIsEdit(false)
     } else {
       setIsEdit(true)
     }
   }, [mode])
-  console.log(mode, id)
+  console.log(mode, id)*/
+
+  const handleSaveBtn = () => {
+    console.log("저장")
+  }
   return (
     <PageWrapper>
       {" "}
@@ -41,7 +47,25 @@ const Myland = () => {
             textSize={1.6}
             borderRadius={1.5}
           />
-          {isEdit ? <div>수정중</div> : <div>수정 불가능</div>}
+          {isEdit && (
+            <SaveButton onClick={handleSaveBtn}>
+              {" "}
+              <Text
+                size={1.6}
+                weight="bold"
+                color={"--color-green-04"}
+                text="저장"
+              />
+            </SaveButton>
+          )}
+          <div onClick={() => setIsEdit(!isEdit)}>
+            <Image
+              src={`/assets/control/${isEdit ? "edit" : "view"}.svg`}
+              width={48}
+              height={48}
+              alt="mode Image"
+            />
+          </div>
         </TopMenu>
       </BackgroundLayout>
     </PageWrapper>
@@ -59,4 +83,11 @@ const TopMenu = styled.div`
   margin-top: 7.2rem;
   display: flex;
   flex-direction: row;
+`
+
+const SaveButton = styled.button`
+  background-color: var(--color-yellow-01);
+  width: 4.8rem;
+  height: 4.8rem;
+  border-radius: 50%;
 `
