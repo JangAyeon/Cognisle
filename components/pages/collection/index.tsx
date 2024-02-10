@@ -7,7 +7,7 @@ import useUserProfile from "@/hooks/useUser"
 import styled from "@emotion/styled"
 
 const Collection = () => {
-  const { userDsId } = useUserProfile()
+  const { userDsId, userSbId } = useUserProfile()
   // console.log("Collection", userDsId)
 
   return (
