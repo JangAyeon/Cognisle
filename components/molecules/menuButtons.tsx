@@ -8,13 +8,13 @@ const defaultStyle = {
   pointWidth: 2,
   textSize: 1.4,
   borderRadius: 1.6,
+  mainColor: "--color-green-04",
+  pointColor: "--color-pink-01",
+  textColor: "--color-yellow-01",
 }
 
 const MenuButtonsInfo = [
   {
-    mainColor: "--color-green-04",
-    pointColor: "--color-pink-01",
-    textColor: "--color-yellow-01",
     text: "카드 게임",
 
     link: "/game",
@@ -24,21 +24,15 @@ const MenuButtonsInfo = [
     ...defaultStyle,
   },
   {
-    mainColor: "--color-green-04",
-    pointColor: "--color-pink-01",
-    textColor: "--color-yellow-01",
     text: "나의 섬",
 
-    link: "/myland",
+    link: "/myland?mode=visit",
     imgSrc: "/assets/yellow/myland.svg",
     imgWidth: 48,
     imgHeight: 33,
     ...defaultStyle,
   },
   {
-    mainColor: "--color-green-04",
-    pointColor: "--color-pink-01",
-    textColor: "--color-yellow-01",
     text: "놀러가기",
 
     link: "/visit",
@@ -48,9 +42,6 @@ const MenuButtonsInfo = [
     ...defaultStyle,
   },
   {
-    mainColor: "--color-green-04",
-    pointColor: "--color-pink-01",
-    textColor: "--color-yellow-01",
     text: "모아보기",
 
     link: "/collection",
