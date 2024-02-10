@@ -54,7 +54,7 @@ const ShowItemModal = ({ itemId, isOpen, onClose }: ShowItemModalProps) => {
             />
 
             <Image
-              src="/assets/yellow/dotLine.svg"
+              src="/assets/divider/yellow.svg"
               width={84}
               height={21}
               alt="state Dot Line Divider"

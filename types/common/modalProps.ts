@@ -1,3 +1,4 @@
+import { IGameResult } from "@/types/common/gameProps"
 import { IRecordItem } from "@/types/recordItem"
 import { ReactNode } from "react"
 
@@ -16,6 +17,11 @@ type ModalRootProps = {
   onClose: () => void
 }
 
+type ModalCloseProps = {
+  imgSrc?: string
+  needClose?: boolean
+}
+
 type ModalContentProps = {
   children: ReactNode
   height: number
@@ -23,15 +29,22 @@ type ModalContentProps = {
   pointColor: string
 }
 
-type ShowItemModalProps = {
-  itemId: IRecordItem["id"]
+type ModalProps = {
   isOpen: boolean
   onClose: () => void
 }
 
+type ShowItemModalProps = ModalProps & {
+  itemId: IRecordItem["id"]
+}
+type GameResultModalProps = ModalProps & {
+  gameResult: IGameResult
+}
 export type {
   ModalContextProps,
   ModalRootProps,
   ModalContentProps,
   ShowItemModalProps,
+  ModalCloseProps,
+  GameResultModalProps,
 }
