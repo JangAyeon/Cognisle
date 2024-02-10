@@ -21,7 +21,7 @@ const StatItem = ({ name, status, imgSrc, content }: IItem) => {
 
   return (
     <>
-      {isModalOpen && (
+      {isModalOpen && status && (
         <ShowItemModal
           itemId={content}
           isOpen={isModalOpen}
@@ -30,12 +30,12 @@ const StatItem = ({ name, status, imgSrc, content }: IItem) => {
       )}
       <StatItemWrapper onClick={handleModalOpen}>
         <Image src={imgSrc} height={102} width={102} alt={name} />
-        <Text
+        {/*<Text
           text={name}
           size={1.6}
           weight="bold"
           color={status ? "--color-orange-01" : "--color-grey-01"}
-        />
+        />*/}
       </StatItemWrapper>
     </>
   )
