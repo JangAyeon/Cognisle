@@ -20,15 +20,16 @@ const nextConfig = {
     return [
       {
         source: "/auth",
-        missing:[
-          {type:"query",
-        key:"type",
-        
-        }
-        ],
+        missing: [{ type: "query", key: "type" }],
         destination: "/auth?type=login",
         permanent: false,
-      }
+      },
+      {
+        source: "/myland",
+        missing: [{ type: "query", key: "mode" }],
+        destination: "/myland?mode=view",
+        permanent: false,
+      },
     ]
   },
   webpack: (config) => {
