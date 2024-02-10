@@ -53,7 +53,7 @@ export default AppLayout
 const AppLayoutWrapper = styled.section`
   width: 43rem;
   scrollbar-width: none;
-  height: 100%;
+  height: 100vh;
   min-height: 93.2rem;
   max-height: fit-content;
   overflow-y: scroll;

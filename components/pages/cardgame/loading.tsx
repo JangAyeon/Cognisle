@@ -22,7 +22,7 @@ const createData = (idArray: IGameLoading["gameResult"]["items"]) => {
 }
 
 const Loading = ({ type, gameResult }: IGameLoading) => {
-  console.log(type)
+  // console.log(type)
   const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { userEmail, userSbId } = useUserProfile()
