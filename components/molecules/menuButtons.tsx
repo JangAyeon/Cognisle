@@ -26,7 +26,7 @@ const MenuButtonsInfo = [
   {
     text: "나의 섬",
 
-    link: "/myland?mode=visit",
+    link: "/myland?mode=view",
     imgSrc: "/assets/yellow/myland.svg",
     imgWidth: 48,
     imgHeight: 33,
