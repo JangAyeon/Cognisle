@@ -15,14 +15,10 @@ const getItemStatus = (userId: User["id"]) =>
     .eq("userId", userId)
     .maybeSingle()
 
-const itemLocation = [...Array(24)].map((v, idx) => `loc_${idx + 1}`).join(",")
-const getItemLoc = (userId: User["id"]) =>
-  supabase
-    .from("itemStatus")
-    .select(itemLocation)
-    .eq("userId", userId)
-    .maybeSingle()
-
-const recordApi = { getItemById, getItemsByIdArray, getItemStatus, getItemLoc }
+const recordApi = {
+  getItemById,
+  getItemsByIdArray,
+  getItemStatus,
+}
 
 export default recordApi

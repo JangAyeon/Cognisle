@@ -3,8 +3,13 @@ import LandItem from "@/components/molecules/LandItem"
 import MyLandControl from "@/components/molecules/MyLandControl"
 import useUserProfile from "@/hooks/useUser"
 import { ICategory, ILand } from "@/types/categoryTabs"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
+import useIsland from "@/hooks/useIsland"
+import islandApi from "@/apis/island"
+import { setIslandBackground, setislandItems } from "@/utils/island"
+import { IIsland } from "@/types/common/islandProps"
+import { useRouter } from "next/router"
 const CATEGORY_MENU: ICategory[] = [
   { id: 0, title: "배경", value: "background" },
   { id: 1, title: "아이템", value: "item" },
@@ -32,11 +37,12 @@ const BACKGROUND_CHOICE: ILand[] = [
 ]
 
 const Island = () => {
-  const { userName } = useUserProfile()
+  const router = useRouter()
+  const { userName, userSbId } = useUserProfile()
   /*const {
     query: { mode, id },
   } = useRouter()*/
-
+  const { islandBackground, islandItems } = useIsland()
   const [isEdit, setIsEdit] = useState(false)
   /*useEffect(() => {
     if (mode === "view") {
@@ -47,11 +53,43 @@ const Island = () => {
   }, [mode])
   console.log(mode, id)*/
 
-  const handleSaveBtn = () => {
-    console.log("저장")
+  const getIsLand = async () => {
+    const { data, error } = await islandApi.getBackground(userSbId)
+
+    if (data?.background) {
+      setIslandBackground(data?.background)
+    }
+  }
+
+  const getItems = async () => {
+    const { data, error } = await islandApi.getItemLoc(userSbId)
+    console.log(data)
+
+    if (data?.length) {
+      setislandItems({ ...(data as unknown as IIsland["items"]) })
+    }
+  }
+
+  useEffect(() => {
+    if (userSbId) {
+      getIsLand()
+      getItems()
+    }
+  }, [userSbId])
+
+  const handleSaveBtn = async () => {
+    const body = {
+      background: islandBackground,
+      ...(islandItems as unknown as IIsland["items"]),
+    }
+
+    const { data, error } = await islandApi.saveIsland(userSbId, body)
+
+    alert("저장 성공했습니다.")
+    router.reload()
   }
   const [category, setCategory] = useState<ICategory["id"]>(0)
-  const [land, setLand] = useState(0)
+
   return (
     <>
       <MyLandControl
@@ -60,12 +98,14 @@ const Island = () => {
         handleSaveBtn={handleSaveBtn}
         setIsEdit={setIsEdit}
       />
+
       <Image
-        src={BACKGROUND_CHOICE[land].mainImgSrc}
-        alt={BACKGROUND_CHOICE[land].title}
+        src={BACKGROUND_CHOICE[islandBackground].mainImgSrc}
+        alt={BACKGROUND_CHOICE[islandBackground].title}
         width={430}
         height={430}
       />
+
       {isEdit && (
         <>
           <LandCategory
@@ -75,8 +115,8 @@ const Island = () => {
           />
           <LandItem
             list={category === 0 ? BACKGROUND_CHOICE : []}
-            land={land}
-            setLand={setLand}
+            land={islandBackground}
+            setLand={setIslandBackground}
           />
         </>
       )}

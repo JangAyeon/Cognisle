@@ -1,11 +1,11 @@
 import { ILand } from "@/types/categoryTabs"
 import styled from "@emotion/styled"
 import Image from "next/image"
-import { Dispatch, SetStateAction } from "react"
+
 interface ILandItem {
   list: ILand[]
   land: number
-  setLand: Dispatch<SetStateAction<number>>
+  setLand: (id: ILand["id"]) => void
 }
 
 const LandItem = ({ list, land, setLand }: ILandItem) => {

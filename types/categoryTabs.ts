@@ -4,7 +4,7 @@ interface ICategory {
   value: string
 }
 interface ILand {
-  id: number
+  id: 0 | 1 | 2
   title: string
 
   thumbImgSrc: string
