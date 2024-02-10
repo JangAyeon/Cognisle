@@ -45,7 +45,7 @@ const MyLandControl = ({
       )}
       <div onClick={() => setIsEdit(!isEdit)}>
         <Image
-          src={`/assets/control/${isEdit ? "edit" : "view"}.svg`}
+          src={`/assets/control/mode/${isEdit ? "edit" : "view"}.svg`}
           width={48}
           height={48}
           alt="mode Image"

@@ -1,3 +1,3 @@
-const needHeader = ["/game", "/myland", "/visit", "/collection"]
+const needHeader = ["/game", "/island", "/visit", "/collection"]
 
 export default needHeader

@@ -1,7 +1,13 @@
 interface ICategory {
   id: number
   title: string
-  value?: string
+  value: string
 }
+interface ILand {
+  id: number
+  title: string
 
-export type { ICategory }
+  thumbImgSrc: string
+  mainImgSrc: string
+}
+export type { ICategory, ILand }
