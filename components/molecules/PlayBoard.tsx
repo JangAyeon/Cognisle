@@ -11,7 +11,7 @@ interface IPlayBoard {
   onCardClick: (
     _: React.MouseEvent<HTMLSpanElement, MouseEvent>,
     data: ICardData,
-    handleModalOpen: any
+    handleModalOpen: (id: number) => void
   ) => void
   score: IGameInfo["score"]
 }
