@@ -1,5 +1,6 @@
 import { User } from "@supabase/supabase-js"
 import { supabase } from "@/apis/instance"
+import { IIsland } from "@/types/common/islandProps"
 
 const itemLocation = [...Array(24)].map((v, idx) => `loc_${idx + 1}`).join(",")
 const getItemLoc = (userId: User["id"]) =>
@@ -7,14 +8,10 @@ const getItemLoc = (userId: User["id"]) =>
     .from("itemStatus")
     .select(itemLocation)
     .eq("userId", userId)
-    .maybeSingle()
+    .single<IIsland["items"]>()
 
 const getBackground = (userId: User["id"]) =>
-  supabase
-    .from("itemStatus")
-    .select("background")
-    .eq("userId", userId)
-    .maybeSingle()
+  supabase.from("itemStatus").select("background").eq("userId", userId).single()
 
 const saveIsland = (userId: User["id"], data: object) =>
   supabase

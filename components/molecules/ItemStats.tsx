@@ -1,10 +1,10 @@
 import recordApi from "@/apis/recordApi"
 import StatItem from "@/components/atoms/item/StatItem"
 import useUserProfile from "@/hooks/useUser"
+import { ItemExistProps } from "@/types/common/islandProps"
 import styled from "@emotion/styled"
 import { useEffect, useState } from "react"
 
-type ItemExistProps = { [key: string]: boolean }
 const ItemStats = () => {
   const [itemExist, setItemExist] = useState<ItemExistProps>({})
   const { userSbId } = useUserProfile()
@@ -14,8 +14,8 @@ const ItemStats = () => {
 
     const { data, error } = await recordApi.getItemStatus(userSbId)
 
-    if (data) {
-      setItemExist(data as unknown as ItemExistProps)
+    if (!error) {
+      setItemExist(data)
     }
   }
   useEffect(() => {

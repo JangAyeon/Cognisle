@@ -1,3 +1,4 @@
+import { supabase } from "@/apis/instance"
 import ShowItemModal from "@/components/modal/ShowItemModal"
 import { useState } from "react"
 

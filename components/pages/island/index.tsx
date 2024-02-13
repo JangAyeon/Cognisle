@@ -65,8 +65,8 @@ const Island = () => {
     const { data, error } = await islandApi.getItemLoc(userSbId)
     console.log(data)
 
-    if (data?.length) {
-      setislandItems({ ...(data as unknown as IIsland["items"]) })
+    if (!error) {
+      setislandItems(data)
     }
   }
 
@@ -80,7 +80,7 @@ const Island = () => {
   const handleSaveBtn = async () => {
     const body = {
       background: islandBackground,
-      ...(islandItems as unknown as IIsland["items"]),
+      ...islandItems,
     }
 
     const { data, error } = await islandApi.saveIsland(userSbId, body)

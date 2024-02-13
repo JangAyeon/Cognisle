@@ -37,4 +37,6 @@ interface IIsland {
   }
 }
 
-export type { IIsland }
+type ItemExistProps = { [key: string]: boolean }
+
+export type { IIsland, ItemExistProps }
