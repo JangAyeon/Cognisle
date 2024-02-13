@@ -1,12 +1,12 @@
 import recordApi from "@/apis/recordApi"
 import StatItem from "@/components/atoms/item/StatItem"
 import useUserProfile from "@/hooks/useUser"
-import { IItemExist } from "@/types/common/islandProps"
+import { ItemExistProps } from "@/types/common/islandProps"
 import styled from "@emotion/styled"
 import { useEffect, useState } from "react"
 
 const ItemStats = () => {
-  const [itemExist, setItemExist] = useState<IItemExist | {}>({})
+  const [itemExist, setItemExist] = useState<ItemExistProps | null>(null)
   const { userSbId } = useUserProfile()
 
   const getItemStatus = async () => {
@@ -31,7 +31,7 @@ const ItemStats = () => {
           <StatItem
             name="아이템 이름"
             imgSrc={`/assets/${
-              itemExist[`exist_${idx}`] ? "yellow" : "grey"
+              itemExist[`exist_${idx}` as string] ? "yellow" : "grey"
             }/circle.svg`}
             status={itemExist[`exist_${idx}`]}
             key={idx}
