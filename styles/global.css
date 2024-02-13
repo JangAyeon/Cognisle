@@ -190,7 +190,8 @@ table {
 
   --color-blue-01: rgba(105, 191, 255, 1);
   --color-blue-02: rgba(43, 114, 216, 1);
-  --color-blue-03: #1c67d3;
+  --color-blue-03: rgba(36, 97, 186, 1);
+  --color-blue-04: rgba(18, 49, 93, 1);
   --gradient-yellow: rgba(115, 216, 156, 0);
   --color-grey-01: #cecece;
 }

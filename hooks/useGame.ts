@@ -115,7 +115,7 @@ const useGame = () => {
                 { ...secondSelectedCard, state },
                 state
               )
-              console.log(secondChangedBoard)
+              // console.log(secondChangedBoard)
               return secondChangedBoard
             }
           })

@@ -20,9 +20,9 @@ const TabsInfo: ITabInfo[] = [
     imgHeight: 39,
   },
   {
-    link: "/myland",
-    inactiveImgSrc: "/assets/yellow/myland.svg",
-    activeImgSrc: "/assets/green/myland.svg",
+    link: "/island",
+    inactiveImgSrc: "/assets/yellow/island.svg",
+    activeImgSrc: "/assets/green/island.svg",
     imgWidth: 48,
     imgHeight: 33,
   },
