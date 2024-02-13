@@ -1,5 +1,5 @@
 import { supabase } from "@/apis/instance"
-import { ItemExistProps } from "@/types/common/islandProps"
+import { IItemExist } from "@/types/common/islandProps"
 import { User } from "@supabase/supabase-js"
 
 const getItemById = (itemId: number) =>
@@ -14,7 +14,7 @@ const getItemStatus = (userId: User["id"]) =>
     .from("itemStatus")
     .select(itemExist)
     .eq("userId", userId)
-    .single<ItemExistProps>()
+    .single<IItemExist>()
 
 const recordApi = {
   getItemById,
