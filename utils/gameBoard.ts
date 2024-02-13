@@ -1,12 +1,14 @@
-import type {
-  TBoardArrayType,
-  ICard,
-  TBoard,
-  TBoardSpots,
-  IBoardValue,
-  ICardData,
-} from "@/types/common/gameProps"
 import { spotMax_, spotMin_ } from "@/constants/game"
+
+import type {
+  IBoardValue,
+  ICard,
+  ICardData,
+  TBoard,
+  TBoardArrayType,
+  TBoardSpots,
+} from "@/types/common/gameProps"
+
 export const getRandomNumnber = (
   max_: IBoardValue["max_"],
   min_: IBoardValue["min_"]

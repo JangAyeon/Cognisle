@@ -1,9 +1,11 @@
+import styled from "@emotion/styled"
+import { useEffect, useState } from "react"
+
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import WaitGameStart from "@/components/molecules/WaitGameStart"
 import CardGameBoard from "@/components/pages/cardgame"
+
 import Timer from "@/utils/timer"
-import styled from "@emotion/styled"
-import { useEffect, useState } from "react"
 
 const Game = () => {
   const [loading, setLoading] = useState(false)

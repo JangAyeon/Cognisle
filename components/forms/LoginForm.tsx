@@ -1,10 +1,13 @@
-import { authApi } from "@/apis/authApi"
-import { useInput } from "@/hooks/useInput"
-import { FormEvent, useEffect, useState } from "react"
-import { useRouter } from "next/router"
 import styled from "@emotion/styled"
-import TextInput from "@/components/atoms/input/TextInput"
+import { useRouter } from "next/router"
+import { FormEvent, useEffect, useState } from "react"
+
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
+import TextInput from "@/components/atoms/input/TextInput"
+
+import { useInput } from "@/hooks/useInput"
+
+import { authApi } from "@/apis/authApi"
 
 const TextInputStyles = {
   color: "--color-green-04",

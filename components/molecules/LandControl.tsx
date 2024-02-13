@@ -1,8 +1,9 @@
-import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import styled from "@emotion/styled"
 import Image from "next/image"
-import Text from "@/components/atoms/typo/Text"
 import { Dispatch, SetStateAction } from "react"
+
+import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
+import Text from "@/components/atoms/typo/Text"
 
 interface ILandControl {
   name: string

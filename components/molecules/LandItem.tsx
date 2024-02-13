@@ -1,6 +1,7 @@
-import { ILand } from "@/types/categoryTabs"
 import styled from "@emotion/styled"
 import Image from "next/image"
+
+import { ILand } from "@/types/categoryTabs"
 
 interface ILandItem {
   list: ILand[]

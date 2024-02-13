@@ -1,10 +1,11 @@
-import BackgroundLayout from "@/components/layouts/BackgroundLayout"
-
 import styled from "@emotion/styled"
 
+import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import Island from "@/components/pages/island"
-import useIsland from "@/hooks/useIsland"
+
 import { BACKGROUND_COLOR } from "@/constants/island"
+
+import useIsland from "@/hooks/useIsland"
 
 const Myland = () => {
   const { islandType, islandItems } = useIsland()

@@ -12,5 +12,5 @@ const initialState: DraggableContextInterface = {
 
 const DraggableContext = createContext(initialState)
 
-export default DraggableContext 
+export default DraggableContext
 export type { DraggableContextInterface }

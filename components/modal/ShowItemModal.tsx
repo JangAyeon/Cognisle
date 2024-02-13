@@ -1,13 +1,16 @@
-import recordApi from "@/apis/recordApi"
-import Modal from "@/components/modal/Modal"
 import styled from "@emotion/styled"
-import { useEffect, useState } from "react"
 import Image from "next/image"
-import Triangle from "@/components/atoms/triangle/Triangle"
-import { IRecordItem } from "@/types/recordItem"
-import { ShowItemModalProps } from "@/types/common/modalProps"
 import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
+
+import Triangle from "@/components/atoms/triangle/Triangle"
 import Text from "@/components/atoms/typo/Text"
+import Modal from "@/components/modal/Modal"
+
+import recordApi from "@/apis/recordApi"
+
+import { ShowItemModalProps } from "@/types/common/modalProps"
+import { IRecordItem } from "@/types/recordItem"
 
 const ShowItemModal = ({ itemId, isOpen, onClose }: ShowItemModalProps) => {
   // const [loading, setLoading] = useState<boolean>(true)

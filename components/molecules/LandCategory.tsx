@@ -1,7 +1,9 @@
-import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
-import { ICategory } from "@/types/categoryTabs"
 import styled from "@emotion/styled"
 import { Dispatch, SetStateAction } from "react"
+
+import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
+
+import { ICategory } from "@/types/categoryTabs"
 
 interface ILandCategory {
   list: ICategory[]

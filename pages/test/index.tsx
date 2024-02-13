@@ -1,6 +1,8 @@
-import { supabase } from "@/apis/instance"
-import ShowItemModal from "@/components/modal/ShowItemModal"
 import { useState } from "react"
+
+import ShowItemModal from "@/components/modal/ShowItemModal"
+
+import { supabase } from "@/apis/instance"
 
 const Test = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)

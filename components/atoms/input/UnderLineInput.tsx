@@ -1,11 +1,12 @@
+import styled from "@emotion/styled"
+
 import {
+  ITextInput,
+  InputStyle,
   InputWrapper,
   InputWrapperStyle,
-  ITextInput,
   Input as Input_,
-  InputStyle,
 } from "./TextInput"
-import styled from "@emotion/styled"
 
 interface IUnderLineInput extends ITextInput {
   borderColor: string

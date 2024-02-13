@@ -1,5 +1,6 @@
-import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import styled from "@emotion/styled"
+
+import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import ContentContainer from "@/components/pages/collection"
 
 const Collection = () => {

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
-import { ChangeEvent } from "react"
 import Image from "next/image"
+import { ChangeEvent } from "react"
 
 export interface ITextInput {
   type: string

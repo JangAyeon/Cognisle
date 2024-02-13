@@ -1,5 +1,6 @@
-import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import styled from "@emotion/styled"
+
+import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 
 const defaultStyle = {
   width: 10.8,

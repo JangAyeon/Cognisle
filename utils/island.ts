@@ -1,9 +1,10 @@
+import { IIsland } from "@/types/common/islandProps"
+
 import {
-  setIslandType as _setIslandType,
   setIslandItems as _setIslandItems,
+  setIslandType as _setIslandType,
 } from "@/redux/common/islandSlice"
 import { store } from "@/redux/store/store"
-import { IIsland } from "@/types/common/islandProps"
 
 export const setIslandType = (id: IIsland["landType"]) => {
   store.dispatch(_setIslandType(id))

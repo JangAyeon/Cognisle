@@ -1,6 +1,7 @@
+import styled from "@emotion/styled"
+
 import Logo from "@/components/atoms/logo/Logo"
 import Triangle from "@/components/atoms/triangle/Triangle"
-import styled from "@emotion/styled"
 
 const Loading = () => {
   return (

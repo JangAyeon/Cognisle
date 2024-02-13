@@ -1,10 +1,11 @@
+import { useSelector } from "react-redux"
+
 import {
   selectUserDsId,
   selectUserEmail,
   selectUserName,
   selectUserSbId,
 } from "@/redux/common/userSlice"
-import { useSelector } from "react-redux"
 
 export const useUserProfile = () => {
   //  state.user.userInfo.dsId, state.user.userInfo.name, state.user.userInfo.email

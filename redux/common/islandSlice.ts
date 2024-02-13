@@ -1,6 +1,8 @@
-import { AppState } from "@/redux/store/store"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+
 import { IIsland } from "@/types/common/islandProps"
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+
+import { AppState } from "@/redux/store/store"
 
 const initialState: { island: IIsland } = {
   island: {

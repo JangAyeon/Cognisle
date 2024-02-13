@@ -1,10 +1,12 @@
-import { supabase } from "@/apis/instance"
+import styled from "@emotion/styled"
 import { useEffect, useState } from "react"
 
 import Loading from "@/components/pages/loading"
 import Main from "@/components/pages/main"
+
+import { supabase } from "@/apis/instance"
+
 import Timer from "@/utils/timer"
-import styled from "@emotion/styled"
 
 export default function Home() {
   const [loading, setLoading] = useState(true)

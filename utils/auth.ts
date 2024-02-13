@@ -1,8 +1,11 @@
-import { store } from "@/redux/store/store"
-import { IAuthSBInfo, IUserInfo } from "@/types/common/authProps"
-import { setUserInfo as _setUserInfo, signout } from "@/redux/common/userSlice"
-import { removeRefreshToken, setRefreshToken } from "@/utils/token"
 import { authApi } from "@/apis/authApi"
+
+import { IAuthSBInfo, IUserInfo } from "@/types/common/authProps"
+
+import { setUserInfo as _setUserInfo, signout } from "@/redux/common/userSlice"
+import { store } from "@/redux/store/store"
+
+import { removeRefreshToken, setRefreshToken } from "@/utils/token"
 
 export const setUserInfo = async ({ user, session }: IAuthSBInfo) => {
   //console.log(user)

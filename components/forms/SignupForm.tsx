@@ -1,11 +1,15 @@
-import { authApi } from "@/apis/authApi"
-import { FormEvent } from "react"
+import styled from "@emotion/styled"
 import { useRouter } from "next/router"
-import { IAuthSBInfo } from "@/types/common/authProps"
-import { setUserInfo } from "@/utils/auth"
+import { FormEvent } from "react"
+
 import UnderLineInput from "@/components/atoms/input/UnderLineInput"
 import Text from "@/components/atoms/typo/Text"
-import styled from "@emotion/styled"
+
+import { authApi } from "@/apis/authApi"
+
+import { IAuthSBInfo } from "@/types/common/authProps"
+
+import { setUserInfo } from "@/utils/auth"
 
 const Input_Common = {
   width: 20.3,

@@ -1,5 +1,7 @@
 import { User } from "@supabase/supabase-js"
+
 import { supabase } from "@/apis/instance"
+
 import { IIsland } from "@/types/common/islandProps"
 
 const itemLocation = [...Array(24)].map((v, idx) => `loc_${idx + 1}`).join(",")

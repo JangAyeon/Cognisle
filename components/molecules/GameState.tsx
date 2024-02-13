@@ -1,7 +1,9 @@
-import { IGameInfo } from "@/types/common/gameProps"
-import Image from "next/image"
-import Text from "@/components/atoms/typo/Text"
 import styled from "@emotion/styled"
+import Image from "next/image"
+
+import Text from "@/components/atoms/typo/Text"
+
+import { IGameInfo } from "@/types/common/gameProps"
 
 const GameState = ({
   score,

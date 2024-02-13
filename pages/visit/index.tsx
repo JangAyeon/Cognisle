@@ -1,11 +1,14 @@
-import TextInput from "@/components/atoms/input/TextInput"
-import BackgroundLayout from "@/components/layouts/BackgroundLayout"
-import Text from "@/components/atoms/typo/Text"
-import { useInput } from "@/hooks/useInput"
-import Friend from "@/public/assets/green/friend.svg"
-import Squiggly from "@/public/assets/green/squiggly.svg"
 import styled from "@emotion/styled"
 import { FormEvent } from "react"
+
+import TextInput from "@/components/atoms/input/TextInput"
+import Text from "@/components/atoms/typo/Text"
+import BackgroundLayout from "@/components/layouts/BackgroundLayout"
+
+import { useInput } from "@/hooks/useInput"
+
+import Friend from "@/public/assets/green/friend.svg"
+import Squiggly from "@/public/assets/green/squiggly.svg"
 
 const Island = () => {
   const [friendId, onChangeFriendId, setFriendId] = useInput("")

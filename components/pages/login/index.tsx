@@ -1,6 +1,6 @@
+import Logo from "@/components/atoms/logo/Logo"
 import LoginForm from "@/components/forms/LoginForm"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
-import Logo from "@/components/atoms/logo/Logo"
 import AuthTitle from "@/components/molecules/AuthTitle"
 
 const Login = () => {

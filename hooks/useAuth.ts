@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux"
 
 import {
-  selectExpire,
-  selectTokenType,
   selectAccessToken,
+  selectExpire,
   selectRefreshToken,
+  selectTokenType,
 } from "@/redux/common/userSlice"
 
 export const useAuth = () => {
