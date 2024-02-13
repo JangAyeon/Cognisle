@@ -4,8 +4,6 @@ import { useEffect, useState } from "react"
 import GameCard from "@/components/atoms/card/GameCard"
 import ShowItemModal from "@/components/modal/ShowItemModal"
 
-import { spotMax_ } from "@/constants/game"
-
 import { ICard, ICardData, IGameInfo } from "@/types/common/gameProps"
 
 interface IPlayBoard {

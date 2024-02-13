@@ -1,4 +1,4 @@
-import { spotMax_, spotMin_ } from "@/constants/game"
+import { itemIdMax, itemIdMin } from "@/constants/game"
 
 import type {
   IBoardValue,
@@ -87,7 +87,7 @@ export const insertRandomNumbers = (Board: TBoard): TBoard => {
 
     let counter = 2
     // console.log("randomSpots", randomSpots)
-    const currNumberArr = getRandomArray(spotMax_, spotMin_, totalSpots / 2)
+    const currNumberArr = getRandomArray(itemIdMax, itemIdMin, totalSpots / 2)
     let idx = 0
 
     Object.values(randomSpots).forEach((spot) => {

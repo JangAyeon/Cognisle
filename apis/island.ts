@@ -1,10 +1,14 @@
 import { User } from "@supabase/supabase-js"
 
+import { itemIdMax } from "@/constants/game"
+
 import { supabase } from "@/apis/instance"
 
 import { IIsland } from "@/types/common/islandProps"
 
-const itemLocation = [...Array(24)].map((v, idx) => `loc_${idx + 1}`).join(",")
+const itemLocation = [...Array(itemIdMax)]
+  .map((v, idx) => `loc_${idx + 1}`)
+  .join(",")
 const getItemLoc = (userId: User["id"]) =>
   supabase
     .from("itemStatus")

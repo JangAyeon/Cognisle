@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 
 import StatItem from "@/components/atoms/item/StatItem"
 
+import { itemIdMax } from "@/constants/game"
+
 import useUserProfile from "@/hooks/useUser"
 
 import recordApi from "@/apis/recordApi"
@@ -31,7 +33,7 @@ const ItemStats = () => {
   return (
     <ItemStatsWrapper>
       {itemExist &&
-        [...Array(24)].map((v, idx) => (
+        [...Array(itemIdMax)].map((v, idx) => (
           <StatItem
             name="아이템 이름"
             imgSrc={`/assets/${
