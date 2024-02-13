@@ -10,7 +10,7 @@ const ItemStats = () => {
   const { userSbId } = useUserProfile()
 
   const getItemStatus = async () => {
-    console.log(userSbId)
+    // console.log(userSbId)
 
     const { data, error } = await recordApi.getItemStatus(userSbId)
 

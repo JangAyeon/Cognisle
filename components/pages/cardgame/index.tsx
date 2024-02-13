@@ -1,13 +1,11 @@
+import useGame from "@/hooks/useGame"
 import GameState from "@/components/molecules/GameState"
 import PlayBoard from "@/components/molecules/PlayBoard"
-import useGame from "@/hooks/useGame"
 import styled from "@emotion/styled"
 import { useEffect, useState } from "react"
-
 import recordApi from "@/apis/recordApi"
 import Loading from "./loading"
 import { GameLoadingProps, IGameResult } from "@/types/common/gameProps"
-import { supabase } from "@/apis/instance"
 import useUserProfile from "@/hooks/useUser"
 
 const CardGameBoard = () => {

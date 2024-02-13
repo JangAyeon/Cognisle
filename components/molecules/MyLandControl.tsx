@@ -4,19 +4,19 @@ import Image from "next/image"
 import Text from "@/components/atoms/typo/Text"
 import { Dispatch, SetStateAction } from "react"
 
-interface IMyLandControl {
+interface ILandControl {
   name: string
   isEdit: boolean
   handleSaveBtn: () => void
   setIsEdit: Dispatch<SetStateAction<boolean>>
 }
 
-const MyLandControl = ({
+const LandControl = ({
   name,
   isEdit,
   handleSaveBtn,
   setIsEdit,
-}: IMyLandControl) => {
+}: ILandControl) => {
   return (
     <TopMenu>
       {" "}
@@ -55,7 +55,7 @@ const MyLandControl = ({
   )
 }
 
-export default MyLandControl
+export default LandControl
 
 const TopMenu = styled.div`
   margin-top: 7.2rem;

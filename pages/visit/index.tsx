@@ -71,6 +71,7 @@ const PageWrapper = styled.div`
   background-color: var(--color-blue-01);
   min-height: inherit;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: space-between;
 `
@@ -99,5 +100,5 @@ const FormContainer = styled.div`
 `
 
 const ImageWrapper = styled.div`
-  padding-bottom: 3.6rem;
+  padding-bottom: 2.8rem;
 `

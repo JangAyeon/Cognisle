@@ -33,4 +33,5 @@ export default Game
 const PageWrapper = styled.div`
   min-height: inherit;
   background-color: var(--color-orange-01);
+  display: flex;
 `

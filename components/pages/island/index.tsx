@@ -1,39 +1,20 @@
 import LandCategory from "@/components/molecules/LandCategory"
 import LandItem from "@/components/molecules/LandItem"
-import MyLandControl from "@/components/molecules/MyLandControl"
+import LandControl from "@/components/molecules/MyLandControl"
 import useUserProfile from "@/hooks/useUser"
-import { ICategory, ILand } from "@/types/categoryTabs"
+import { ICategory } from "@/types/categoryTabs"
 import { useEffect, useState } from "react"
-import Image from "next/image"
 import useIsland from "@/hooks/useIsland"
 import islandApi from "@/apis/island"
-import { setIslandBackground, setislandItems } from "@/utils/island"
-import { IIsland } from "@/types/common/islandProps"
+import { setIslandType, setIslandItems } from "@/utils/island"
 import { useRouter } from "next/router"
+import Image from "next/image"
+import styled from "@emotion/styled"
+import { LAND_CHOICE } from "@/constants/island"
+
 const CATEGORY_MENU: ICategory[] = [
   { id: 0, title: "배경", value: "background" },
   { id: 1, title: "아이템", value: "item" },
-]
-
-const BACKGROUND_CHOICE: ILand[] = [
-  {
-    id: 0,
-    title: "morning",
-    thumbImgSrc: "/assets/control/background/morning.png",
-    mainImgSrc: "/assets/control/land/morning.png",
-  },
-  {
-    id: 1,
-    title: "evening",
-    thumbImgSrc: "/assets/control/background/evening.png",
-    mainImgSrc: "/assets/control/land/evening.png",
-  },
-  {
-    id: 2,
-    title: "night",
-    thumbImgSrc: "/assets/control/background/night.png",
-    mainImgSrc: "/assets/control/land/night.png",
-  },
 ]
 
 const Island = () => {
@@ -42,7 +23,7 @@ const Island = () => {
   /*const {
     query: { mode, id },
   } = useRouter()*/
-  const { islandBackground, islandItems } = useIsland()
+  const { islandType, islandItems } = useIsland()
   const [isEdit, setIsEdit] = useState(false)
   /*useEffect(() => {
     if (mode === "view") {
@@ -56,17 +37,17 @@ const Island = () => {
   const getIsLand = async () => {
     const { data, error } = await islandApi.getBackground(userSbId)
 
-    if (data?.background) {
-      setIslandBackground(data?.background)
+    if (data) {
+      setIslandType(data.background)
     }
   }
 
   const getItems = async () => {
     const { data, error } = await islandApi.getItemLoc(userSbId)
-    console.log(data)
+    // console.log(data)
 
     if (!error) {
-      setislandItems(data)
+      setIslandItems(data)
     }
   }
 
@@ -79,20 +60,22 @@ const Island = () => {
 
   const handleSaveBtn = async () => {
     const body = {
-      background: islandBackground,
+      background: islandType,
       ...islandItems,
     }
 
     const { data, error } = await islandApi.saveIsland(userSbId, body)
 
-    alert("저장 성공했습니다.")
-    router.reload()
+    if (!error) {
+      alert("저장 성공했습니다.")
+      router.reload()
+    }
   }
   const [category, setCategory] = useState<ICategory["id"]>(0)
 
   return (
     <>
-      <MyLandControl
+      <LandControl
         name={userName}
         isEdit={isEdit}
         handleSaveBtn={handleSaveBtn}
@@ -100,28 +83,30 @@ const Island = () => {
       />
 
       <Image
-        src={BACKGROUND_CHOICE[islandBackground].mainImgSrc}
-        alt={BACKGROUND_CHOICE[islandBackground].title}
+        src={LAND_CHOICE[islandType].mainImgSrc}
+        alt={LAND_CHOICE[islandType].title}
         width={430}
         height={430}
       />
 
       {isEdit && (
-        <>
+        <EditWrapper>
           <LandCategory
             list={CATEGORY_MENU}
             category={category}
             setCategory={setCategory}
           />
           <LandItem
-            list={category === 0 ? BACKGROUND_CHOICE : []}
-            land={islandBackground}
-            setLand={setIslandBackground}
+            list={category === 0 ? LAND_CHOICE : []}
+            land={islandType}
+            setLand={setIslandType}
           />
-        </>
+        </EditWrapper>
       )}
     </>
   )
 }
+
+const EditWrapper = styled.div``
 
 export default Island

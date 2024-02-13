@@ -4,7 +4,7 @@ type ItemExistProps = { [key: string]: boolean }
 type ItemLocationProps = { [key: string]: object | null }
 
 interface IIsland {
-  background: LandIdProps
+  landType: LandIdProps
   items: ItemLocationProps
 }
 

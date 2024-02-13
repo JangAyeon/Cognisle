@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 const initialState: { island: IIsland } = {
   island: {
-    background: 0,
+    landType: 0,
     items: {
       loc_0: {},
       loc_1: {},
@@ -46,11 +46,8 @@ export const islandSlice = createSlice({
   name: "island",
   initialState,
   reducers: {
-    setIslandBackground: (
-      state,
-      action: PayloadAction<IIsland["background"]>
-    ) => {
-      state.island.background = action.payload
+    setIslandType: (state, action: PayloadAction<IIsland["landType"]>) => {
+      state.island.landType = action.payload
     },
     setIslandItems: (state, action: PayloadAction<IIsland["items"]>) => {
       state.island.items = action.payload
@@ -58,10 +55,10 @@ export const islandSlice = createSlice({
   },
 })
 
-export const { setIslandItems, setIslandBackground } = islandSlice.actions
+export const { setIslandItems, setIslandType } = islandSlice.actions
 
-export const selectIslandBackground = (state: AppState) =>
-  state.island.island.background
+export const selectIslandType = (state: AppState) =>
+  state.island.island.landType
 export const selectIslandItems = (state: AppState) => state.island.island.items
 export const selectIslandItem0 = (state: AppState) =>
   state.island.island.items.loc_0

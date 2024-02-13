@@ -34,7 +34,7 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
   }
 
   const postGameResult = async () => {
-    console.log("post", userSbId)
+    // console.log("post", userSbId)
     const data = createData(gameResult.items)
     await supabase
       .from("itemStatus")
@@ -44,7 +44,7 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
           userId: userSbId,
           ...data,
         },
-        { onConflict: "userId" }
+        { onConflict: "userId" },
       )
   }
 

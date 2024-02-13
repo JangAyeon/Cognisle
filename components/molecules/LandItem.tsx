@@ -9,7 +9,7 @@ interface ILandItem {
 }
 
 const LandItem = ({ list, land, setLand }: ILandItem) => {
-  console.log(list)
+  // console.log(list)
   return (
     <Wrapper>
       {list.map(({ thumbImgSrc, title, id }) => (
