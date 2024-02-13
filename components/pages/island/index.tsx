@@ -4,8 +4,8 @@ import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
 import LandCategory from "@/components/molecules/LandCategory"
+import LandControl from "@/components/molecules/LandControl"
 import LandItem from "@/components/molecules/LandItem"
-import LandControl from "@/components/molecules/MyLandControl"
 
 import { LAND_CHOICE } from "@/constants/island"
 
