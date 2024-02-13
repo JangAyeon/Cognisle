@@ -3,11 +3,13 @@ interface ICategory {
   title: string
   value: string
 }
+
+type LandIdProps = 0 | 1 | 2
 interface ILand {
-  id: 0 | 1 | 2
+  id: LandIdProps
   title: string
 
   thumbImgSrc: string
   mainImgSrc: string
 }
-export type { ICategory, ILand }
+export type { ICategory, LandIdProps, ILand }

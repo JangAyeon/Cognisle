@@ -10,6 +10,6 @@ export const setIslandBackground = (id: IIsland["background"]) => {
 }
 
 export const setislandItems = (items: IIsland["items"]) => {
-  console.log("setislandItems", items)
+  // console.log("setislandItems", items)
   store.dispatch(_setIslandItems(items))
 }
