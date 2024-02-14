@@ -12,13 +12,9 @@ const LandItem = ({ list }: any) => {
 
   return (
     <SliderWrapper>
-      <Swiper
-        slidesPerView={3}
-        scrollbar={{ draggable: true }}
-        onSlideChange={(swiper: any) => console.log(swiper)}
-      >
+      <Swiper {...swiperSetting}>
         {list.map((props: any, idx: number) => (
-          <SwiperSlide key={props.id}>
+          <SwiperSlide key={idx}>
             <Slide {...props} />
           </SwiperSlide>
         ))}

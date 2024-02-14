@@ -12,7 +12,7 @@ const useSwiper = () => {
     loop: false,
     scrollbar: { draggable: true },
     onSlideChange: (swiper: Swiper) => {
-      console.log(swiper.realIndex)
+      // console.log(swiper.realIndex)
       setCurrentSlide(swiper.realIndex)
     },
   }

@@ -118,6 +118,9 @@ const Island = () => {
   )
 }
 
-const EditWrapper = styled.div``
+const EditWrapper = styled.div`
+  position: fixed;
+  bottom: 7.2rem;
+`
 
 export default Island
