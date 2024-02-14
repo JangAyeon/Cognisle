@@ -103,5 +103,5 @@ const FormContainer = styled.div`
 `
 
 const ImageWrapper = styled.div`
-  padding-bottom: 2.8rem;
+  padding-bottom: 3rem;
 `
