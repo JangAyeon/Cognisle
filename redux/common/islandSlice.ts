@@ -52,7 +52,7 @@ export const islandSlice = createSlice({
     setIslandType: (state, action: PayloadAction<IIsland["landType"]>) => {
       state.island.landType = action.payload
     },
-    setIslandItems: (state, action: PayloadAction<IIsland["items"]>) => {
+    setIslandItemLoc: (state, action: PayloadAction<IIsland["items"]>) => {
       state.island.items = action.payload
     },
     setIslandItemExist: (state, action: PayloadAction<IIsland["exist"]>) => {
@@ -61,12 +61,13 @@ export const islandSlice = createSlice({
   },
 })
 
-export const { setIslandType, setIslandItems, setIslandItemExist } =
+export const { setIslandType, setIslandItemLoc, setIslandItemExist } =
   islandSlice.actions
 
 export const selectIslandType = (state: AppState) =>
   state.island.island.landType
-export const selectIslandItems = (state: AppState) => state.island.island.items
+export const selectIslandItemLoc = (state: AppState) =>
+  state.island.island.items
 export const selectIslandItem0 = (state: AppState) =>
   state.island.island.items.loc_0
 export const selectIslandItemExsit = (state: AppState) =>

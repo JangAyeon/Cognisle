@@ -8,7 +8,7 @@ import { BACKGROUND_COLOR } from "@/constants/island"
 import useIsland from "@/hooks/useIsland"
 
 const Myland = () => {
-  const { islandType, islandItems } = useIsland()
+  const { islandType, islandItemLoc } = useIsland()
   // console.log(islandBackground, islandItems)
   return (
     <PageWrapper>

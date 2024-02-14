@@ -17,7 +17,11 @@ import islandApi from "@/apis/island"
 
 import { ICategory } from "@/types/categoryTabs"
 
-import { setIslandItems, setIslandType } from "@/utils/island"
+import {
+  setIslandItemExist,
+  setIslandItemLoc,
+  setIslandType,
+} from "@/utils/island"
 
 const CATEGORY_MENU: ICategory[] = [
   { id: 0, title: "배경", value: "background" },
@@ -30,7 +34,7 @@ const Island = () => {
   /*const {
     query: { mode, id },
   } = useRouter()*/
-  const { islandType, islandItems } = useIsland()
+  const { islandType, islandItemLoc, islandItemExist } = useIsland()
   const [isEdit, setIsEdit] = useState(false)
   /*useEffect(() => {
     if (mode === "view") {
@@ -49,26 +53,34 @@ const Island = () => {
     }
   }
 
-  const getItems = async () => {
+  const getItemsLoc = async () => {
     const { data, error } = await islandApi.getItemLoc(userSbId)
     // console.log(data)
 
     if (!error) {
-      setIslandItems(data)
+      setIslandItemLoc(data)
     }
+  }
+
+  const getItemExist = async () => {
+    const data = await islandApi.getItemIds(userSbId)
+    console.log("data", data)
+    setIslandItemExist(data)
   }
 
   useEffect(() => {
     if (userSbId) {
+      // 현재 서버에 저장된 섬타입, 아이템 위치, 아이템 소유목록 dispatch
       getType()
-      getItems()
+      getItemsLoc()
+      getItemExist()
     }
   }, [userSbId])
 
   const handleSaveBtn = async () => {
     const body = {
       background: islandType,
-      ...islandItems,
+      ...islandItemLoc,
     }
 
     const { data, error } = await islandApi.saveIsland(userSbId, body)
