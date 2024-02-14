@@ -41,7 +41,7 @@ const Island = () => {
   }, [mode])
   console.log(mode, id)*/
 
-  const getIsLand = async () => {
+  const getType = async () => {
     const { data, error } = await islandApi.getBackground(userSbId)
 
     if (data) {
@@ -60,7 +60,7 @@ const Island = () => {
 
   useEffect(() => {
     if (userSbId) {
-      getIsLand()
+      getType()
       getItems()
     }
   }, [userSbId])
