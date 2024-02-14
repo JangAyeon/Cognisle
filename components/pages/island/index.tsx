@@ -103,15 +103,17 @@ const Island = () => {
             category={category}
             setCategory={setCategory}
           />
-          {category === 0 ? (
-            <LandType
-              list={LAND_CHOICE}
-              land={islandType}
-              setLand={setIslandType}
-            />
-          ) : (
-            <LandItem list={ITEM_CHOICE} />
-          )}
+          <LandSelectWrapper>
+            {category === 0 ? (
+              <LandType
+                list={LAND_CHOICE}
+                land={islandType}
+                setLand={setIslandType}
+              />
+            ) : (
+              <LandItem list={ITEM_CHOICE} />
+            )}
+          </LandSelectWrapper>
         </EditWrapper>
       )}
     </>
@@ -119,8 +121,13 @@ const Island = () => {
 }
 
 const EditWrapper = styled.div`
+  width: 43rem;
   position: fixed;
   bottom: 7.2rem;
+`
+
+const LandSelectWrapper = styled.div`
+  height: 16.8rem;
 `
 
 export default Island

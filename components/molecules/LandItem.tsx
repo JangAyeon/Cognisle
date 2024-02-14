@@ -26,6 +26,14 @@ const LandItem = ({ list }: any) => {
 export default LandItem
 
 export const SliderWrapper = styled.div`
-  background-color: white;
-  width: 43rem;
+  background-color: var(--color-yellow-01);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  .swiper-wrapper {
+    .swiper-slide {
+      width: auto !important;
+      margin-left: 2.7rem;
+    }
+  }
 `

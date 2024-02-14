@@ -25,10 +25,11 @@ const LandType = ({ list, land, setLand }: ILandItem) => {
 export default LandType
 
 const Wrapper = styled.div`
-  height: 16.8rem;
+  height: 100%;
   background-color: var(--color-yellow-01);
+  padding: 0 2.7rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 `

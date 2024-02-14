@@ -20,9 +20,10 @@ export default Slide
 
 export const SlideContainer = styled.div`
   position: relative;
+  display: flex;
   width: 11.2rem;
   height: 11.2rem;
-  display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
 `
