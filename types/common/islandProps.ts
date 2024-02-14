@@ -32,6 +32,7 @@ type ItemLocationProps = { [key: string]: object | null }
 interface IIsland {
   landType: LandIdProps
   items: ItemLocationProps
+  exist: itemIdProps[]
 }
 
 export type { IIsland, ItemExistProps, LandIdProps, itemIdProps }

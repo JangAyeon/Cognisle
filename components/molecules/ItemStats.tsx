@@ -19,6 +19,7 @@ const ItemStats = () => {
     // console.log(userSbId)
 
     const { data, error } = await recordApi.getItemStatus(userSbId)
+    console.log(data)
 
     if (!error) {
       setItemExist(data)
