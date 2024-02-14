@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import Image from "next/image"
 import "swiper/css"
 import { Swiper, SwiperSlide } from "swiper/react"
 
