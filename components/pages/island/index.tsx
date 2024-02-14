@@ -6,8 +6,9 @@ import { useEffect, useState } from "react"
 import LandCategory from "@/components/molecules/LandCategory"
 import LandControl from "@/components/molecules/LandControl"
 import LandItem from "@/components/molecules/LandItem"
+import LandType from "@/components/molecules/LandType"
 
-import { LAND_CHOICE } from "@/constants/island"
+import { ITEM_CHOICE, LAND_CHOICE } from "@/constants/island"
 
 import useIsland from "@/hooks/useIsland"
 import useUserProfile from "@/hooks/useUser"
@@ -102,11 +103,15 @@ const Island = () => {
             category={category}
             setCategory={setCategory}
           />
-          <LandItem
-            list={category === 0 ? LAND_CHOICE : []}
-            land={islandType}
-            setLand={setIslandType}
-          />
+          {category === 0 ? (
+            <LandType
+              list={LAND_CHOICE}
+              land={islandType}
+              setLand={setIslandType}
+            />
+          ) : (
+            <LandItem list={ITEM_CHOICE} />
+          )}
         </EditWrapper>
       )}
     </>

@@ -1,34 +1,35 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
+import "swiper/css"
+import { Swiper, SwiperSlide } from "swiper/react"
 
-import { ILand } from "@/types/categoryTabs"
+import Slide from "@/components/atoms/slide"
 
-interface ILandItem {
-  list: ILand[]
-  land: number
-  setLand: (id: ILand["id"]) => void
-}
+import useSwiper from "@/hooks/useSwiper"
 
-const LandItem = ({ list, land, setLand }: ILandItem) => {
-  // console.log(list)
+const LandItem = ({ list }: any) => {
+  const { swiperSetting, currentSlide } = useSwiper()
+
   return (
-    <Wrapper>
-      {list.map(({ thumbImgSrc, title, id }) => (
-        <div onClick={() => setLand(id)}>
-          <Image src={thumbImgSrc} alt={title} width={112} height={112} />
-        </div>
-      ))}
-    </Wrapper>
+    <SliderWrapper>
+      <Swiper
+        slidesPerView={3}
+        scrollbar={{ draggable: true }}
+        onSlideChange={(swiper: any) => console.log(swiper)}
+      >
+        {list.map((props: any, idx: number) => (
+          <SwiperSlide key={props.id}>
+            <Slide {...props} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </SliderWrapper>
   )
 }
 
 export default LandItem
 
-const Wrapper = styled.div`
-  height: 16.8rem;
-  background-color: var(--color-yellow-01);
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+export const SliderWrapper = styled.div`
+  background-color: white;
+  width: 43rem;
 `

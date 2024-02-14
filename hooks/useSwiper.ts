@@ -7,8 +7,14 @@ const useSwiper = () => {
 
   const swiperSetting: SwiperProps = {
     slidesPerView: 3,
+    spaceBetween: 5,
+    rewind: false,
     loop: false,
-    onSlideChange: (swiper: Swiper) => setCurrentSlide(swiper.realIndex),
+    scrollbar: { draggable: true },
+    onSlideChange: (swiper: Swiper) => {
+      console.log(swiper.realIndex)
+      setCurrentSlide(swiper.realIndex)
+    },
   }
   return { swiperSetting, currentSlide }
 }
