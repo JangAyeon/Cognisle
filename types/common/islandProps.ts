@@ -21,12 +21,22 @@ type ItemLocationProps = {
   [key in ItemLocationKey]: object | null
 }
 
+const landTypeTitleArr = ["morning", "evening", "night"] as const
+type TypeTitleProps = (typeof landTypeTitleArr)[number]
+const isLandTypeTitleType = unionTypeChecker(...landTypeTitleArr)
+
 interface IIsland {
   landType: TypeIdProps
   items: ItemLocationProps
-  exist: ItemIdProps | []
+  exist: ItemIdProps[]
 }
 
-export type { IIsland, ItemExistProps, ItemExistKey }
+export type {
+  IIsland,
+  ItemExistProps,
+  ItemExistKey,
+  TypeTitleProps,
+  ItemIdProps,
+}
 
 export { isLandItemIdType }

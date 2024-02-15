@@ -17,6 +17,6 @@ export const setIslandItemLoc = (items: IIsland["items"]) => {
 }
 
 export const setIslandItemExist = (items: IIsland["exist"]) => {
-  console.log("dispath", items)
+  // console.log("dispath", items)
   store.dispatch(_setIslandItemExist(items))
 }

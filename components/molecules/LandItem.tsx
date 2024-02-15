@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { useEffect } from "react"
 import "swiper/css"
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -6,15 +7,21 @@ import Slide from "@/components/atoms/slide"
 
 import useSwiper from "@/hooks/useSwiper"
 
-const LandItem = ({ list }: any) => {
+import { ItemIdProps } from "@/types/common/islandProps"
+
+const LandItem = ({ list }: { list: ItemIdProps[] }) => {
   const { swiperSetting, currentSlide } = useSwiper()
+
+  useEffect(() => {
+    console.log("land item", list)
+  }, [list])
 
   return (
     <SliderWrapper>
       <Swiper {...swiperSetting}>
-        {list.map((props: any, idx: number) => (
+        {list.map((id: ItemIdProps, idx: number) => (
           <SwiperSlide key={idx}>
-            <Slide {...props} />
+            <Slide id={id} />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -1,16 +1,23 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
+import { useEffect } from "react"
 
-const Slide = ({ title, thumbImgSrc }: any) => {
-  console.log(title, thumbImgSrc)
+import { ITEM_CHOICE } from "@/constants/island"
+
+import { ItemIdProps } from "@/types/common/islandProps"
+
+const Slide = ({ id }: { id: ItemIdProps }) => {
+  useEffect(() => {
+    console.log("slide item id", id)
+  }, [])
 
   return (
     <SlideContainer>
       <Image
-        src={thumbImgSrc}
-        alt={title}
-        fill
-        style={{ objectFit: "cover" }}
+        src={ITEM_CHOICE[id].thumbImgSrc}
+        alt={ITEM_CHOICE[id].id.toString()}
+        width={ITEM_CHOICE[id].width}
+        height={ITEM_CHOICE[id].height}
       />
     </SlideContainer>
   )

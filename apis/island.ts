@@ -8,6 +8,7 @@ import recordApi from "@/apis/recordApi"
 import {
   IIsland,
   ItemExistKey,
+  ItemIdProps,
   isLandItemIdType,
 } from "@/types/common/islandProps"
 
@@ -37,13 +38,13 @@ const saveIsland = (userId: User["id"], data: object) =>
 const getItemIds = async (userId: User["id"]) => {
   const { data, error } = await recordApi.getItemStatus(userId)
   console.log(data)
-  const result: Array<IIsland["exist"]> = []
+  const result: Array<ItemIdProps> = []
   if (!error) {
     for (const key in data) {
       if (data[key as ItemExistKey]) {
         const value = Number(key.replace("exist_", ""))
         if (isLandItemIdType(value)) {
-          result.push(value as IIsland["exist"])
+          result.push(value as ItemIdProps)
         }
       }
     }

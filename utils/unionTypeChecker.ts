@@ -7,7 +7,7 @@ function unionTypeChecker<UnionType extends string | number>(
         ? (value as UnionType)
         : false
 
-      console.log(value, typeof value, result)
+      // console.log(value, typeof value, result)
 
       return result
     } else {
