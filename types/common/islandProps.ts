@@ -36,15 +36,19 @@ const itemIdArr = [
   22, 23, 24,
 ] as const
 
-type itemId = (typeof itemIdArr)[number]
-const isItemIdType = unionTypeChecker(...itemIdArr)
+type ItemIdProps = (typeof itemIdArr)[number]
+const isLandItemIdType = unionTypeChecker(...itemIdArr)
+
+const landTypeIdArr = [0, 1, 2] as const
+type TypeIdProps = (typeof landTypeIdArr)[number]
+const isLandTypeIdType = unionTypeChecker(...landTypeIdArr)
 
 interface IIsland {
-  landType: LandIdProps
+  landType: TypeIdProps
   items: ItemLocationProps
-  exist: itemIdProps[]
+  exist: ItemIdProps | []
 }
 
 export type { IIsland, ItemExistProps, LandIdProps, itemIdProps }
 
-export { isItemIdType }
+export { isLandItemIdType }

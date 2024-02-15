@@ -5,7 +5,11 @@ import { itemIdMax } from "@/constants/game"
 import { supabase } from "@/apis/instance"
 import recordApi from "@/apis/recordApi"
 
-import { IIsland, isItemIdType, itemIdProps } from "@/types/common/islandProps"
+import {
+  IIsland,
+  isLandItemIdType,
+  itemIdProps,
+} from "@/types/common/islandProps"
 
 const itemLocation = [...Array(itemIdMax)]
   .map((v, idx) => `loc_${idx + 1}`)
@@ -32,18 +36,18 @@ const saveIsland = (userId: User["id"], data: object) =>
 const getItemIds = async (userId: User["id"]) => {
   const { data, error } = await recordApi.getItemStatus(userId)
   console.log(data)
-  const result: IIsland["exist"] = []
+  const result: Array<IIsland["exist"]> = []
   if (!error) {
     for (let key in data) {
       if (data[key]) {
         const value = Number(key.replace("exist_", ""))
 
-        if (isItemIdType(value)) {
-          result.push(value as itemIdProps)
+        if (isLandItemIdType(value)) {
+          result.push(value as IIsland["exist"])
         }
       }
     }
-    console.log("result", result)
+    // console.log("result", result)
   }
   return result
 }
