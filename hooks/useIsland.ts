@@ -1,20 +1,23 @@
 import { useSelector } from "react-redux"
 
 import {
-  selectIslandBackground,
-  selectIslandItems,
   selectIslandItem0,
+  selectIslandItemExsit,
+  selectIslandItemLoc,
+  selectIslandType,
 } from "@/redux/common/islandSlice"
 
 export const useIsland = () => {
-  const islandBackground = useSelector(selectIslandBackground)
-  const islandItems = useSelector(selectIslandItems)
+  const islandType = useSelector(selectIslandType)
+  const islandItemLoc = useSelector(selectIslandItemLoc)
   const islandItem0 = useSelector(selectIslandItem0)
+  const islandItemExist = useSelector(selectIslandItemExsit)
 
   return {
-    islandBackground,
-    islandItems,
+    islandType,
+    islandItemLoc,
     islandItem0,
+    islandItemExist,
   }
 }
 

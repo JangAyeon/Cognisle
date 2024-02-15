@@ -1,10 +1,11 @@
+import styled from "@emotion/styled"
+import Image from "next/image"
+
 import ItemStats from "@/components/molecules/ItemStats"
 import MyStats from "@/components/molecules/MyStats"
 import PublicStats from "@/components/molecules/PublicStats"
-import Image from "next/image"
 
 import useUserProfile from "@/hooks/useUser"
-import styled from "@emotion/styled"
 
 const Collection = () => {
   const { userDsId, userSbId } = useUserProfile()

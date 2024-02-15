@@ -1,11 +1,15 @@
-import { supabase } from "@/apis/instance"
-import GameResultModal from "@/components/modal/GameResultModal"
-import useUserProfile from "@/hooks/useUser"
-import { GameLoadingProps, IGameResult } from "@/types/common/gameProps"
 import styled from "@emotion/styled"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+
+import GameResultModal from "@/components/modal/GameResultModal"
+
+import useUserProfile from "@/hooks/useUser"
+
+import { supabase } from "@/apis/instance"
+
+import { GameLoadingProps, IGameResult } from "@/types/common/gameProps"
 
 interface IGameLoading {
   type: GameLoadingProps
@@ -34,7 +38,7 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
   }
 
   const postGameResult = async () => {
-    console.log("post", userSbId)
+    // console.log("post", userSbId)
     const data = createData(gameResult.items)
     await supabase
       .from("itemStatus")

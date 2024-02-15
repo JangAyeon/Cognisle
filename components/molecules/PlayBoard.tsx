@@ -1,16 +1,17 @@
-import GameCard from "@/components/atoms/card/GameCard"
-import ShowItemModal from "@/components/modal/ShowItemModal"
-import { spotMax_ } from "@/constants/game"
-import { ICard, ICardData, IGameInfo } from "@/types/common/gameProps"
 import styled from "@emotion/styled"
 import { useEffect, useState } from "react"
+
+import GameCard from "@/components/atoms/card/GameCard"
+import ShowItemModal from "@/components/modal/ShowItemModal"
+
+import { ICard, ICardData, IGameInfo } from "@/types/common/gameProps"
 
 interface IPlayBoard {
   computedBoardState: ICard[][]
   onCardClick: (
     _: React.MouseEvent<HTMLSpanElement, MouseEvent>,
     data: ICardData,
-    handleModalOpen: any
+    handleModalOpen: (id: number) => void
   ) => void
   score: IGameInfo["score"]
 }

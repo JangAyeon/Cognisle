@@ -1,20 +1,21 @@
-import BackgroundLayout from "@/components/layouts/BackgroundLayout"
-
 import styled from "@emotion/styled"
 
+import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import Island from "@/components/pages/island"
+
+import { BACKGROUND_COLOR } from "@/constants/island"
+
 import useIsland from "@/hooks/useIsland"
-import islandBackground_ from "@/constants/islandBackground"
 
 const Myland = () => {
-  const { islandBackground, islandItems } = useIsland()
+  const { islandType, islandItemLoc } = useIsland()
   // console.log(islandBackground, islandItems)
   return (
     <PageWrapper>
       {" "}
       <BackgroundLayout
-        startColor={islandBackground_[islandBackground].startColor}
-        endColor={islandBackground_[islandBackground].endColor}
+        startColor={BACKGROUND_COLOR[islandType].startColor}
+        endColor={BACKGROUND_COLOR[islandType].endColor}
         degree="180deg"
       >
         <Island />
@@ -28,4 +29,5 @@ export default Myland
 const PageWrapper = styled.div`
   min-height: inherit;
   background-color: var(--color-blue-01);
+  display: flex;
 `

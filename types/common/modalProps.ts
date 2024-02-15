@@ -1,6 +1,7 @@
+import { ReactNode } from "react"
+
 import { IGameResult } from "@/types/common/gameProps"
 import { IRecordItem } from "@/types/recordItem"
-import { ReactNode } from "react"
 
 type ModalContextProps = {
   isOpen?: boolean

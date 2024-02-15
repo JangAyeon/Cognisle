@@ -1,33 +1,45 @@
-import { ILand } from "@/types/categoryTabs"
 import styled from "@emotion/styled"
-import Image from "next/image"
+import { useEffect } from "react"
+import "swiper/css"
+import { Swiper, SwiperSlide } from "swiper/react"
 
-interface ILandItem {
-  list: ILand[]
-  land: number
-  setLand: (id: ILand["id"]) => void
-}
+import Slide from "@/components/atoms/slide"
 
-const LandItem = ({ list, land, setLand }: ILandItem) => {
-  console.log(list)
+import useSwiper from "@/hooks/useSwiper"
+
+import { ItemIdProps } from "@/types/common/islandProps"
+
+const LandItem = ({ list }: { list: ItemIdProps[] }) => {
+  const { swiperSetting, currentSlide } = useSwiper()
+
+  useEffect(() => {
+    console.log("land item", list)
+  }, [list])
+
   return (
-    <Wrapper>
-      {list.map(({ thumbImgSrc, title, id }) => (
-        <div onClick={() => setLand(id)}>
-          <Image src={thumbImgSrc} alt={title} width={112} height={112} />
-        </div>
-      ))}
-    </Wrapper>
+    <SliderWrapper>
+      <Swiper {...swiperSetting}>
+        {list.map((id: ItemIdProps, idx: number) => (
+          <SwiperSlide key={idx}>
+            <Slide id={id} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </SliderWrapper>
   )
 }
 
 export default LandItem
 
-const Wrapper = styled.div`
-  height: 16.8rem;
+export const SliderWrapper = styled.div`
   background-color: var(--color-yellow-01);
+  height: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   align-items: center;
+  .swiper-wrapper {
+    .swiper-slide {
+      width: auto !important;
+      margin-left: 2.7rem;
+    }
+  }
 `

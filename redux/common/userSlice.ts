@@ -1,6 +1,8 @@
-import { AppState } from "@/redux/store/store"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+
 import { IUserInfo } from "@/types/common/authProps"
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+
+import { AppState } from "@/redux/store/store"
 
 const initialState: { userInfo: IUserInfo } = {
   userInfo: {

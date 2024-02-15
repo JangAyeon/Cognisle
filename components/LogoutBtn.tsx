@@ -1,7 +1,9 @@
-import { authApi } from "@/apis/authApi"
-import { removeUserInfo } from "@/utils/auth"
 import styled from "@emotion/styled"
 import { useRouter } from "next/router"
+
+import { authApi } from "@/apis/authApi"
+
+import { removeUserInfo } from "@/utils/auth"
 
 const LogoutBtn = () => {
   const router = useRouter()

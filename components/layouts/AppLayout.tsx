@@ -1,14 +1,19 @@
-import { authApi } from "@/apis/authApi"
-import BottomTab from "@/components/layouts/BottomTab"
-import Header from "@/components/layouts/Header"
-import useAuth from "@/hooks/useAuth"
-import { setUserInfo } from "@/utils/auth"
 import styled from "@emotion/styled"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import { ReactElement, useEffect } from "react"
+
+import BottomTab from "@/components/layouts/BottomTab"
+import Header from "@/components/layouts/Header"
+
 import needBottomTab from "@/constants/bottomTab"
 import needHeader from "@/constants/header"
+
+import useAuth from "@/hooks/useAuth"
+
+import { authApi } from "@/apis/authApi"
+
+import { setUserInfo } from "@/utils/auth"
 
 const AppLayout = ({ children }: { children: ReactElement }) => {
   const { pathname } = useRouter()

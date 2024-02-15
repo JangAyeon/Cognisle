@@ -1,6 +1,7 @@
+import styled from "@emotion/styled"
+
 import Triangle from "@/components/atoms/triangle/Triangle"
 import Text from "@/components/atoms/typo/Text"
-import styled from "@emotion/styled"
 
 interface IAuthTitle {
   text: "로그인" | "회원가입"

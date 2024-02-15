@@ -1,10 +1,12 @@
-import { AppState } from "@/redux/store/store"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+
 import { IIsland } from "@/types/common/islandProps"
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+
+import { AppState } from "@/redux/store/store"
 
 const initialState: { island: IIsland } = {
   island: {
-    background: 0,
+    landType: 0,
     items: {
       loc_0: {},
       loc_1: {},
@@ -40,30 +42,34 @@ const initialState: { island: IIsland } = {
       loc_23: {},
       loc_24: {},
     },
+    exist: [],
   },
 }
 export const islandSlice = createSlice({
   name: "island",
   initialState,
   reducers: {
-    setIslandBackground: (
-      state,
-      action: PayloadAction<IIsland["background"]>
-    ) => {
-      state.island.background = action.payload
+    setIslandType: (state, action: PayloadAction<IIsland["landType"]>) => {
+      state.island.landType = action.payload
     },
-    setIslandItems: (state, action: PayloadAction<IIsland["items"]>) => {
+    setIslandItemLoc: (state, action: PayloadAction<IIsland["items"]>) => {
       state.island.items = action.payload
+    },
+    setIslandItemExist: (state, action: PayloadAction<IIsland["exist"]>) => {
+      state.island.exist = action.payload
     },
   },
 })
 
-export const { setIslandItems, setIslandBackground } = islandSlice.actions
+export const { setIslandType, setIslandItemLoc, setIslandItemExist } =
+  islandSlice.actions
 
-export const selectIslandBackground = (state: AppState) =>
-  state.island.island.background
-export const selectIslandItems = (state: AppState) => state.island.island.items
+export const selectIslandType = (state: AppState) =>
+  state.island.island.landType
+export const selectIslandItemLoc = (state: AppState) =>
+  state.island.island.items
 export const selectIslandItem0 = (state: AppState) =>
   state.island.island.items.loc_0
-
+export const selectIslandItemExsit = (state: AppState) =>
+  state.island.island.exist
 export default islandSlice.reducer

@@ -1,18 +1,25 @@
-import recordApi from "@/apis/recordApi"
-import StatItem from "@/components/atoms/item/StatItem"
-import useUserProfile from "@/hooks/useUser"
-import { ItemExistProps } from "@/types/common/islandProps"
 import styled from "@emotion/styled"
 import { useEffect, useState } from "react"
+
+import StatItem from "@/components/atoms/item/StatItem"
+
+import { itemIdMax } from "@/constants/game"
+
+import useUserProfile from "@/hooks/useUser"
+
+import recordApi from "@/apis/recordApi"
+
+import { ItemExistProps } from "@/types/common/islandProps"
 
 const ItemStats = () => {
   const [itemExist, setItemExist] = useState<ItemExistProps | null>(null)
   const { userSbId } = useUserProfile()
 
   const getItemStatus = async () => {
-    console.log(userSbId)
+    // console.log(userSbId)
 
     const { data, error } = await recordApi.getItemStatus(userSbId)
+    console.log(data)
 
     if (!error) {
       setItemExist(data)
@@ -27,7 +34,7 @@ const ItemStats = () => {
   return (
     <ItemStatsWrapper>
       {itemExist &&
-        [...Array(24)].map((v, idx) => (
+        [...Array(itemIdMax)].map((v, idx) => (
           <StatItem
             name="아이템 이름"
             imgSrc={`/assets/${

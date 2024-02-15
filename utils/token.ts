@@ -1,4 +1,4 @@
-import { getCookie, setCookie, removeCookie } from "@/utils/cookie"
+import { getCookie, removeCookie, setCookie } from "@/utils/cookie"
 
 export const getRefreshToken = () => {
   return getCookie("refreshToken")

@@ -3,13 +3,13 @@
   "singleQuote": false,
   "tabWidth": 2,
   "useTabs": false,
+  "trailingComma": "es5",
   "importOrder": [
     "^@/components/(.*)$",
     "^@/constants/(.*)$",
     "^@/hooks/(.*)$",
-    "^@/interfaces/(.*)$",
-    "^@/lib/(.*)$",
-    "^@/mocks/(.*)$",
+    "^@/apis/(.*)$",
+    "^@/types/(.*)$",
     "^@/pages/(.*)$",
     "^@/public/(.*)$",
     "^@/redux/(.*)$",
@@ -18,5 +18,6 @@
     "^[./]"
   ],
   "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true
+  "importOrderSortSpecifiers": true,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 }

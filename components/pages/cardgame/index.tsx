@@ -1,14 +1,17 @@
-import GameState from "@/components/molecules/GameState"
-import PlayBoard from "@/components/molecules/PlayBoard"
-import useGame from "@/hooks/useGame"
 import styled from "@emotion/styled"
 import { useEffect, useState } from "react"
 
-import recordApi from "@/apis/recordApi"
-import Loading from "./loading"
-import { GameLoadingProps, IGameResult } from "@/types/common/gameProps"
-import { supabase } from "@/apis/instance"
+import GameState from "@/components/molecules/GameState"
+import PlayBoard from "@/components/molecules/PlayBoard"
+
+import useGame from "@/hooks/useGame"
 import useUserProfile from "@/hooks/useUser"
+
+import recordApi from "@/apis/recordApi"
+
+import { GameLoadingProps, IGameResult } from "@/types/common/gameProps"
+
+import Loading from "./loading"
 
 const CardGameBoard = () => {
   const { userEmail, userSbId } = useUserProfile()
@@ -61,8 +64,8 @@ const CardGameBoard = () => {
             score === 0
               ? "start"
               : gameResult.items.length > 0
-              ? "result"
-              : "end"
+                ? "result"
+                : "end"
           }
           gameResult={gameResult}
         />

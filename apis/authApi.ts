@@ -1,9 +1,10 @@
-import { supabase, _axios, supabaseClient } from "./instance"
+import { Session } from "@supabase/auth-helpers-nextjs"
 import {
   SignInWithPasswordCredentials,
   SignUpWithPasswordCredentials,
 } from "@supabase/supabase-js"
-import { Session } from "@supabase/auth-helpers-nextjs"
+
+import { _axios, supabase, supabaseClient } from "./instance"
 
 const signup = (data: object) =>
   supabaseClient.auth.signUp(data as SignUpWithPasswordCredentials)

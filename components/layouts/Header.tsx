@@ -1,7 +1,8 @@
-import Logo from "@/components/atoms/logo/Logo"
-import Triangle from "@/components/atoms/triangle/Triangle"
 import styled from "@emotion/styled"
 import Link from "next/link"
+
+import Logo from "@/components/atoms/logo/Logo"
+import Triangle from "@/components/atoms/triangle/Triangle"
 
 const Header = () => {
   return (

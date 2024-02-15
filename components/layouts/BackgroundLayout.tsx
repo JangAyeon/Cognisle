@@ -1,5 +1,6 @@
-import { IBackgroundLayout } from "@/types/common/layoutProps"
 import styled from "@emotion/styled"
+
+import { IBackgroundLayout } from "@/types/common/layoutProps"
 
 const BackgroundLayout = ({
   height,

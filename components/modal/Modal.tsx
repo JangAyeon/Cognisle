@@ -1,4 +1,6 @@
-import { FADE_IN, FADE_OUT, POP_IN, POP_OUT } from "@/constants/animations"
+import { css } from "@emotion/react"
+import styled from "@emotion/styled"
+import Image from "next/image"
 import {
   ReactNode,
   createContext,
@@ -7,16 +9,17 @@ import {
   useRef,
   useState,
 } from "react"
-import Image from "next/image"
+
+import { FADE_IN, FADE_OUT, POP_IN, POP_OUT } from "@/constants/animations"
+
 import {
   ModalCloseProps,
   ModalContentProps,
   ModalContextProps,
   ModalRootProps,
 } from "@/types/common/modalProps"
-import styled from "@emotion/styled"
+
 import Close from "@/public/assets/image/close.svg"
-import { css } from "@emotion/react"
 
 const ModalContext = createContext<ModalContextProps>({})
 const ModalRoot = ({

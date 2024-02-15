@@ -1,10 +1,12 @@
-import Modal from "@/components/modal/Modal"
 import styled from "@emotion/styled"
-import Text from "@/components/atoms/typo/Text"
 import Image from "next/image"
 
-import { GameResultModalProps } from "@/types/common/modalProps"
+import Text from "@/components/atoms/typo/Text"
+import Modal from "@/components/modal/Modal"
+
 import useUserProfile from "@/hooks/useUser"
+
+import { GameResultModalProps } from "@/types/common/modalProps"
 
 const GameResultModal = ({
   gameResult,

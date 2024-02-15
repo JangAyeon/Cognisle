@@ -1,9 +1,10 @@
+import styled from "@emotion/styled"
+
 import LogoutBtn from "@/components/LogoutBtn"
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
+import Logo from "@/components/atoms/logo/Logo"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import MenuButtons from "@/components/molecules/menuButtons"
-import styled from "@emotion/styled"
-import Logo from "@/components/atoms/logo/Logo"
 
 import useUserProfile from "@/hooks/useUser"
 

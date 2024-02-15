@@ -1,15 +1,22 @@
-import {
-  setIslandBackground as _setIslandBackground,
-  setIslandItems as _setIslandItems,
-} from "@/redux/common/islandSlice"
-import { store } from "@/redux/store/store"
 import { IIsland } from "@/types/common/islandProps"
 
-export const setIslandBackground = (id: IIsland["background"]) => {
-  store.dispatch(_setIslandBackground(id))
+import {
+  setIslandItemExist as _setIslandItemExist,
+  setIslandItemLoc as _setIslandItemLoc,
+  setIslandType as _setIslandType,
+} from "@/redux/common/islandSlice"
+import { store } from "@/redux/store/store"
+
+export const setIslandType = (id: IIsland["landType"]) => {
+  store.dispatch(_setIslandType(id))
 }
 
-export const setislandItems = (items: IIsland["items"]) => {
+export const setIslandItemLoc = (items: IIsland["items"]) => {
   // console.log("setislandItems", items)
-  store.dispatch(_setIslandItems(items))
+  store.dispatch(_setIslandItemLoc(items))
+}
+
+export const setIslandItemExist = (items: IIsland["exist"]) => {
+  // console.log("dispath", items)
+  store.dispatch(_setIslandItemExist(items))
 }

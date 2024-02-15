@@ -1,13 +1,14 @@
-import { makeInitalBoard, getComputedBoard } from "@/utils/gameBoard"
+import { useCallback, useEffect, useMemo, useState } from "react"
+
 import type {
   ICard,
-  TBoard,
   ICardData,
   IGameInfo,
   IOnClick,
+  TBoard,
 } from "@/types/common/gameProps"
 
-import { useCallback, useEffect, useMemo, useState } from "react"
+import { getComputedBoard, makeInitalBoard } from "@/utils/gameBoard"
 
 const useGame = () => {
   const [board, setBoard] = useState<TBoard>(makeInitalBoard())
@@ -160,8 +161,9 @@ const useGame = () => {
   )
 
   const onRestart = useCallback(() => {
-    setComputedBoardState((prev) =>
-      prev?.map((row) => row.map((cell) => ({ ...cell, state: "hidden" })))
+    setComputedBoardState(
+      (prev) =>
+        prev?.map((row) => row.map((cell) => ({ ...cell, state: "hidden" })))
     )
     setSelectedCards([])
   }, [computedBoardState])
