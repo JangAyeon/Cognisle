@@ -2,15 +2,15 @@ name: Compress images
 on:
   push:
     branches:
-      - main
+      - develop
 jobs:
   build:
     name: calibreapp/image-actions
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@master
+        uses: actions/checkout@develop
       - name: Compress Images
-        uses: calibreapp/image-actions@master
+        uses: calibreapp/image-actions@develop
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
