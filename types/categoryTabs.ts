@@ -1,4 +1,4 @@
-import { LandIdProps } from "@/types/common/islandProps"
+import { IIsland } from "@/types/common/islandProps"
 
 interface ICategory {
   id: number
@@ -7,7 +7,7 @@ interface ICategory {
 }
 
 interface ILand {
-  id: LandIdProps
+  id: IIsland["landType"]
   title: string
 
   thumbImgSrc: string

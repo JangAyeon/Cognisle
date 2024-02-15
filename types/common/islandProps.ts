@@ -1,47 +1,25 @@
 import unionTypeChecker from "@/utils/unionTypeChecker"
 
-type LandIdProps = 0 | 1 | 2
-
-type itemIdProps =
-  | 0
-  | 1
-  | 2
-  | 3
-  | 4
-  | 5
-  | 6
-  | 7
-  | 8
-  | 9
-  | 10
-  | 11
-  | 12
-  | 13
-  | 14
-  | 15
-  | 16
-  | 17
-  | 18
-  | 19
-  | 20
-  | 21
-  | 22
-  | 23
-  | 24
-type ItemExistProps = { [key: string]: boolean }
-type ItemLocationProps = { [key: string]: object | null }
-
-const itemIdArr = [
+const landItemIdArr = [
   0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
   22, 23, 24,
 ] as const
 
-type ItemIdProps = (typeof itemIdArr)[number]
-const isLandItemIdType = unionTypeChecker(...itemIdArr)
+type ItemIdProps = (typeof landItemIdArr)[number]
+const isLandItemIdType = unionTypeChecker(...landItemIdArr)
+
+type ItemExistKey = `exist_${ItemIdProps}`
+type ItemExistProps = {
+  [key in ItemExistKey]: boolean
+}
 
 const landTypeIdArr = [0, 1, 2] as const
 type TypeIdProps = (typeof landTypeIdArr)[number]
 const isLandTypeIdType = unionTypeChecker(...landTypeIdArr)
+type ItemLocationKey = `loc_${ItemIdProps}`
+type ItemLocationProps = {
+  [key in ItemLocationKey]: object | null
+}
 
 interface IIsland {
   landType: TypeIdProps
@@ -49,6 +27,6 @@ interface IIsland {
   exist: ItemIdProps | []
 }
 
-export type { IIsland, ItemExistProps, LandIdProps, itemIdProps }
+export type { IIsland, ItemExistProps, ItemExistKey }
 
 export { isLandItemIdType }

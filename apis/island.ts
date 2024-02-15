@@ -7,10 +7,11 @@ import recordApi from "@/apis/recordApi"
 
 import {
   IIsland,
+  ItemExistKey,
   isLandItemIdType,
-  itemIdProps,
 } from "@/types/common/islandProps"
 
+// item1부터 item24까지
 const itemLocation = [...Array(itemIdMax)]
   .map((v, idx) => `loc_${idx + 1}`)
   .join(",")
@@ -38,10 +39,9 @@ const getItemIds = async (userId: User["id"]) => {
   console.log(data)
   const result: Array<IIsland["exist"]> = []
   if (!error) {
-    for (let key in data) {
-      if (data[key]) {
+    for (const key in data) {
+      if (data[key as ItemExistKey]) {
         const value = Number(key.replace("exist_", ""))
-
         if (isLandItemIdType(value)) {
           result.push(value as IIsland["exist"])
         }

@@ -19,6 +19,7 @@ const getMyItem = (userId: User["id"]) =>
     .eq("userId", userId)
     .single<ItemExistProps>()
 
+// item1 ~ item24
 const itemExist = [...Array(itemIdMax)]
   .map((v, idx) => `exist_${idx + 1}`)
   .join(",")

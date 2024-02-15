@@ -1,9 +1,8 @@
-import { ILand } from "@/types/categoryTabs"
-import { LandIdProps } from "@/types/common/islandProps"
+import { IIsland } from "@/types/common/islandProps"
 import { IBackgroundLayout } from "@/types/common/layoutProps"
 
 type islandBackgroundProps = Record<
-  LandIdProps,
+  IIsland["landType"],
   {
     startColor: IBackgroundLayout["startColor"]
     endColor: IBackgroundLayout["endColor"]
