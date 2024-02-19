@@ -9,6 +9,8 @@ import { BACKGROUND_COLOR } from "@/constants/island"
 import useIsland from "@/hooks/useIsland"
 import useUserProfile from "@/hooks/useUser"
 
+import AlphaE from "@/public/assets/items/alphaE.svg"
+
 import { getItemExist, getItemsLoc, getType } from "@/utils/island"
 
 const Myland = () => {

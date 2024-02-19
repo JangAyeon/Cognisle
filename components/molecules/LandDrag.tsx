@@ -14,6 +14,8 @@ import {
 
 import DragItem from "@/pages/drag/draggableItem"
 
+import AlphaE from "@/public/assets/items/alphaE.svg"
+
 import DraggableContext from "@/utils/draggableContext"
 
 const LandContent = () => {
@@ -33,7 +35,7 @@ const LandContent = () => {
         }
       }
 
-      // console.log("data", data)
+      console.log("data", data)
       setItems(data)
     }
   }, [islandItemExist.length])

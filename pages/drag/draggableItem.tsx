@@ -26,6 +26,7 @@ type DraggableItem = LocationProps & {
 }
 
 const DragItem = ({ id, x, y, z, child }: DraggableItem) => {
+  console.log("dragItem", id)
   const { islandItemLoc } = useIsland()
   const { zIndex, setZIndex }: DraggableContextInterface =
     useContext(DraggableContext)

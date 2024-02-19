@@ -7,12 +7,15 @@ import {
 } from "@/types/common/islandProps"
 import { IBackgroundLayout } from "@/types/common/layoutProps"
 
+import Pen from "@/public/assets/items/Pen.svg"
+import AlphaE from "@/public/assets/items/alphaE.svg"
 import CleanDay from "@/public/assets/items/cleanDay.svg"
 import CleanNight from "@/public/assets/items/cleanNight.svg"
 import Cloudy from "@/public/assets/items/cloudy.svg"
 import CloudyDay from "@/public/assets/items/cloudyDay.svg"
 import CloudyNight from "@/public/assets/items/cloudyNight.svg"
 import Dark from "@/public/assets/items/dark.svg"
+import EwhaDiary from "@/public/assets/items/ewhaDiary.svg"
 import HeavyRain from "@/public/assets/items/heavyRain.svg"
 import Rain from "@/public/assets/items/rain.svg"
 import RainSnow from "@/public/assets/items/rainSnow.svg"
@@ -84,7 +87,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "cleanDay",
     thumbImgSrc: "/assets/items/cleanDay.svg",
     mainImgSrc: "/assets/items/cleanDay.svg",
-    svg: <CleanDay />,
+    svg: <AlphaE width="20" height="20" />,
     ...ITEM_SIZE,
   },
   1: {
@@ -100,7 +103,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "cleanNight",
     thumbImgSrc: "/assets/items/cleanNight.svg",
     mainImgSrc: "/assets/items/cleanNight.svg",
-    svg: <Cloudy />,
+    svg: <EwhaDiary width="60" height="60" />,
     ...ITEM_SIZE,
   },
   3: {
@@ -116,7 +119,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "cloudyDay",
     thumbImgSrc: "/assets/items/cloudyDay.svg",
     mainImgSrc: "/assets/items/cloudyDay.svg",
-    svg: <CloudyNight />,
+    svg: <AlphaE width="60" height="60" />,
     ...ITEM_SIZE,
   },
   5: {
@@ -197,7 +200,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "cloudyDay",
     thumbImgSrc: "/assets/items/cloudyDay.svg",
     mainImgSrc: "/assets/items/cloudyDay.svg",
-    svg: <CleanDay />,
+    svg: <Cloudy />,
     ...ITEM_SIZE,
   },
   15: {

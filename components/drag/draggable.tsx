@@ -5,6 +5,9 @@ import Draggable, {
   DraggableEventHandler,
 } from "react-draggable"
 
+import AlphaE from "@/public/assets/items/alphaE.svg"
+import CleanDay from "@/public/assets/items/cleanDay.svg"
+
 import DraggableContext, {
   DraggableContextInterface,
 } from "@/utils/draggableContext"
@@ -40,15 +43,17 @@ const DragItem = ({ child }: { child: JSX.Element }) => {
   }
 
   return (
-    <Draggable
-      axis="both"
-      defaultPosition={state}
-      onStart={onStart}
-      onDrag={(e, data) => trackPos(data)}
-      onStop={onStop}
-    >
-      <ItemContainer zIndex={state.zIndex}>{child}</ItemContainer>
-    </Draggable>
+    <>
+      <Draggable
+        axis="both"
+        defaultPosition={state}
+        onStart={onStart}
+        onDrag={(e, data) => trackPos(data)}
+        onStop={onStop}
+      >
+        <ItemContainer zIndex={state.zIndex}>{child}</ItemContainer>
+      </Draggable>
+    </>
   )
 }
 
