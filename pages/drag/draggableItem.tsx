@@ -5,42 +5,52 @@ import Draggable, {
   DraggableEventHandler,
 } from "react-draggable"
 
+import { ItemIdProps } from "@/types/common/islandProps"
+
 import DraggableContext, {
   DraggableContextInterface,
 } from "@/utils/draggableContext"
 
 interface DraggableItem {
+  id: ItemIdProps
   x: number
   y: number
-  zIndex: number
+  z: number
   active: boolean
 }
 
 const DragItem = ({
-  xPos,
-  yPos,
+  id,
+  x,
+  y,
+  z,
   child,
-}: {
-  xPos: DraggableItem["x"]
-  yPos: DraggableItem["y"]
+}: DraggableItem & {
   child: JSX.Element
 }) => {
   const { zIndex, setZIndex }: DraggableContextInterface =
     useContext(DraggableContext)
 
   const [state, setState] = useState<DraggableItem>({
-    x: xPos,
-    y: yPos,
-    zIndex: zIndex,
+    id: id,
+    x: x,
+    y: y,
+    z: z,
     active: false,
   })
-  const trackPos = (data: DraggableData) => {
-    // console.log(data.x, data.y, state.active, state.zIndex)
-    setState({ x: data.x, y: data.y, active: true, zIndex: state.zIndex })
+  const trackPos = (id: DraggableItem["id"], data: DraggableData) => {
+    console.log(data.x, data.y, state.active, state.z)
+    setState({
+      id: id,
+      x: data.x,
+      y: data.y,
+      active: true,
+      z: state.z,
+    })
   }
   const onStart: DraggableEventHandler | undefined = () => {
-    setState({ ...state, zIndex: index + 1, active: true })
-    setIndex(index + 1)
+    setState({ ...state, z: zIndex + 1, active: true })
+    setZIndex(zIndex + 1)
   }
 
   const onStop = () => {
@@ -51,12 +61,11 @@ const DragItem = ({
     <Draggable
       axis="both"
       defaultPosition={state}
-      bounds="parent"
       onStart={onStart}
-      onDrag={(e, data) => trackPos(data)}
+      onDrag={(e, data) => trackPos(id, data)}
       onStop={onStop}
     >
-      <ItemContainer zIndex={state.zIndex}>{child}</ItemContainer>
+      <ItemContainer zIndex={state.z}>{child}</ItemContainer>
     </Draggable>
   )
 }

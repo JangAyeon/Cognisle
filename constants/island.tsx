@@ -283,3 +283,4 @@ const ITEM_CHOICE: ILandItemChoice = {
 }
 
 export { BACKGROUND_COLOR, LAND_CHOICE, ITEM_CHOICE }
+export type { ILandItem }

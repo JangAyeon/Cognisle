@@ -17,8 +17,14 @@ const landTypeIdArr = [0, 1, 2] as const
 type TypeIdProps = (typeof landTypeIdArr)[number]
 const isLandTypeIdType = unionTypeChecker(...landTypeIdArr)
 type ItemLocationKey = `loc_${ItemIdProps}`
-type ItemLocationProps = {
-  [key in ItemLocationKey]: object | null
+type LocationProps = {
+  id: ItemIdProps
+  x: number
+  y: number
+  z: number
+}
+export type ItemLocationProps = {
+  [key in ItemLocationKey]: LocationProps | null
 }
 
 const landTypeTitleArr = ["morning", "evening", "night"] as const
@@ -37,6 +43,7 @@ export type {
   ItemExistKey,
   TypeTitleProps,
   ItemIdProps,
+  LocationProps,
 }
 
 export { isLandItemIdType }

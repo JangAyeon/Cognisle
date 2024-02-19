@@ -43,7 +43,6 @@ const DragItem = ({ child }: { child: JSX.Element }) => {
     <Draggable
       axis="both"
       defaultPosition={state}
-      bounds="parent"
       onStart={onStart}
       onDrag={(e, data) => trackPos(data)}
       onStop={onStop}
