@@ -5,29 +5,28 @@ import Draggable, {
   DraggableEventHandler,
 } from "react-draggable"
 
-import { ItemIdProps } from "@/types/common/islandProps"
+import { ILandItem } from "@/constants/island"
+
+import useIsland from "@/hooks/useIsland"
+
+import {
+  ItemIdProps,
+  ItemLocationProps,
+  LocationProps,
+} from "@/types/common/islandProps"
 
 import DraggableContext, {
   DraggableContextInterface,
 } from "@/utils/draggableContext"
+import { setIslandItemLoc } from "@/utils/island"
 
-interface DraggableItem {
-  id: ItemIdProps
-  x: number
-  y: number
-  z: number
+type DraggableItem = LocationProps & {
+  child?: ILandItem["svg"]
   active: boolean
 }
 
-const DragItem = ({
-  id,
-  x,
-  y,
-  z,
-  child,
-}: DraggableItem & {
-  child: JSX.Element
-}) => {
+const DragItem = ({ id, x, y, z, child }: DraggableItem) => {
+  const { islandItemLoc } = useIsland()
   const { zIndex, setZIndex }: DraggableContextInterface =
     useContext(DraggableContext)
 
@@ -52,9 +51,15 @@ const DragItem = ({
     setZIndex(zIndex + 1)
   }
 
+  const updateLocation = (item: DraggableItem) => {
+    const data = { x: item.x, y: item.y, z: item.z, id: item.id }
+    console.log("update", { ...islandItemLoc, [`loc_${data.id}`]: data })
+    setIslandItemLoc({ ...islandItemLoc, [`loc_${data.id}`]: data })
+  }
+
   const onStop = () => {
     setState({ ...state, active: false })
-    console.log("onStop", state)
+    updateLocation(state)
   }
 
   return (
