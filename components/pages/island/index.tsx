@@ -123,7 +123,7 @@ const Island = () => {
                 setLand={setIslandType}
               />
             ) : (
-              islandItemExist && <LandItem list={islandItemExist} />
+              islandItemExist.length && <LandItem list={islandItemExist} />
             )}
           </LandSelectWrapper>
         </EditWrapper>
