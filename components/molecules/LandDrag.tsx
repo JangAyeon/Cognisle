@@ -59,10 +59,6 @@ const LandContent = () => {
               active={false}
             />
           ))}
-
-        {/*{items.map((item, idx) => (
-            <DragItem key={idx} child={item.svg} xPos={item.x} yPos={item.y} />
-          ))}*/}
       </DraggableContext.Provider>
     </>
   )
