@@ -9,7 +9,7 @@ import useUserProfile from "@/hooks/useUser"
 
 import recordApi from "@/apis/recordApi"
 
-import { ItemExistProps } from "@/types/common/islandProps"
+import { ItemExistKey, ItemExistProps } from "@/types/common/islandProps"
 
 const ItemStats = () => {
   const [itemExist, setItemExist] = useState<ItemExistProps | null>(null)
@@ -38,9 +38,9 @@ const ItemStats = () => {
           <StatItem
             name="아이템 이름"
             imgSrc={`/assets/${
-              itemExist[`exist_${idx}` as string] ? "yellow" : "grey"
+              itemExist[`exist_${idx}` as ItemExistKey] ? "yellow" : "grey"
             }/circle.svg`}
-            status={itemExist[`exist_${idx}`]}
+            status={itemExist[`exist_${idx}` as ItemExistKey]}
             key={idx}
             content={idx}
           />

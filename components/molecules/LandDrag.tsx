@@ -56,6 +56,7 @@ const LandContent = () => {
               x={item.x}
               y={item.y}
               z={item.z}
+              active={false}
             />
           ))}
 
