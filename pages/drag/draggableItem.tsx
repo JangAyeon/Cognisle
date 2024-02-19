@@ -39,7 +39,6 @@ const DragItem = ({
     active: false,
   })
   const trackPos = (id: DraggableItem["id"], data: DraggableData) => {
-    console.log(data.x, data.y, state.active, state.z)
     setState({
       id: id,
       x: data.x,
@@ -55,6 +54,7 @@ const DragItem = ({
 
   const onStop = () => {
     setState({ ...state, active: false })
+    console.log("onStop", state)
   }
 
   return (

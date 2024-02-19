@@ -21,11 +21,11 @@ const LandContent = () => {
   const [zIndex, setZIndex] = useState(3)
   const [items, setItems] = useState<LocationProps[]>([])
 
-  console.log("land content", items)
+  // console.log("land content", items)
 
   useEffect(() => {
     if (islandItemExist.length) {
-      console.log(items, islandItemExist, islandItemLoc)
+      // console.log(items, islandItemExist, islandItemLoc)
       const data: LocationProps[] = []
       for (let item of islandItemExist) {
         if (islandItemLoc[`loc_${item}`]) {
@@ -33,7 +33,7 @@ const LandContent = () => {
         }
       }
 
-      console.log("data", data)
+      // console.log("data", data)
       setItems(data)
     }
   }, [islandItemExist.length])

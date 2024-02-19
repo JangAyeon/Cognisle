@@ -11,11 +11,11 @@ import { ItemIdProps } from "@/types/common/islandProps"
 
 const LandItem = ({ list }: { list: ItemIdProps[] }) => {
   const { swiperSetting, currentSlide } = useSwiper()
-
+  /*
   useEffect(() => {
     console.log("land item", list)
   }, [list])
-
+*/
   return (
     <SliderWrapper>
       <Swiper {...swiperSetting}>

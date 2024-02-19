@@ -57,10 +57,11 @@ const Island = () => {
   }
   const [category, setCategory] = useState<ICategory["id"]>(0)
 
+  /*
   useEffect(() => {
     console.log(islandType)
   }, [islandType])
-
+*/
   return (
     <>
       <LandControl
