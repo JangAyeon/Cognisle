@@ -12,18 +12,19 @@ import DraggableContext from "@/utils/draggableContext"
 const dragContainer = () => {
   const defaultItem = [<Bear />, <Btn />]
   const additionalItem = [<Rain />]
-  const [index, setIndex] = useState(3)
+    const [zIndex, setZIndex] = useState(3)
   const [Items, setItems] = useState(defaultItem)
 
   const ItemSelected = (item: JSX.Element) => {
     // console.log("ItemSelected")
     setItems([...Items, item])
   }
+
   return (
-    <DraggableContext.Provider value={{ index, setIndex }}>
+    <DraggableContext.Provider value={{ zIndex, setZIndex }}>
       <DragField>
         {Items.map((item, idx) => (
-          <DragItem key={idx} child={item} />
+          <DragItem key={idx} child={item} xPos={} yPos={}/>
         ))}
       </DragField>
       <ItemContainer>

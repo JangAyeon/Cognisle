@@ -1,13 +1,13 @@
 import { createContext } from "react"
 
 interface DraggableContextInterface {
-  index: number
-  setIndex: (index: number) => void
+  zIndex: number
+  setZIndex: (zIndex: number) => void
 }
 
 const initialState: DraggableContextInterface = {
-  index: 3,
-  setIndex: (index: number) => {},
+  zIndex: 3,
+  setZIndex: (index: number) => {},
 }
 
 const DraggableContext = createContext(initialState)

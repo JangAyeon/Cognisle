@@ -16,21 +16,13 @@ interface DraggableItem {
   active: boolean
 }
 
-const DragItem = ({
-  xPos,
-  yPos,
-  child,
-}: {
-  xPos: DraggableItem["x"]
-  yPos: DraggableItem["y"]
-  child: JSX.Element
-}) => {
+const DragItem = ({ child }: { child: JSX.Element }) => {
   const { zIndex, setZIndex }: DraggableContextInterface =
     useContext(DraggableContext)
 
   const [state, setState] = useState<DraggableItem>({
-    x: xPos,
-    y: yPos,
+    x: 0,
+    y: 0,
     zIndex: zIndex,
     active: false,
   })
@@ -39,8 +31,8 @@ const DragItem = ({
     setState({ x: data.x, y: data.y, active: true, zIndex: state.zIndex })
   }
   const onStart: DraggableEventHandler | undefined = () => {
-    setState({ ...state, zIndex: index + 1, active: true })
-    setIndex(index + 1)
+    setState({ ...state, zIndex: zIndex + 1, active: true })
+    setZIndex(zIndex + 1)
   }
 
   const onStop = () => {
