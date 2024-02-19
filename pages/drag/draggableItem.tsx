@@ -23,10 +23,11 @@ import { setIslandItemLoc } from "@/utils/island"
 type DraggableItem = LocationProps & {
   child?: ILandItem["svg"]
   active: boolean
+  isOwner?: boolean
 }
 
-const DragItem = ({ id, x, y, z, child }: DraggableItem) => {
-  console.log("dragItem", id)
+const DragItem = ({ isOwner, id, x, y, z, child }: DraggableItem) => {
+  console.log("dragItem", id, isOwner)
   const { islandItemLoc } = useIsland()
   const { zIndex, setZIndex }: DraggableContextInterface =
     useContext(DraggableContext)
@@ -70,6 +71,7 @@ const DragItem = ({ id, x, y, z, child }: DraggableItem) => {
       onStart={onStart}
       onDrag={(e, data) => trackPos(id, data)}
       onStop={onStop}
+      disabled={!isOwner}
     >
       <ItemContainer zIndex={state.z}>{child}</ItemContainer>
     </Draggable>

@@ -7,6 +7,7 @@ import { AppState } from "@/redux/store/store"
 const initialState: { island: IIsland } = {
   island: {
     landType: 0,
+    isEdit: false,
     items: {
       loc_0: null,
       loc_1: null,
@@ -54,19 +55,28 @@ export const islandSlice = createSlice({
     setIslandItemLoc: (state, action: PayloadAction<IIsland["items"]>) => {
       state.island.items = action.payload
     },
+    setIslandIsEdit: (state, action: PayloadAction<IIsland["isEdit"]>) => {
+      state.island.isEdit = action.payload
+    },
     setIslandItemExist: (state, action: PayloadAction<IIsland["exist"]>) => {
       state.island.exist = action.payload
     },
   },
 })
 
-export const { setIslandType, setIslandItemLoc, setIslandItemExist } =
-  islandSlice.actions
+export const {
+  setIslandType,
+  setIslandItemLoc,
+  setIslandItemExist,
+  setIslandIsEdit,
+} = islandSlice.actions
 
 export const selectIslandType = (state: AppState) =>
   state.island.island.landType
 export const selectIslandItemLoc = (state: AppState) =>
   state.island.island.items
+export const selectIslandIsEdit = (state: AppState) =>
+  state.island.island.isEdit
 export const selectIslandItem0 = (state: AppState) =>
   state.island.island.items.loc_0
 export const selectIslandItemExsit = (state: AppState) =>

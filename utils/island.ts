@@ -5,6 +5,7 @@ import islandApi from "@/apis/island"
 import { IIsland } from "@/types/common/islandProps"
 
 import {
+  setIslandIsEdit as _setIslandIsEdit,
   setIslandItemExist as _setIslandItemExist,
   setIslandItemLoc as _setIslandItemLoc,
   setIslandType as _setIslandType,
@@ -23,6 +24,10 @@ export const setIslandItemLoc = (items: IIsland["items"]) => {
 export const setIslandItemExist = (items: IIsland["exist"]) => {
   // console.log("dispath", items)
   store.dispatch(_setIslandItemExist(items))
+}
+
+export const setIslandIsEdit = (state: IIsland["isEdit"]) => {
+  store.dispatch(_setIslandIsEdit(state))
 }
 
 export const getType = async (userSbId: User["id"]) => {

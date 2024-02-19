@@ -14,11 +14,9 @@ import {
 
 import DragItem from "@/pages/drag/draggableItem"
 
-import AlphaE from "@/public/assets/items/alphaE.svg"
-
 import DraggableContext from "@/utils/draggableContext"
 
-const LandContent = () => {
+const LandContent = ({ isOwner }: { isOwner: boolean }) => {
   const { islandType, islandItemLoc, islandItemExist } = useIsland()
   const [zIndex, setZIndex] = useState(3)
   const [items, setItems] = useState<LocationProps[]>([])
@@ -52,6 +50,7 @@ const LandContent = () => {
         {items.length &&
           items.map((item: LocationProps) => (
             <DragItem
+              isOwner={isOwner}
               key={item.id}
               id={item.id}
               child={ITEM_CHOICE[`${item.id}`].svg}

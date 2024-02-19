@@ -5,11 +5,13 @@ import { Swiper, SwiperSlide } from "swiper/react"
 
 import Slide from "@/components/atoms/slide"
 
+import useIsland from "@/hooks/useIsland"
 import useSwiper from "@/hooks/useSwiper"
 
 import { ItemIdProps } from "@/types/common/islandProps"
 
-const LandItem = ({ list }: { list: ItemIdProps[] }) => {
+const LandItem = () => {
+  const { islandItemExist } = useIsland()
   const { swiperSetting, currentSlide } = useSwiper()
   /*
   useEffect(() => {
@@ -19,7 +21,7 @@ const LandItem = ({ list }: { list: ItemIdProps[] }) => {
   return (
     <SliderWrapper>
       <Swiper {...swiperSetting}>
-        {list.map((id: ItemIdProps, idx: number) => (
+        {islandItemExist.map((id: ItemIdProps, idx: number) => (
           <SwiperSlide key={idx}>
             <Slide id={id} />
           </SwiperSlide>

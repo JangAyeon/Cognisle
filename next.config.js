@@ -24,12 +24,7 @@ const nextConfig = {
         destination: "/auth?type=login",
         permanent: false,
       },
-      {
-        source: "/island",
-        missing: [{ type: "query", key: "mode" }],
-        destination: "/island?mode=view",
-        permanent: false,
-      },
+
     ]
   },
   webpack: (config) => {

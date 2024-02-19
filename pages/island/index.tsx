@@ -9,17 +9,16 @@ import { BACKGROUND_COLOR } from "@/constants/island"
 import useIsland from "@/hooks/useIsland"
 import useUserProfile from "@/hooks/useUser"
 
-import AlphaE from "@/public/assets/items/alphaE.svg"
-
 import { getItemExist, getItemsLoc, getType } from "@/utils/island"
 
 const Myland = () => {
   const { userSbId } = useUserProfile()
-  const { islandType, islandItemLoc } = useIsland()
+  const { islandType } = useIsland()
 
   useEffect(() => {
     if (userSbId) {
       // 현재 서버에 저장된 섬타입, 아이템 위치, 아이템 소유목록 dispatch
+      console.log("현재 저장된 섬 정보 불러오기")
       getType(userSbId)
       getItemsLoc(userSbId)
       getItemExist(userSbId)

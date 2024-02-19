@@ -34,6 +34,7 @@ const isLandTypeTitleType = unionTypeChecker(...landTypeTitleArr)
 interface IIsland {
   landType: TypeIdProps
   items: ItemLocationProps
+  isEdit: boolean
   exist: ItemIdProps[]
 }
 
