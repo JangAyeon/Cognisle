@@ -7,13 +7,11 @@ import {
 } from "@/types/common/islandProps"
 import { IBackgroundLayout } from "@/types/common/layoutProps"
 
-import Pen from "@/public/assets/items/Pen.svg"
 import AlphaE from "@/public/assets/items/alphaE.svg"
 import CleanDay from "@/public/assets/items/cleanDay.svg"
 import CleanNight from "@/public/assets/items/cleanNight.svg"
 import Cloudy from "@/public/assets/items/cloudy.svg"
 import CloudyDay from "@/public/assets/items/cloudyDay.svg"
-import CloudyNight from "@/public/assets/items/cloudyNight.svg"
 import Dark from "@/public/assets/items/dark.svg"
 import EwhaDiary from "@/public/assets/items/ewhaDiary.svg"
 import HeavyRain from "@/public/assets/items/heavyRain.svg"

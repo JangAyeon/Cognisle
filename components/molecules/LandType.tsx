@@ -3,10 +3,6 @@ import Image from "next/image"
 
 import { LAND_CHOICE } from "@/constants/island"
 
-import useIsland from "@/hooks/useIsland"
-
-import { ILand } from "@/types/categoryTabs"
-
 import { setIslandType } from "@/utils/island"
 
 const LandType = () => {

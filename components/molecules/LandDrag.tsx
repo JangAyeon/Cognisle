@@ -6,11 +6,7 @@ import { ITEM_CHOICE, LAND_CHOICE } from "@/constants/island"
 
 import useIsland from "@/hooks/useIsland"
 
-import {
-  ItemIdProps,
-  ItemLocationProps,
-  LocationProps,
-} from "@/types/common/islandProps"
+import { LocationProps } from "@/types/common/islandProps"
 
 import DragItem from "@/pages/drag/draggableItem"
 
@@ -41,12 +37,13 @@ const LandContent = ({ isOwner }: { isOwner: boolean }) => {
   return (
     <>
       <DraggableContext.Provider value={{ zIndex, setZIndex }}>
-        <Image
-          src={LAND_CHOICE[islandType].mainImgSrc}
-          alt={LAND_CHOICE[islandType].title}
-          width={430}
-          height={430}
-        />
+        <IslandContainer>
+          <Image
+            src={LAND_CHOICE[islandType].mainImgSrc}
+            alt={LAND_CHOICE[islandType].title}
+            fill
+          />
+        </IslandContainer>
 
         {items.length &&
           items.map((item: LocationProps) => (
@@ -71,4 +68,10 @@ export default LandContent
 const DragField = styled.div`
   width: 100%;
   height: 100%;
+`
+
+const IslandContainer = styled.div`
+  width: 43rem;
+  height: 70%;
+  position: relative;
 `
