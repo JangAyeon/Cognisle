@@ -24,7 +24,8 @@ const LandContent = ({ isOwner }: { isOwner: boolean }) => {
   // console.log("land content", items)
 
   useEffect(() => {
-    if (islandItemExist.length) {
+    // console.log("itemExist", islandItemExist)
+    if (islandItemExist.length > 0) {
       // console.log(items, islandItemExist, islandItemLoc)
       const data: LocationProps[] = []
       for (let item of islandItemExist) {
@@ -36,7 +37,7 @@ const LandContent = ({ isOwner }: { isOwner: boolean }) => {
       console.log("data", data)
       setItems(data)
     }
-  }, [islandItemExist.length])
+  }, [islandItemExist])
   return (
     <>
       <DraggableContext.Provider value={{ zIndex, setZIndex }}>

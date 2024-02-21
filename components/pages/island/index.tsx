@@ -30,10 +30,8 @@ const Island = () => {
 
   const { userSbId } = useUserProfile()
   useEffect(() => {
-    if (id) {
-      if (id !== userSbId) {
-        setIsOwner(false)
-      }
+    if (id !== userSbId) {
+      setIsOwner(false)
     }
   }, [id, userSbId])
 
