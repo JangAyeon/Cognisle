@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import LandCategory from "@/components/molecules/LandCategory"
 import LandControl from "@/components/molecules/LandControl"
 import LandContent from "@/components/molecules/LandDrag"
+import LandEdit from "@/components/molecules/LandEdit"
 import LandItem from "@/components/molecules/LandItem"
 import LandType from "@/components/molecules/LandType"
 
@@ -12,8 +13,6 @@ import useIsland from "@/hooks/useIsland"
 import useUserProfile from "@/hooks/useUser"
 
 import { ICategory } from "@/types/categoryTabs"
-
-import { setIslandIsEdit } from "@/utils/island"
 
 const CATEGORY_MENU: ICategory[] = [
   { id: 0, title: "배경", value: "background" },
@@ -30,7 +29,8 @@ const Island = () => {
 
   const { userSbId } = useUserProfile()
   useEffect(() => {
-    if (id !== userSbId) {
+    if (id && userSbId && id !== userSbId) {
+      console.log("user is no island owner")
       setIsOwner(false)
     }
   }, [id, userSbId])
@@ -40,30 +40,15 @@ const Island = () => {
       <LandControl isOwner={isOwner} />
 
       <LandContent isOwner={isOwner} />
-      {islandIsEdit && (
-        <EditWrapper>
-          <LandCategory
-            list={CATEGORY_MENU}
-            category={category}
-            setCategory={setCategory}
-          />
-          <LandSelectWrapper>
-            {category === 0 ? <LandType /> : <LandItem />}
-          </LandSelectWrapper>
-        </EditWrapper>
+      {isOwner && islandIsEdit && (
+        <LandEdit
+          list={CATEGORY_MENU}
+          category={category}
+          setCategory={setCategory}
+        />
       )}
     </>
   )
 }
-
-const EditWrapper = styled.div`
-  width: 43rem;
-  position: fixed;
-  bottom: 7.2rem;
-`
-
-const LandSelectWrapper = styled.div`
-  height: 16.8rem;
-`
 
 export default Island
