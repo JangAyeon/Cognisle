@@ -1,6 +1,9 @@
+import { useState } from "react"
+
 import Logo from "@/components/atoms/logo/Logo"
 import LoginForm from "@/components/forms/LoginForm"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
+import AuthModal from "@/components/modal/AuthModal"
 import AuthTitle from "@/components/molecules/AuthTitle"
 
 const Login = () => {

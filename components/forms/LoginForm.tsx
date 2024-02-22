@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import TextInput from "@/components/atoms/input/TextInput"
+import AuthModal from "@/components/modal/AuthModal"
 
 import { useInput } from "@/hooks/useInput"
 
@@ -19,6 +20,12 @@ const TextInputStyles = {
 }
 
 const SignupForm = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleModalOpen = () => {
+    // console.log("open")
+    setIsModalOpen(true)
+  }
   const [email, onChangeEmail, setEmail] = useInput("")
   const [emailFlagCheck, setEmailFlagCheck] = useState(false)
   const LS_EMAIL = localStorage.getItem("LS_EMAIL")
@@ -56,6 +63,9 @@ const SignupForm = () => {
         alert("로그인에 성공함")
 
         router.reload() // middleware.ts 거쳐 가기 위함
+      } else {
+        // alert(error?.message)
+        handleModalOpen()
       }
     } catch (error) {
       alert(error)
@@ -72,6 +82,12 @@ const SignupForm = () => {
   return (
     <>
       <div>
+        {isModalOpen && (
+          <AuthModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
+        )}
         <form onSubmit={handleLogin}>
           <TextInput
             value={email}

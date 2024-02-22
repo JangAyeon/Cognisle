@@ -26,7 +26,7 @@ const ModalRoot = ({
   children,
   isOpen,
   closeOnOverlayClick,
-
+  backgroundColor,
   onClose,
 }: ModalRootProps) => {
   const overlayRef = useRef<HTMLDivElement>(null)
@@ -68,9 +68,18 @@ const ModalRoot = ({
   if (!isOpen) return null
   return (
     <ModalContext.Provider
-      value={{ isOpen, isOverlayClicked, onClose, setOverlayClicked }}
+      value={{
+        isOpen,
+        isOverlayClicked,
+        onClose,
+        setOverlayClicked,
+      }}
     >
-      <Container ref={overlayRef} isOverlayClicked={isOverlayClicked}>
+      <Container
+        ref={overlayRef}
+        isOverlayClicked={isOverlayClicked}
+        backgroundColor={backgroundColor}
+      >
         {children}
       </Container>
     </ModalContext.Provider>
@@ -106,13 +115,19 @@ const ModalContent = ({
   height,
   width,
   pointColor,
+  backgroundColor,
 }: ModalContentProps) => {
   const { isOverlayClicked } = useContext(ModalContext)
   if (isOverlayClicked) {
     return null
   }
   return (
-    <Content height={height} width={width} isOverlayClicked={isOverlayClicked}>
+    <Content
+      height={height}
+      width={width}
+      isOverlayClicked={isOverlayClicked}
+      backgroundColor={backgroundColor ? backgroundColor : "--color-yellow-01"}
+    >
       <Point pointColor={pointColor} />
       {children}
     </Content>
@@ -121,10 +136,13 @@ const ModalContent = ({
 
 type ModalPointStyle = Pick<ModalContentProps, "pointColor">
 
-type ModalInnerStyle = Pick<ModalContextProps, "isOverlayClicked">
+type ModalInnerStyle = Pick<
+  ModalContextProps,
+  "isOverlayClicked" | "backgroundColor"
+>
 
 type ModalContentStyle = ModalInnerStyle &
-  Pick<ModalContentProps, "width" | "height">
+  Pick<ModalContentProps, "width" | "height" | "backgroundColor">
 
 const ModalBody = styled.div`
   background-color: white;
@@ -147,7 +165,8 @@ const Container = styled.div<ModalInnerStyle>`
   left: 0;
   min-width: 100%;
   min-height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: ${({ backgroundColor }) =>
+    backgroundColor ? `${backgroundColor}` : `rgba(0, 0, 0, 0.7)`};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -164,7 +183,8 @@ const Content = styled.div<ModalContentStyle>`
   padding-top: 5rem;
   border-radius: 0 1.5rem 1.5rem 1.5rem;
   animation: ${POP_IN} 200ms;
-  background-color: var(--color-yellow-01);
+  background-color: ${({ backgroundColor }) =>
+    backgroundColor ? `var(${backgroundColor})` : `var(--color-yellow-01)`};
 
   width: ${({ width }) => `${width}rem`};
   height: ${({ height }) => `${height}rem`};
