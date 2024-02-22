@@ -15,9 +15,9 @@ export async function middleware(request: NextRequest) {
   const {
     data: { user },
   } = await supabase.auth.getUser()
-  const { pathname } = request.nextUrl
+  const { pathname, searchParams } = request.nextUrl
 
-  // console.log("pathname", pathname)
+  // console.log("user", user)
   // 회원가입/로그인 페이지는 이미 로그인된 유저라면 메인 페이지로 리다이렉트
   if (userAgent && !pathname.includes("favicon"))
     if (pathname === "/auth") {
@@ -26,6 +26,12 @@ export async function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL(`/`, request.url))
       }
       return NextResponse.next()
+    } else if (pathname === "/island") {
+      if (!searchParams.get("id") && user) {
+        return NextResponse.redirect(
+          new URL(`/island?id=${user.email}`, request.url)
+        )
+      }
     }
 
   if (!session) {

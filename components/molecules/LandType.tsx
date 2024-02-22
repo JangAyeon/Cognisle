@@ -1,20 +1,17 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
 
-import { ILand } from "@/types/categoryTabs"
+import { LAND_CHOICE } from "@/constants/island"
 
-interface ILandItem {
-  list: ILand[]
-  land: number
-  setLand: (id: ILand["id"]) => void
-}
+import { setIslandType } from "@/utils/island"
 
-const LandType = ({ list, land, setLand }: ILandItem) => {
-  // console.log(list)
+const LandType = () => {
+  // console.log(list)          list={LAND_CHOICE}
+
   return (
     <Wrapper>
-      {list.map(({ thumbImgSrc, title, id }) => (
-        <div onClick={() => setLand(id)}>
+      {LAND_CHOICE.map(({ thumbImgSrc, title, id }) => (
+        <div onClick={() => setIslandType(id)}>
           <Image src={thumbImgSrc} alt={title} width={112} height={112} />
         </div>
       ))}

@@ -1,9 +1,23 @@
+import { ReactElement } from "react"
+
 import {
   IIsland,
   ItemIdProps,
   TypeTitleProps,
 } from "@/types/common/islandProps"
 import { IBackgroundLayout } from "@/types/common/layoutProps"
+
+import AlphaE from "@/public/assets/items/alphaE.svg"
+import CleanDay from "@/public/assets/items/cleanDay.svg"
+import CleanNight from "@/public/assets/items/cleanNight.svg"
+import Cloudy from "@/public/assets/items/cloudy.svg"
+import CloudyDay from "@/public/assets/items/cloudyDay.svg"
+import Dark from "@/public/assets/items/dark.svg"
+import EwhaDiary from "@/public/assets/items/ewhaDiary.svg"
+import HeavyRain from "@/public/assets/items/heavyRain.svg"
+import Rain from "@/public/assets/items/rain.svg"
+import RainSnow from "@/public/assets/items/rainSnow.svg"
+import Snow from "@/public/assets/items/snow.svg"
 
 type landBackgroundProps = Record<
   IIsland["landType"],
@@ -27,6 +41,7 @@ interface ILandItem {
   mainImgSrc: string
   width: number
   height: number
+  svg: ReactElement
 }
 
 type ILandItemChoice = {
@@ -67,23 +82,26 @@ const ITEM_SIZE = {
 const ITEM_CHOICE: ILandItemChoice = {
   0: {
     id: 0,
-    title: "cleanDay",
-    thumbImgSrc: "/assets/items/cleanDay.svg",
-    mainImgSrc: "/assets/items/cleanDay.svg",
+    title: "AlphaE",
+    thumbImgSrc: "/assets/items/AlphaE.svg",
+    mainImgSrc: "/assets/items/AlphaE.svg",
+    svg: <AlphaE width="20" height="20" />,
     ...ITEM_SIZE,
   },
   1: {
     id: 1,
-    title: "cleanDay",
+    title: "CleanDay",
     thumbImgSrc: "/assets/items/cleanDay.svg",
     mainImgSrc: "/assets/items/cleanDay.svg",
+    svg: <CleanDay />,
     ...ITEM_SIZE,
   },
   2: {
     id: 2,
-    title: "cleanNight",
+    title: "CleanNight",
     thumbImgSrc: "/assets/items/cleanNight.svg",
     mainImgSrc: "/assets/items/cleanNight.svg",
+    svg: <CleanNight width="60" height="60" />,
     ...ITEM_SIZE,
   },
   3: {
@@ -91,34 +109,39 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "cloudy",
     thumbImgSrc: "/assets/items/cloudy.svg",
     mainImgSrc: "/assets/items/cloudy.svg",
+    svg: <Cloudy />,
     ...ITEM_SIZE,
   },
   4: {
     id: 4,
-    title: "cloudyDay",
+    title: "CloudyDay",
     thumbImgSrc: "/assets/items/cloudyDay.svg",
     mainImgSrc: "/assets/items/cloudyDay.svg",
+    svg: <CloudyDay width="60" height="60" />,
     ...ITEM_SIZE,
   },
   5: {
     id: 5,
-    title: "cloudyNigth",
-    thumbImgSrc: "/assets/items/cloudyNight.svg",
-    mainImgSrc: "/assets/items/cloudyNight.svg",
+    title: "Dark",
+    thumbImgSrc: "/assets/items/dark.svg",
+    mainImgSrc: "/assets/items/dark.svg",
+    svg: <Dark />,
     ...ITEM_SIZE,
   },
   6: {
     id: 6,
-    title: "dark",
-    thumbImgSrc: "/assets/items/dark.svg",
-    mainImgSrc: "/assets/items/dark.svg",
+    title: "EwhaDiary",
+    thumbImgSrc: "/assets/items/ewhaDiary.svg",
+    mainImgSrc: "/assets/items/ewhaDiary.svg",
+    svg: <EwhaDiary />,
     ...ITEM_SIZE,
   },
   7: {
     id: 7,
-    title: "heavyRain",
+    title: "HeavyRain",
     thumbImgSrc: "/assets/items/heavyRain.svg",
     mainImgSrc: "/assets/items/heavyRain.svg",
+    svg: <HeavyRain />,
     ...ITEM_SIZE,
   },
   8: {
@@ -126,20 +149,23 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "rain",
     thumbImgSrc: "/assets/items/rain.svg",
     mainImgSrc: "/assets/items/rain.svg",
+    svg: <Rain />,
     ...ITEM_SIZE,
   },
   9: {
     id: 9,
-    title: "rainSnow",
+    title: "RainSnow",
     thumbImgSrc: "/assets/items/rainSnow.svg",
     mainImgSrc: "/assets/items/rainSnow.svg",
+    svg: <RainSnow />,
     ...ITEM_SIZE,
   },
   10: {
     id: 10,
-    title: "snow",
+    title: "Snow",
     thumbImgSrc: "/assets/items/snow.svg",
     mainImgSrc: "/assets/items/snow.svg",
+    svg: <Snow />,
     ...ITEM_SIZE,
   },
   11: {
@@ -147,6 +173,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "cleanDay",
     thumbImgSrc: "/assets/items/cleanDay.svg",
     mainImgSrc: "/assets/items/cleanDay.svg",
+    svg: <CleanDay />,
     ...ITEM_SIZE,
   },
   12: {
@@ -154,6 +181,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "cleanNight",
     thumbImgSrc: "/assets/items/cleanNight.svg",
     mainImgSrc: "/assets/items/cleanNight.svg",
+    svg: <CleanDay />,
     ...ITEM_SIZE,
   },
   13: {
@@ -161,6 +189,8 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "cloudy",
     thumbImgSrc: "/assets/items/cloudy.svg",
     mainImgSrc: "/assets/items/cloudy.svg",
+
+    svg: <Cloudy />,
     ...ITEM_SIZE,
   },
   14: {
@@ -168,20 +198,23 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "cloudyDay",
     thumbImgSrc: "/assets/items/cloudyDay.svg",
     mainImgSrc: "/assets/items/cloudyDay.svg",
+    svg: <CloudyDay />,
     ...ITEM_SIZE,
   },
   15: {
     id: 15,
-    title: "cloudyNigth",
-    thumbImgSrc: "/assets/items/cloudyNight.svg",
-    mainImgSrc: "/assets/items/cloudyNight.svg",
+    title: "dark",
+    thumbImgSrc: "/assets/items/dark.svg",
+    mainImgSrc: "/assets/items/dark.svg",
+    svg: <Dark />,
     ...ITEM_SIZE,
   },
   16: {
     id: 16,
-    title: "dark",
-    thumbImgSrc: "/assets/items/dark.svg",
-    mainImgSrc: "/assets/items/dark.svg",
+    title: "Rain",
+    thumbImgSrc: "/assets/items/rain.svg",
+    mainImgSrc: "/assets/items/rain.svg",
+    svg: <Rain />,
     ...ITEM_SIZE,
   },
   17: {
@@ -189,6 +222,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "heavyRain",
     thumbImgSrc: "/assets/items/heavyRain.svg",
     mainImgSrc: "/assets/items/heavyRain.svg",
+    svg: <CleanDay />,
     ...ITEM_SIZE,
   },
   18: {
@@ -196,6 +230,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "rain",
     thumbImgSrc: "/assets/items/rain.svg",
     mainImgSrc: "/assets/items/rain.svg",
+    svg: <CleanDay />,
     ...ITEM_SIZE,
   },
   19: {
@@ -203,6 +238,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "rainSnow",
     thumbImgSrc: "/assets/items/rainSnow.svg",
     mainImgSrc: "/assets/items/rainSnow.svg",
+    svg: <CleanDay />,
     ...ITEM_SIZE,
   },
   20: {
@@ -210,6 +246,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "snow",
     thumbImgSrc: "/assets/items/snow.svg",
     mainImgSrc: "/assets/items/snow.svg",
+    svg: <CleanDay />,
     ...ITEM_SIZE,
   },
   21: {
@@ -217,6 +254,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "snow",
     thumbImgSrc: "/assets/items/snow.svg",
     mainImgSrc: "/assets/items/snow.svg",
+    svg: <CleanDay />,
     ...ITEM_SIZE,
   },
   22: {
@@ -224,13 +262,15 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "snow",
     thumbImgSrc: "/assets/items/snow.svg",
     mainImgSrc: "/assets/items/snow.svg",
+    svg: <CleanDay />,
     ...ITEM_SIZE,
   },
   23: {
     id: 21,
-    title: "snow",
-    thumbImgSrc: "/assets/items/snow.svg",
-    mainImgSrc: "/assets/items/snow.svg",
+    title: "CleanDay",
+    thumbImgSrc: "/assets/items/cleanDay.svg",
+    mainImgSrc: "/assets/items/cleanDay.svg",
+    svg: <CleanDay />,
     ...ITEM_SIZE,
   },
   24: {
@@ -238,8 +278,10 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "snow",
     thumbImgSrc: "/assets/items/snow.svg",
     mainImgSrc: "/assets/items/snow.svg",
+    svg: <Snow />,
     ...ITEM_SIZE,
   },
 }
 
 export { BACKGROUND_COLOR, LAND_CHOICE, ITEM_CHOICE }
+export type { ILandItem }

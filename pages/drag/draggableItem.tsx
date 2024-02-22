@@ -5,50 +5,78 @@ import Draggable, {
   DraggableEventHandler,
 } from "react-draggable"
 
+import { ILandItem } from "@/constants/island"
+
+import useIsland from "@/hooks/useIsland"
+
+import {
+  ItemIdProps,
+  ItemLocationProps,
+  LocationProps,
+} from "@/types/common/islandProps"
+
 import DraggableContext, {
   DraggableContextInterface,
 } from "@/utils/draggableContext"
+import { setIslandItemLoc } from "@/utils/island"
 
-interface DraggableItem {
-  x: number
-  y: number
-  zIndex: number
+type DraggableItem = LocationProps & {
+  child?: ILandItem["svg"]
   active: boolean
+  isOwner?: boolean
+  title: string
 }
 
-const DragItem = ({ child }: { child: JSX.Element }) => {
-  const { index, setIndex }: DraggableContextInterface =
+const DragItem = ({ isOwner, id, x, y, z, child, title }: DraggableItem) => {
+  console.log("dragItem", id, isOwner, title)
+  const { islandItemLoc, islandIsEdit } = useIsland()
+  const { zIndex, setZIndex }: DraggableContextInterface =
     useContext(DraggableContext)
 
   const [state, setState] = useState<DraggableItem>({
-    x: 0,
-    y: 0,
-    zIndex: index,
+    id: id,
+    x: x,
+    y: y,
+    z: z,
+    title: title,
     active: false,
   })
-  const trackPos = (data: DraggableData) => {
-    // console.log(data.x, data.y, state.active, state.zIndex)
-    setState({ x: data.x, y: data.y, active: true, zIndex: state.zIndex })
+  const trackPos = (id: DraggableItem["id"], data: DraggableData) => {
+    setState({
+      id: id,
+      x: data.x,
+      y: data.y,
+      active: true,
+      title: title,
+      z: state.z,
+    })
   }
   const onStart: DraggableEventHandler | undefined = () => {
-    setState({ ...state, zIndex: index + 1, active: true })
-    setIndex(index + 1)
+    setState({ ...state, z: zIndex + 1, active: true })
+    setZIndex(zIndex + 1)
+  }
+
+  const updateLocation = (item: DraggableItem) => {
+    const data = { x: item.x, y: item.y, z: item.z, id: item.id }
+    console.log("update", { ...islandItemLoc, [`loc_${data.id}`]: data })
+    setIslandItemLoc({ ...islandItemLoc, [`loc_${data.id}`]: data })
   }
 
   const onStop = () => {
     setState({ ...state, active: false })
+    updateLocation(state)
   }
 
   return (
     <Draggable
       axis="both"
       defaultPosition={state}
-      bounds="parent"
       onStart={onStart}
-      onDrag={(e, data) => trackPos(data)}
+      onDrag={(e, data) => trackPos(id, data)}
       onStop={onStop}
+      disabled={!isOwner || !islandIsEdit}
     >
-      <ItemContainer zIndex={state.zIndex}>{child}</ItemContainer>
+      <ItemContainer zIndex={state.z}>{child}</ItemContainer>
     </Draggable>
   )
 }

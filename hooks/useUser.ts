@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useSelector } from "react-redux"
 
 import {
@@ -14,7 +15,9 @@ export const useUserProfile = () => {
   const userName = useSelector(selectUserName)
   const userSbId = useSelector(selectUserSbId)
 
-  // console.log("useUserProfile", userDsId, userEmail, userName)
+  useEffect(() => {
+    // console.log("useUserProfile", userDsId, userEmail, userName, userSbId)
+  }, [userDsId, userEmail, userName, userSbId])
 
   return {
     userDsId,
