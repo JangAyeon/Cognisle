@@ -58,6 +58,7 @@ const LandContent = ({ isOwner }: { isOwner: boolean }) => {
               isOwner={isOwner}
               key={item.id}
               id={item.id}
+              title={ITEM_CHOICE[`${item.id}`].title}
               child={ITEM_CHOICE[`${item.id}`].svg}
               x={item.x}
               y={item.y}

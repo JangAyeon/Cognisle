@@ -24,10 +24,11 @@ type DraggableItem = LocationProps & {
   child?: ILandItem["svg"]
   active: boolean
   isOwner?: boolean
+  title: string
 }
 
-const DragItem = ({ isOwner, id, x, y, z, child }: DraggableItem) => {
-  console.log("dragItem", id, isOwner)
+const DragItem = ({ isOwner, id, x, y, z, child, title }: DraggableItem) => {
+  console.log("dragItem", id, isOwner, title)
   const { islandItemLoc, islandIsEdit } = useIsland()
   const { zIndex, setZIndex }: DraggableContextInterface =
     useContext(DraggableContext)
@@ -37,6 +38,7 @@ const DragItem = ({ isOwner, id, x, y, z, child }: DraggableItem) => {
     x: x,
     y: y,
     z: z,
+    title: title,
     active: false,
   })
   const trackPos = (id: DraggableItem["id"], data: DraggableData) => {
@@ -45,6 +47,7 @@ const DragItem = ({ isOwner, id, x, y, z, child }: DraggableItem) => {
       x: data.x,
       y: data.y,
       active: true,
+      title: title,
       z: state.z,
     })
   }
