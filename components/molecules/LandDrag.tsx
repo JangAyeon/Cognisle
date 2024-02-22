@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 import { ITEM_CHOICE, LAND_CHOICE } from "@/constants/island"
 
@@ -19,21 +19,28 @@ const LandContent = ({ isOwner }: { isOwner: boolean }) => {
 
   // console.log("land content", items)
 
-  useEffect(() => {
-    // console.log("itemExist", islandItemExist)
-    if (islandItemExist.length > 0) {
+  const setIslandItem = useCallback(() => {
+    console.log("itemExist", islandItemExist)
+    if (islandItemExist.length > 0 && islandItemExist) {
       // console.log(items, islandItemExist, islandItemLoc)
       const data: LocationProps[] = []
+
       for (let item of islandItemExist) {
         if (islandItemLoc[`loc_${item}`]) {
+          console.log("data", islandItemLoc[`loc_${item}`], items)
+          // setItems([...items, islandItemLoc[`loc_${item}`] as LocationProps])
           data.push(islandItemLoc[`loc_${item}`] as LocationProps)
         }
       }
 
-      console.log("data", data)
+      // console.log("data", data)
       setItems(data)
     }
-  }, [islandItemExist])
+  }, [islandItemExist, islandItemLoc])
+
+  useEffect(() => {
+    setIslandItem()
+  }, [setIslandItem])
   return (
     <>
       <DraggableContext.Provider value={{ zIndex, setZIndex }}>

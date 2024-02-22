@@ -23,13 +23,13 @@ const Island = () => {
     query: { id },
   } = useRouter()
 
-  const { userSbId } = useUserProfile()
+  const { userEmail } = useUserProfile()
   useEffect(() => {
-    if (id && userSbId && id !== userSbId) {
+    if (id && userEmail && id !== userEmail) {
       console.log("user is no island owner")
       setIsOwner(false)
     }
-  }, [id, userSbId])
+  }, [id, userEmail])
 
   return (
     <>

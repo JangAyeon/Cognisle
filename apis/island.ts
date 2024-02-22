@@ -36,7 +36,7 @@ const saveIsland = (userEmail: User["email"], data: object) =>
       userEmail: userEmail,
       ...data,
     },
-    { onConflict: "userId" }
+    { onConflict: "userEmail" }
   )
 
 const getItemIds = async (userEmail: User["email"]) => {
