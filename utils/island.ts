@@ -30,16 +30,16 @@ export const setIslandIsEdit = (state: IIsland["isEdit"]) => {
   store.dispatch(_setIslandIsEdit(state))
 }
 
-export const getType = async (userSbId: User["id"]) => {
-  const { data, error } = await islandApi.getBackground(userSbId)
+export const getType = async (userEmail: User["email"]) => {
+  const { data, error } = await islandApi.getBackground(userEmail)
 
   if (data) {
     setIslandType(data.background)
   }
 }
 
-export const getItemsLoc = async (userSbId: User["id"]) => {
-  const { data, error } = await islandApi.getItemLoc(userSbId)
+export const getItemsLoc = async (userEmail: User["email"]) => {
+  const { data, error } = await islandApi.getItemLoc(userEmail)
   // console.log(data)
 
   if (!error) {

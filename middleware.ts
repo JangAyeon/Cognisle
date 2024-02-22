@@ -29,7 +29,7 @@ export async function middleware(request: NextRequest) {
     } else if (pathname === "/island") {
       if (!searchParams.get("id") && user) {
         return NextResponse.redirect(
-          new URL(`/island?id=${user.id}`, request.url)
+          new URL(`/island?id=${user.email}`, request.url)
         )
       }
     }

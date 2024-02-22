@@ -1,4 +1,6 @@
 import styled from "@emotion/styled"
+import { User } from "@supabase/supabase-js"
+import { useRouter } from "next/router"
 import { useEffect } from "react"
 
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
@@ -12,18 +14,20 @@ import useUserProfile from "@/hooks/useUser"
 import { getItemExist, getItemsLoc, getType } from "@/utils/island"
 
 const Myland = () => {
-  const { userSbId } = useUserProfile()
+  const { userSbId, userEmail } = useUserProfile()
   const { islandType } = useIsland()
-
+  const {
+    query: { id },
+  } = useRouter()
   useEffect(() => {
-    if (userSbId) {
+    if (id) {
       // 현재 서버에 저장된 섬타입, 아이템 위치, 아이템 소유목록 dispatch
-      console.log("현재 저장된 섬 정보 불러오기")
-      getType(userSbId)
-      getItemsLoc(userSbId)
-      getItemExist(userSbId)
+      console.log("현재 저장된 섬 정보 불러오기", id)
+      getType(id as User["email"])
+      getItemsLoc(id as User["email"])
+      getItemExist(id as User["id"])
     }
-  }, [userSbId])
+  }, [id])
   return (
     <PageWrapper>
       {" "}

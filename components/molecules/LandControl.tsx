@@ -15,22 +15,23 @@ import { setIslandIsEdit } from "@/utils/island"
 
 const LandControl = ({ isOwner }: { isOwner: boolean }) => {
   const { islandType, islandItemLoc, islandIsEdit } = useIsland()
+  const { userName, userSbId, userEmail } = useUserProfile()
+
   const router = useRouter()
+
   const handleSaveBtn = async () => {
     const body = {
       background: islandType,
       ...islandItemLoc,
     }
 
-    const { data, error } = await islandApi.saveIsland(userSbId, body)
+    const { data, error } = await islandApi.saveIsland(userEmail, body)
 
     if (!error) {
       alert("저장 성공했습니다.")
       router.reload()
     }
   }
-
-  const { userName, userSbId } = useUserProfile()
 
   return (
     <TopMenu>

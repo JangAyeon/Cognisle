@@ -16,27 +16,31 @@ import {
 const itemLocation = [...Array(itemIdMax)]
   .map((v, idx) => `loc_${idx + 1}`)
   .join(",")
-const getItemLoc = (userId: User["id"]) =>
+const getItemLoc = (userEmail: User["email"]) =>
   supabase
     .from("itemStatus")
     .select(itemLocation)
-    .eq("userId", userId)
+    .eq("userEmail", userEmail)
     .single<IIsland["items"]>()
 
-const getBackground = (userId: User["id"]) =>
-  supabase.from("itemStatus").select("background").eq("userId", userId).single()
+const getBackground = (userEmail: User["email"]) =>
+  supabase
+    .from("itemStatus")
+    .select("background")
+    .eq("userEmail", userEmail)
+    .single()
 
-const saveIsland = (userId: User["id"], data: object) =>
+const saveIsland = (userEmail: User["email"], data: object) =>
   supabase.from("itemStatus").upsert(
     {
-      userId: userId,
+      userEmail: userEmail,
       ...data,
     },
     { onConflict: "userId" }
   )
 
-const getItemIds = async (userId: User["id"]) => {
-  const { data, error } = await recordApi.getItemStatus(userId)
+const getItemIds = async (userEmail: User["email"]) => {
+  const { data, error } = await recordApi.getItemStatus(userEmail)
   // console.log(data)
   const result: Array<ItemIdProps> = []
   if (!error) {

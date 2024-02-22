@@ -23,11 +23,11 @@ const getMyItem = (userId: User["id"]) =>
 const itemExist = [...Array(itemIdMax)]
   .map((v, idx) => `exist_${idx + 1}`)
   .join(",")
-const getItemStatus = (userId: User["id"]) =>
+const getItemStatus = (userEmail: User["email"]) =>
   supabase
     .from("itemStatus")
     .select(itemExist)
-    .eq("userId", userId)
+    .eq("userEmail", userEmail)
     .single<ItemExistProps>()
 
 const recordApi = {
