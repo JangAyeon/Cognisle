@@ -1,16 +1,12 @@
 import styled from "@emotion/styled"
-import Image from "next/image"
 
 import Text from "@/components/atoms/typo/Text"
 import Modal from "@/components/modal/Modal"
-
-import useUserProfile from "@/hooks/useUser"
 
 import { ModalProps } from "@/types/common/modalProps"
 
 const AuthModal = ({ isOpen, onClose }: ModalProps) => {
   // console.log("game result", gameResult)
-  const { userName } = useUserProfile()
   return (
     <>
       <Modal.Root
