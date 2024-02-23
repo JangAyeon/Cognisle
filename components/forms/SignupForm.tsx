@@ -10,10 +10,11 @@ import AuthModal, { AuthModalProps } from "@/components/modal/AuthModal"
 
 import { authApi } from "@/apis/authApi"
 
-import { IAuthSBInfo } from "@/types/common/authProps"
+import { ISignupForm } from "@/types/common/authProps"
 import { ModalProps } from "@/types/common/modalProps"
 
 import { setUserInfo } from "@/utils/auth"
+import { SignUpValidation } from "@/utils/formValidation"
 
 const Input_Common = {
   width: 20.3,
@@ -61,7 +62,7 @@ const Input_List = [
 const SignupForm = () => {
   const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState<AuthModalProps>({
-    state: "fail",
+    state: "success",
     text: "",
     isOpen: false,
   })
@@ -75,7 +76,7 @@ const SignupForm = () => {
     e.preventDefault()
 
     const signupForm = new FormData(e.currentTarget)
-    const params = {
+    const params: ISignupForm = {
       email: signupForm.get("email"),
       password: signupForm.get("password"),
       options: {
@@ -86,6 +87,9 @@ const SignupForm = () => {
       },
     }
 
+    SignUpValidation(params, setIsModalOpen)
+
+    /*
     try {
       const {
         data: { user, session },
@@ -102,6 +106,7 @@ const SignupForm = () => {
       console.log(error)
       alert(error)
     }
+    */
   }
 
   return (

@@ -37,6 +37,13 @@ export interface IAuthInfo {
   ProfileInfo: IProfileInfo
 }
 
-export interface IForm {
-  [key: string]: FormDataEntryValue | null
+export interface ILoginForm {
+  email: FormDataEntryValue | null
+  password: FormDataEntryValue | null
+}
+
+export interface ISignupForm extends ILoginForm {
+  options: {
+    data: { name: FormDataEntryValue | null; dsId: FormDataEntryValue | null }
+  }
 }

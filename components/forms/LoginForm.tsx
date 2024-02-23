@@ -15,7 +15,7 @@ import { useInput } from "@/hooks/useInput"
 
 import { authApi } from "@/apis/authApi"
 
-import { IForm } from "@/types/common/authProps"
+import { ILoginForm } from "@/types/common/authProps"
 
 import { LoginValidation } from "@/utils/formValidation"
 
@@ -31,7 +31,7 @@ const TextInputStyles = {
 
 const LoginForm = () => {
   const [isModalOpen, setIsModalOpen] = useState<AuthModalProps>({
-    state: "fail",
+    state: "success",
     text: "",
     isOpen: false,
   })
@@ -61,7 +61,7 @@ const LoginForm = () => {
     e.preventDefault()
 
     const loginForm = new FormData(e.currentTarget)
-    const params: IForm = {
+    const params: ILoginForm = {
       email: loginForm.get("email"),
       password: loginForm.get("password"),
     }
