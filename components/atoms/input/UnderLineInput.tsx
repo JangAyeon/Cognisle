@@ -28,14 +28,15 @@ const UnderLineInput = ({
   padding,
   borderColor,
   opacity,
+  margin,
 }: IUnderLineInput) => {
   return (
     <UnderLineInputWrapper
-      height={height}
       width={width}
       backgroundColor={backgroundColor}
       padding={padding}
       borderColor={borderColor}
+      margin={margin}
     >
       <Input
         value={value}
@@ -64,6 +65,7 @@ type UnderLineInputStyle = InputStyle & {
 
 const UnderLineInputWrapper = styled(InputWrapper)<UnderLineWrapperStyle>`
   border-bottom: ${({ borderColor }) => `0.1rem solid var(${borderColor})`};
+  margin-bottom: ${({ margin }) => (margin ? `${margin}rem` : "0")};
 `
 
 const Input = styled(Input_)<UnderLineInputStyle>`

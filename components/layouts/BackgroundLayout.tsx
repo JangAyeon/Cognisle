@@ -45,4 +45,8 @@ const Wrapper = styled.div<Style>`
   background-blend-mode: overlay;
   background-position: left bottom;
   background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `

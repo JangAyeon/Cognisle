@@ -22,4 +22,6 @@ const AuthTitleWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 9.6rem;
+  margin-bottom: 2.7rem;
 `

@@ -1,9 +1,8 @@
-import { useState } from "react"
+import styled from "@emotion/styled"
 
 import Logo from "@/components/atoms/logo/Logo"
 import LoginForm from "@/components/forms/LoginForm"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
-import AuthModal from "@/components/modal/AuthModal"
 import AuthTitle from "@/components/molecules/AuthTitle"
 
 const Login = () => {
@@ -16,12 +15,27 @@ const Login = () => {
       imgWidth={43}
       imgHeight={84.9}
     >
-      <Logo type="main" width={240} height={124} alt="loading logo" />
-      <AuthTitle text="로그인" />
+      <Logo
+        type="main"
+        width={240}
+        height={124}
+        alt="loading logo"
+        padding={11.8}
+      />
+      <LoginContainer>
+        <AuthTitle text="로그인" />
 
-      <LoginForm />
+        <LoginForm />
+      </LoginContainer>
     </BackgroundLayout>
   )
 }
 
 export default Login
+
+const LoginContainer = styled.div`
+  width: 28rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`

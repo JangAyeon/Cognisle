@@ -19,9 +19,9 @@ const Input_Common = {
   backgroundColor: "transparent",
   borderColor: "--color-green-04",
   color: "--color-green-04",
-  padding: 4.5,
   fontSize: 1.2,
   opacity: 50,
+  padding: 0,
 }
 
 const Input_List = [
@@ -115,7 +115,7 @@ const SignupForm = () => {
         </form>
       </div>
       <div>
-        <div>
+        <AuthTypeButton>
           <BorderPointBtn
             width={28.0}
             height={4.0}
@@ -125,7 +125,7 @@ const SignupForm = () => {
             textColor="--color-green-04"
             link="/auth?type=login"
           />
-        </div>
+        </AuthTypeButton>
       </div>
     </>
   )
@@ -138,5 +138,10 @@ const FormInputWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  align-items: flex-end;
   width: 28rem;
+  margin-bottom: 3rem;
+`
+const AuthTypeButton = styled.div`
+  margin-top: 1.2rem;
 `
