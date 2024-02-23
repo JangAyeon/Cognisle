@@ -20,6 +20,10 @@ const setSession = (data: object) =>
 const getSession = () => supabaseClient.auth.getSession()
 
 const getUserProfile = () => supabaseClient.auth.getUser()
+
+const getDsIdValid = (dsId: FormDataEntryValue) =>
+  supabaseClient.from("23_final_user").select("*").eq("dsTag", dsId)
+
 const authApi = {
   signup,
   login,
@@ -27,6 +31,7 @@ const authApi = {
   setSession,
   getSession,
   getUserProfile,
+  getDsIdValid,
 }
 
 export { authApi }

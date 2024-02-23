@@ -2,12 +2,14 @@ import { Dispatch, SetStateAction } from "react"
 
 import { AuthModalProps } from "@/components/modal/AuthModal"
 
+import { authApi } from "@/apis/authApi"
+
 import { ILoginForm, ISignupForm } from "@/types/common/authProps"
 
 const passwordCheck = (password: FormDataEntryValue | null) => {
-  console.log("비밀번호", password)
   const password_format =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/
+    /^[A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{8,20}$/
+  //console.log("비밀번호", password, password_format.test(password as string))
   if (!password) {
     return "비밀번호를 입력하시오"
   } else if (typeof password === "string" && !password_format.test(password)) {
@@ -16,9 +18,9 @@ const passwordCheck = (password: FormDataEntryValue | null) => {
 }
 
 const emailCheck = (email: FormDataEntryValue | null) => {
-  console.log("email", email)
   const email_format =
     /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/
+  //console.log("email", email, email_format.test(email as string))
   if (!email) {
     return "이메일을 입력하시오"
   } else if (typeof email === "string" && !email_format.test(email)) {
@@ -26,7 +28,18 @@ const emailCheck = (email: FormDataEntryValue | null) => {
   }
 }
 
+export const dsIdCheck = async (dsId: FormDataEntryValue | null) => {
+  if (dsId) {
+    const { data, error } = await authApi.getDsIdValid(dsId)
+    console.log("dsIdCheck", data)
+    if (error || !data) {
+      return "존재하지 않는 디스코드 아이디입니다"
+    }
+  }
+}
+
 const nameCheck = (name: FormDataEntryValue | null) => {
+  //console.log(name)
   const name_format = /^.{2,8}$/
   if (!name) {
     return "이름을 입력하시오"
@@ -52,7 +65,7 @@ const LoginValidation = (
   }
 }
 
-const SignUpValidation = (
+const SignUpValidation = async (
   form: ISignupForm,
   setIsModalOpen: Dispatch<SetStateAction<AuthModalProps>>
 ) => {
@@ -66,8 +79,8 @@ const SignUpValidation = (
 
   const isEmailValid = emailCheck(email)
   const isPasswordValid = passwordCheck(password)
-  const isNameValid = passwordCheck(name)
-  console.log(isEmailValid, isPasswordValid, name, dsId)
+  const isNameValid = nameCheck(name)
+
   if (isEmailValid) {
     setIsModalOpen({ state: "fail", text: isEmailValid, isOpen: true })
   } else if (isPasswordValid) {

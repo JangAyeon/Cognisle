@@ -67,6 +67,12 @@ const SignupForm = () => {
     isOpen: false,
   })
 
+  const handleDsIdCheck = (e: any) => {
+    const signupForm = new FormData(e.target.form)
+    const dsId = signupForm.get("dsId")
+    console.log(dsId)
+  }
+
   const handleModalOpen = (text: string, state: AuthModalProps["state"]) => {
     // console.log("open")
     setIsModalOpen({ state, text, isOpen: true })
@@ -130,6 +136,10 @@ const SignupForm = () => {
                 color={"--color-green-04"}
               />
               <UnderLineInput {...item} key={idx} />
+
+              {item.name === "dsId" && (
+                <button onClick={(e) => handleDsIdCheck(e)}>이름 확인</button>
+              )}
             </FormInputWrapper>
           ))}
 
