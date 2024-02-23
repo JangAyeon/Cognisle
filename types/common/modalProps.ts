@@ -25,13 +25,14 @@ type ModalRootProps = {
 type ModalCloseProps = {
   imgSrc?: string
   needClose?: boolean
+  size?: number
 }
 
 type ModalContentProps = {
   children: ReactNode
   height: number
   width: number
-  pointColor: Color
+  pointColor?: Color
   backgroundColor?: Color
 }
 

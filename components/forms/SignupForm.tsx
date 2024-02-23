@@ -2,6 +2,8 @@ import styled from "@emotion/styled"
 import { useRouter } from "next/router"
 import { FormEvent } from "react"
 
+import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
+import FormButton from "@/components/atoms/button/FormButton"
 import UnderLineInput from "@/components/atoms/input/UnderLineInput"
 import Text from "@/components/atoms/typo/Text"
 
@@ -108,14 +110,21 @@ const SignupForm = () => {
               <UnderLineInput {...item} key={idx} />
             </FormInputWrapper>
           ))}
-          <button type="submit">회원가입 </button>
+
+          <FormButton width={28} height={4.0} type="submit" text="회원가입" />
         </form>
       </div>
       <div>
         <div>
-          <button type="button" onClick={handleLoginBtn}>
-            로그인
-          </button>
+          <BorderPointBtn
+            width={28.0}
+            height={4.0}
+            mainColor="transparent"
+            text="로그인"
+            textSize={1.6}
+            textColor="--color-green-04"
+            link="/auth?type=login"
+          />
         </div>
       </div>
     </>
@@ -128,4 +137,6 @@ const FormInputWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  width: 28rem;
 `

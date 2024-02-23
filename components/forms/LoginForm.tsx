@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import { FormEvent, useEffect, useState } from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
+import FormButton from "@/components/atoms/button/FormButton"
 import TextInput from "@/components/atoms/input/TextInput"
 import AuthModal from "@/components/modal/AuthModal"
 
@@ -84,6 +85,8 @@ const SignupForm = () => {
       <div>
         {isModalOpen && (
           <AuthModal
+            state="fail"
+            text="아이디 또는 비밀번호가 올바르지 않씁니다"
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
           />
@@ -114,9 +117,7 @@ const SignupForm = () => {
             />
             <label htmlFor="rememberId"> 아이디 저장</label>
           </div>
-          <Button width={28} height={4.0} type="submit">
-            로그인{" "}
-          </Button>
+          <FormButton width={28} height={4.0} type="submit" text="로그인" />
         </form>
       </div>
       <div>
@@ -137,13 +138,6 @@ const SignupForm = () => {
 }
 
 export default SignupForm
-
-const Button = styled.button<{ height: number; width: number }>`
-  width: ${({ width }) => `${width}rem`};
-  height: ${({ height }) => `${height}rem`};
-  color: var(--color-yellow-01);
-  background-color: var(--color-green-04);
-`
 
 const CheckBox = styled.input`
   border: solid 0.7rem black;

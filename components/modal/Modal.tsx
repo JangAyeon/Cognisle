@@ -85,7 +85,11 @@ const ModalRoot = ({
     </ModalContext.Provider>
   )
 }
-const ModalCloseButton = ({ imgSrc, needClose = true }: ModalCloseProps) => {
+const ModalCloseButton = ({
+  imgSrc,
+  needClose = true,
+  size = 32,
+}: ModalCloseProps) => {
   const { onClose, setOverlayClicked } = useContext(ModalContext)
   if (!setOverlayClicked || !onClose) {
     return null
@@ -102,9 +106,9 @@ const ModalCloseButton = ({ imgSrc, needClose = true }: ModalCloseProps) => {
     needClose && (
       <CloseButtonWrapper onClick={handleClick}>
         {imgSrc ? (
-          <Image src={imgSrc} width={32} height={32} alt="close icon" />
+          <Image src={imgSrc} width={size} height={size} alt="close icon" />
         ) : (
-          <Close size={32} alt="close icon" />
+          <Close size={size} alt="close icon" />
         )}
       </CloseButtonWrapper>
     )
@@ -128,7 +132,7 @@ const ModalContent = ({
       isOverlayClicked={isOverlayClicked}
       backgroundColor={backgroundColor ? backgroundColor : "--color-yellow-01"}
     >
-      <Point pointColor={pointColor} />
+      <Point pointColor={pointColor ? pointColor : backgroundColor} />
       {children}
     </Content>
   )
