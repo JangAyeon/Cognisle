@@ -8,7 +8,7 @@ import Modal from "@/components/modal/Modal"
 import { ModalProps } from "@/types/common/modalProps"
 import { Color } from "@/types/common/styleProps"
 
-interface IAuthModal extends ModalProps {
+export interface IAuthModal extends ModalProps {
   text: string
   state: "fail" | "success"
 }
