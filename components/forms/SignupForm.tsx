@@ -1,15 +1,17 @@
 import styled from "@emotion/styled"
 import { useRouter } from "next/router"
-import { FormEvent } from "react"
+import { FormEvent, useState } from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import FormButton from "@/components/atoms/button/FormButton"
 import UnderLineInput from "@/components/atoms/input/UnderLineInput"
 import Text from "@/components/atoms/typo/Text"
+import AuthModal, { AuthModalProps } from "@/components/modal/AuthModal"
 
 import { authApi } from "@/apis/authApi"
 
 import { IAuthSBInfo } from "@/types/common/authProps"
+import { ModalProps } from "@/types/common/modalProps"
 
 import { setUserInfo } from "@/utils/auth"
 
@@ -58,10 +60,15 @@ const Input_List = [
 
 const SignupForm = () => {
   const router = useRouter()
+  const [isModalOpen, setIsModalOpen] = useState<AuthModalProps>({
+    state: "fail",
+    text: "",
+    isOpen: false,
+  })
 
-  const handleLoginBtn = () => {
-    // console.log("handleSignupBtn")
-    router.push("auth?type=login")
+  const handleModalOpen = (text: string, state: AuthModalProps["state"]) => {
+    // console.log("open")
+    setIsModalOpen({ state, text, isOpen: true })
   }
 
   const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
@@ -86,8 +93,10 @@ const SignupForm = () => {
       } = await authApi.signup(params)
       if (user && session) {
         setUserInfo({ user, session } as IAuthSBInfo)
-        alert("회원가입 성공함")
+        handleModalOpen("회원가입에 성공하였습니다.", "success")
         router.replace("/")
+      } else {
+        handleModalOpen("사용 불가능한 이메일 및 비밀번호입니다.", "fail")
       }
     } catch (error) {
       console.log(error)
@@ -98,6 +107,14 @@ const SignupForm = () => {
   return (
     <>
       <div>
+        {isModalOpen && (
+          <AuthModal
+            state={isModalOpen.state}
+            text={isModalOpen.text}
+            isOpen={isModalOpen.isOpen}
+            onClose={() => setIsModalOpen({ ...isModalOpen, isOpen: false })}
+          />
+        )}
         <form onSubmit={handleSignup}>
           {Input_List.map((item, idx) => (
             <FormInputWrapper key={idx}>

@@ -84,6 +84,7 @@ export const InputWrapper = styled.div<InputWrapperStyle>`
   height: ${({ height }) => `${height}rem`};
   background-color: ${({ backgroundColor }) => `var(${backgroundColor})`};
   padding: ${({ padding }) => `0 ${padding}rem`};
+  margin-bottom: ${({ margin }) => (margin ? `${margin}rem` : 0)};
   display: flex;
 
   flex-direction: row;

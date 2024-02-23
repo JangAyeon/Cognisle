@@ -6,11 +6,18 @@ import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import FormButton from "@/components/atoms/button/FormButton"
 import TextInput from "@/components/atoms/input/TextInput"
 import Text from "@/components/atoms/typo/Text"
-import AuthModal, { IAuthModal } from "@/components/modal/AuthModal"
+import AuthModal, {
+  AuthModalProps,
+  IAuthModal,
+} from "@/components/modal/AuthModal"
 
 import { useInput } from "@/hooks/useInput"
 
 import { authApi } from "@/apis/authApi"
+
+import { IForm } from "@/types/common/authProps"
+
+import { LoginValidation } from "@/utils/formValidation"
 
 const TextInputStyles = {
   color: "--color-green-04",
@@ -22,10 +29,8 @@ const TextInputStyles = {
   margin: 2.4,
 }
 
-type ModalProps = Pick<IAuthModal, "isOpen" | "state" | "text">
-
-const SignupForm = () => {
-  const [isModalOpen, setIsModalOpen] = useState<ModalProps>({
+const LoginForm = () => {
+  const [isModalOpen, setIsModalOpen] = useState<AuthModalProps>({
     state: "fail",
     text: "",
     isOpen: false,
@@ -41,7 +46,6 @@ const SignupForm = () => {
   const router = useRouter()
 
   const handleEmailFlagCheck = () => {
-    console.log("checked")
     setEmailFlagCheck((prev) => !prev)
   }
 
@@ -57,13 +61,14 @@ const SignupForm = () => {
     e.preventDefault()
 
     const loginForm = new FormData(e.currentTarget)
-    const params = {
+    const params: IForm = {
       email: loginForm.get("email"),
       password: loginForm.get("password"),
     }
+    LoginValidation(params, setIsModalOpen)
 
     handleLocalStorageEmail()
-
+    /*
     try {
       const {
         data: { user, session },
@@ -78,7 +83,7 @@ const SignupForm = () => {
       }
     } catch (error: any) {
       handleModalOpen(error.message, "fail")
-    }
+    }*/
   }
 
   useEffect(() => {
@@ -104,7 +109,7 @@ const SignupForm = () => {
             value={email}
             onChange={onChangeEmail}
             placeholder="이메일"
-            type="email"
+            type="string"
             name="email"
             autoComplete="email"
             {...TextInputStyles}
@@ -152,7 +157,7 @@ const SignupForm = () => {
   )
 }
 
-export default SignupForm
+export default LoginForm
 
 type CheckBoxStyle = {
   checked: boolean

@@ -8,6 +8,8 @@ import Modal from "@/components/modal/Modal"
 import { ModalProps } from "@/types/common/modalProps"
 import { Color } from "@/types/common/styleProps"
 
+export type AuthModalProps = Pick<IAuthModal, "isOpen" | "state" | "text">
+
 export interface IAuthModal extends ModalProps {
   text: string
   state: "fail" | "success"
@@ -31,7 +33,7 @@ type IStateColor = {
 }
 
 const STATE_IMAGE: IStateImage = {
-  fail: "/assets/green/allow.svg",
+  fail: "/assets/yellow/warn.svg",
   success: "/assets/green/allow.svg",
 }
 
@@ -103,12 +105,12 @@ const Container = styled.div`
   height: 100%;
   align-items: center;
   justify-content: flex-start;
-  padding-left: 2.4rem;
-  gap: 2.5rem;
 `
 
 const TextWrapper = styled.div`
-  width: 14.8rem;
+  width: 16rem;
 `
 
-const ImageWrapper = styled.div``
+const ImageWrapper = styled.div`
+  padding: 0 2.4rem;
+`

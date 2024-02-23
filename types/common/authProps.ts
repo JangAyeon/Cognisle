@@ -36,3 +36,7 @@ export interface IAuthInfo {
   LoginInfo: ILoginInfo
   ProfileInfo: IProfileInfo
 }
+
+export interface IForm {
+  [key: string]: FormDataEntryValue | null
+}
