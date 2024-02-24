@@ -1,13 +1,12 @@
 import styled from "@emotion/styled"
-import Image from "next/image"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
 import GameResultModal from "@/components/modal/GameResultModal"
+import WaitGameStart from "@/components/molecules/WaitGameStart"
 
 import useUserProfile from "@/hooks/useUser"
 
-import { supabase } from "@/apis/instance"
 import recordApi from "@/apis/recordApi"
 
 import {
@@ -60,22 +59,7 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
   }, [type])
   return (
     <LoadingWrapper>
-      {type === "start" && (
-        <Image
-          src="/assets/green/friend.svg"
-          width={292}
-          height={300}
-          alt="state Dot Line Divider"
-        />
-      )}
-      {/*{type === "end" && (
-        <Image
-          src="/assets/grey/circle.svg"
-          width={292}
-          height={300}
-          alt="state Dot Line Divider"
-        />
-      )}*/}
+      {type === "start" && <WaitGameStart />}
       {type === "result" && (
         <GameResultModal
           gameResult={gameResult}

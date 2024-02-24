@@ -10,7 +10,7 @@ import Timer from "@/utils/timer"
 const Game = () => {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-    const timer = Timer(setLoading(false), 10000)
+    const timer = Timer(setLoading(false), 100000)
 
     return () => {
       clearTimeout(timer)
