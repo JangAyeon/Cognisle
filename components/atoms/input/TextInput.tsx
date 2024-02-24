@@ -10,14 +10,15 @@ export interface ITextInput {
   name: string
   autoComplete?: string
   width: number
-  height: number
+  height?: number
   color: string
   backgroundColor: string
   imgSrc?: string
   imgWidth?: number
   imgHeigth?: number
   fontSize: number
-  padding: number
+  padding?: number
+  margin?: number
   btnType?: "submit"
 }
 
@@ -38,6 +39,7 @@ const TextInput = ({
   fontSize,
   padding,
   btnType,
+  margin,
 }: ITextInput) => {
   return (
     <InputWrapper
@@ -45,6 +47,7 @@ const TextInput = ({
       padding={padding}
       width={width}
       height={height}
+      margin={margin}
     >
       <Input
         value={value}
@@ -72,7 +75,7 @@ const TextInput = ({
 
 export type InputWrapperStyle = Pick<
   ITextInput,
-  "backgroundColor" | "padding" | "width" | "height"
+  "backgroundColor" | "padding" | "width" | "height" | "margin"
 >
 export type InputStyle = Pick<ITextInput, "color" | "fontSize">
 
@@ -81,7 +84,9 @@ export const InputWrapper = styled.div<InputWrapperStyle>`
   height: ${({ height }) => `${height}rem`};
   background-color: ${({ backgroundColor }) => `var(${backgroundColor})`};
   padding: ${({ padding }) => `0 ${padding}rem`};
+  margin-bottom: ${({ margin }) => (margin ? `${margin}rem` : 0)};
   display: flex;
+
   flex-direction: row;
   justify-items: space-between;
   align-items: center;

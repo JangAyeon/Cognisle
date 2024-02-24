@@ -90,7 +90,5 @@ const CardGameBoard = () => {
 export default CardGameBoard
 
 const GameContainer = styled.div`
-  margin-top: 7.2rem;
-  padding: 0 3.2rem;
-  padding-top: 6rem;
+  padding: 6rem 3.2rem;
 `

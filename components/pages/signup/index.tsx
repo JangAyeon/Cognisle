@@ -13,7 +13,13 @@ const Signup = () => {
       imgWidth={43}
       imgHeight={84.9}
     >
-      <Logo type="main" width={24} height={12.4} alt="loading logo" />
+      <Logo
+        type="main"
+        width={240}
+        height={124}
+        alt="loading logo"
+        padding={11.8}
+      />
       <AuthTitle text="회원가입" />
       <SignupForm />
     </BackgroundLayout>

@@ -17,7 +17,6 @@ const Main = () => {
       endColor="--color-pink-01"
       degree="180deg"
       imgWidth={43}
-      height={93.2}
     >
       <ContentWrapper>
         <Logo type="main" width={240} height={124} alt="main logo" />

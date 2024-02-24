@@ -1,8 +1,9 @@
 export type Color =
-  | "--color-yellow-0"
+  | "--color-yellow-01"
   | "--color-yellow-02"
   | "--color-orange-01"
   | "--color-orange-02"
+  | "--color-orange-03"
   | "--color-pink-01"
   | "--color-green-01"
   | "--color-green-02"

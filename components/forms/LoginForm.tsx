@@ -3,11 +3,21 @@ import { useRouter } from "next/router"
 import { FormEvent, useEffect, useState } from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
+import FormButton from "@/components/atoms/button/FormButton"
 import TextInput from "@/components/atoms/input/TextInput"
+import Text from "@/components/atoms/typo/Text"
+import AuthModal, {
+  AuthModalProps,
+  IAuthModal,
+} from "@/components/modal/AuthModal"
 
 import { useInput } from "@/hooks/useInput"
 
 import { authApi } from "@/apis/authApi"
+
+import { ILoginForm } from "@/types/common/authProps"
+
+import { LoginValidation } from "@/utils/formValidation"
 
 const TextInputStyles = {
   color: "--color-green-04",
@@ -16,9 +26,20 @@ const TextInputStyles = {
   height: 4.0,
   fontSize: 1.6,
   padding: 1.6,
+  margin: 2.4,
 }
 
-const SignupForm = () => {
+const LoginForm = () => {
+  const [isModalOpen, setIsModalOpen] = useState<AuthModalProps>({
+    state: "success",
+    text: "",
+    isOpen: false,
+  })
+
+  const handleModalOpen = (text: string, state: IAuthModal["state"]) => {
+    // console.log("open")
+    setIsModalOpen({ state, text, isOpen: true })
+  }
   const [email, onChangeEmail, setEmail] = useInput("")
   const [emailFlagCheck, setEmailFlagCheck] = useState(false)
   const LS_EMAIL = localStorage.getItem("LS_EMAIL")
@@ -40,25 +61,29 @@ const SignupForm = () => {
     e.preventDefault()
 
     const loginForm = new FormData(e.currentTarget)
-    const params = {
+    const params: ILoginForm = {
       email: loginForm.get("email"),
       password: loginForm.get("password"),
     }
+    LoginValidation(params, setIsModalOpen)
 
     handleLocalStorageEmail()
-
-    try {
-      const {
-        data: { user, session },
-        error,
-      } = await authApi.login(params)
-      if (user && session) {
-        alert("로그인에 성공함")
-
-        router.reload() // middleware.ts 거쳐 가기 위함
+    if (isModalOpen.state === "success" && !isModalOpen.isOpen) {
+      try {
+        const {
+          data: { user, session },
+          error,
+        } = await authApi.login(params)
+        if (user && session) {
+          handleModalOpen("로그인에 성공하였습니다.", "success")
+          router.reload() // middleware.ts 거쳐 가기 위함
+        } else {
+          // alert(error?.message)
+          handleModalOpen("아이디 또는 비밀번호가 올바르지 않습니다", "fail")
+        }
+      } catch (error: any) {
+        handleModalOpen(error.message, "fail")
       }
-    } catch (error) {
-      alert(error)
     }
   }
 
@@ -72,12 +97,20 @@ const SignupForm = () => {
   return (
     <>
       <div>
-        <form onSubmit={handleLogin}>
+        {isModalOpen && (
+          <AuthModal
+            state={isModalOpen.state}
+            text={isModalOpen.text}
+            isOpen={isModalOpen.isOpen}
+            onClose={() => setIsModalOpen({ ...isModalOpen, isOpen: false })}
+          />
+        )}
+        <FormWrapper onSubmit={handleLogin}>
           <TextInput
             value={email}
             onChange={onChangeEmail}
             placeholder="이메일"
-            type="email"
+            type="string"
             name="email"
             autoComplete="email"
             {...TextInputStyles}
@@ -89,22 +122,27 @@ const SignupForm = () => {
             autoComplete="current-password"
             {...TextInputStyles}
           />
-          <div>
+          <CheckBoxWrapper>
             <CheckBox
               type="checkbox"
               id="rememberEmail"
               checked={emailFlagCheck}
               onChange={() => handleEmailFlagCheck()}
             />
-            <label htmlFor="rememberId"> 아이디 저장</label>
-          </div>
-          <Button width={28} height={4.0} type="submit">
-            로그인{" "}
-          </Button>
-        </form>
+            <label htmlFor="rememberId">
+              <Text
+                text={"아이디 기억하기"}
+                size={1.2}
+                weight="normal"
+                color={"--color-green-04"}
+              />
+            </label>
+          </CheckBoxWrapper>
+          <FormButton width={28} height={4.0} type="submit" text="로그인" />
+        </FormWrapper>
       </div>
       <div>
-        <div>
+        <AuthTypeButton>
           <BorderPointBtn
             width={28.0}
             height={4.0}
@@ -114,21 +152,38 @@ const SignupForm = () => {
             textColor="--color-green-04"
             link="/auth?type=signup"
           />
-        </div>
+        </AuthTypeButton>
       </div>
     </>
   )
 }
 
-export default SignupForm
+export default LoginForm
 
-const Button = styled.button<{ height: number; width: number }>`
-  width: ${({ width }) => `${width}rem`};
-  height: ${({ height }) => `${height}rem`};
-  color: var(--color-yellow-01);
-  background-color: var(--color-green-04);
+type CheckBoxStyle = {
+  checked: boolean
+}
+
+const CheckBox = styled.input<CheckBoxStyle>`
+  border: solid 0.3rem var(--color-green-04);
+  width: 1rem;
+  height: 1rem;
+  background-color: ${({ checked }) =>
+    checked ? `var(--color-green-04)` : "transparent"};
 `
 
-const CheckBox = styled.input`
-  border: solid 0.7rem black;
+const FormWrapper = styled.form``
+
+const CheckBoxWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  label {
+    margin-left: 0.8rem;
+  }
+`
+
+const AuthTypeButton = styled.div`
+  margin-top: 1.2rem;
 `

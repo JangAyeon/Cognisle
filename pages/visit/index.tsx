@@ -83,11 +83,11 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+  margin-bottom: 7rem;
   gap: 8.4rem;
   min-height: inherit;
   height: inherit;
-  padding-top: 7.2rem;
 `
 const TitleWrapper = styled.div`
   display: flex;
@@ -99,9 +99,7 @@ const FormContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 2.8rem;
-  padding-top: 18rem;
+  padding-top: 7.2rem;
 `
 
-const ImageWrapper = styled.div`
-  padding-bottom: 3rem;
-`
+const ImageWrapper = styled.div``

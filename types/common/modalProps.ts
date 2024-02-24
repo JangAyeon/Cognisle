@@ -1,12 +1,15 @@
 import { ReactNode } from "react"
 
 import { IGameResult } from "@/types/common/gameProps"
+import { Color } from "@/types/common/styleProps"
 import { IRecordItem } from "@/types/recordItem"
 
 type ModalContextProps = {
   isOpen?: boolean
   isOverlayClicked?: boolean
   closeOnOverlayClick?: boolean
+  backgroundColor?: string
+
   onClose?: () => void
   setOverlayClicked?: (state: boolean) => void
 }
@@ -15,19 +18,22 @@ type ModalRootProps = {
   children: ReactNode
   isOpen: boolean
   closeOnOverlayClick?: boolean
+  backgroundColor?: string
   onClose: () => void
 }
 
 type ModalCloseProps = {
   imgSrc?: string
   needClose?: boolean
+  size?: number
 }
 
 type ModalContentProps = {
   children: ReactNode
   height: number
   width: number
-  pointColor: string
+  pointColor?: Color
+  backgroundColor?: Color
 }
 
 type ModalProps = {
@@ -43,6 +49,7 @@ type GameResultModalProps = ModalProps & {
 }
 export type {
   ModalContextProps,
+  ModalProps,
   ModalRootProps,
   ModalContentProps,
   ShowItemModalProps,
