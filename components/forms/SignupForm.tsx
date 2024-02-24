@@ -1,6 +1,13 @@
 import styled from "@emotion/styled"
-import { useRouter } from "next/router"
-import { FormEvent, useState } from "react"
+import router, { useRouter } from "next/router"
+import {
+  FormEvent,
+  MouseEvent,
+  MouseEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import FormButton from "@/components/atoms/button/FormButton"
@@ -10,11 +17,11 @@ import AuthModal, { AuthModalProps } from "@/components/modal/AuthModal"
 
 import { authApi } from "@/apis/authApi"
 
-import { ISignupForm } from "@/types/common/authProps"
+import { IAuthSBInfo, ISignupForm } from "@/types/common/authProps"
 import { ModalProps } from "@/types/common/modalProps"
 
 import { setUserInfo } from "@/utils/auth"
-import { SignUpValidation } from "@/utils/formValidation"
+import { SignUpValidation, dsIdCheck } from "@/utils/formValidation"
 
 const Input_Common = {
   width: 20.3,
@@ -56,6 +63,7 @@ const Input_List = [
     type: "text",
     name: "dsId",
     ...Input_Common,
+    width: 14,
   },
 ]
 
@@ -67,11 +75,28 @@ const SignupForm = () => {
     isOpen: false,
   })
 
-  const handleDsIdCheck = (e: any) => {
-    const signupForm = new FormData(e.target.form)
+  const [isDsIdValid, setIsDsIdValid] = useState(false)
+
+  const handleDsIdCheck = async (e: MouseEvent<HTMLButtonElement>) => {
+    const { form } = e.target as HTMLFormElement
+    const signupForm = new FormData(form)
     const dsId = signupForm.get("dsId")
-    console.log(dsId)
+    const text = await dsIdCheck(dsId, setIsDsIdValid)
+    console.log(dsId, text)
+    if (text) {
+      setIsModalOpen({
+        state: isDsIdValid ? "success" : "fail",
+        text,
+        isOpen: true,
+      })
+      console.log(isDsIdValid)
+      if (!isDsIdValid) {
+        form.dsId.value = ""
+      }
+    }
   }
+
+  useEffect(() => {}, [isDsIdValid])
 
   const handleModalOpen = (text: string, state: AuthModalProps["state"]) => {
     // console.log("open")
@@ -88,31 +113,31 @@ const SignupForm = () => {
       options: {
         data: {
           name: signupForm.get("name"),
-          dsId: signupForm.get("dsId") || "",
+          dsId: isDsIdValid ? signupForm.get("dsId") : "",
         },
       },
     }
 
     SignUpValidation(params, setIsModalOpen)
 
-    /*
-    try {
-      const {
-        data: { user, session },
-        error,
-      } = await authApi.signup(params)
-      if (user && session) {
-        setUserInfo({ user, session } as IAuthSBInfo)
-        handleModalOpen("회원가입에 성공하였습니다.", "success")
-        router.replace("/")
-      } else {
-        handleModalOpen("사용 불가능한 이메일 및 비밀번호입니다.", "fail")
+    if (isModalOpen.state === "success" && !isModalOpen.isOpen) {
+      try {
+        const {
+          data: { user, session },
+          error,
+        } = await authApi.signup(params)
+        if (user && session) {
+          setUserInfo({ user, session } as IAuthSBInfo)
+          handleModalOpen("회원가입에 성공하였습니다.", "success")
+          router.replace("/")
+        } else {
+          handleModalOpen("사용 불가능한 이메일 및 비밀번호입니다.", "fail")
+        }
+      } catch (error) {
+        console.log(error)
+        alert(error)
       }
-    } catch (error) {
-      console.log(error)
-      alert(error)
     }
-    */
   }
 
   return (
@@ -126,7 +151,7 @@ const SignupForm = () => {
             onClose={() => setIsModalOpen({ ...isModalOpen, isOpen: false })}
           />
         )}
-        <form onSubmit={handleSignup}>
+        <FormWrapper onSubmit={handleSignup}>
           {Input_List.map((item, idx) => (
             <FormInputWrapper key={idx}>
               <Text
@@ -138,32 +163,36 @@ const SignupForm = () => {
               <UnderLineInput {...item} key={idx} />
 
               {item.name === "dsId" && (
-                <button onClick={(e) => handleDsIdCheck(e)}>이름 확인</button>
+                <DsIdCheckButton type="button" onClick={handleDsIdCheck}>
+                  존재 <br />
+                  확인
+                </DsIdCheckButton>
               )}
             </FormInputWrapper>
           ))}
 
           <FormButton width={28} height={4.0} type="submit" text="회원가입" />
-        </form>
+        </FormWrapper>
       </div>
-      <div>
-        <AuthTypeButton>
-          <BorderPointBtn
-            width={28.0}
-            height={4.0}
-            mainColor="transparent"
-            text="로그인"
-            textSize={1.6}
-            textColor="--color-green-04"
-            link="/auth?type=login"
-          />
-        </AuthTypeButton>
-      </div>
+
+      <AuthTypeButton>
+        <BorderPointBtn
+          width={28.0}
+          height={4.0}
+          mainColor="transparent"
+          text="로그인"
+          textSize={1.6}
+          textColor="--color-green-04"
+          link="/auth?type=login"
+        />
+      </AuthTypeButton>
     </>
   )
 }
 
 export default SignupForm
+
+const FormWrapper = styled.form``
 
 const FormInputWrapper = styled.div`
   display: flex;
@@ -176,4 +205,13 @@ const FormInputWrapper = styled.div`
 `
 const AuthTypeButton = styled.div`
   margin-top: 1.2rem;
+`
+const DsIdCheckButton = styled.button`
+  width: 5.2rem;
+  height: 4rem;
+  background-color: var(--color-green-04);
+  border-radius: 0 1.5rem 1.5rem 1.5rem;
+  font-size: 1.2rem;
+  color: var(--color-yellow-01);
+  font-weight: bold;
 `

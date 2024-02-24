@@ -7,11 +7,18 @@ interface IFormButton {
   width: number
   text: string
   type?: "submit" | "button"
+  onClick?: () => void
 }
 
-const FormButton = ({ height, width, text, type = "submit" }: IFormButton) => {
+const FormButton = ({
+  height,
+  width,
+  text,
+  type = "submit",
+  onClick,
+}: IFormButton) => {
   return (
-    <Button width={width} height={height} type={type}>
+    <Button width={width} height={height} type={type} onClick={onClick}>
       <Text weight="bold" size={1.6} color="--color-yellow-01" text={text} />
     </Button>
   )

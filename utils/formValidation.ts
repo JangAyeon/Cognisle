@@ -28,12 +28,22 @@ const emailCheck = (email: FormDataEntryValue | null) => {
   }
 }
 
-export const dsIdCheck = async (dsId: FormDataEntryValue | null) => {
-  if (dsId) {
+export const dsIdCheck = async (
+  dsId: FormDataEntryValue | null,
+  setIsDsIdValid: Dispatch<SetStateAction<boolean>>
+) => {
+  if (!dsId) {
+    setIsDsIdValid(false)
+    return "확인할 디스코드 아이디를 입력하시오"
+  } else {
     const { data, error } = await authApi.getDsIdValid(dsId)
-    console.log("dsIdCheck", data)
-    if (error || !data) {
-      return "존재하지 않는 디스코드 아이디입니다"
+    if (error) {
+      setIsDsIdValid(false)
+      return "존재하지 않는 디스코드 아이디입니다."
+    } else if (data) {
+      const { dsTag, dsGlobalName } = data
+      setIsDsIdValid(true)
+      return `${dsTag}는 ${dsGlobalName}님으로\n확인되었습니다.`
     }
   }
 }
@@ -59,9 +69,9 @@ const LoginValidation = (
 
   console.log(isEmailValid, isPasswordValid)
   if (isEmailValid) {
-    setIsModalOpen({ state: "fail", text: isEmailValid, isOpen: true })
+    SetAuthModalState("fail", isEmailValid, setIsModalOpen)
   } else if (isPasswordValid) {
-    setIsModalOpen({ state: "fail", text: isPasswordValid, isOpen: true })
+    SetAuthModalState("fail", isPasswordValid, setIsModalOpen)
   }
 }
 
@@ -82,12 +92,21 @@ const SignUpValidation = async (
   const isNameValid = nameCheck(name)
 
   if (isEmailValid) {
-    setIsModalOpen({ state: "fail", text: isEmailValid, isOpen: true })
+    SetAuthModalState("fail", isEmailValid, setIsModalOpen)
   } else if (isPasswordValid) {
-    setIsModalOpen({ state: "fail", text: isPasswordValid, isOpen: true })
+    SetAuthModalState("fail", isPasswordValid, setIsModalOpen)
   } else if (isNameValid) {
-    setIsModalOpen({ state: "fail", text: isNameValid, isOpen: true })
+    SetAuthModalState("fail", isNameValid, setIsModalOpen)
   }
+}
+
+const SetAuthModalState = (
+  state: AuthModalProps["state"],
+  text: string,
+
+  setIsModalOpen: Dispatch<SetStateAction<AuthModalProps>>
+) => {
+  setIsModalOpen({ state, text, isOpen: true })
 }
 
 export { LoginValidation, SignUpValidation }

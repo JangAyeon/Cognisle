@@ -22,7 +22,11 @@ const getSession = () => supabaseClient.auth.getSession()
 const getUserProfile = () => supabaseClient.auth.getUser()
 
 const getDsIdValid = (dsId: FormDataEntryValue) =>
-  supabaseClient.from("23_final_user").select("*").eq("dsTag", dsId)
+  supabase
+    .from("23_final_user")
+    .select("dsTag, dsGlobalName")
+    .eq("dsTag", dsId)
+    .single()
 
 const authApi = {
   signup,
