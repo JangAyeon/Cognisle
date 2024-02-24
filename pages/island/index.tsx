@@ -14,7 +14,6 @@ import useUserProfile from "@/hooks/useUser"
 import { getItemExist, getItemsLoc, getType } from "@/utils/island"
 
 const Myland = () => {
-  const { userSbId, userEmail } = useUserProfile()
   const { islandType } = useIsland()
   const {
     query: { id },

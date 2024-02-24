@@ -1,50 +1,43 @@
 import styled from "@emotion/styled"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 
 import StatItem from "@/components/atoms/item/StatItem"
 
 import { itemIdMax } from "@/constants/game"
 
+import useIsland from "@/hooks/useIsland"
 import useUserProfile from "@/hooks/useUser"
 
-import recordApi from "@/apis/recordApi"
+import { ItemIdProps } from "@/types/common/islandProps"
 
-import { ItemExistKey, ItemExistProps } from "@/types/common/islandProps"
+import { getItemExist } from "@/utils/island"
 
 const ItemStats = () => {
-  const [itemExist, setItemExist] = useState<ItemExistProps | null>(null)
-  const { userSbId } = useUserProfile()
-
-  const getItemStatus = async () => {
-    // console.log(userSbId)
-
-    const { data, error } = await recordApi.getItemStatus(userSbId)
-    // console.log(data)
-
-    if (!error) {
-      setItemExist(data)
-    }
-  }
+  const { userEmail } = useUserProfile()
+  const { islandItemExist } = useIsland()
   useEffect(() => {
-    // setData(createData())
-    if (userSbId) {
-      getItemStatus()
+    if (userEmail) {
+      // 현재 서버에 저장된 섬타입, 아이템 위치, 아이템 소유목록 dispatch
+      console.log("현재 저장된 섬 정보 불러오기", userEmail)
+      getItemExist(userEmail)
     }
-  }, [userSbId])
+  }, [userEmail])
+
   return (
     <ItemStatsWrapper>
-      {itemExist &&
-        [...Array(itemIdMax)].map((v, idx) => (
-          <StatItem
-            name="아이템 이름"
-            imgSrc={`/assets/${
-              itemExist[`exist_${idx}` as ItemExistKey] ? "yellow" : "grey"
-            }/circle.svg`}
-            status={itemExist[`exist_${idx}` as ItemExistKey]}
-            key={idx}
-            content={idx}
-          />
-        ))}
+      {[...Array(itemIdMax)].map((v, idx) => (
+        <StatItem
+          name="아이템 이름"
+          imgSrc={
+            islandItemExist.includes(idx as ItemIdProps)
+              ? `/assets/item/item_${idx}.svg`
+              : "/assets/grey/circle.svg"
+          }
+          status={islandItemExist.includes(idx as ItemIdProps)}
+          key={idx}
+          content={idx}
+        />
+      ))}
     </ItemStatsWrapper>
   )
 }
