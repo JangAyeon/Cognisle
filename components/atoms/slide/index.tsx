@@ -1,6 +1,5 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
-import { useEffect } from "react"
 
 import { ITEM_CHOICE } from "@/constants/island"
 
