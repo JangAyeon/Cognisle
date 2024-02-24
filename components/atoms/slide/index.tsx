@@ -19,7 +19,7 @@ const Slide = ({ id }: { id: ItemIdProps }) => {
     }
   }
 
-  console.log("slide", id, ITEM_CHOICE[id].title)
+  // console.log("slide", id, ITEM_CHOICE[id].title)
   return (
     <SlideContainer onClick={() => handleItemSelect()}>
       <Image

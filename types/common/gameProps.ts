@@ -36,11 +36,12 @@ interface IGameInfo {
 }
 
 type GameLoadingProps = "start" | "end" | "result"
-
+type GameItemStateProps = { title: IRecordItem["title"]; id: number }
+type GameItemResultProps = { [key: string]: boolean }
 interface IGameResult {
   time: IGameInfo["time"]
   moves: IGameInfo["moves"]
-  items: { title: IRecordItem["title"]; id: number }[]
+  items: GameItemStateProps[]
 }
 export type {
   TBoardArrayType,
@@ -53,4 +54,6 @@ export type {
   IGameInfo,
   GameLoadingProps,
   IGameResult,
+  GameItemStateProps,
+  GameItemResultProps,
 }

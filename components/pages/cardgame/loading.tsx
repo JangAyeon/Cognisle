@@ -8,8 +8,13 @@ import GameResultModal from "@/components/modal/GameResultModal"
 import useUserProfile from "@/hooks/useUser"
 
 import { supabase } from "@/apis/instance"
+import recordApi from "@/apis/recordApi"
 
-import { GameLoadingProps, IGameResult } from "@/types/common/gameProps"
+import {
+  GameItemResultProps,
+  GameLoadingProps,
+  IGameResult,
+} from "@/types/common/gameProps"
 
 interface IGameLoading {
   type: GameLoadingProps
@@ -17,7 +22,7 @@ interface IGameLoading {
 }
 
 const createData = (idArray: IGameLoading["gameResult"]["items"]) => {
-  const data: { [key: string]: boolean } = {}
+  const data: GameItemResultProps = {}
   for (let { id } of idArray) {
     data[`exist_${id}`] = true
   }
@@ -40,16 +45,7 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
   const postGameResult = async () => {
     // console.log("post", userSbId)
     const data = createData(gameResult.items)
-    await supabase
-      .from("itemStatus")
-
-      .upsert(
-        {
-          userId: userSbId,
-          ...data,
-        },
-        { onConflict: "userId" }
-      )
+    await recordApi.postGameResult(userEmail, data)
   }
 
   const handleModalClose = () => {
@@ -72,14 +68,14 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
           alt="state Dot Line Divider"
         />
       )}
-      {type === "end" && (
+      {/*{type === "end" && (
         <Image
           src="/assets/grey/circle.svg"
           width={292}
           height={300}
           alt="state Dot Line Divider"
         />
-      )}
+      )}*/}
       {type === "result" && (
         <GameResultModal
           gameResult={gameResult}

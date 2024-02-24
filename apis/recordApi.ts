@@ -4,6 +4,7 @@ import { itemIdMax } from "@/constants/game"
 
 import { supabase } from "@/apis/instance"
 
+import { GameItemResultProps } from "@/types/common/gameProps"
 import { ItemExistProps } from "@/types/common/islandProps"
 
 const getItemById = (itemId: number) =>
@@ -12,11 +13,11 @@ const getItemById = (itemId: number) =>
 const getItemsByIdArray = (itemIds: number[]) =>
   supabase.from("recordItem").select("title, id").in("id", itemIds)
 
-const getMyItem = (userId: User["id"]) =>
+const getMyItem = (userEmail: User["email"]) =>
   supabase
     .from("itemStatus")
     .select("exist_0")
-    .eq("userId", userId)
+    .eq("userEmail", userEmail)
     .single<ItemExistProps>()
 
 // item1 ~ item24
@@ -30,11 +31,23 @@ const getItemStatus = (userEmail: User["email"]) =>
     .eq("userEmail", userEmail)
     .single<ItemExistProps>()
 
+const postGameResult = (userEmail: User["email"], data: GameItemResultProps) =>
+  supabase
+    .from("itemStatus")
+
+    .upsert(
+      {
+        userEmail: userEmail,
+        ...data,
+      },
+      { onConflict: "userEmail" }
+    )
 const recordApi = {
   getItemById,
   getItemsByIdArray,
   getItemStatus,
   getMyItem,
+  postGameResult,
 }
 
 export default recordApi

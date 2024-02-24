@@ -13,12 +13,12 @@ import { ItemExistKey, ItemExistProps } from "@/types/common/islandProps"
 
 const ItemStats = () => {
   const [itemExist, setItemExist] = useState<ItemExistProps | null>(null)
-  const { userSbId } = useUserProfile()
+  const { userEmail } = useUserProfile()
 
   const getItemStatus = async () => {
     // console.log(userSbId)
 
-    const { data, error } = await recordApi.getItemStatus(userSbId)
+    const { data, error } = await recordApi.getItemStatus(userEmail)
     // console.log(data)
 
     if (!error) {
@@ -27,10 +27,10 @@ const ItemStats = () => {
   }
   useEffect(() => {
     // setData(createData())
-    if (userSbId) {
+    if (userEmail) {
       getItemStatus()
     }
-  }, [userSbId])
+  }, [userEmail])
   return (
     <ItemStatsWrapper>
       {itemExist &&
