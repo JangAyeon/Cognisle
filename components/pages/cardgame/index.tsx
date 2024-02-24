@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 import GameState from "@/components/molecules/GameState"
 import PlayBoard from "@/components/molecules/PlayBoard"
@@ -15,6 +15,7 @@ import Loading from "./loading"
 
 const CardGameBoard = () => {
   const { userEmail, userSbId } = useUserProfile()
+  const [stageType, setStageType] = useState<GameLoadingProps>("start")
   const { computedBoardState, onCardClick, score, time, moves, cards } =
     useGame()
   const [isLoading, setIsLoading] = useState(true)
@@ -34,42 +35,32 @@ const CardGameBoard = () => {
   }
 
   const wait = async (type: GameLoadingProps) => {
+    setStageType(type)
     setIsLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
+    await new Promise((resolve) => setTimeout(resolve, 3000))
     if (type === "end") {
       getItems(cards)
-      //tempget()
-      // postGameResult(cards)
-    } else {
+    }
+    if (type == "start" || type == "end") {
       setIsLoading(false)
     }
   }
 
   useEffect(() => {
     if (score === 0) {
-      // console.log("획득한 카드", cards)
       wait("start")
     } else if (score == 8) {
       // console.log("게임 시작 로딩 중")
       wait("end")
     }
-  }, [score])
+    if (gameResult.items.length === 8) {
+      wait("result")
+    }
+  }, [score, gameResult.items.length])
 
   return (
     <>
-      {isLoading && (
-        <Loading
-          type={
-            score === 0
-              ? "start"
-              : gameResult.items.length > 0
-                ? "result"
-                : "end"
-          }
-          gameResult={gameResult}
-        />
-      )}
+      {isLoading && <Loading type={stageType} gameResult={gameResult} />}
 
       <GameContainer>
         {computedBoardState && (

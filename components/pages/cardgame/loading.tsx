@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import Image from "next/image"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
@@ -60,6 +61,14 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
   return (
     <LoadingWrapper>
       {type === "start" && <WaitGameStart />}
+      {type == "end" && (
+        <Image
+          src="/assets/card/clear.png"
+          width={254}
+          height={254}
+          alt="claer"
+        />
+      )}
       {type === "result" && (
         <GameResultModal
           gameResult={gameResult}

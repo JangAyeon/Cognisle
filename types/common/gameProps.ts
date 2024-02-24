@@ -35,7 +35,7 @@ interface IGameInfo {
   startTimer: boolean
 }
 
-type GameLoadingProps = "start" | "end" | "result"
+type GameLoadingProps = "start" | "end" | "result" | "playing"
 type GameItemStateProps = { title: IRecordItem["title"]; id: number }
 type GameItemResultProps = { [key: string]: boolean }
 interface IGameResult {
