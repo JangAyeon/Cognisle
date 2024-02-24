@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { User } from "@supabase/supabase-js"
 import { useRouter } from "next/router"
-import { useEffect } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import Island from "@/components/pages/island"
@@ -18,25 +18,37 @@ const Myland = () => {
   const {
     query: { id },
   } = useRouter()
-  useEffect(() => {
+  const [isLoading, setIsLoading] = useState(true)
+  const getIslandInfo = useCallback(async () => {
     if (id) {
       // 현재 서버에 저장된 섬타입, 아이템 위치, 아이템 소유목록 dispatch
+      setIsLoading(true)
       console.log("현재 저장된 섬 정보 불러오기", id)
       getType(id as User["email"])
       getItemsLoc(id as User["email"])
-      getItemExist(id as User["id"])
+      getItemExist(id as User["email"])
+      await new Promise((resolve) => setTimeout(resolve, 3000))
+      setIsLoading(false)
     }
   }, [id])
+  useEffect(() => {
+    setIsLoading(true)
+    getIslandInfo()
+  }, [getIslandInfo])
+
   return (
     <PageWrapper>
-      {" "}
-      <BackgroundLayout
-        startColor={BACKGROUND_COLOR[islandType].startColor}
-        endColor={BACKGROUND_COLOR[islandType].endColor}
-        degree="180deg"
-      >
-        <Island />
-      </BackgroundLayout>
+      {isLoading ? (
+        <div>loading</div>
+      ) : (
+        <BackgroundLayout
+          startColor={BACKGROUND_COLOR[islandType].startColor}
+          endColor={BACKGROUND_COLOR[islandType].endColor}
+          degree="180deg"
+        >
+          <Island />
+        </BackgroundLayout>
+      )}{" "}
     </PageWrapper>
   )
 }
