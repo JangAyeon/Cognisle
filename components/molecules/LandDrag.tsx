@@ -2,13 +2,13 @@ import styled from "@emotion/styled"
 import Image from "next/image"
 import { useCallback, useEffect, useState } from "react"
 
+import DragItem from "@/components/drag/draggable"
+
 import { ITEM_CHOICE, LAND_CHOICE } from "@/constants/island"
 
 import useIsland from "@/hooks/useIsland"
 
 import { LocationProps } from "@/types/common/islandProps"
-
-import DragItem from "@/pages/drag/draggableItem"
 
 import DraggableContext from "@/utils/draggableContext"
 
@@ -50,22 +50,23 @@ const LandContent = ({ isOwner }: { isOwner: boolean }) => {
             alt={LAND_CHOICE[islandType].title}
             fill
           />
+          <ItemsContainer>
+            {items.length > 0 &&
+              items.map((item: LocationProps) => (
+                <DragItem
+                  isOwner={isOwner}
+                  key={item.id}
+                  id={item.id}
+                  title={ITEM_CHOICE[`${item.id}`].title}
+                  child={ITEM_CHOICE[`${item.id}`].svg}
+                  x={item.x}
+                  y={item.y}
+                  z={item.z}
+                  active={false}
+                />
+              ))}
+          </ItemsContainer>
         </IslandContainer>
-
-        {items.length > 0 &&
-          items.map((item: LocationProps) => (
-            <DragItem
-              isOwner={isOwner}
-              key={item.id}
-              id={item.id}
-              title={ITEM_CHOICE[`${item.id}`].title}
-              child={ITEM_CHOICE[`${item.id}`].svg}
-              x={item.x}
-              y={item.y}
-              z={item.z}
-              active={false}
-            />
-          ))}
       </DraggableContext.Provider>
     </>
   )
@@ -80,6 +81,13 @@ const DragField = styled.div`
 
 const IslandContainer = styled.div`
   width: 43rem;
-  height: 70%;
+  height: 78rem;
   position: relative;
+`
+
+const ItemsContainer = styled.div`
+  position: relative;
+  top: 0;
+  left: 0;
+  height: inherit;
 `

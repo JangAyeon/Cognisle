@@ -15,7 +15,7 @@ const Slide = ({ id }: { id: ItemIdProps }) => {
   const handleItemSelect = () => {
     console.log(islandItemLoc[`loc_${id}`])
     if (!islandItemLoc[`loc_${id}`]) {
-      const data = { id, x: 117, y: -396, z: 1 }
+      const data = { id, x: 200, y: 100, z: 1 }
       setIslandItemLoc({ ...islandItemLoc, [`loc_${id}`]: data })
     }
   }
