@@ -18,7 +18,6 @@ import AuthModal, { AuthModalProps } from "@/components/modal/AuthModal"
 import { authApi } from "@/apis/authApi"
 
 import { IAuthSBInfo, ISignupForm } from "@/types/common/authProps"
-import { ModalProps } from "@/types/common/modalProps"
 
 import { setUserInfo } from "@/utils/auth"
 import { SignUpValidation, dsIdCheck } from "@/utils/formValidation"
@@ -70,7 +69,7 @@ const Input_List = [
 const SignupForm = () => {
   const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState<AuthModalProps>({
-    state: "success",
+    state: "fail",
     text: "",
     isOpen: false,
   })
@@ -96,8 +95,6 @@ const SignupForm = () => {
     }
   }
 
-  useEffect(() => {}, [isDsIdValid])
-
   const handleModalOpen = (text: string, state: AuthModalProps["state"]) => {
     // console.log("open")
     setIsModalOpen({ state, text, isOpen: true })
@@ -118,7 +115,7 @@ const SignupForm = () => {
       },
     }
 
-    SignUpValidation(params, setIsModalOpen)
+    await SignUpValidation(params, setIsModalOpen)
 
     if (isModalOpen.state === "success" && !isModalOpen.isOpen) {
       try {

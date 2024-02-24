@@ -68,22 +68,23 @@ const LoginForm = () => {
     LoginValidation(params, setIsModalOpen)
 
     handleLocalStorageEmail()
-    /*
-    try {
-      const {
-        data: { user, session },
-        error,
-      } = await authApi.login(params)
-      if (user && session) {
-        handleModalOpen("로그인에 성공하였습니다.", "success")
-        router.reload() // middleware.ts 거쳐 가기 위함
-      } else {
-        // alert(error?.message)
-        handleModalOpen("아이디 또는 비밀번호가 올바르지 않습니다", "fail")
+    if (isModalOpen.state === "success" && !isModalOpen.isOpen) {
+      try {
+        const {
+          data: { user, session },
+          error,
+        } = await authApi.login(params)
+        if (user && session) {
+          handleModalOpen("로그인에 성공하였습니다.", "success")
+          router.reload() // middleware.ts 거쳐 가기 위함
+        } else {
+          // alert(error?.message)
+          handleModalOpen("아이디 또는 비밀번호가 올바르지 않습니다", "fail")
+        }
+      } catch (error: any) {
+        handleModalOpen(error.message, "fail")
       }
-    } catch (error: any) {
-      handleModalOpen(error.message, "fail")
-    }*/
+    }
   }
 
   useEffect(() => {

@@ -46,7 +46,8 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
       </Head>
       <AppLayoutWrapper>
         {needHeader.includes(pathname) && <Header />}
-        {children}
+        <Container>{children}</Container>
+
         {needBottomTab.includes(pathname) && <BottomTab />}
       </AppLayoutWrapper>
     </>
@@ -58,10 +59,15 @@ export default AppLayout
 const AppLayoutWrapper = styled.section`
   width: 43rem;
   scrollbar-width: none;
-  height: 100vh;
-  min-height: 93.2rem;
-  max-height: fit-content;
-  overflow-y: scroll;
+
+  /*height: 100vh;*/
+  /*min-height: 93.2rem;*/
+  /*max-height: fit-content;*/
+  /*overflow-y: none;*/
   margin: auto;
   background-color: var(--color-yellow-01);
+`
+
+const Container = styled.div`
+  padding-top: 7.2rem;
 `

@@ -78,7 +78,6 @@ const LandControl = ({ isOwner }: { isOwner: boolean }) => {
 export default LandControl
 
 const TopMenu = styled.div`
-  margin-top: 7.2rem;
   display: flex;
   flex-direction: row;
 `

@@ -17,7 +17,7 @@ const PublicStats = () => {
       />
       <TextWrapper>
         <Text
-          size={24}
+          size={2.4}
           weight="bold"
           color="--color-yellow-01"
           text={userName}

@@ -52,7 +52,7 @@ const LandContent = ({ isOwner }: { isOwner: boolean }) => {
           />
         </IslandContainer>
 
-        {items.length &&
+        {items.length > 0 &&
           items.map((item: LocationProps) => (
             <DragItem
               isOwner={isOwner}
