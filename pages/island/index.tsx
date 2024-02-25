@@ -1,17 +1,12 @@
 import styled from "@emotion/styled"
 import { User } from "@supabase/supabase-js"
-import Image from "next/image"
 import { useRouter } from "next/router"
 import { useCallback, useEffect, useState } from "react"
 
-import BackgroundLayout from "@/components/layouts/BackgroundLayout"
+import LandLoading from "@/components/molecules/LandLoading"
 import Island from "@/components/pages/island"
 
-import { Bounce, POP_OUT } from "@/constants/animations"
-import { BACKGROUND_COLOR } from "@/constants/island"
-
 import useIsland from "@/hooks/useIsland"
-import useUserProfile from "@/hooks/useUser"
 
 import { getItemExist, getItemsLoc, getType } from "@/utils/island"
 
@@ -47,37 +42,7 @@ const Myland = () => {
     }
   }, [islandType, islandItemExist])
 
-  return (
-    <PageWrapper>
-      {isLoading ? (
-        <BackgroundLayout
-          imgSrc={"/assets/background/bubble.svg"}
-          imgWidth={43}
-          imgHeight={84.9}
-          startColor="--gradient-yellow"
-          endColor="--color-green-03"
-          degree="180deg"
-        >
-          <IconWrapper>
-            <Image
-              src="/assets/loading/loading.svg"
-              width="240"
-              height="320"
-              alt="loading"
-            />
-          </IconWrapper>
-        </BackgroundLayout>
-      ) : (
-        <BackgroundLayout
-          startColor={BACKGROUND_COLOR[islandType].startColor}
-          endColor={BACKGROUND_COLOR[islandType].endColor}
-          degree="180deg"
-        >
-          <Island />
-        </BackgroundLayout>
-      )}{" "}
-    </PageWrapper>
-  )
+  return <PageWrapper>{isLoading ? <LandLoading /> : <Island />} </PageWrapper>
 }
 
 export default Myland
@@ -88,11 +53,4 @@ const PageWrapper = styled.div`
   background-color: var(--color-blue-01);
   display: flex;
   flex-direction: column;
-`
-
-const IconWrapper = styled.div`
-  width: 24rem;
-
-  position: relative;
-  animation: ${Bounce} 2s infinite ease-in-out;
 `
