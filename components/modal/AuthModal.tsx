@@ -96,6 +96,7 @@ const AuthModal = ({ text, isOpen, onClose, state }: IAuthModal) => {
 export default AuthModal
 
 const Container = styled.div`
+  padding: 0 2.4rem;
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -104,13 +105,11 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 `
 
 const TextWrapper = styled.div`
   width: 100%;
 `
 
-const ImageWrapper = styled.div`
-  padding: 0 2.4rem;
-`
+const ImageWrapper = styled.div``

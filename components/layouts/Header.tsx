@@ -1,16 +1,23 @@
 import styled from "@emotion/styled"
 import Link from "next/link"
+import { useRouter } from "next/router"
 
 import Logo from "@/components/atoms/logo/Logo"
 import Triangle from "@/components/atoms/triangle/Triangle"
 
 const Header = () => {
+  const router = useRouter()
+  const rout = () => {
+    console.log("router")
+    router.replace("/")
+  }
+
   return (
     <HeaderWrapper>
       <Triangle type="original" width={139} height={72} alt="header triangle" />
-      <Link href={"/"}>
+      <div onClick={rout}>
         <Logo type="header" width={185} height={32} alt="header logo" />
-      </Link>
+      </div>
     </HeaderWrapper>
   )
 }

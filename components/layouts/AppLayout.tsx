@@ -43,11 +43,20 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
   }, [children])
 
   useEffect(() => {
+    console.log(
+      pathname,
+      _needHeader.includes(pathname),
+      _needBottomTab.includes(pathname)
+    )
     if (_needHeader.includes(pathname)) {
       setNeedHeader(true)
+    } else {
+      setNeedHeader(false)
     }
     if (_needBottomTab.includes(pathname)) {
       setNeedBottomTab(true)
+    } else {
+      setNeedBottomTab(false)
     }
   }, [pathname])
 
