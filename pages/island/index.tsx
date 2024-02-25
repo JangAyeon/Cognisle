@@ -1,11 +1,13 @@
 import styled from "@emotion/styled"
 import { User } from "@supabase/supabase-js"
+import Image from "next/image"
 import { useRouter } from "next/router"
 import { useCallback, useEffect, useState } from "react"
 
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import Island from "@/components/pages/island"
 
+import { Bounce, POP_OUT } from "@/constants/animations"
 import { BACKGROUND_COLOR } from "@/constants/island"
 
 import useIsland from "@/hooks/useIsland"
@@ -14,7 +16,7 @@ import useUserProfile from "@/hooks/useUser"
 import { getItemExist, getItemsLoc, getType } from "@/utils/island"
 
 const Myland = () => {
-  const { islandType } = useIsland()
+  const { islandType, islandItemExist } = useIsland()
   const {
     query: { id },
   } = useRouter()
@@ -27,22 +29,44 @@ const Myland = () => {
       getType(id as User["email"])
       getItemsLoc(id as User["email"])
       getItemExist(id as User["email"])
-      await new Promise((resolve) => setTimeout(resolve, 3000))
-      setIsLoading(false)
     }
   }, [id])
-  {
-    /*
+  const stopLoading = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 3000))
+    setIsLoading(false)
+  }
+
   useEffect(() => {
     setIsLoading(true)
     getIslandInfo()
-  }, [getIslandInfo])*/
-  }
+  }, [getIslandInfo])
+
+  useEffect(() => {
+    if (islandType && islandItemExist) {
+      stopLoading()
+    }
+  }, [islandType, islandItemExist])
 
   return (
     <PageWrapper>
       {isLoading ? (
-        <VideoBox src="/video/loading.webm" autoPlay muted loop playsInline />
+        <BackgroundLayout
+          imgSrc={"/assets/background/bubble.svg"}
+          imgWidth={43}
+          imgHeight={84.9}
+          startColor="--gradient-yellow"
+          endColor="--color-green-03"
+          degree="180deg"
+        >
+          <IconWrapper>
+            <Image
+              src="/assets/loading/loading.svg"
+              width="240"
+              height="320"
+              alt="loading"
+            />
+          </IconWrapper>
+        </BackgroundLayout>
       ) : (
         <BackgroundLayout
           startColor={BACKGROUND_COLOR[islandType].startColor}
@@ -60,14 +84,15 @@ export default Myland
 
 const PageWrapper = styled.div`
   min-height: 100vh;
+  width: 100%;
   background-color: var(--color-blue-01);
   display: flex;
+  flex-direction: column;
 `
 
-const VideoWrapper = styled.div``
+const IconWrapper = styled.div`
+  width: 24rem;
 
-const VideoBox = styled.video`
-  width: 100%;
-  height: 100%;
-  display: block;
+  position: relative;
+  animation: ${Bounce} 2s infinite ease-in-out;
 `

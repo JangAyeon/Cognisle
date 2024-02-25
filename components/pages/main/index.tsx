@@ -4,7 +4,7 @@ import LogoutBtn from "@/components/LogoutBtn"
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import Logo from "@/components/atoms/logo/Logo"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
-import MenuButtons from "@/components/molecules/menuButtons"
+import MenuButtons from "@/components/molecules/MenuButtons"
 
 import useUserProfile from "@/hooks/useUser"
 
