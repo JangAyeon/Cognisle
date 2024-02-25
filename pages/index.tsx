@@ -30,13 +30,8 @@ export default function Home() {
 
   return (
     <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <PageWrapper>
-          <Main />
-        </PageWrapper>
-      )}
+      {" "}
+      <PageWrapper>{loading ? <Loading /> : <Main />}</PageWrapper>
     </>
   )
 }

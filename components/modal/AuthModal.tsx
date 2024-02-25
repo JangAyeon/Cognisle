@@ -66,7 +66,7 @@ const AuthModal = ({ text, isOpen, onClose, state }: IAuthModal) => {
             height={6.4}
             backgroundColor={STATE_COLOR[state].backgroundColor}
           >
-            <Modal.CloseButton size={14} imgSrc="/assets/grey/close.svg" />
+            {/*<Modal.CloseButton size={14} imgSrc="/assets/grey/close.svg" />*/}
             <Container>
               <ImageWrapper>
                 <Image
@@ -108,7 +108,7 @@ const Container = styled.div`
 `
 
 const TextWrapper = styled.div`
-  width: 16rem;
+  width: 100%;
 `
 
 const ImageWrapper = styled.div`

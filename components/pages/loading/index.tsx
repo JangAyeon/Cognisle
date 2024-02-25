@@ -26,7 +26,7 @@ const Loading = () => {
 export default Loading
 
 const PageWrapper = styled.div`
-  min-height: inherit;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;

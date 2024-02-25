@@ -31,7 +31,7 @@ const TextInputStyles = {
 
 const LoginForm = () => {
   const [isModalOpen, setIsModalOpen] = useState<AuthModalProps>({
-    state: "success",
+    state: "fail",
     text: "",
     isOpen: false,
   })
@@ -87,12 +87,23 @@ const LoginForm = () => {
     }
   }
 
+  const CloseModal = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    setIsModalOpen({ ...isModalOpen, isOpen: false })
+  }
+
   useEffect(() => {
     if (LS_EMAIL) {
       setEmail(LS_EMAIL)
       setEmailFlagCheck(true)
     }
   }, [LS_EMAIL, setEmail])
+
+  useEffect(() => {
+    if (isModalOpen.isOpen) {
+      CloseModal()
+    }
+  }, [isModalOpen.isOpen])
 
   return (
     <>
