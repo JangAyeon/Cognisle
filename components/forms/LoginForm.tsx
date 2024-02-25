@@ -1,22 +1,17 @@
 import styled from "@emotion/styled"
 import { useRouter } from "next/router"
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, useEffect, useRef, useState } from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import FormButton from "@/components/atoms/button/FormButton"
 import TextInput from "@/components/atoms/input/TextInput"
 import Text from "@/components/atoms/typo/Text"
-import AuthModal, {
-  AuthModalProps,
-  IAuthModal,
-} from "@/components/modal/AuthModal"
+import AuthModal from "@/components/modal/AuthModal"
 
 import { useInput } from "@/hooks/useInput"
 import useStateModal from "@/hooks/useStateModal"
 
 import { authApi } from "@/apis/authApi"
-
-import { ILoginForm } from "@/types/common/authProps"
 
 import { LoginValidation } from "@/utils/formValidation"
 
@@ -31,23 +26,25 @@ const TextInputStyles = {
 }
 
 const LoginForm = () => {
-  /*const [isModalOpen, setIsModalOpen] = useState<AuthModalProps>({
-    state: "fail",
-    text: "",
-    isOpen: false,
-  })*/
   const { state, text, isOpen, setStateModal } = useStateModal()
-  const handleModalOpen = (
-    text: IAuthModal["text"],
-    state: IAuthModal["state"]
-  ) => {
-    // console.log("open")
-    setStateModal({ state, text, isOpen: true })
-  }
+  const formRef = useRef<HTMLFormElement>(null)
+
   const [email, onChangeEmail, setEmail] = useInput("")
   const [emailFlagCheck, setEmailFlagCheck] = useState(false)
   const LS_EMAIL = localStorage.getItem("LS_EMAIL")
   const router = useRouter()
+
+  const getFormValue = () => {
+    if (formRef.current != null) {
+      const loginForm = new FormData(formRef.current)
+      return {
+        email: loginForm.get("email"),
+        password: loginForm.get("password"),
+      }
+    } else {
+      return { email: "", password: "" }
+    }
+  }
 
   const handleEmailFlagCheck = () => {
     setEmailFlagCheck((prev) => !prev)
@@ -61,33 +58,39 @@ const LoginForm = () => {
     }
   }
 
-  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+  const handleLoginValid = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const loginForm = new FormData(e.currentTarget)
-    const params: ILoginForm = {
-      email: loginForm.get("email"),
-      password: loginForm.get("password"),
-    }
-    LoginValidation(params, setStateModal)
+    const FormValue = getFormValue()
+    LoginValidation(FormValue, setStateModal)
 
     handleLocalStorageEmail()
-    if (state === "success" && !isOpen) {
-      try {
-        const {
-          data: { user, session },
-          error,
-        } = await authApi.login(params)
-        if (user && session) {
-          handleModalOpen("로그인에 성공하였습니다.", "success")
-          router.reload() // middleware.ts 거쳐 가기 위함
-        } else {
-          // alert(error?.message)
-          handleModalOpen("아이디 또는 비밀번호가 올바르지 않습니다", "fail")
-        }
-      } catch (error: any) {
-        handleModalOpen(error.message, "fail")
+  }
+
+  const handleLogin = async () => {
+    const FormValue = getFormValue()
+    try {
+      const {
+        data: { user, session },
+        error,
+      } = await authApi.login(FormValue)
+      if (user && session) {
+        setStateModal({
+          state: "success",
+          text: "로그인에 성공하였습니다.",
+          isOpen: true,
+        })
+        router.reload() // middleware.ts 거쳐 가기 위함
+      } else {
+        // alert(error?.message)
+        setStateModal({
+          state: "fail",
+          text: "아이디 또는 비밀번호가 올바르지 않습니다",
+          isOpen: true,
+        })
       }
+    } catch (error: any) {
+      setStateModal({ text: error.message, state: "fail", isOpen: true })
     }
   }
 
@@ -109,6 +112,12 @@ const LoginForm = () => {
     }
   }, [isOpen])
 
+  useEffect(() => {
+    if (state == "success" && !isOpen) {
+      handleLogin()
+    }
+  }, [state])
+
   return (
     <>
       <div>
@@ -120,7 +129,7 @@ const LoginForm = () => {
             onClose={() => setStateModal({ state, text, isOpen: false })}
           />
         )}
-        <FormWrapper onSubmit={handleLogin}>
+        <FormWrapper onSubmit={handleLoginValid} ref={formRef}>
           <TextInput
             value={email}
             onChange={onChangeEmail}
@@ -172,7 +181,6 @@ const LoginForm = () => {
     </>
   )
 }
-
 export default LoginForm
 
 type CheckBoxStyle = {
