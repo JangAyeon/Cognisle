@@ -85,7 +85,7 @@ const LoginValidation = (
 
 const SignUpValidation = async (
   form: ISignupForm,
-  setIsModalOpen: Dispatch<SetStateAction<AuthModalProps>>
+  setIsModalOpen: ({ state, text, isOpen }: Omit<IAuthModal, "onClose">) => void
 ) => {
   const {
     email,

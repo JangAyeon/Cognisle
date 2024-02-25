@@ -55,7 +55,7 @@ const AuthModal = ({ text, isOpen, onClose, state }: IAuthModal) => {
   } = useRouter()
   return (
     <>
-      {type && (
+      {
         <Modal.Root
           isOpen={isOpen}
           onClose={onClose}
@@ -88,7 +88,7 @@ const AuthModal = ({ text, isOpen, onClose, state }: IAuthModal) => {
             </Container>
           </Modal.Content>
         </Modal.Root>
-      )}
+      }
     </>
   )
 }

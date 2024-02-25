@@ -35,7 +35,7 @@ const LoginForm = () => {
   const router = useRouter()
 
   const getFormValue = () => {
-    if (formRef.current != null) {
+    if (formRef.current) {
       const loginForm = new FormData(formRef.current)
       return {
         email: loginForm.get("email"),
