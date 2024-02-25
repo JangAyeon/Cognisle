@@ -1,21 +1,15 @@
 import styled from "@emotion/styled"
-import { useRouter } from "next/router"
-import { useEffect } from "react"
 
 import LogoutBtn from "@/components/LogoutBtn"
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import Logo from "@/components/atoms/logo/Logo"
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
-import AuthModal from "@/components/modal/AuthModal"
 import MenuButtons from "@/components/molecules/MenuButtons"
 
-import useAuth from "@/hooks/useAuth"
-import useStateModal from "@/hooks/useStateModal"
 import useUserProfile from "@/hooks/useUser"
 
 const Main = () => {
   const { userName } = useUserProfile()
-  const { isOpen, text, state, setStateModal } = useStateModal()
 
   return (
     <BackgroundLayout
@@ -26,14 +20,6 @@ const Main = () => {
       imgWidth={43}
     >
       <ContentWrapper>
-        {text && (
-          <AuthModal
-            state={state}
-            text={text}
-            isOpen={isOpen}
-            onClose={() => setStateModal({ state, text, isOpen: false })}
-          />
-        )}
         <Logo type="main" width={240} height={124} alt="main logo" />
         <ButtonsWrapper>
           <BorderPointBtn
