@@ -34,7 +34,7 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
   // console.log(type)
   const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const { userEmail, userSbId } = useUserProfile()
+  const { userEmail } = useUserProfile()
 
   const handleModalOpen = () => {
     // console.log("open")
@@ -48,14 +48,17 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
     await recordApi.postGameResult(userEmail, data)
   }
 
-  const handleModalClose = () => {
+  const handleModalClose = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 3000))
     setIsModalOpen(false)
-    postGameResult()
+
     router.replace("/")
   }
   useEffect(() => {
     if (type === "result") {
       handleModalOpen()
+      postGameResult()
+      handleModalClose()
     }
   }, [type])
   return (
@@ -66,7 +69,7 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
           src="/assets/card/clear.png"
           width={254}
           height={254}
-          alt="claer"
+          alt="clear"
         />
       )}
       {type === "result" && (

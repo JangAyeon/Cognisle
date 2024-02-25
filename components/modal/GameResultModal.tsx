@@ -23,7 +23,6 @@ const GameResultModal = ({
           height={48.0}
           pointColor={"--color-pink-01"}
         >
-          <Modal.CloseButton />
           <Modal.Body>
             <Container>
               <Text
