@@ -14,7 +14,7 @@ const GameState = ({
   return (
     <StateWrapper>
       <Image
-        src={"/assets/green/card.svg"}
+        src={"/assets/yellow/card.svg"}
         alt="game card"
         height={35}
         width={26}
