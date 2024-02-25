@@ -1,13 +1,15 @@
 import styled from "@emotion/styled"
 import Head from "next/head"
 import { useRouter } from "next/router"
-import { ReactElement, useEffect } from "react"
+import { ReactElement, useEffect, useState } from "react"
 
 import BottomTab from "@/components/layouts/BottomTab"
 import Header from "@/components/layouts/Header"
 
-import needBottomTab from "@/constants/bottomTab"
-import needHeader from "@/constants/header"
+import {
+  needBottomTab as _needBottomTab,
+  needHeader as _needHeader,
+} from "@/constants/tabs"
 
 import useAuth from "@/hooks/useAuth"
 
@@ -16,6 +18,8 @@ import { authApi } from "@/apis/authApi"
 import { setUserInfo } from "@/utils/auth"
 
 const AppLayout = ({ children }: { children: ReactElement }) => {
+  const [needHeader, setNeedHeader] = useState(false)
+  const [needBottomTab, setNeedBottomTab] = useState(false)
   const { pathname } = useRouter()
 
   const { accessToken } = useAuth()
@@ -38,6 +42,15 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
     }
   }, [children])
 
+  useEffect(() => {
+    if (_needHeader.includes(pathname)) {
+      setNeedHeader(true)
+    }
+    if (_needBottomTab.includes(pathname)) {
+      setNeedBottomTab(true)
+    }
+  }, [pathname])
+
   return (
     <>
       <Head>
@@ -45,10 +58,12 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
         <meta name="description" content="Cognisle" />
       </Head>
       <AppLayoutWrapper>
-        {needHeader.includes(pathname) && <Header />}
-        <Container>{children}</Container>
+        {needHeader && <Header />}
+        <Container needHeader={needHeader} needBottomTab={needBottomTab}>
+          {children}
+        </Container>
 
-        {needBottomTab.includes(pathname) && <BottomTab />}
+        {needBottomTab && <BottomTab />}
       </AppLayoutWrapper>
     </>
   )
@@ -68,6 +83,6 @@ const AppLayoutWrapper = styled.section`
   background-color: var(--color-yellow-01);
 `
 
-const Container = styled.div`
-  padding-top: 7.2rem;
+const Container = styled.div<{ needHeader: boolean; needBottomTab: boolean }>`
+  padding-top: ${({ needHeader }) => (needHeader ? `7.2rem` : "0")};
 `
