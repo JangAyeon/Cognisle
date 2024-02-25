@@ -12,6 +12,7 @@ import AuthModal, {
 } from "@/components/modal/AuthModal"
 
 import { useInput } from "@/hooks/useInput"
+import useStateModal from "@/hooks/useStateModal"
 
 import { authApi } from "@/apis/authApi"
 
@@ -30,15 +31,18 @@ const TextInputStyles = {
 }
 
 const LoginForm = () => {
-  const [isModalOpen, setIsModalOpen] = useState<AuthModalProps>({
+  /*const [isModalOpen, setIsModalOpen] = useState<AuthModalProps>({
     state: "fail",
     text: "",
     isOpen: false,
-  })
-
-  const handleModalOpen = (text: string, state: IAuthModal["state"]) => {
+  })*/
+  const { state, text, isOpen, setStateModal } = useStateModal()
+  const handleModalOpen = (
+    text: IAuthModal["text"],
+    state: IAuthModal["state"]
+  ) => {
     // console.log("open")
-    setIsModalOpen({ state, text, isOpen: true })
+    setStateModal({ state, text, isOpen: true })
   }
   const [email, onChangeEmail, setEmail] = useInput("")
   const [emailFlagCheck, setEmailFlagCheck] = useState(false)
@@ -65,10 +69,10 @@ const LoginForm = () => {
       email: loginForm.get("email"),
       password: loginForm.get("password"),
     }
-    LoginValidation(params, setIsModalOpen)
+    LoginValidation(params, setStateModal)
 
     handleLocalStorageEmail()
-    if (isModalOpen.state === "success" && !isModalOpen.isOpen) {
+    if (state === "success" && !isOpen) {
       try {
         const {
           data: { user, session },
@@ -89,7 +93,7 @@ const LoginForm = () => {
 
   const CloseModal = async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsModalOpen({ ...isModalOpen, isOpen: false })
+    setStateModal({ state, text, isOpen: false })
   }
 
   useEffect(() => {
@@ -100,20 +104,20 @@ const LoginForm = () => {
   }, [LS_EMAIL, setEmail])
 
   useEffect(() => {
-    if (isModalOpen.isOpen) {
+    if (isOpen) {
       CloseModal()
     }
-  }, [isModalOpen.isOpen])
+  }, [isOpen])
 
   return (
     <>
       <div>
-        {isModalOpen && (
+        {text && (
           <AuthModal
-            state={isModalOpen.state}
-            text={isModalOpen.text}
-            isOpen={isModalOpen.isOpen}
-            onClose={() => setIsModalOpen({ ...isModalOpen, isOpen: false })}
+            state={state}
+            text={text}
+            isOpen={isOpen}
+            onClose={() => setStateModal({ state, text, isOpen: false })}
           />
         )}
         <FormWrapper onSubmit={handleLogin}>
