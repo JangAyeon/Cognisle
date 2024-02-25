@@ -31,15 +31,18 @@ const Myland = () => {
       setIsLoading(false)
     }
   }, [id])
+  {
+    /*
   useEffect(() => {
     setIsLoading(true)
     getIslandInfo()
-  }, [getIslandInfo])
+  }, [getIslandInfo])*/
+  }
 
   return (
     <PageWrapper>
       {isLoading ? (
-        <div>loading</div>
+        <VideoBox src="/video/loading.webm" autoPlay muted loop playsInline />
       ) : (
         <BackgroundLayout
           startColor={BACKGROUND_COLOR[islandType].startColor}
@@ -56,7 +59,15 @@ const Myland = () => {
 export default Myland
 
 const PageWrapper = styled.div`
-  min-height: inherit;
+  min-height: 100vh;
   background-color: var(--color-blue-01);
   display: flex;
+`
+
+const VideoWrapper = styled.div``
+
+const VideoBox = styled.video`
+  width: 100%;
+  height: 100%;
+  display: block;
 `
