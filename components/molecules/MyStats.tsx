@@ -10,6 +10,7 @@ const MyStats = () => {
   return (
     <MyStatsWrapper>
       <StatItem
+        type="dsUser"
         name="아이템 이름"
         imgSrc={`/assets/item/active/item_0.svg`}
         status={true}

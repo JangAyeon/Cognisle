@@ -28,6 +28,7 @@ const ItemStats = () => {
       {[...Array(itemIdMax)].map((v, idx) => (
         <StatItem
           name="아이템 이름"
+          type="item"
           imgSrc={`/assets/item/${
             islandItemExist.includes((idx + 1) as ItemIdProps)
               ? "active"

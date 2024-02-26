@@ -1,3 +1,4 @@
+import { User } from "@supabase/supabase-js"
 import { ReactNode } from "react"
 
 import { IGameResult } from "@/types/common/gameProps"
@@ -42,7 +43,9 @@ type ModalProps = {
 }
 
 type ShowItemModalProps = ModalProps & {
-  itemId: IRecordItem["id"]
+  itemId?: IRecordItem["id"]
+
+  type: "item" | "dsUser"
 }
 type GameResultModalProps = ModalProps & {
   gameResult: IGameResult

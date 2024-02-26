@@ -10,9 +10,10 @@ interface IItem {
   status: boolean
   imgSrc: string
   content: number
+  type: "item" | "dsUser"
 }
 
-const StatItem = ({ name, status, imgSrc, content }: IItem) => {
+const StatItem = ({ type, name, status, imgSrc, content }: IItem) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleModalOpen = () => {
@@ -25,6 +26,7 @@ const StatItem = ({ name, status, imgSrc, content }: IItem) => {
     <>
       {isModalOpen && status && (
         <ShowItemModal
+          type={type}
           itemId={content}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
@@ -32,12 +34,6 @@ const StatItem = ({ name, status, imgSrc, content }: IItem) => {
       )}
       <StatItemWrapper onClick={handleModalOpen}>
         <Image src={imgSrc} height={102} width={102} alt={name} />
-        {/*<Text
-          text={name}
-          size={1.6}
-          weight="bold"
-          color={status ? "--color-orange-01" : "--color-grey-01"}
-        />*/}
       </StatItemWrapper>
     </>
   )
