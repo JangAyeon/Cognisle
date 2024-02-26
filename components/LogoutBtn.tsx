@@ -12,7 +12,7 @@ import { removeUserInfo } from "@/utils/auth"
 
 const LogoutBtn = () => {
   const router = useRouter()
-  const { state, text, isOpen, setStateModal } = useStateModal()
+  const { state, text, isOpen, setStateModal, closeModal } = useStateModal()
 
   const handleLogout = async () => {
     try {
@@ -24,14 +24,8 @@ const LogoutBtn = () => {
     }
   }
 
-  const handleModalClose = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 3000))
-    setStateModal({ text, state, isOpen: false })
-  }
-
   useEffect(() => {
     if (isOpen) {
-      handleModalClose()
       router.reload()
     }
   }, [isOpen])
@@ -43,7 +37,7 @@ const LogoutBtn = () => {
           state={state}
           text={text}
           isOpen={isOpen}
-          onClose={() => setStateModal({ state, text, isOpen: false })}
+          onClose={closeModal}
         />
       )}
       <Button onClick={handleLogout}>로그아웃 logout</Button>

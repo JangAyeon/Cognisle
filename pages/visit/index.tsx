@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { useEffect, useRef } from "react"
 
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import VisitContainer from "@/components/pages/vist"
@@ -24,9 +25,10 @@ export default Island
 
 const PageWrapper = styled.div`
   background-color: var(--color-blue-01);
-  min-height: inherit;
+
   display: flex;
   flex: 1;
+  min-height: inherit;
   flex-direction: column;
   justify-content: space-between;
 `

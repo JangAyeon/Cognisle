@@ -28,6 +28,8 @@ const getDsIdValid = (dsId: FormDataEntryValue) =>
     .eq("dsTag", dsId)
     .single()
 
+const getUserEmailExist = (email: FormDataEntryValue) =>
+  supabase.from("userinfo").select("*").eq("email", email).single()
 const authApi = {
   signup,
   login,
@@ -36,6 +38,7 @@ const authApi = {
   getSession,
   getUserProfile,
   getDsIdValid,
+  getUserEmailExist,
 }
 
 export { authApi }
