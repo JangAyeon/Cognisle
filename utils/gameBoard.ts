@@ -116,3 +116,11 @@ export const getComputedBoard = (
 
   return changedBoard
 }
+
+export const getCardImage = (state: ICard["state"], value: number) => {
+  if (state === "hidden") {
+    return "/assets/card/hidden.png"
+  } else {
+    return `/assets/card/reveal/item_${value}.png`
+  }
+}
