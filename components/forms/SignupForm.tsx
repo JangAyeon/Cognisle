@@ -13,11 +13,13 @@ import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import FormButton from "@/components/atoms/button/FormButton"
 import UnderLineInput from "@/components/atoms/input/UnderLineInput"
 import Text from "@/components/atoms/typo/Text"
-import AuthModal, { AuthModalProps } from "@/components/modal/AuthModal"
+import AuthModal from "@/components/modal/AuthModal"
+
+import useStateModal from "@/hooks/useStateModal"
 
 import { authApi } from "@/apis/authApi"
 
-import { IAuthSBInfo, ISignupForm } from "@/types/common/authProps"
+import { IAuthSBInfo } from "@/types/common/authProps"
 
 import { setUserInfo } from "@/utils/auth"
 import { SignUpValidation, dsIdCheck } from "@/utils/formValidation"
@@ -68,13 +70,37 @@ const Input_List = [
 
 const SignupForm = () => {
   const router = useRouter()
-  const [isModalOpen, setIsModalOpen] = useState<AuthModalProps>({
-    state: "fail",
-    text: "",
-    isOpen: false,
-  })
+  const formRef = useRef<HTMLFormElement>(null)
+  const { state, text, isOpen, setStateModal } = useStateModal()
 
   const [isDsIdValid, setIsDsIdValid] = useState(false)
+
+  const getFormValue = () => {
+    if (formRef.current) {
+      const signupForm = new FormData(formRef.current)
+      return {
+        email: signupForm.get("email"),
+        password: signupForm.get("password"),
+        options: {
+          data: {
+            name: signupForm.get("name"),
+            dsId: isDsIdValid ? signupForm.get("dsId") : "",
+          },
+        },
+      }
+    }
+
+    return {
+      email: "",
+      password: "",
+      options: {
+        data: {
+          name: "",
+          dsId: "",
+        },
+      },
+    }
+  }
 
   const handleDsIdCheck = async (e: MouseEvent<HTMLButtonElement>) => {
     const { form } = e.target as HTMLFormElement
@@ -83,7 +109,7 @@ const SignupForm = () => {
     const text = await dsIdCheck(dsId, setIsDsIdValid)
     console.log(dsId, text)
     if (text) {
-      setIsModalOpen({
+      setStateModal({
         state: isDsIdValid ? "success" : "fail",
         text,
         isOpen: true,
@@ -95,60 +121,64 @@ const SignupForm = () => {
     }
   }
 
-  const handleModalOpen = (text: string, state: AuthModalProps["state"]) => {
-    // console.log("open")
-    setIsModalOpen({ state, text, isOpen: true })
-  }
-
-  const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSignupValid = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const signupForm = new FormData(e.currentTarget)
-    const params: ISignupForm = {
-      email: signupForm.get("email"),
-      password: signupForm.get("password"),
-      options: {
-        data: {
-          name: signupForm.get("name"),
-          dsId: isDsIdValid ? signupForm.get("dsId") : "",
-        },
-      },
-    }
+    const formValue = getFormValue()
 
-    await SignUpValidation(params, setIsModalOpen)
+    await SignUpValidation(formValue, setStateModal)
+  }
 
-    if (isModalOpen.state === "success" && !isModalOpen.isOpen) {
-      try {
-        const {
-          data: { user, session },
-          error,
-        } = await authApi.signup(params)
-        if (user && session) {
-          setUserInfo({ user, session } as IAuthSBInfo)
-          handleModalOpen("회원가입에 성공하였습니다.", "success")
-          router.replace("/")
-        } else {
-          handleModalOpen("사용 불가능한 이메일 및 비밀번호입니다.", "fail")
-        }
-      } catch (error) {
-        console.log(error)
-        alert(error)
+  const handleSignup = async () => {
+    const formValue = getFormValue()
+    try {
+      const {
+        data: { user, session },
+        error,
+      } = await authApi.signup(formValue)
+      if (user && session) {
+        setUserInfo({ user, session } as IAuthSBInfo)
+        setStateModal({
+          isOpen: true,
+          text: "회원가입에 성공하였습니다.",
+          state: "success",
+        })
+        router.replace("/")
+      } else {
+        setStateModal({
+          isOpen: true,
+          state: "fail",
+          text: "사용 불가능한 이메일 및 비밀번호입니다.",
+        })
       }
+    } catch (error: any) {
+      console.log(error)
+      setStateModal({
+        isOpen: true,
+        state: "fail",
+        text: error.message,
+      })
     }
   }
+
+  useEffect(() => {
+    if (!isOpen && state === "success") {
+      handleSignup()
+    }
+  }, [isOpen, state])
 
   return (
     <>
       <div>
-        {isModalOpen && (
+        {text && (
           <AuthModal
-            state={isModalOpen.state}
-            text={isModalOpen.text}
-            isOpen={isModalOpen.isOpen}
-            onClose={() => setIsModalOpen({ ...isModalOpen, isOpen: false })}
+            state={state}
+            text={text}
+            isOpen={isOpen}
+            onClose={() => setStateModal({ text, state, isOpen: false })}
           />
         )}
-        <FormWrapper onSubmit={handleSignup}>
+        <FormWrapper onSubmit={handleSignupValid} ref={formRef}>
           {Input_List.map((item, idx) => (
             <FormInputWrapper key={idx}>
               <Text

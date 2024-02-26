@@ -33,4 +33,22 @@ opacity: 0;}
 
 `
 
-export { FADE_IN, FADE_OUT, POP_IN, POP_OUT }
+const Bounce = keyframes`
+0% {
+      top: 4rem;
+      
+    }
+    50% {
+      top: 10rem;
+  	   
+    }
+
+
+
+    100% {
+      top: 4rem;
+       
+    }
+`
+
+export { FADE_IN, FADE_OUT, POP_IN, POP_OUT, Bounce }

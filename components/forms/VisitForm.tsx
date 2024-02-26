@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { useRouter } from "next/router"
 import { FormEvent } from "react"
 
 import TextInput from "@/components/atoms/input/TextInput"
@@ -10,10 +11,11 @@ import Squiggly from "@/public/assets/green/squiggly.svg"
 
 const VisitForm = () => {
   const [friendId, onChangeFriendId, setFriendId] = useInput("")
+  const router = useRouter()
 
   const handleFriendSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    // console.log(friendId)
+    router.push(`/island?id=${friendId}`)
   }
   return (
     <FormContainer>

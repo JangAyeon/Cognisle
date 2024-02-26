@@ -1,20 +1,19 @@
 import { Dispatch, SetStateAction } from "react"
 
-import { AuthModalProps } from "@/components/modal/AuthModal"
+import { AuthModalProps, IAuthModal } from "@/components/modal/AuthModal"
 
 import { authApi } from "@/apis/authApi"
 
 import { ILoginForm, ISignupForm } from "@/types/common/authProps"
 
 const passwordCheck = (password: FormDataEntryValue | null) => {
-  const password_format =
-    /^[A-Za-z0-9`~!@#\$%\^&\*\(\)\{\}\[\]\-_=\+\\|;:'"<>,\./\?]{8,20}$/
+  const password_format = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{8,16}$/
   console.log("비밀번호", password, password_format.test(password as string))
   if (typeof password === "string") {
     if (!password.length) {
       return "비밀번호를 입력하시오"
     } else if (!password_format.test(password)) {
-      return "8~20자 영문 대소문자, 숫자, 특수문자를 사용하세요"
+      return "8~16자 영문 대소문자, 숫자, 특수문자를 사용하세요"
     }
   }
 }
@@ -66,7 +65,7 @@ const nameCheck = (name: FormDataEntryValue | null) => {
 
 const LoginValidation = (
   form: ILoginForm,
-  setIsModalOpen: Dispatch<SetStateAction<AuthModalProps>>
+  setIsModalOpen: ({ state, text, isOpen }: Omit<IAuthModal, "onClose">) => void
 ) => {
   const { email, password } = form
 
@@ -79,13 +78,14 @@ const LoginValidation = (
   } else if (isPasswordValid) {
     SetAuthModalState("fail", isPasswordValid, setIsModalOpen)
   } else {
+    console.log("all Login validation pass")
     SetAuthModalState("success", "", setIsModalOpen)
   }
 }
 
 const SignUpValidation = async (
   form: ISignupForm,
-  setIsModalOpen: Dispatch<SetStateAction<AuthModalProps>>
+  setIsModalOpen: ({ state, text, isOpen }: Omit<IAuthModal, "onClose">) => void
 ) => {
   const {
     email,
@@ -114,7 +114,7 @@ const SetAuthModalState = (
   state: AuthModalProps["state"],
   text: string,
 
-  setIsModalOpen: Dispatch<SetStateAction<AuthModalProps>>
+  setIsModalOpen: ({ state, text, isOpen }: Omit<IAuthModal, "onClose">) => void
 ) => {
   setIsModalOpen({ state, text, isOpen: state === "fail" ? true : false })
 }

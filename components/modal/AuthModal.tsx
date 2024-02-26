@@ -55,7 +55,7 @@ const AuthModal = ({ text, isOpen, onClose, state }: IAuthModal) => {
   } = useRouter()
   return (
     <>
-      {type && (
+      {
         <Modal.Root
           isOpen={isOpen}
           onClose={onClose}
@@ -66,7 +66,7 @@ const AuthModal = ({ text, isOpen, onClose, state }: IAuthModal) => {
             height={6.4}
             backgroundColor={STATE_COLOR[state].backgroundColor}
           >
-            <Modal.CloseButton size={14} imgSrc="/assets/grey/close.svg" />
+            {/*<Modal.CloseButton size={14} imgSrc="/assets/grey/close.svg" />*/}
             <Container>
               <ImageWrapper>
                 <Image
@@ -88,7 +88,7 @@ const AuthModal = ({ text, isOpen, onClose, state }: IAuthModal) => {
             </Container>
           </Modal.Content>
         </Modal.Root>
-      )}
+      }
     </>
   )
 }
@@ -96,6 +96,7 @@ const AuthModal = ({ text, isOpen, onClose, state }: IAuthModal) => {
 export default AuthModal
 
 const Container = styled.div`
+  padding: 0 2.4rem;
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -104,13 +105,11 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
 `
 
 const TextWrapper = styled.div`
-  width: 16rem;
+  width: 100%;
 `
 
-const ImageWrapper = styled.div`
-  padding: 0 2.4rem;
-`
+const ImageWrapper = styled.div``

@@ -5,8 +5,10 @@ import { Dispatch, SetStateAction, useEffect, useState } from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import Text from "@/components/atoms/typo/Text"
+import AuthModal from "@/components/modal/AuthModal"
 
 import useIsland from "@/hooks/useIsland"
+import useStateModal from "@/hooks/useStateModal"
 import useUserProfile from "@/hooks/useUser"
 
 import islandApi from "@/apis/island"
@@ -16,7 +18,7 @@ import { setIslandIsEdit } from "@/utils/island"
 const LandControl = ({ isOwner }: { isOwner: boolean }) => {
   const { islandType, islandItemLoc, islandIsEdit } = useIsland()
   const { userName, userSbId, userEmail } = useUserProfile()
-
+  const { state, text, isOpen, setStateModal } = useStateModal()
   const router = useRouter()
 
   const handleSaveBtn = async () => {
@@ -28,11 +30,25 @@ const LandControl = ({ isOwner }: { isOwner: boolean }) => {
     const { data, error } = await islandApi.saveIsland(userEmail, body)
 
     if (!error) {
-      alert("저장 성공했습니다.")
-      router.reload()
+      setStateModal({
+        state: "success",
+        text: "저장 성공했습니다",
+        isOpen: true,
+      })
     }
   }
 
+  const handleModalClose = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 3000))
+    setStateModal({ text, state, isOpen: false })
+  }
+
+  useEffect(() => {
+    if (isOpen) {
+      handleModalClose()
+      router.reload()
+    }
+  }, [isOpen])
   return (
     <TopMenu>
       {" "}
@@ -48,6 +64,14 @@ const LandControl = ({ isOwner }: { isOwner: boolean }) => {
         textSize={1.6}
         borderRadius={1.5}
       />
+      {text && (
+        <AuthModal
+          state={state}
+          text={text}
+          isOpen={isOpen}
+          onClose={() => setStateModal({ state, text, isOpen: false })}
+        />
+      )}
       {isOwner && (
         <>
           {islandIsEdit && (

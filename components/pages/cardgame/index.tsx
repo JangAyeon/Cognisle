@@ -1,11 +1,10 @@
 import styled from "@emotion/styled"
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 
 import GameState from "@/components/molecules/GameState"
 import PlayBoard from "@/components/molecules/PlayBoard"
 
 import useGame from "@/hooks/useGame"
-import useUserProfile from "@/hooks/useUser"
 
 import recordApi from "@/apis/recordApi"
 
@@ -14,7 +13,6 @@ import { GameLoadingProps, IGameResult } from "@/types/common/gameProps"
 import Loading from "./loading"
 
 const CardGameBoard = () => {
-  const { userEmail, userSbId } = useUserProfile()
   const [stageType, setStageType] = useState<GameLoadingProps>("start")
   const { computedBoardState, onCardClick, score, time, moves, cards } =
     useGame()

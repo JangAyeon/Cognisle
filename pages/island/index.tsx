@@ -1,50 +1,56 @@
 import styled from "@emotion/styled"
 import { User } from "@supabase/supabase-js"
 import { useRouter } from "next/router"
-import { useEffect } from "react"
+import { useCallback, useEffect, useState } from "react"
 
-import BackgroundLayout from "@/components/layouts/BackgroundLayout"
+import LandLoading from "@/components/molecules/LandLoading"
 import Island from "@/components/pages/island"
 
-import { BACKGROUND_COLOR } from "@/constants/island"
-
 import useIsland from "@/hooks/useIsland"
-import useUserProfile from "@/hooks/useUser"
 
 import { getItemExist, getItemsLoc, getType } from "@/utils/island"
 
 const Myland = () => {
-  const { islandType } = useIsland()
+  const { islandType, islandItemExist } = useIsland()
   const {
     query: { id },
   } = useRouter()
-  useEffect(() => {
+  const [isLoading, setIsLoading] = useState(true)
+  const getIslandInfo = useCallback(async () => {
     if (id) {
       // 현재 서버에 저장된 섬타입, 아이템 위치, 아이템 소유목록 dispatch
+      setIsLoading(true)
       console.log("현재 저장된 섬 정보 불러오기", id)
       getType(id as User["email"])
       getItemsLoc(id as User["email"])
-      getItemExist(id as User["id"])
+      getItemExist(id as User["email"])
     }
   }, [id])
-  return (
-    <PageWrapper>
-      {" "}
-      <BackgroundLayout
-        startColor={BACKGROUND_COLOR[islandType].startColor}
-        endColor={BACKGROUND_COLOR[islandType].endColor}
-        degree="180deg"
-      >
-        <Island />
-      </BackgroundLayout>
-    </PageWrapper>
-  )
+  const stopLoading = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 3000))
+    setIsLoading(false)
+  }
+
+  useEffect(() => {
+    setIsLoading(true)
+    getIslandInfo()
+  }, [getIslandInfo])
+
+  useEffect(() => {
+    if (islandType && islandItemExist) {
+      stopLoading()
+    }
+  }, [islandType, islandItemExist])
+
+  return <PageWrapper>{isLoading ? <LandLoading /> : <Island />} </PageWrapper>
 }
 
 export default Myland
 
 const PageWrapper = styled.div`
-  min-height: inherit;
+  min-height: 100vh;
+  width: 100%;
   background-color: var(--color-blue-01);
   display: flex;
+  flex-direction: column;
 `
