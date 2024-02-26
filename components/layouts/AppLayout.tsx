@@ -43,11 +43,6 @@ const AppLayout = ({ children }: { children: ReactElement }) => {
   }, [children])
 
   useEffect(() => {
-    console.log(
-      pathname,
-      _needHeader.includes(pathname),
-      _needBottomTab.includes(pathname)
-    )
     if (_needHeader.includes(pathname)) {
       setNeedHeader(true)
     } else {
@@ -94,4 +89,6 @@ const AppLayoutWrapper = styled.section`
 
 const Container = styled.div<{ needHeader: boolean; needBottomTab: boolean }>`
   padding-top: ${({ needHeader }) => (needHeader ? `7.2rem` : "0")};
+  min-height: ${({ needHeader, needBottomTab }) =>
+    needHeader && needBottomTab ? `calc(100dvh - 7.2rem)` : "100dvh"};
 `

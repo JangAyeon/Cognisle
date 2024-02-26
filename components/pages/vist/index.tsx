@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { useEffect, useRef } from "react"
 
 import VisitForm from "@/components/forms/VisitForm"
 
@@ -20,9 +21,8 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  margin-bottom: 7rem;
-  gap: 8.4rem;
+  justify-content: space-between;
   min-height: inherit;
-  height: inherit;
+  gap: 8.4rem;
+  padding-bottom: 7rem;
 `

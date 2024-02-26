@@ -41,7 +41,6 @@ const initialState: { island: IIsland } = {
       loc_22: null,
       loc_23: null,
       loc_24: null,
-      loc_25: null,
     },
     exist: [],
   },

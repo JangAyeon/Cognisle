@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import { useEffect, useRef } from "react"
 
 import { IBackgroundLayout } from "@/types/common/layoutProps"
 
@@ -33,7 +34,7 @@ export default BackgroundLayout
 type Style = Omit<IBackgroundLayout, "children">
 const Wrapper = styled.div<Style>`
   width: ${({ width }) => (width ? `${width}rem` : "auto")};
-  min-height: 100vh;
+  min-height: inherit;
 
   background: ${({ imgSrc, degree, startColor, endColor }) => `linear-gradient(
  ${degree},

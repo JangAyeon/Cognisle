@@ -37,10 +37,11 @@ const Myland = () => {
   }, [getIslandInfo])
 
   useEffect(() => {
-    if (islandType && islandItemExist) {
+    if (isLoading && islandItemExist) {
+      console.log("stop")
       stopLoading()
     }
-  }, [islandType, islandItemExist])
+  }, [islandType, islandItemExist, isLoading])
 
   return <PageWrapper>{isLoading ? <LandLoading /> : <Island />} </PageWrapper>
 }
@@ -48,7 +49,7 @@ const Myland = () => {
 export default Myland
 
 const PageWrapper = styled.div`
-  min-height: 100vh;
+  min-height: inherit;
   width: 100%;
   background-color: var(--color-blue-01);
   display: flex;

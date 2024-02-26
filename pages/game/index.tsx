@@ -20,7 +20,7 @@ const Game = () => {
 export default Game
 
 const PageWrapper = styled.div`
-  min-height: inherit;
+  min-height: calc(100dvh - 14.4rem);
   background-color: var(--color-orange-01);
   display: flex;
 `
