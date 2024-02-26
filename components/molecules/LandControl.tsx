@@ -68,7 +68,7 @@ const LandControl = ({ isOwner }: { isOwner: boolean }) => {
         />
       )}
       {isOwner && (
-        <>
+        <EditWrapper>
           {islandIsEdit && (
             <SaveButton onClick={handleSaveBtn}>
               {" "}
@@ -80,7 +80,11 @@ const LandControl = ({ isOwner }: { isOwner: boolean }) => {
               />
             </SaveButton>
           )}
-          <div onClick={() => setIslandIsEdit(!islandIsEdit)}>
+          <div
+            onClick={() => {
+              setIslandIsEdit(!islandIsEdit)
+            }}
+          >
             <Image
               src={`/assets/control/mode/${islandIsEdit ? "edit" : "view"}.svg`}
               width={48}
@@ -88,7 +92,7 @@ const LandControl = ({ isOwner }: { isOwner: boolean }) => {
               alt="mode Image"
             />
           </div>
-        </>
+        </EditWrapper>
       )}
     </TopMenu>
   )
@@ -99,6 +103,11 @@ export default LandControl
 const TopMenu = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 0 3.2rem;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+  top: 2.4rem;
 `
 
 const SaveButton = styled.button`
@@ -106,4 +115,9 @@ const SaveButton = styled.button`
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 50%;
+  margin-right: 1.6rem;
+`
+const EditWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
 `
