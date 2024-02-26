@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import { useEffect, useRef } from "react"
 
 import VisitForm from "@/components/forms/VisitForm"
 
@@ -24,5 +23,5 @@ const ContentContainer = styled.div`
   justify-content: space-between;
   min-height: inherit;
   gap: 8.4rem;
-  padding-bottom: 7rem;
+  margin-bottom: 7rem;
 `
