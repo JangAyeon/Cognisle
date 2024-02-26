@@ -7,6 +7,7 @@ import {
 } from "@/types/common/islandProps"
 import { IBackgroundLayout } from "@/types/common/layoutProps"
 
+import Item_0 from "@/public/assets/item/item_0.svg"
 import Item_1 from "@/public/assets/item/item_1.svg"
 import Item_2 from "@/public/assets/item/item_2.svg"
 import Item_3 from "@/public/assets/item/item_3.svg"
@@ -31,7 +32,6 @@ import Item_21 from "@/public/assets/item/item_21.svg"
 import Item_22 from "@/public/assets/item/item_22.svg"
 import Item_23 from "@/public/assets/item/item_23.svg"
 import Item_24 from "@/public/assets/item/item_24.svg"
-import Item_25 from "@/public/assets/item/item_25.svg"
 
 type landBackgroundProps = Record<
   IIsland["landType"],
@@ -97,9 +97,9 @@ const ITEM_CHOICE: ILandItemChoice = {
   0: {
     id: 0,
     title: "Item_0",
-    thumbImgSrc: "/assets/item/item_1.svg",
-    mainImgSrc: "/assets/item/item_1.svg",
-    svg: <Item_1 width="20" height="20" />,
+    thumbImgSrc: "/assets/item/item_0.svg",
+    mainImgSrc: "/assets/item/item_0.svg",
+    svg: <Item_0 width="20" height="20" />,
     ...ITEM_SIZE,
   },
   1: {
@@ -292,14 +292,6 @@ const ITEM_CHOICE: ILandItemChoice = {
     thumbImgSrc: "/assets/item/item_24.svg",
     mainImgSrc: "/assets/item/item_24.svg",
     svg: <Item_24 width="20" height="20" />,
-    ...ITEM_SIZE,
-  },
-  25: {
-    id: 25,
-    title: "Item_25",
-    thumbImgSrc: "/assets/item/item_25.svg",
-    mainImgSrc: "/assets/item/item_25.svg",
-    svg: <Item_25 width="20" height="20" />,
     ...ITEM_SIZE,
   },
 }
