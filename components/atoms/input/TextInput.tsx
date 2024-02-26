@@ -96,6 +96,12 @@ export const Input = styled.input<InputStyle>`
   width: 100%;
   background-color: transparent;
   color: ${({ color }) => `var(${color})`};
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-text-fill-color: ${({ color }) => `var(${color})`};
+  }
 
   &::placeholder {
     color: ${({ color }) => `var(${color})`};
