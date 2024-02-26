@@ -29,7 +29,7 @@ const getDsIdValid = (dsId: FormDataEntryValue) =>
     .single()
 
 const getUserEmailExist = (email: FormDataEntryValue) =>
-  supabase.from("userinfo").select("*").eq("email", email).single()
+  supabase.from("userinfo").select("email, name").eq("email", email).single()
 const authApi = {
   signup,
   login,

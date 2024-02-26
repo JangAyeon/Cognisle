@@ -23,7 +23,7 @@ const Island = () => {
   const { islandIsEdit, islandType } = useIsland()
   const [isOwner, setIsOwner] = useState(true)
   const {
-    query: { id },
+    query: { id, name },
   } = useRouter()
 
   const { userEmail } = useUserProfile()
@@ -41,7 +41,7 @@ const Island = () => {
         endColor={BACKGROUND_COLOR[islandType].endColor}
         degree="180deg"
       >
-        <LandControl isOwner={isOwner} />
+        <LandControl isOwner={isOwner} name={name as string} />
 
         <LandContent isOwner={isOwner} />
         {isOwner && islandIsEdit && (
