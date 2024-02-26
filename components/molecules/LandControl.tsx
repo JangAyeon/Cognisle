@@ -15,7 +15,13 @@ import islandApi from "@/apis/island"
 
 import { setIslandIsEdit } from "@/utils/island"
 
-const LandControl = ({ isOwner }: { isOwner: boolean }) => {
+const LandControl = ({
+  isOwner,
+  name = "",
+}: {
+  isOwner: boolean
+  name: string
+}) => {
   const { islandType, islandItemLoc, islandIsEdit } = useIsland()
   const { userName, userEmail } = useUserProfile()
   const { state, text, isOpen, setStateModal, closeModal, setIsOpen } =
@@ -55,7 +61,7 @@ const LandControl = ({ isOwner }: { isOwner: boolean }) => {
         mainColor={"--color-yellow-01"}
         pointColor={"--color-green-04"}
         textColor={"--color-green-04"}
-        text={userName}
+        text={isOwner ? userName : name}
         textSize={1.6}
         borderRadius={1.5}
       />

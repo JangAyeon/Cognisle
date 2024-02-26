@@ -15,19 +15,25 @@ import Squiggly from "@/public/assets/green/squiggly.svg"
 
 const VisitForm = () => {
   const [friendEmail, onChangeFriendEmail, setFriendEmail] = useInput("")
+  const [friendName, onChangeFriendName, setFriendName] = useInput("")
   const { state, text, isOpen, setStateModal, closeModal, setIsOpen } =
     useStateModal()
   const [isEmailExist, setEmailExist] = useState(false)
   const router = useRouter()
 
   const visitFriend = () => {
-    router.push(`/island?id=${friendEmail}`)
+    // 브라우저 url에 사용자 Email, name 노출 안되게
+    router.push(`/island?id=${friendEmail}&name=${friendName}`, "/island")
   }
 
   const checkValidEmail = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const { data, error } = await authApi.getUserEmailExist(friendEmail)
     if (data) {
+      const { email, name } = data
+      setFriendName(name)
+      setFriendEmail(email)
+      console.log(data)
       setEmailExist(true)
     } else {
       setStateModal({
