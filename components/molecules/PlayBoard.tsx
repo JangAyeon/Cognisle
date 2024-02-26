@@ -33,6 +33,7 @@ const PlayBoard = ({ computedBoardState, onCardClick, score }: IPlayBoard) => {
     <BoardWrapper>
       {isModalOpen && (
         <ShowItemModal
+          type="item"
           itemId={modalId}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}

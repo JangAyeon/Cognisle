@@ -3,9 +3,18 @@ import Image from "next/image"
 
 import Modal from "@/components/modal/Modal"
 
+import useUserProfile from "@/hooks/useUser"
+
 import { ShowItemModalProps } from "@/types/common/modalProps"
 
-const ShowItemModal = ({ itemId, isOpen, onClose }: ShowItemModalProps) => {
+const ShowItemModal = ({
+  type,
+  itemId,
+
+  isOpen,
+  onClose,
+}: ShowItemModalProps) => {
+  const { userDsId } = useUserProfile()
   return (
     <Modal.Root isOpen={isOpen} onClose={onClose}>
       <Modal.Content width={30.0} height={48.0}>
@@ -13,7 +22,11 @@ const ShowItemModal = ({ itemId, isOpen, onClose }: ShowItemModalProps) => {
       </Modal.Content>
       <Container>
         <Image
-          src={`/assets/modal/item_${itemId}.svg`}
+          src={
+            type === "item"
+              ? `/assets/modal/item_${itemId}.svg`
+              : `/assets/dsUser/${userDsId}.svg`
+          }
           height={480}
           width={300}
           alt="circle"
