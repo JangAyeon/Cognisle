@@ -28,14 +28,14 @@ const ItemStats = () => {
       {[...Array(itemIdMax)].map((v, idx) => (
         <StatItem
           name="아이템 이름"
-          imgSrc={
-            islandItemExist.includes(idx as ItemIdProps)
-              ? `/assets/item/item_${idx}.svg`
-              : "/assets/grey/circle.svg"
-          }
-          status={islandItemExist.includes(idx as ItemIdProps)}
+          imgSrc={`/assets/item/${
+            islandItemExist.includes((idx + 1) as ItemIdProps)
+              ? "active"
+              : "inactive"
+          }/item_${idx + 1}.svg`}
+          status={islandItemExist.includes((idx + 1) as ItemIdProps)}
           key={idx}
-          content={idx}
+          content={idx + 1}
         />
       ))}
     </ItemStatsWrapper>
