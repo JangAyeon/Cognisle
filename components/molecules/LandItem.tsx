@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import { useEffect } from "react"
 import "swiper/css"
 import { Swiper, SwiperSlide } from "swiper/react"
 
@@ -13,21 +12,19 @@ import { ItemIdProps } from "@/types/common/islandProps"
 const LandItem = () => {
   const { islandItemExist } = useIsland()
   const { swiperSetting, currentSlide } = useSwiper()
-  /*
-  useEffect(() => {
-    console.log("land item", list)
-  }, [list])
-*/
+
   return (
-    <SliderWrapper>
-      <Swiper {...swiperSetting}>
-        {islandItemExist.map((id: ItemIdProps, idx: number) => (
-          <SwiperSlide key={idx}>
-            <Slide id={id} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </SliderWrapper>
+    <>
+      <SliderWrapper>
+        <Swiper {...swiperSetting}>
+          {islandItemExist.map((id: ItemIdProps, idx: number) => (
+            <SwiperSlide key={idx}>
+              <Slide id={id} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </SliderWrapper>
+    </>
   )
 }
 
