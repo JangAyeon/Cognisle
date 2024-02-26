@@ -1,12 +1,16 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
 
+import Divider from "@/components/atoms/divider"
 import Text from "@/components/atoms/typo/Text"
 import Modal from "@/components/modal/Modal"
 
 import useUserProfile from "@/hooks/useUser"
 
+import { GameItemStateProps } from "@/types/common/gameProps"
 import { GameResultModalProps } from "@/types/common/modalProps"
+
+import { timeFormator } from "@/utils/timeFormat"
 
 const GameResultModal = ({
   gameResult,
@@ -23,26 +27,25 @@ const GameResultModal = ({
           height={48.0}
           pointColor={"--color-pink-01"}
         >
+          <Modal.CloseButton />
           <Modal.Body>
             <Container>
-              <Text
-                text={userName}
-                size={1.6}
-                weight="bold"
-                color={"--color-pink-01"}
-              />
-              <Text
-                text={"게임 결과"}
-                size={1.6}
-                weight="bold"
-                color={"--color-pink-01"}
-              />
-              <Image
-                src="/assets/divider/pink.svg"
-                height={3}
-                width={180}
-                alt="pink divider"
-              />
+              <ResultTitleContainer>
+                <Text
+                  text={"게임 결과"}
+                  size={3.6}
+                  weight="bold"
+                  color={"--color-pink-01"}
+                />
+                <Text
+                  text={userName}
+                  size={1.6}
+                  weight="bold"
+                  color={"--color-pink-01"}
+                />
+              </ResultTitleContainer>
+              <Divider />
+
               <ItemResultContianer>
                 <ItemTitleWrapper>
                   <Image
@@ -52,6 +55,7 @@ const GameResultModal = ({
                     width={26}
                     style={{ marginRight: "1rem" }}
                   />
+
                   <Text
                     text={`획득한 아이템 종류`}
                     size={1.6}
@@ -61,34 +65,34 @@ const GameResultModal = ({
                 </ItemTitleWrapper>
 
                 <ItemListContainer>
-                  {gameResult.items.map((item) => (
-                    <Text
-                      text={item.title}
-                      size={1.6}
-                      weight="bold"
-                      color={"--color-pink-01"}
-                    />
+                  {gameResult.items.map((item: GameItemStateProps) => (
+                    <>
+                      <Text
+                        text={item.title}
+                        size={1.6}
+                        weight=""
+                        color={"--color-pink-01"}
+                      />
+                    </>
                   ))}
                 </ItemListContainer>
               </ItemResultContianer>
-              <Image
-                src="/assets/divider/pink.svg"
-                height={3}
-                width={180}
-                alt="pink divider"
-              />
-              <Text
-                text={`뒤집은 횟수 ${gameResult.moves}`}
-                size={1.6}
-                weight="bold"
-                color={"--color-pink-01"}
-              />{" "}
-              <Text
-                text={`플레이 시간 ${gameResult.time}`}
-                size={1.6}
-                weight="bold"
-                color={"--color-pink-01"}
-              />
+              <Divider />
+              <PlayResultContainer>
+                <Text
+                  text={`뒤집은 횟수 ${gameResult.moves}`}
+                  size={1.6}
+                  weight="bold"
+                  color={"--color-pink-01"}
+                />{" "}
+                <Text
+                  text={`플레이 시간 ${timeFormator(gameResult.time)}`}
+                  size={1.6}
+                  weight="bold"
+                  color={"--color-pink-01"}
+                />
+              </PlayResultContainer>
+              <Divider />
             </Container>
           </Modal.Body>
         </Modal.Content>
@@ -103,12 +107,21 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--color-yellow-01);
+`
+
+const ResultTitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const ItemTitleWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  margin-bottom: 1rem;
 `
 const ItemResultContianer = styled.div`
   display: flex;
@@ -117,9 +130,13 @@ const ItemResultContianer = styled.div`
 `
 const ItemListContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  div {
-    margin: 0 0.5rem;
-  }
+  flex-direction: column;
+  align-items: center;
+  padding: 0 4.6rem;
+`
+
+const PlayResultContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `

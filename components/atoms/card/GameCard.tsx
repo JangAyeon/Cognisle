@@ -11,6 +11,7 @@ const GameCard = ({ state, value }: ICard) => {
       alt={state}
       width={82}
       height={124}
+      priority
     />
   )
 }
