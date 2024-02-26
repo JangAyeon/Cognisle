@@ -32,7 +32,7 @@ const Input_List = [
   {
     label: "이메일",
     placeholder: "이메일 입력",
-    type: "email",
+    type: "string",
     name: "email",
     autoComplete: "email",
     ...Input_Common,
@@ -64,7 +64,8 @@ const Input_List = [
 const SignupForm = () => {
   const router = useRouter()
   const formRef = useRef<HTMLFormElement>(null)
-  const { state, text, isOpen, setStateModal, closeModal } = useStateModal()
+  const { state, text, isOpen, setStateModal, setIsOpen, closeModal } =
+    useStateModal()
 
   const [isDsIdValid, setIsDsIdValid] = useState(false)
 
@@ -163,12 +164,12 @@ const SignupForm = () => {
   return (
     <>
       <div>
-        {text && (
+        {text && isOpen && (
           <AuthModal
             state={state}
             text={text}
             isOpen={isOpen}
-            onClose={closeModal}
+            onClose={() => setIsOpen(false)}
           />
         )}
         <FormWrapper onSubmit={handleSignupValid} ref={formRef}>

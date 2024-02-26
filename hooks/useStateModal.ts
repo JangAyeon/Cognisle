@@ -18,9 +18,10 @@ export const useStateModal = () => {
   }
 
   const closeModal = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1500))
     setStateModal({ state, text, isOpen: false })
   }
+
   useEffect(() => {
     if (isOpen) {
       closeModal()

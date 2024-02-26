@@ -18,7 +18,8 @@ import { setIslandIsEdit } from "@/utils/island"
 const LandControl = ({ isOwner }: { isOwner: boolean }) => {
   const { islandType, islandItemLoc, islandIsEdit } = useIsland()
   const { userName, userEmail } = useUserProfile()
-  const { state, text, isOpen, setStateModal, closeModal } = useStateModal()
+  const { state, text, isOpen, setStateModal, closeModal, setIsOpen } =
+    useStateModal()
   const router = useRouter()
 
   const handleSaveBtn = async () => {
@@ -63,7 +64,7 @@ const LandControl = ({ isOwner }: { isOwner: boolean }) => {
           state={state}
           text={text}
           isOpen={isOpen}
-          onClose={closeModal}
+          onClose={() => setIsOpen(false)}
         />
       )}
       {isOwner && (
