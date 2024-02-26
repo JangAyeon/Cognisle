@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
 import { useRouter } from "next/router"
+import { useEffect } from "react"
 
 import Text from "@/components/atoms/typo/Text"
 import Modal from "@/components/modal/Modal"
@@ -112,4 +113,6 @@ const TextWrapper = styled.div`
   width: 100%;
 `
 
-const ImageWrapper = styled.div``
+const ImageWrapper = styled.div`
+  padding-right: 1.5rem;
+`

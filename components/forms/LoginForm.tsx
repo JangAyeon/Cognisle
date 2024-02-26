@@ -26,7 +26,8 @@ const TextInputStyles = {
 }
 
 const LoginForm = () => {
-  const { state, text, isOpen, setStateModal, closeModal } = useStateModal()
+  const { state, text, isOpen, setStateModal, closeModal, setIsOpen } =
+    useStateModal()
   const formRef = useRef<HTMLFormElement>(null)
 
   const [email, onChangeEmail, setEmail] = useInput("")
@@ -115,7 +116,7 @@ const LoginForm = () => {
             state={state}
             text={text}
             isOpen={isOpen}
-            onClose={closeModal}
+            onClose={() => setIsOpen(false)}
           />
         )}
         <FormWrapper onSubmit={handleLoginValid} ref={formRef}>

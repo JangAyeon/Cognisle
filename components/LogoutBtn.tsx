@@ -12,7 +12,7 @@ import { removeUserInfo } from "@/utils/auth"
 
 const LogoutBtn = () => {
   const router = useRouter()
-  const { state, text, isOpen, setStateModal, closeModal } = useStateModal()
+  const { state, text, isOpen, setStateModal, setIsOpen } = useStateModal()
 
   const handleLogout = async () => {
     try {
@@ -37,7 +37,7 @@ const LogoutBtn = () => {
           state={state}
           text={text}
           isOpen={isOpen}
-          onClose={closeModal}
+          onClose={() => setIsOpen(false)}
         />
       )}
       <Button onClick={handleLogout}>로그아웃 logout</Button>

@@ -15,7 +15,8 @@ import Squiggly from "@/public/assets/green/squiggly.svg"
 
 const VisitForm = () => {
   const [friendEmail, onChangeFriendEmail, setFriendEmail] = useInput("")
-  const { state, text, isOpen, setStateModal, closeModal } = useStateModal()
+  const { state, text, isOpen, setStateModal, closeModal, setIsOpen } =
+    useStateModal()
   const [isEmailExist, setEmailExist] = useState(false)
   const router = useRouter()
 
@@ -50,7 +51,7 @@ const VisitForm = () => {
           state={state}
           text={text}
           isOpen={isOpen}
-          onClose={closeModal}
+          onClose={() => setIsOpen(false)}
         />
       )}
       <TitleWrapper>
