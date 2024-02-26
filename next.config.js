@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
+  images: {
+    domains: ["CDN 주소"],
+    minimumCacheTTL: 31536000,
+    formats: ["image/webp"],
+  },
   eslint: {
     ignoreDuringBuilds: false,
   },
@@ -24,7 +29,6 @@ const nextConfig = {
         destination: "/auth?type=login",
         permanent: false,
       },
-
     ]
   },
   webpack: (config) => {
