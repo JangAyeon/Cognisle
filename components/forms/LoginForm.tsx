@@ -26,7 +26,7 @@ const TextInputStyles = {
 }
 
 const LoginForm = () => {
-  const { state, text, isOpen, setStateModal } = useStateModal()
+  const { state, text, isOpen, setStateModal, closeModal } = useStateModal()
   const formRef = useRef<HTMLFormElement>(null)
 
   const [email, onChangeEmail, setEmail] = useInput("")
@@ -94,23 +94,12 @@ const LoginForm = () => {
     }
   }
 
-  const CloseModal = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setStateModal({ state, text, isOpen: false })
-  }
-
   useEffect(() => {
     if (LS_EMAIL) {
       setEmail(LS_EMAIL)
       setEmailFlagCheck(true)
     }
   }, [LS_EMAIL, setEmail])
-
-  useEffect(() => {
-    if (isOpen) {
-      CloseModal()
-    }
-  }, [isOpen])
 
   useEffect(() => {
     if (state == "success" && !isOpen) {
@@ -126,7 +115,7 @@ const LoginForm = () => {
             state={state}
             text={text}
             isOpen={isOpen}
-            onClose={() => setStateModal({ state, text, isOpen: false })}
+            onClose={closeModal}
           />
         )}
         <FormWrapper onSubmit={handleLoginValid} ref={formRef}>

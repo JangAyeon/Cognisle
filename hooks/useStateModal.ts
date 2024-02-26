@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { IAuthModal } from "@/components/modal/AuthModal"
 
@@ -17,7 +17,26 @@ export const useStateModal = () => {
     setState(state)
   }
 
-  return { state, setState, text, setText, isOpen, setIsOpen, setStateModal }
+  const closeModal = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    setStateModal({ state, text, isOpen: false })
+  }
+  useEffect(() => {
+    if (isOpen) {
+      closeModal()
+    }
+  }, [isOpen])
+
+  return {
+    state,
+    setState,
+    text,
+    setText,
+    isOpen,
+    setIsOpen,
+    setStateModal,
+    closeModal,
+  }
 }
 
 export default useStateModal

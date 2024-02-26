@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
-import router, { useRouter } from "next/router"
-import { Dispatch, SetStateAction, useEffect, useState } from "react"
+import { useRouter } from "next/router"
+import { useEffect } from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import Text from "@/components/atoms/typo/Text"
@@ -17,8 +17,8 @@ import { setIslandIsEdit } from "@/utils/island"
 
 const LandControl = ({ isOwner }: { isOwner: boolean }) => {
   const { islandType, islandItemLoc, islandIsEdit } = useIsland()
-  const { userName, userSbId, userEmail } = useUserProfile()
-  const { state, text, isOpen, setStateModal } = useStateModal()
+  const { userName, userEmail } = useUserProfile()
+  const { state, text, isOpen, setStateModal, closeModal } = useStateModal()
   const router = useRouter()
 
   const handleSaveBtn = async () => {
@@ -38,14 +38,8 @@ const LandControl = ({ isOwner }: { isOwner: boolean }) => {
     }
   }
 
-  const handleModalClose = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 3000))
-    setStateModal({ text, state, isOpen: false })
-  }
-
   useEffect(() => {
     if (isOpen) {
-      handleModalClose()
       router.reload()
     }
   }, [isOpen])
@@ -69,7 +63,7 @@ const LandControl = ({ isOwner }: { isOwner: boolean }) => {
           state={state}
           text={text}
           isOpen={isOpen}
-          onClose={() => setStateModal({ state, text, isOpen: false })}
+          onClose={closeModal}
         />
       )}
       {isOwner && (

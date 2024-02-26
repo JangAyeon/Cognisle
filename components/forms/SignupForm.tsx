@@ -1,13 +1,6 @@
 import styled from "@emotion/styled"
-import router, { useRouter } from "next/router"
-import {
-  FormEvent,
-  MouseEvent,
-  MouseEventHandler,
-  useEffect,
-  useRef,
-  useState,
-} from "react"
+import { useRouter } from "next/router"
+import { FormEvent, MouseEvent, useEffect, useRef, useState } from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import FormButton from "@/components/atoms/button/FormButton"
@@ -71,7 +64,7 @@ const Input_List = [
 const SignupForm = () => {
   const router = useRouter()
   const formRef = useRef<HTMLFormElement>(null)
-  const { state, text, isOpen, setStateModal } = useStateModal()
+  const { state, text, isOpen, setStateModal, closeModal } = useStateModal()
 
   const [isDsIdValid, setIsDsIdValid] = useState(false)
 
@@ -175,7 +168,7 @@ const SignupForm = () => {
             state={state}
             text={text}
             isOpen={isOpen}
-            onClose={() => setStateModal({ text, state, isOpen: false })}
+            onClose={closeModal}
           />
         )}
         <FormWrapper onSubmit={handleSignupValid} ref={formRef}>

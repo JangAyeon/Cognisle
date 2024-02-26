@@ -1,24 +1,58 @@
 import styled from "@emotion/styled"
 import { useRouter } from "next/router"
-import { FormEvent } from "react"
+import { FormEvent, useEffect, useState } from "react"
 
 import TextInput from "@/components/atoms/input/TextInput"
 import Text from "@/components/atoms/typo/Text"
+import AuthModal from "@/components/modal/AuthModal"
 
 import { useInput } from "@/hooks/useInput"
+import useStateModal from "@/hooks/useStateModal"
+
+import { authApi } from "@/apis/authApi"
 
 import Squiggly from "@/public/assets/green/squiggly.svg"
 
 const VisitForm = () => {
-  const [friendId, onChangeFriendId, setFriendId] = useInput("")
+  const [friendEmail, onChangeFriendEmail, setFriendEmail] = useInput("")
+  const { state, text, isOpen, setStateModal, closeModal } = useStateModal()
+  const [isEmailExist, setEmailExist] = useState(false)
   const router = useRouter()
 
-  const handleFriendSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    router.push(`/island?id=${friendId}`)
+  const visitFriend = () => {
+    router.push(`/island?id=${friendEmail}`)
   }
+
+  const checkValidEmail = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const { data, error } = await authApi.getUserEmailExist(friendEmail)
+    if (data) {
+      setEmailExist(true)
+    } else {
+      setStateModal({
+        state: "fail",
+        text: "존재하지 않는 유저입니다",
+        isOpen: true,
+      })
+    }
+  }
+
+  useEffect(() => {
+    if (isEmailExist) {
+      visitFriend()
+    }
+  }, [isEmailExist])
+
   return (
     <FormContainer>
+      {text && (
+        <AuthModal
+          state={state}
+          text={text}
+          isOpen={isOpen}
+          onClose={closeModal}
+        />
+      )}
       <TitleWrapper>
         <Text
           text="친구의 섬 ID"
@@ -29,10 +63,10 @@ const VisitForm = () => {
         <Squiggly width={51} height={21} />
       </TitleWrapper>
 
-      <form onSubmit={handleFriendSubmit}>
+      <form onSubmit={checkValidEmail}>
         <TextInput
-          value={friendId}
-          onChange={onChangeFriendId}
+          value={friendEmail}
+          onChange={onChangeFriendEmail}
           placeholder="친구 아이디"
           type="text"
           name="friendId"
