@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 
-import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
+import StatItem from "@/components/atoms/item/StatItem"
 import Text from "@/components/atoms/typo/Text"
 
 import useUserProfile from "@/hooks/useUser"
@@ -9,17 +9,11 @@ const MyStats = () => {
   const { userName } = useUserProfile()
   return (
     <MyStatsWrapper>
-      <BorderPointBtn
-        width={12}
-        height={12}
-        pointHeight={20}
-        pointWidth={20}
-        mainColor="--color-yellow-01"
-        pointColor="--color-blue-01"
-        borderRadius={1.6}
-        text={"미정미정미정"}
-        textColor="--color-blue-02"
-        textSize={1.5}
+      <StatItem
+        name="아이템 이름"
+        imgSrc={`/assets/item/active/item_0.svg`}
+        status={true}
+        content={0}
       />
       <TextWrapper>
         <Text

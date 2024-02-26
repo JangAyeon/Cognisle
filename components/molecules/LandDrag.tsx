@@ -50,6 +50,7 @@ const LandContent = ({ isOwner }: { isOwner: boolean }) => {
             alt={LAND_CHOICE[islandType].title}
             fill
             priority
+            sizes="100%"
           />
           <ItemsContainer>
             {items.length > 0 &&
