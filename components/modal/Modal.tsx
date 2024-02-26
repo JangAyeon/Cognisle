@@ -49,7 +49,7 @@ const ModalRoot = ({
         setTimeout(() => {
           onClose()
           setOverlayClicked(false)
-        }, 1500)
+        }, 150)
       }
     }
     if (closeOnOverlayClick === false) {
