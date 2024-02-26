@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    domains: ["CDN 주소"],
     minimumCacheTTL: 31536000,
     formats: ["image/webp"],
   },
