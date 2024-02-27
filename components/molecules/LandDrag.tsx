@@ -54,19 +54,21 @@ const LandContent = ({ isOwner }: { isOwner: boolean }) => {
           />
           <ItemsContainer>
             {items.length > 0 &&
-              items.map((item: LocationProps) => (
-                <DragItem
-                  isOwner={isOwner}
-                  key={item.id}
-                  id={item.id}
-                  title={ITEM_CHOICE[`${item.id}`].title}
-                  x={item.x}
-                  y={item.y}
-                  z={item.z}
-                  width={ITEM_CHOICE[`${item.id}`].width}
-                  height={ITEM_CHOICE[`${item.id}`].height}
-                  active={false}
-                />
+              items.map((item: LocationProps, index: number) => (
+                <DragWrapper isFirst={index === 0 ? true : false}>
+                  <DragItem
+                    isOwner={isOwner}
+                    key={item.id}
+                    id={item.id}
+                    title={ITEM_CHOICE[`${item.id}`].title}
+                    x={item.x}
+                    y={item.y}
+                    z={item.z}
+                    width={ITEM_CHOICE[`${item.id}`].width}
+                    height={ITEM_CHOICE[`${item.id}`].height}
+                    active={false}
+                  />
+                </DragWrapper>
               ))}
           </ItemsContainer>
         </IslandContainer>
@@ -76,11 +78,6 @@ const LandContent = ({ isOwner }: { isOwner: boolean }) => {
 }
 
 export default LandContent
-
-const DragField = styled.div`
-  width: 100%;
-  height: 100%;
-`
 
 const IslandContainer = styled.div`
   width: 43rem;
@@ -93,4 +90,10 @@ const ItemsContainer = styled.div`
   top: 0;
   left: 0;
   height: inherit;
+`
+
+const DragWrapper = styled.div<{ isFirst: boolean }>`
+  position: ${({ isFirst }) => (isFirst ? `static` : "absolute")};
+  top: 0;
+  left: 0;
 `

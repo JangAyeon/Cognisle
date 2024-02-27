@@ -70,31 +70,31 @@ const ITEM_CHOICE: ILandItemChoice = {
   0: {
     id: 0,
     title: "Item_0",
-    thumbImgSrc: "@/public/assets/item/original/item_0.svg",
-    mainImgSrc: "@/public/assets/item/original/item_0.svg",
+    thumbImgSrc: "/assets/item/original/item_0.svg",
+    mainImgSrc: "/assets/item/original/item_0.svg",
 
     ...ITEM_SIZE,
   },
   1: {
     id: 1,
     title: "Item_1",
-    thumbImgSrc: "@/public/assets/item/original/item_1.svg",
-    mainImgSrc: "@/public/assets/item/original/item_1.svg",
+    thumbImgSrc: "/assets/item/original/item_1.svg",
+    mainImgSrc: "/assets/item/original/item_1.svg",
 
     ...ITEM_SIZE,
   },
   2: {
     id: 2,
     title: "Item_2",
-    thumbImgSrc: "@/public/assets/item/original/item_2.svg",
-    mainImgSrc: "@/public/assets/item/original/item_2.svg",
+    thumbImgSrc: "/assets/item/original/item_2.svg",
+    mainImgSrc: "/assets/item/original/item_2.svg",
 
     ...ITEM_SIZE,
   },
   3: {
     id: 3,
     title: "Item_3",
-    thumbImgSrc: "@/public/assets/item/original/item_3.svg",
+    thumbImgSrc: "/assets/item/original/item_3.svg",
     mainImgSrc: "@/public/assets/item/original/item_3.svg",
 
     ...ITEM_SIZE,
@@ -102,16 +102,16 @@ const ITEM_CHOICE: ILandItemChoice = {
   4: {
     id: 4,
     title: "Item_4",
-    thumbImgSrc: "@/public/assets/item/original/item_4.svg",
-    mainImgSrc: "@/public/assets/item/original/item_4.svg",
+    thumbImgSrc: "/assets/item/original/item_4.svg",
+    mainImgSrc: "/assets/item/original/item_4.svg",
 
     ...ITEM_SIZE,
   },
   5: {
     id: 5,
     title: "Item_5",
-    thumbImgSrc: "@/publicassets/item/original/item_5.svg",
-    mainImgSrc: "@/public/assets/item/original/item_5.svg",
+    thumbImgSrc: "/assets/item/original/item_5.svg",
+    mainImgSrc: "/assets/item/original/item_5.svg",
 
     ...ITEM_SIZE,
   },
@@ -126,144 +126,144 @@ const ITEM_CHOICE: ILandItemChoice = {
   7: {
     id: 7,
     title: "Item_7",
-    thumbImgSrc: "@/public/assets/item/original/item_7.svg",
-    mainImgSrc: "@/public/assets/item/original/item_7.svg",
+    thumbImgSrc: "/assets/item/original/item_7.svg",
+    mainImgSrc: "/assets/item/original/item_7.svg",
 
     ...ITEM_SIZE,
   },
   8: {
     id: 8,
     title: "Item_8",
-    thumbImgSrc: "@/public/assets/item/original/item_8.svg",
-    mainImgSrc: "@/public/assets/item/original/item_8.svg",
+    thumbImgSrc: "/assets/item/original/item_8.svg",
+    mainImgSrc: "/assets/item/original/item_8.svg",
 
     ...ITEM_SIZE,
   },
   9: {
     id: 9,
     title: "Item_9",
-    thumbImgSrc: "@/public/assets/item/original/item_9.svg",
-    mainImgSrc: "@/public/assets/item/original/item_9.svg",
+    thumbImgSrc: "/assets/item/original/item_9.svg",
+    mainImgSrc: "/assets/item/original/item_9.svg",
 
     ...ITEM_SIZE,
   },
   10: {
     id: 10,
     title: "Item_10",
-    thumbImgSrc: "@/public/assets/item/original/item_10.svg",
-    mainImgSrc: "@/public/assets/item/original/item_10.svg",
+    thumbImgSrc: "/assets/item/original/item_10.svg",
+    mainImgSrc: "/assets/item/original/item_10.svg",
 
     ...ITEM_SIZE,
   },
   11: {
     id: 11,
     title: "Item_11",
-    thumbImgSrc: "@/public/assets/item/original/item_11.svg",
-    mainImgSrc: "@/public/assets/item/original/item_11.svg",
+    thumbImgSrc: "/assets/item/original/item_11.svg",
+    mainImgSrc: "/assets/item/original/item_11.svg",
 
     ...ITEM_SIZE,
   },
   12: {
     id: 12,
     title: "Item_12",
-    thumbImgSrc: "@/public/assets/item/original/item_12.svg",
-    mainImgSrc: "@/public/assets/item/original/item_12.svg",
+    thumbImgSrc: "/assets/item/original/item_12.svg",
+    mainImgSrc: "/assets/item/original/item_12.svg",
 
     ...ITEM_SIZE,
   },
   13: {
     id: 13,
     title: "Item_13",
-    thumbImgSrc: "@/public/assets/item/original/item_13.svg",
-    mainImgSrc: "@/public/assets/item/original/item_13.svg",
+    thumbImgSrc: "/assets/item/original/item_13.svg",
+    mainImgSrc: "/assets/item/original/item_13.svg",
 
     ...ITEM_SIZE,
   },
   14: {
     id: 14,
     title: "Item_14",
-    thumbImgSrc: "@/public/assets/item/original/item_14.svg",
-    mainImgSrc: "@/public/assets/item/original/item_14.svg",
+    thumbImgSrc: "/assets/item/original/item_14.svg",
+    mainImgSrc: "/assets/item/original/item_14.svg",
 
     ...ITEM_SIZE,
   },
   15: {
     id: 15,
     title: "Item_15",
-    thumbImgSrc: "@/public/assets/item/original/item_15.svg",
-    mainImgSrc: "@/public/assets/item/original/item_15.svg",
+    thumbImgSrc: "/assets/item/original/item_14.svg",
+    mainImgSrc: "/assets/item/original/item_14.svg",
 
     ...ITEM_SIZE,
   },
   16: {
     id: 16,
     title: "Item_16",
-    thumbImgSrc: "@/public/assets/item/original/item_16.svg",
-    mainImgSrc: "@/public/assets/item/original/item_16.svg",
+    thumbImgSrc: "/assets/item/original/item_16.svg",
+    mainImgSrc: "/assets/item/original/item_16.svg",
 
     ...ITEM_SIZE,
   },
   17: {
     id: 17,
     title: "Item_17",
-    thumbImgSrc: "@/public/assets/item/original/item_17.svg",
-    mainImgSrc: "@/public/assets/item/original/item_17.svg",
+    thumbImgSrc: "/assets/item/original/item_17.svg",
+    mainImgSrc: "/assets/item/original/item_17.svg",
 
     ...ITEM_SIZE,
   },
   18: {
     id: 18,
     title: "Item_18",
-    thumbImgSrc: "@/public/assets/item/original/item_18.svg",
-    mainImgSrc: "@/public/assets/item/original/item_18.svg",
+    thumbImgSrc: "/assets/item/original/item_18.svg",
+    mainImgSrc: "/assets/item/original/item_18.svg",
 
     ...ITEM_SIZE,
   },
   19: {
     id: 19,
     title: "Item_19",
-    thumbImgSrc: "@/public/assets/item/original/item_19.svg",
-    mainImgSrc: "@/public/assets/item/original/item_19.svg",
+    thumbImgSrc: "/assets/item/original/item_19.svg",
+    mainImgSrc: "/assets/item/original/item_19.svg",
 
     ...ITEM_SIZE,
   },
   20: {
     id: 20,
     title: "Item_20",
-    thumbImgSrc: "@/public/assets/item/original/item_20.svg",
-    mainImgSrc: "@/public/assets/item/original/item_20.svg",
+    thumbImgSrc: "/assets/item/original/item_20.svg",
+    mainImgSrc: "/assets/item/original/item_20.svg",
 
     ...ITEM_SIZE,
   },
   21: {
     id: 21,
     title: "Item_21",
-    thumbImgSrc: "@/public/assets/item/original/item_21.svg",
-    mainImgSrc: "@/public/assets/item/original/item_21.svg",
+    thumbImgSrc: "/assets/item/original/item_21.svg",
+    mainImgSrc: "/assets/item/original/item_21.svg",
 
     ...ITEM_SIZE,
   },
   22: {
     id: 22,
     title: "Item_22",
-    thumbImgSrc: "@/public/assets/item/original/item_22.svg",
-    mainImgSrc: "@/public/assets/item/original/item_22.svg",
+    thumbImgSrc: "/assets/item/original/item_22.svg",
+    mainImgSrc: "/assets/item/original/item_22.svg",
 
     ...ITEM_SIZE,
   },
   23: {
     id: 21,
     title: "Item_23",
-    thumbImgSrc: "@/public/assets/item/original/item_23.svg",
-    mainImgSrc: "@/public/assets/item/original/item_23.svg",
+    thumbImgSrc: "/assets/item/original/item_23.svg",
+    mainImgSrc: "/assets/item/original/item_23.svg",
 
     ...ITEM_SIZE,
   },
   24: {
     id: 22,
     title: "Item_24",
-    thumbImgSrc: "@/public/assets/item/original/item_24.svg",
-    mainImgSrc: "@/public/assets/item/original/item_24.svg",
+    thumbImgSrc: "/assets/item/original/item_24.svg",
+    mainImgSrc: "/assets/item/original/item_24.svg",
 
     ...ITEM_SIZE,
   },
