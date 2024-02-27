@@ -36,6 +36,7 @@ const DragItem = ({
   y,
   z,
   title,
+
   width,
   height,
 }: DraggableItem) => {

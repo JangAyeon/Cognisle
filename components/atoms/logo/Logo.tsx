@@ -10,8 +10,8 @@ interface ILogo {
 }
 
 const LogoSrc = {
-  main: "/assets/logo/vertical.png",
-  header: "/assets/logo/horizontal.png",
+  main: "/assets/logo/vertical.svg",
+  header: "/assets/logo/horizontal.svg",
 }
 const Logo = ({ width, height, alt, type, padding }: ILogo) => {
   return (

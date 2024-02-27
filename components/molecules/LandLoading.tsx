@@ -21,6 +21,7 @@ const LandLoading = () => {
           width="240"
           height="320"
           alt="loading"
+          priority
         />
       </IconWrapper>
     </BackgroundLayout>

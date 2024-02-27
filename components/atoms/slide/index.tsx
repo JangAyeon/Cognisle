@@ -25,8 +25,8 @@ const Slide = ({ id }: { id: ItemIdProps }) => {
       <Image
         src={ITEM_CHOICE[id].thumbImgSrc}
         alt={ITEM_CHOICE[id].id.toString()}
-        width={ITEM_CHOICE[id].width}
-        height={ITEM_CHOICE[id].height}
+        width={112}
+        height={112}
       />
     </SlideContainer>
   )
