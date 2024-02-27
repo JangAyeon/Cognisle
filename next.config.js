@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   images: {
     minimumCacheTTL: 31536000,
-    formats: ["image/webp"],
+    formats: ["image/avif", "image/webp"],
   },
   eslint: {
     ignoreDuringBuilds: false,
