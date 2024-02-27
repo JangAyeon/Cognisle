@@ -9,11 +9,7 @@ import { ILandItem } from "@/constants/island"
 
 import useIsland from "@/hooks/useIsland"
 
-import {
-  ItemIdProps,
-  ItemLocationProps,
-  LocationProps,
-} from "@/types/common/islandProps"
+import { LocationProps } from "@/types/common/islandProps"
 
 import DraggableContext, {
   DraggableContextInterface,
