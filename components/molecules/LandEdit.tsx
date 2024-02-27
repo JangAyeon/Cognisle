@@ -24,7 +24,7 @@ const LandEdit = ({ list, setCategory, category }: ILandEdit) => {
     if (islandItemExist.length === 0) {
       setStateModal({
         state: "fail",
-        text: "카드 게임 플레이를 통해 아이템을 구하세요",
+        text: "카드 게임으로 아이템을 획득해봐요",
         isOpen: true,
       })
     }
