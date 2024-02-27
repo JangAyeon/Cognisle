@@ -1,19 +1,15 @@
 import styled from "@emotion/styled"
-import { useContext, useState } from "react"
+import { ReactNode, useContext, useState } from "react"
 import Draggable, {
   DraggableData,
   DraggableEventHandler,
 } from "react-draggable"
 
-import { ILandItem } from "@/constants/island"
+import { ILandItem, ITEM_SVG } from "@/constants/island"
 
 import useIsland from "@/hooks/useIsland"
 
-import {
-  ItemIdProps,
-  ItemLocationProps,
-  LocationProps,
-} from "@/types/common/islandProps"
+import { LocationProps } from "@/types/common/islandProps"
 
 import DraggableContext, {
   DraggableContextInterface,
@@ -21,19 +17,34 @@ import DraggableContext, {
 import { setIslandItemLoc } from "@/utils/island"
 
 type DraggableItem = LocationProps & {
-  child?: ILandItem["svg"]
+  height: ILandItem["height"]
+  width: ILandItem["width"]
   active: boolean
   isOwner?: boolean
   title: string
 }
 
-const DragItem = ({ isOwner, id, x, y, z, child, title }: DraggableItem) => {
-  // console.log("dragItem", id, isOwner, title)
+type DraggableState = Pick<
+  DraggableItem,
+  "active" | "x" | "y" | "z" | "title" | "active" | "id"
+>
+
+const DragItem = ({
+  isOwner,
+  id,
+  x,
+  y,
+  z,
+  title,
+  width,
+  height,
+}: DraggableItem) => {
   const { islandItemLoc, islandIsEdit } = useIsland()
   const { zIndex, setZIndex }: DraggableContextInterface =
     useContext(DraggableContext)
+  const SVGItem = ITEM_SVG[id]
 
-  const [state, setState] = useState<DraggableItem>({
+  const [state, setState] = useState<DraggableState>({
     id: id,
     x: x,
     y: y,
@@ -56,7 +67,7 @@ const DragItem = ({ isOwner, id, x, y, z, child, title }: DraggableItem) => {
     setZIndex(zIndex + 1)
   }
 
-  const updateLocation = (item: DraggableItem) => {
+  const updateLocation = (item: DraggableState) => {
     const data = { x: item.x, y: item.y, z: item.z, id: item.id }
     console.log("update", { ...islandItemLoc, [`loc_${data.id}`]: data })
     setIslandItemLoc({ ...islandItemLoc, [`loc_${data.id}`]: data })
@@ -76,7 +87,11 @@ const DragItem = ({ isOwner, id, x, y, z, child, title }: DraggableItem) => {
       onStop={onStop}
       disabled={!isOwner || !islandIsEdit}
     >
-      <ItemContainer zIndex={state.z}>{child}</ItemContainer>
+      <ItemContainer zIndex={state.z}>
+        <SVGWrapper width={width} height={height}>
+          <SVGItem />
+        </SVGWrapper>
+      </ItemContainer>
     </Draggable>
   )
 }
@@ -86,6 +101,14 @@ const ItemContainer = styled.div<{ zIndex: number }>`
   position: relative;
   width: fit-content;
   height: fit-content;
+`
+
+const SVGWrapper = styled.div<{
+  width: ILandItem["width"]
+  height: ILandItem["height"]
+}>`
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
 `
 
 export default DragItem

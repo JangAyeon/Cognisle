@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import Image from "next/image"
 import { useRouter } from "next/router"
 import { FormEvent, useEffect, useState } from "react"
 
@@ -10,8 +11,6 @@ import { useInput } from "@/hooks/useInput"
 import useStateModal from "@/hooks/useStateModal"
 
 import { authApi } from "@/apis/authApi"
-
-import Squiggly from "@/public/assets/green/squiggly.svg"
 
 const VisitForm = () => {
   const [friendEmail, onChangeFriendEmail, setFriendEmail] = useInput("")
@@ -67,7 +66,12 @@ const VisitForm = () => {
           size={2.4}
           color="--color-green-04"
         />
-        <Squiggly width={51} height={21} />
+        <Image
+          src="/assets/green/squiggly.png"
+          width={51}
+          height={21}
+          alt="dfads"
+        />
       </TitleWrapper>
 
       <form onSubmit={checkValidEmail}>
@@ -83,7 +87,7 @@ const VisitForm = () => {
           height={4.0}
           fontSize={1.6}
           padding={1.6}
-          imgSrc="/assets/image/search.svg"
+          imgSrc="/assets/green/search.png"
           imgHeigth={21}
           imgWidth={21}
           btnType="submit"

@@ -8,7 +8,7 @@ import { Bounce } from "@/constants/animations"
 const LandLoading = () => {
   return (
     <BackgroundLayout
-      imgSrc={"/assets/background/bubble.svg"}
+      imgSrc={"/assets/background/bubble.png"}
       imgWidth={43}
       imgHeight={84.9}
       startColor="--gradient-yellow"

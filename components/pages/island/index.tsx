@@ -1,10 +1,10 @@
+import dynamic from "next/dynamic"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import LandControl from "@/components/molecules/LandControl"
 import LandContent from "@/components/molecules/LandDrag"
-import LandEdit from "@/components/molecules/LandEdit"
 
 import { BACKGROUND_COLOR } from "@/constants/island"
 
@@ -12,6 +12,8 @@ import useIsland from "@/hooks/useIsland"
 import useUserProfile from "@/hooks/useUser"
 
 import { ICategory } from "@/types/categoryTabs"
+
+const LandEdit = dynamic(() => import("@/components/molecules/LandEdit"))
 
 const CATEGORY_MENU: ICategory[] = [
   { id: 0, title: "배경", value: "background" },

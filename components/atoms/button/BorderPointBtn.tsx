@@ -61,6 +61,7 @@ const BorderPointBtn = ({
               width={imgWidth}
               height={imgHeight}
               alt={text}
+              priority
             />
           )}
           <Text size={textSize} weight="bold" color={textColor} text={text} />

@@ -8,7 +8,7 @@ const Island = () => {
   return (
     <PageWrapper>
       <BackgroundLayout
-        imgSrc={"/assets/background/bubble.svg"}
+        imgSrc={"/assets/background/bubble.png"}
         imgWidth={43}
         imgHeight={84.9}
         startColor="--gradient-yellow"

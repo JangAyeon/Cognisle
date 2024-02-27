@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import { useEffect, useRef } from "react"
 
 import { IBackgroundLayout } from "@/types/common/layoutProps"
 

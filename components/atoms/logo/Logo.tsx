@@ -10,14 +10,20 @@ interface ILogo {
 }
 
 const LogoSrc = {
-  main: "/assets/logo/vertical.svg",
-  header: "/assets/logo/horizontal.svg",
+  main: "/assets/logo/vertical.png",
+  header: "/assets/logo/horizontal.png",
 }
 const Logo = ({ width, height, alt, type, padding }: ILogo) => {
   return (
     <>
       <LogoWrapper padding={padding}>
-        <Image src={LogoSrc[type]} width={width} height={height} alt={alt} />
+        <Image
+          src={LogoSrc[type]}
+          width={width}
+          height={height}
+          alt={alt}
+          priority
+        />
       </LogoWrapper>
     </>
   )
