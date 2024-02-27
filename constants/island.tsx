@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic"
-import { ReactElement } from "react"
 
 import {
   IIsland,
