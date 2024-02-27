@@ -99,7 +99,7 @@ const DragItem = ({
 
 const ItemContainer = styled.div<{ zIndex: number }>`
   z-index: ${({ zIndex }) => `${zIndex}`};
-
+  position: relative;
   width: fit-content;
   height: fit-content;
 `
