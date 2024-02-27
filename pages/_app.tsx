@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import type { AppProps } from "next/app"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { CookiesProvider } from "react-cookie"
 import { Provider } from "react-redux"
 
@@ -13,11 +13,15 @@ import {
   needHeader as _needHeader,
 } from "@/constants/tabs"
 
+import { authApi } from "@/apis/authApi"
+
 import "@/public/fonts/style.css"
 
 import { store } from "@/redux/store/store"
 
 import "@/styles/global.css"
+
+import { setUserInfo } from "@/utils/auth"
 
 export default function App({ Component, pageProps }: AppProps) {
   const [needHeader, setNeedHeader] = useState(false)
@@ -36,6 +40,23 @@ export default function App({ Component, pageProps }: AppProps) {
       setNeedBottomTab(false)
     }
   }, [pathname])
+  const setUserProfile = useCallback(async () => {
+    const {
+      data: { user },
+    } = await authApi.getUserProfile()
+    const {
+      data: { session },
+    } = await authApi.getSession()
+    if (session && user) {
+      setUserInfo({ user, session })
+    } else {
+    }
+  }, [Component])
+
+  useEffect(() => {
+    setUserProfile()
+  }, [setUserProfile])
+
   return (
     <CookiesProvider>
       <Provider store={store}>
