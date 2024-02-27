@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import Link from "next/link"
 import { useRouter } from "next/router"
 import { FormEvent, MouseEvent, useEffect, useRef, useState } from "react"
 
@@ -181,7 +182,21 @@ const SignupForm = () => {
                 weight="bold"
                 color={"--color-green-04"}
               />
-              <UnderLineInput {...item} key={idx} />
+              <div>
+                <UnderLineInput {...item} key={idx} />
+                {item.name === "dsId" && (
+                  <Link
+                    href="https://fringe-polyester-65b.notion.site/ea0bb733257540c4a8e6196055321540"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "rgba(3, 107, 87, 1)",
+                    }}
+                  >
+                    내 디스코드 아이디 확인 방법
+                  </Link>
+                )}
+              </div>
 
               {item.name === "dsId" && (
                 <DsIdCheckButton type="button" onClick={handleDsIdCheck}>
