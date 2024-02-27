@@ -99,11 +99,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "Item_0",
     thumbImgSrc: "/assets/item/original/item_0.svg",
     mainImgSrc: "/assets/item/original/item_0.svg",
-    svg: (
-      <div style={{ width: "20", height: "20" }}>
-        <Item_0 />,
-      </div>
-    ),
+    svg: <Item_0 width="20" height="20" />,
     ...ITEM_SIZE,
   },
   1: {
@@ -111,11 +107,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "Item_1",
     thumbImgSrc: "/assets/item/original/item_1.svg",
     mainImgSrc: "/assets/item/original/item_1.svg",
-    svg: (
-      <div style={{ width: 20, height: 20 }}>
-        <Item_1 />
-      </div>
-    ),
+    svg: <Item_1 width="20" height="20" />,
     ...ITEM_SIZE,
   },
   2: {
@@ -123,11 +115,7 @@ const ITEM_CHOICE: ILandItemChoice = {
     title: "Item_2",
     thumbImgSrc: "/assets/item/original/item_2.svg",
     mainImgSrc: "/assets/item/original/item_2.svg",
-    svg: (
-      <div style={{ width: 20, height: 20 }}>
-        <Item_2 />
-      </div>
-    ),
+    svg: <Item_2 width="20" height="20" />,
     ...ITEM_SIZE,
   },
   3: {
