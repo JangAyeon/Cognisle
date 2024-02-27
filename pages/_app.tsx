@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app"
+import { useRouter } from "next/router"
 import { CookiesProvider } from "react-cookie"
 import { Provider } from "react-redux"
 
