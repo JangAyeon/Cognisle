@@ -39,13 +39,13 @@ const nextConfig = {
     return config
   },
 }
-/*
+
 const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: false,
+  enabled: process.env.ANALYZE === "true", // 환경변수 ANALYZE가 true일 때 실행
   openAnalyzer: false, // 브라우저에 자동으로 분석결과를 새 탭으로 Open하는 것을 방지
 })
 
 module.exports = withBundleAnalyzer(nextConfig)
 
-*/
-module.exports = nextConfig
+
+/*module.exports = nextConfig*/
