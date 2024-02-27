@@ -1,6 +1,8 @@
-import { AppState } from "@/redux/store/store"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+
 import { IUserInfo } from "@/types/common/authProps"
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+
+import { AppState } from "@/redux/store/store"
 
 const initialState: { userInfo: IUserInfo } = {
   userInfo: {
@@ -11,6 +13,7 @@ const initialState: { userInfo: IUserInfo } = {
     email: "",
     dsId: "",
     name: "",
+    sbId: "",
   },
 }
 
@@ -31,13 +34,17 @@ export const selectAccessToken = (state: AppState) =>
   state.user.userInfo.access_token
 export const selectRefreshToken = (state: AppState) =>
   state.user.userInfo.refresh_token
-export const selectUserProfile = (state: AppState) => {
-  state.user.userInfo.dsId.state.user.userInfo.name, state.user.userInfo.email
-}
-export const selectAuthInfo = (state: AppState) => {
-  state.user.userInfo.access_token,
-    state.user.userInfo.expires_in,
-    state.user.userInfo.refresh_token,
-    state.user.userInfo.token_type
-}
+
+export const selectUserSbId = (state: AppState) => state.user.userInfo.sbId
+export const selectUserDsId = (state: AppState) => state.user.userInfo.dsId
+
+export const selectUserName = (state: AppState) => state.user.userInfo.name
+
+export const selectUserEmail = (state: AppState) => state.user.userInfo.email
+
+export const selectExpire = (state: AppState) => state.user.userInfo.expires_in
+
+export const selectTokenType = (state: AppState) =>
+  state.user.userInfo.token_type
+
 export default userSlice.reducer

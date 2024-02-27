@@ -1,113 +1,253 @@
-import { authApi } from "@/apis/authApi"
-import { useInput } from "@/hooks/useInput"
-import { FormEvent, useEffect, useState } from "react"
+import styled from "@emotion/styled"
+import Link from "next/link"
 import { useRouter } from "next/router"
+import { FormEvent, MouseEvent, useEffect, useRef, useState } from "react"
+
+import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
+import FormButton from "@/components/atoms/button/FormButton"
+import UnderLineInput from "@/components/atoms/input/UnderLineInput"
+import Text from "@/components/atoms/typo/Text"
+import AuthModal from "@/components/modal/AuthModal"
+
+import useStateModal from "@/hooks/useStateModal"
+
+import { authApi } from "@/apis/authApi"
+
 import { IAuthSBInfo } from "@/types/common/authProps"
+
 import { setUserInfo } from "@/utils/auth"
+import { SignUpValidation, dsIdCheck } from "@/utils/formValidation"
+
+const Input_Common = {
+  width: 20.3,
+  height: 4.0,
+  backgroundColor: "transparent",
+  borderColor: "--color-green-04",
+  color: "--color-green-04",
+  fontSize: 1.2,
+  opacity: 50,
+  padding: 0,
+}
+
+const Input_List = [
+  {
+    label: "이메일",
+    placeholder: "이메일 입력",
+    type: "string",
+    name: "email",
+    autoComplete: "email",
+    ...Input_Common,
+  },
+  {
+    label: "비밀번호",
+    placeholder: "비밀번호",
+    type: "password",
+    name: "password",
+    ...Input_Common,
+  },
+  {
+    label: "이름",
+    placeholder: "사용자 이름",
+    type: "text",
+    name: "name",
+    ...Input_Common,
+  },
+  {
+    label: ["디스코드", <br />, "아이디"],
+    placeholder: "디스코드 아이디",
+    type: "text",
+    name: "dsId",
+    ...Input_Common,
+    width: 14,
+  },
+]
 
 const SignupForm = () => {
-  const [email, onChangeEmail, setEmail] = useInput("")
-  const [emailFlagCheck, setEmailFlagCheck] = useState(false)
-  const LS_EMAIL = localStorage.getItem("LS_EMAIL")
   const router = useRouter()
-  const handleEmailFlagCheck = () => {
-    setEmailFlagCheck((prev) => !prev)
-  }
+  const formRef = useRef<HTMLFormElement>(null)
+  const { state, text, isOpen, setStateModal, setIsOpen, closeModal } =
+    useStateModal()
 
-  const handleLocalStorageEmail = () => {
-    if (emailFlagCheck) {
-      localStorage.setItem("LS_EMAIL", email)
-    } else {
-      localStorage.removeItem("LS_EMAIL")
+  const [isDsIdValid, setIsDsIdValid] = useState(false)
+
+  const getFormValue = () => {
+    if (formRef.current) {
+      const signupForm = new FormData(formRef.current)
+      return {
+        email: signupForm.get("email"),
+        password: signupForm.get("password"),
+        options: {
+          data: {
+            name: signupForm.get("name"),
+            dsId: isDsIdValid ? signupForm.get("dsId") : "",
+          },
+        },
+      }
     }
-  }
-  const handleLoginBtn = () => {
-    console.log("handleSignupBtn")
-    router.push({ href: router.pathname, query: { type: "login" } })
-  }
 
-  const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    const signupForm = new FormData(e.currentTarget)
-    const params = {
-      email: signupForm.get("email"),
-      password: signupForm.get("password"),
+    return {
+      email: "",
+      password: "",
       options: {
         data: {
-          name: signupForm.get("name"),
-          dsId: signupForm.get("dsId") || "",
+          name: "",
+          dsId: "",
         },
       },
     }
+  }
 
-    console.log("handleSignup", params)
-    handleLocalStorageEmail()
+  const handleDsIdCheck = async (e: MouseEvent<HTMLButtonElement>) => {
+    const { form } = e.target as HTMLFormElement
+    const signupForm = new FormData(form)
+    const dsId = signupForm.get("dsId")
+    const text = await dsIdCheck(dsId, setIsDsIdValid)
+    console.log(dsId, text)
+    if (text) {
+      setStateModal({
+        state: isDsIdValid ? "success" : "fail",
+        text,
+        isOpen: true,
+      })
+      console.log(isDsIdValid)
+      if (!isDsIdValid) {
+        form.dsId.value = ""
+      }
+    }
+  }
 
+  const handleSignupValid = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const formValue = getFormValue()
+
+    await SignUpValidation(formValue, setStateModal)
+  }
+
+  const handleSignup = async () => {
+    const formValue = getFormValue()
     try {
       const {
         data: { user, session },
         error,
-      } = await authApi.signup(params)
+      } = await authApi.signup(formValue)
       if (user && session) {
         setUserInfo({ user, session } as IAuthSBInfo)
-        alert("회원가입 성공함")
+        setStateModal({
+          isOpen: true,
+          text: "회원가입에 성공하였습니다.",
+          state: "success",
+        })
         router.replace("/")
+      } else {
+        setStateModal({
+          isOpen: true,
+          state: "fail",
+          text: "사용 불가능한 이메일 및 비밀번호입니다.",
+        })
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error)
-      alert(error)
+      setStateModal({
+        isOpen: true,
+        state: "fail",
+        text: error.message,
+      })
     }
   }
 
   useEffect(() => {
-    if (LS_EMAIL) {
-      setEmail(LS_EMAIL)
-      setEmailFlagCheck(true)
+    if (!isOpen && state === "success") {
+      handleSignup()
     }
-  }, [LS_EMAIL, setEmail])
+  }, [isOpen, state])
 
   return (
     <>
       <div>
-        <form onSubmit={handleSignup}>
-          <input
-            value={email}
-            onChange={onChangeEmail}
-            placeholder="이메일 입력"
-            type="email"
-            name="email"
-            autoComplete="email"
+        {text && isOpen && (
+          <AuthModal
+            state={state}
+            text={text}
+            isOpen={isOpen}
+            onClose={() => setIsOpen(false)}
           />
-          <input
-            placeholder="비밀번호 입력"
-            type="password"
-            name="password"
-            autoComplete="current-password"
-          />
-          <input placeholder="사용자 이름 입력" type="text" name="name" />
-          <input placeholder="디스코드 아이디" type="text" name="dsId" />
-          <button type="submit">회원가입 </button>
-        </form>
+        )}
+        <FormWrapper onSubmit={handleSignupValid} ref={formRef}>
+          {Input_List.map((item, idx) => (
+            <FormInputWrapper key={idx}>
+              <Text
+                size={1.6}
+                text={item.label}
+                weight="bold"
+                color={"--color-green-04"}
+              />
+              <div>
+                <UnderLineInput {...item} key={idx} />
+                {item.name === "dsId" && (
+                  <Link
+                    href="https://fringe-polyester-65b.notion.site/ea0bb733257540c4a8e6196055321540"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "rgba(3, 107, 87, 1)",
+                    }}
+                  >
+                    내 디스코드 아이디 확인 방법
+                  </Link>
+                )}
+              </div>
+
+              {item.name === "dsId" && (
+                <DsIdCheckButton type="button" onClick={handleDsIdCheck}>
+                  존재 <br />
+                  확인
+                </DsIdCheckButton>
+              )}
+            </FormInputWrapper>
+          ))}
+
+          <FormButton width={28} height={4.0} type="submit" text="회원가입" />
+        </FormWrapper>
       </div>
-      <div>
-        <div>
-          <input
-            type="checkbox"
-            id="rememberEmail"
-            checked={emailFlagCheck}
-            onChange={() => handleEmailFlagCheck()}
-          />
-          <label htmlFor="rememberId"> 아이디 저장</label>
-        </div>
-        <div>
-          <button type="button" onClick={handleLoginBtn}>
-            로그인
-          </button>
-        </div>
-      </div>
+
+      <AuthTypeButton>
+        <BorderPointBtn
+          width={28.0}
+          height={4.0}
+          mainColor="transparent"
+          text="로그인"
+          textSize={1.6}
+          textColor="--color-green-04"
+          link="/auth?type=login"
+        />
+      </AuthTypeButton>
     </>
   )
 }
 
 export default SignupForm
+
+const FormWrapper = styled.form``
+
+const FormInputWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 28rem;
+  margin-bottom: 3rem;
+`
+const AuthTypeButton = styled.div`
+  margin-top: 1.2rem;
+`
+const DsIdCheckButton = styled.button`
+  width: 5.2rem;
+  height: 4rem;
+  background-color: var(--color-green-04);
+  border-radius: 0 1.5rem 1.5rem 1.5rem;
+  font-size: 1.2rem;
+  color: var(--color-yellow-01);
+  font-weight: bold;
+`

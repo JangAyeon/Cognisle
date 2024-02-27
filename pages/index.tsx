@@ -1,36 +1,41 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import styled from "@emotion/styled"
+import { useEffect, useState } from "react"
+
+import Loading from "@/components/pages/loading"
+import Main from "@/components/pages/main"
 
 import { supabase } from "@/apis/instance"
-import { useEffect } from "react"
-import LogoutBtn from "@/components/LogoutBtn"
 
+import Timer from "@/utils/timer"
 
 export default function Home() {
+  const [loading, setLoading] = useState(true)
+
   const getUsers = async () => {
     const { data, error } = await supabase.from("user").select()
-    console.log(data)
+    // console.log(data)
   }
 
-  const getUserProfile = async () => {
-    const { data, error } = await supabase.auth.getUser()
-    console.log("getUserProfile", data)
-  }
-
-  const getSessionInfo = async () => {
-    const { data, error } = await supabase.auth.getSession()
-    console.log("getSesssion", data)
-  }
   useEffect(() => {
     getUsers()
-    getUserProfile()
-    getSessionInfo()
+  }, [])
+
+  useEffect(() => {
+    const timer = Timer(setLoading(false), 2000)
+
+    return () => {
+      clearTimeout(timer)
+    }
   }, [])
 
   return (
-    <div>
-      Main
-      <LogoutBtn />
-    </div>
+    <>
+      {" "}
+      <PageWrapper>{loading ? <Loading /> : <Main />}</PageWrapper>
+    </>
   )
 }
+
+const PageWrapper = styled.div`
+  min-height: inherit;
+`

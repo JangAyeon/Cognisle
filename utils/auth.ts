@@ -1,10 +1,14 @@
-import { store } from "@/redux/store/store"
-import { IAuthSBInfo, IUserInfo } from "@/types/common/authProps"
-import { setUserInfo as _setUserInfo, signout } from "@/redux/common/userSlice"
-import { removeRefreshToken, setRefreshToken } from "@/utils/token"
 import { authApi } from "@/apis/authApi"
 
+import { IAuthSBInfo, IUserInfo } from "@/types/common/authProps"
+
+import { setUserInfo as _setUserInfo, signout } from "@/redux/common/userSlice"
+import { store } from "@/redux/store/store"
+
+import { removeRefreshToken, setRefreshToken } from "@/utils/token"
+
 export const setUserInfo = async ({ user, session }: IAuthSBInfo) => {
+  //console.log(user)
   const userInfo: IUserInfo = {
     access_token: session.access_token,
     refresh_token: session.refresh_token,
@@ -13,8 +17,8 @@ export const setUserInfo = async ({ user, session }: IAuthSBInfo) => {
     dsId: user.user_metadata.dsId,
     email: user.email,
     name: user.user_metadata.name,
+    sbId: user.id,
   }
-  console.log("setAuthInfo", userInfo)
 
   // 리덕스 디스 패치
   store.dispatch(_setUserInfo(userInfo))
@@ -25,7 +29,6 @@ export const setUserInfo = async ({ user, session }: IAuthSBInfo) => {
     refresh_token: userInfo.refresh_token,
   })
 }
-
 
 export const removeUserInfo = () => {
   // 리덕스 내 사용자 및 세션 정보 모두 제거

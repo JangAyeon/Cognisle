@@ -87,16 +87,25 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
+
   font: inherit;
   text-decoration: none;
   vertical-align: baseline;
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 button {
   outline: none;
   border: none;
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  overflow: visible;
   cursor: pointer;
 }
 
@@ -115,9 +124,18 @@ section {
   display: block;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  line-height: 1;
+  /* font-size 1em = 10px on default browser settings */
   background-color: #f6f7f9;
+  font-family: var(--font-Ydestreet), var(--font-Mundial), "Noto Sans",
+    sans-serif;
+  height: 100%;
 }
 
 body::-webkit-scrollbar {
@@ -148,35 +166,35 @@ table {
 }
 
 :root {
-  --color-yellow1:rgba(255, 249, 188, 1);
-  --color-yellow2:rgba(255, 249, 189, 1);
+  --font-Ydestreet: "Ydestreet";
+  --font-Mundial: "Mundial";
+  --color-yellow-01: rgba(255, 249, 188, 1);
+  --color-yellow-02: rgba(255, 249, 189, 1);
 
+  --color-orange-01: rgba(255, 195, 97, 1);
+  --color-orange-02: rgba(254, 195, 97, 1);
+  --color-orange-03: rgba(255, 107, 87, 1);
 
-  --color-orange-01:rgba(255, 195, 97, 1);
-  --color-orange-02:rgba(255, 107, 87, 1);
+  --color-pink-01: rgba(249, 140, 189, 1);
 
-  --color-pink-01:rgba(249, 140, 189, 1);
+  --color-green-01: rgba(195, 235, 164, 1);
+  --color-green-02: rgba(174, 216, 147, 1);
+  --color-green-03: rgba(115, 216, 156, 1);
+  --color-green-04: rgba(3, 107, 87, 1);
 
-  --color-green-01:rgba(195, 235, 164, 1);
-  --color-green-02:rgba(174, 216, 147, 1);
-  --color-green-03:rgba(115, 216, 156, 1);
-  --color-green-04:rgba(3, 107, 87, 1);
+  --shadow-orange-01: rgba(255, 174, 39, 1);
 
+  --shadow-pink-01: rgba(247, 169, 160, 1);
+  --shadow-pink-02: rgba(242, 104, 166, 1);
 
-  --shadow-orange-01:rgba(255, 174, 39, 1);
+  --shadow-blue-01: rgba(28, 103, 211, 1);
 
-  --shadow-pink-01:rgba(247, 169, 160, 1);
-  --shadow-pink-02:rgba(242, 104, 166, 1);
-
-  --shadow-blue-01:rgba(28, 103, 211, 1);
-
-  --color-blue1:rgba(105, 191, 255, 1);
-  --color-blue2:#2B72D8;
-  --color-blue3:#1C67D3;
-
-
-  --color-grey:#CECECE;
-
+  --color-blue-01: rgba(105, 191, 255, 1);
+  --color-blue-02: rgba(43, 114, 216, 1);
+  --color-blue-03: rgba(36, 97, 186, 1);
+  --color-blue-04: rgba(18, 49, 93, 1);
+  --gradient-yellow: rgba(115, 216, 156, 0);
+  --color-grey-01: #cecece;
 }
 
 input,
@@ -184,4 +202,45 @@ textarea,
 select,
 button {
   font-family: inherit;
+  border: 0;
+  background-color: transparent;
+}
+
+/* input 기본 스타일 초기화 */
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+
+/* IE10 이상에서 input box 에 추가된 지우기 버튼 제거 */
+input::-ms-clear {
+  display: none;
+}
+
+/* input type number 에서 화살표 제거 */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* input 자동 완성시 배경 파란색 제거 */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px transparent inset;
+  -webkit-text-fill-color: auto;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+img {
+  display: block;
 }

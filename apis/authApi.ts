@@ -1,9 +1,10 @@
-import { supabase, _axios, supabaseClient } from "./instance"
+import { Session } from "@supabase/auth-helpers-nextjs"
 import {
   SignInWithPasswordCredentials,
   SignUpWithPasswordCredentials,
 } from "@supabase/supabase-js"
-import { Session } from "@supabase/auth-helpers-nextjs"
+
+import { _axios, supabase, supabaseClient } from "./instance"
 
 const signup = (data: object) =>
   supabaseClient.auth.signUp(data as SignUpWithPasswordCredentials)
@@ -16,11 +17,28 @@ const login = (data: object) =>
 const setSession = (data: object) =>
   supabaseClient.auth.setSession(data as Session)
 
+const getSession = () => supabaseClient.auth.getSession()
+
+const getUserProfile = () => supabaseClient.auth.getUser()
+
+const getDsIdValid = (dsId: FormDataEntryValue) =>
+  supabase
+    .from("23_final_user")
+    .select("dsTag, dsGlobalName")
+    .eq("dsTag", dsId)
+    .single()
+
+const getUserEmailExist = (email: FormDataEntryValue) =>
+  supabase.from("userinfo").select("email, name").eq("email", email).single()
 const authApi = {
   signup,
   login,
   logout,
   setSession,
+  getSession,
+  getUserProfile,
+  getDsIdValid,
+  getUserEmailExist,
 }
 
 export { authApi }

@@ -1,10 +1,7 @@
 import { useRouter } from "next/router"
-import { authApi } from "@/apis/authApi"
-import { useInput } from "@/hooks/useInput"
-import { FormEvent, useEffect, useState } from "react"
-import LogoutBtn from "@/components/LogoutBtn"
-import SignupForm from "@/components/forms/SignupForm"
-import LoginForm from "@/components/forms/LoginForm"
+
+import Login from "@/components/pages/login"
+import Signup from "@/components/pages/signup"
 
 const Auth = () => {
   const router = useRouter()
@@ -12,8 +9,8 @@ const Auth = () => {
 
   return (
     <>
-      <div>{type === "signup" && <SignupForm />}</div>
-      <div>{type === "login" && <LoginForm />}</div>
+      {type === "signup" && <Signup />}
+      {type === "login" && <Login />}
     </>
   )
 }
