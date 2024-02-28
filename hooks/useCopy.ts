@@ -12,7 +12,7 @@ const useCopy = () => {
     }
   }
 
-  return [isCopy, onCopy]
+  return { isCopy, onCopy }
 }
 
 export default useCopy
