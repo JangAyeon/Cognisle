@@ -15,23 +15,25 @@ const ShowItemModal = ({
   onClose,
 }: ShowItemModalProps) => {
   const { userDsId } = useUserProfile()
+
   return (
     <Modal.Root isOpen={isOpen} onClose={onClose}>
       <Modal.Content width={30.0} height={48.0}>
         <Modal.CloseButton />
+
+        <Container>
+          <Image
+            src={
+              type === "item"
+                ? `/assets/modal/item_${itemId}.svg`
+                : `/assets/dsUser/${userDsId}.svg`
+            }
+            height={480}
+            width={300}
+            alt="circle"
+          />
+        </Container>
       </Modal.Content>
-      <Container>
-        <Image
-          src={
-            type === "item"
-              ? `/assets/modal/item_${itemId}.svg`
-              : `/assets/dsUser/${userDsId}.svg`
-          }
-          height={480}
-          width={300}
-          alt="circle"
-        />
-      </Container>
     </Modal.Root>
   )
 }
@@ -39,6 +41,8 @@ const ShowItemModal = ({
 export default ShowItemModal
 
 const Container = styled.div`
+  position: absolute;
+  top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;

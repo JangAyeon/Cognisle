@@ -7,6 +7,7 @@ import ShowItemModal from "@/components/modal/ShowItemModal"
 import { ICard, ICardData, IGameInfo } from "@/types/common/gameProps"
 
 interface IPlayBoard {
+  type: string
   computedBoardState: ICard[][]
   onCardClick: (
     _: React.MouseEvent<HTMLSpanElement, MouseEvent>,
@@ -16,12 +17,17 @@ interface IPlayBoard {
   score: IGameInfo["score"]
 }
 
-const PlayBoard = ({ computedBoardState, onCardClick, score }: IPlayBoard) => {
+const PlayBoard = ({
+  type,
+  computedBoardState,
+  onCardClick,
+  score,
+}: IPlayBoard) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [modalId, setModalId] = useState(-1)
 
   const handleModalOpen = (id: number) => {
-    // console.log("open")
+    console.log("open", id)
     setModalId(id)
     setIsModalOpen(true)
   }
@@ -31,7 +37,7 @@ const PlayBoard = ({ computedBoardState, onCardClick, score }: IPlayBoard) => {
 
   return (
     <BoardWrapper>
-      {isModalOpen && (
+      {isModalOpen && type != "result" && type != "end" && (
         <ShowItemModal
           type="item"
           itemId={modalId}

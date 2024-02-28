@@ -23,7 +23,7 @@ export const useStateModal = () => {
   }
 
   const closeModal = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 150000000))
     setStateModal({ state, text, isOpen: false })
   }
 

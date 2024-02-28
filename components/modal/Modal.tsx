@@ -1,7 +1,14 @@
 import { css } from "@emotion/react"
 import styled from "@emotion/styled"
 import Image from "next/image"
-import { createContext, useContext, useEffect, useRef, useState } from "react"
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 
 import { FADE_IN, FADE_OUT, POP_IN, POP_OUT } from "@/constants/animations"
 
@@ -92,7 +99,7 @@ const ModalCloseButton = ({
     setTimeout(() => {
       onClose()
       setOverlayClicked(false)
-    }, 1500)
+    }, 150)
   }
 
   return (

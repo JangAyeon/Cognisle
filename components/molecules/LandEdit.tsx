@@ -30,7 +30,7 @@ const LandEdit = ({ list, setCategory, category }: ILandEdit) => {
     }
   }, [islandItemExist])
   return (
-    <EditWrapper>
+    <>
       {text && isOpen && (
         <AuthModal
           state={state}
@@ -39,15 +39,21 @@ const LandEdit = ({ list, setCategory, category }: ILandEdit) => {
           onClose={() => setIsOpen(false)}
         />
       )}
-      <LandCategory list={list} category={category} setCategory={setCategory} />
-      <LandSelectWrapper>
-        {category === 0 ? (
-          <LandType />
-        ) : (
-          <LandItem setStateModal={setStateModal} />
-        )}
-      </LandSelectWrapper>
-    </EditWrapper>
+      <EditWrapper>
+        <LandCategory
+          list={list}
+          category={category}
+          setCategory={setCategory}
+        />
+        <LandSelectWrapper>
+          {category === 0 ? (
+            <LandType />
+          ) : (
+            <LandItem setStateModal={setStateModal} />
+          )}
+        </LandSelectWrapper>
+      </EditWrapper>
+    </>
   )
 }
 
