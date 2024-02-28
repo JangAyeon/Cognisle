@@ -76,7 +76,7 @@ const LandControl = ({
       {isOwner && (
         <EditWrapper>
           {islandIsEdit && (
-            <SaveButton onClick={handleSaveBtn}>
+            <ModeButton onClick={handleSaveBtn}>
               {" "}
               <Text
                 size={1.6}
@@ -84,10 +84,11 @@ const LandControl = ({
                 color={"--color-green-04"}
                 text="저장"
               />
-            </SaveButton>
+            </ModeButton>
           )}
-          <div
+          <OpenerWrapper
             onClick={() => {
+              console.log("click")
               setIslandIsEdit(!islandIsEdit)
             }}
           >
@@ -97,7 +98,15 @@ const LandControl = ({
               height={48}
               alt="mode Image"
             />
-          </div>
+          </OpenerWrapper>
+          <ModeButton onClick={handleSaveBtn}>
+            <Image
+              src={`/assets/control/mode/invit.svg`}
+              width={35}
+              height={38}
+              alt="mode Image"
+            />
+          </ModeButton>
         </EditWrapper>
       )}
     </TopMenu>
@@ -116,14 +125,19 @@ const TopMenu = styled.div`
   top: 2.4rem;
 `
 
-const SaveButton = styled.button`
+const ModeButton = styled.button`
   background-color: var(--color-yellow-01);
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 50%;
-  margin-right: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 const EditWrapper = styled.div`
   display: flex;
   flex-direction: row;
+`
+const OpenerWrapper = styled.div`
+  margin: 0 0.8rem;
 `
