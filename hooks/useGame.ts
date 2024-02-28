@@ -123,7 +123,7 @@ const useGame = () => {
 
           setSelectedCards([])
           setBoardFreeze(false)
-        }, 1000)
+        }, 4000)
       }
     },
     [selectedCards, boardFreeze]
