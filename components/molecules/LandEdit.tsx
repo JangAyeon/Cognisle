@@ -41,7 +41,11 @@ const LandEdit = ({ list, setCategory, category }: ILandEdit) => {
       )}
       <LandCategory list={list} category={category} setCategory={setCategory} />
       <LandSelectWrapper>
-        {category === 0 ? <LandType /> : <LandItem />}
+        {category === 0 ? (
+          <LandType />
+        ) : (
+          <LandItem setStateModal={setStateModal} />
+        )}
       </LandSelectWrapper>
     </EditWrapper>
   )

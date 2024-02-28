@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
 import { useRouter } from "next/router"
-import { useEffect } from "react"
+import { useCallback, useEffect, useState } from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import Text from "@/components/atoms/typo/Text"
@@ -25,6 +25,7 @@ const LandControl = ({
 }) => {
   const { isCopy, onCopy } = useCopy()
   const { islandType, islandItemLoc, islandIsEdit } = useIsland()
+  const [needReLoad, setNeedReLoad] = useState(false)
   const { userName, userEmail } = useUserProfile()
   const { state, text, isOpen, setStateModal, closeModal, setIsOpen } =
     useStateModal()
@@ -44,6 +45,7 @@ const LandControl = ({
         text: "저장 성공했습니다",
         isOpen: true,
       })
+      setNeedReLoad(true)
     }
   }
 
@@ -60,10 +62,10 @@ const LandControl = ({
 
   useEffect(() => {
     // 초대 결과로 모달 열린게 아닌 편집에서 완료 저장 누른 경우에만 리로드
-    if (isOpen && !isCopy) {
+    if (needReLoad && isOpen) {
       router.reload()
     }
-  }, [isOpen])
+  }, [needReLoad, isOpen])
   return (
     <TopMenu>
       {" "}
