@@ -7,6 +7,7 @@ import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import Text from "@/components/atoms/typo/Text"
 import AuthModal from "@/components/modal/AuthModal"
 
+import useCopy from "@/hooks/useCopy"
 import useIsland from "@/hooks/useIsland"
 import useStateModal from "@/hooks/useStateModal"
 import useUserProfile from "@/hooks/useUser"
@@ -22,6 +23,7 @@ const LandControl = ({
   isOwner: boolean
   name: string
 }) => {
+  const { isCopy, onCopy } = useCopy()
   const { islandType, islandItemLoc, islandIsEdit } = useIsland()
   const { userName, userEmail } = useUserProfile()
   const { state, text, isOpen, setStateModal, closeModal, setIsOpen } =
@@ -45,8 +47,20 @@ const LandControl = ({
     }
   }
 
+  const handleEmailCopy = async () => {
+    if (userEmail) {
+      onCopy(userEmail)
+      setStateModal({
+        state: "success",
+        text: `복사된 초대 코드를 친구에게 전달해 섬을 자랑해봐요`,
+        isOpen: true,
+      })
+    }
+  }
+
   useEffect(() => {
-    if (isOpen) {
+    // 초대 결과로 모달 열린게 아닌 편집에서 완료 저장 누른 경우에만 리로드
+    if (isOpen && !isCopy) {
       router.reload()
     }
   }, [isOpen])
@@ -76,7 +90,7 @@ const LandControl = ({
       {isOwner && (
         <EditWrapper>
           {islandIsEdit && (
-            <SaveButton onClick={handleSaveBtn}>
+            <ModeButton onClick={handleSaveBtn}>
               {" "}
               <Text
                 size={1.6}
@@ -84,10 +98,11 @@ const LandControl = ({
                 color={"--color-green-04"}
                 text="저장"
               />
-            </SaveButton>
+            </ModeButton>
           )}
-          <div
+          <OpenerWrapper
             onClick={() => {
+              console.log("click")
               setIslandIsEdit(!islandIsEdit)
             }}
           >
@@ -97,7 +112,17 @@ const LandControl = ({
               height={48}
               alt="mode Image"
             />
-          </div>
+          </OpenerWrapper>
+          {userEmail && (
+            <ModeButton onClick={handleEmailCopy}>
+              <Image
+                src={`/assets/control/mode/invit.svg`}
+                width={35}
+                height={38}
+                alt="mode Image"
+              />
+            </ModeButton>
+          )}
         </EditWrapper>
       )}
     </TopMenu>
@@ -116,14 +141,19 @@ const TopMenu = styled.div`
   top: 2.4rem;
 `
 
-const SaveButton = styled.button`
+const ModeButton = styled.button`
   background-color: var(--color-yellow-01);
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 50%;
-  margin-right: 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 const EditWrapper = styled.div`
   display: flex;
   flex-direction: row;
+`
+const OpenerWrapper = styled.div`
+  margin: 0 0.8rem;
 `
