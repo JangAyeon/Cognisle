@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import Image from "next/image"
 import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 
 import GameResultModal from "@/components/modal/GameResultModal"
 import WaitGameStart from "@/components/molecules/WaitGameStart"
@@ -49,16 +49,15 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
   }
 
   const handleModalClose = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 3000))
     setIsModalOpen(false)
 
     router.replace("/")
   }
+
   useEffect(() => {
     if (type === "result") {
       handleModalOpen()
       postGameResult()
-      handleModalClose()
     }
   }, [type])
   return (
@@ -76,7 +75,7 @@ const Loading = ({ type, gameResult }: IGameLoading) => {
         <GameResultModal
           gameResult={gameResult}
           isOpen={isModalOpen}
-          onClose={handleModalClose}
+          onClose={() => handleModalClose()}
         />
       )}
     </LoadingWrapper>

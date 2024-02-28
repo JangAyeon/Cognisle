@@ -13,7 +13,7 @@ const Main = () => {
 
   return (
     <BackgroundLayout
-      imgSrc={"/assets/background/island.svg"}
+      imgSrc={"/assets/background/island.png"}
       startColor="--gradient-yellow"
       endColor="--color-pink-01"
       degree="180deg"

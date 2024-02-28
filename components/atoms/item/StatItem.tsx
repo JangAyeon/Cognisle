@@ -2,7 +2,6 @@ import styled from "@emotion/styled"
 import Image from "next/image"
 import { useState } from "react"
 
-import Text from "@/components/atoms/typo/Text"
 import ShowItemModal from "@/components/modal/ShowItemModal"
 
 interface IItem {

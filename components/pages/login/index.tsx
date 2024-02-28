@@ -8,7 +8,7 @@ import AuthTitle from "@/components/molecules/AuthTitle"
 const Login = () => {
   return (
     <BackgroundLayout
-      imgSrc={"/assets/background/triangle.svg"}
+      imgSrc={"/assets/background/triangle.png"}
       startColor="--gradient-yellow"
       endColor="--color-green-03"
       degree="180deg"

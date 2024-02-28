@@ -33,13 +33,18 @@ const CardGameBoard = () => {
   }
 
   const wait = async (type: GameLoadingProps) => {
+    if (type != "start") {
+      console.log("adsfasd start wait")
+      await new Promise((resolve) => setTimeout(resolve, 1500))
+    }
+
     setStageType(type)
     setIsLoading(true)
     await new Promise((resolve) => setTimeout(resolve, 3000))
     if (type === "end") {
       getItems(cards)
     }
-    if (type == "start" || type == "end") {
+    if (type == "start") {
       setIsLoading(false)
     }
   }
@@ -65,6 +70,7 @@ const CardGameBoard = () => {
           <>
             <GameState score={score} time={time} moves={moves} />
             <PlayBoard
+              type={stageType}
               computedBoardState={computedBoardState}
               onCardClick={onCardClick}
               score={score}

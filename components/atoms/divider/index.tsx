@@ -5,7 +5,7 @@ const Divider = () => {
   return (
     <DividerWrapper>
       <Image
-        src="/assets/divider/pink.svg"
+        src="/assets/divider/pink.png"
         height={3}
         width={180}
         alt="pink divider"

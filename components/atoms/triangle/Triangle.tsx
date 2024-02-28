@@ -5,14 +5,14 @@ interface ITriangle {
   width: number
   height: number
   alt: string
-  type: "original" | "reversed" | "rightRed" | "leftRed"
+  type: "original" | "reversed" /*| "rightRed" | "leftRed"*/
 }
 
 const TriangleSrc = {
-  original: "/assets/triangle/original.svg",
-  reversed: "/assets/triangle/reversed.svg",
-  rightRed: "/assets/triangle/red/right.svg",
-  leftRed: "/assets/triangle/red/left.svg",
+  original: "/assets/triangle/original.png",
+  reversed: "/assets/triangle/reversed.png",
+  /* rightRed: "/assets/triangle/red/right.svg",
+  leftRed: "/assets/triangle/red/left.svg",*/
 }
 
 const Triangle = ({ width, height, alt, type }: ITriangle) => {

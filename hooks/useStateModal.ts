@@ -2,6 +2,11 @@ import { useEffect, useState } from "react"
 
 import { IAuthModal } from "@/components/modal/AuthModal"
 
+type setStateModalProps = ({
+  state,
+  text,
+  isOpen,
+}: Omit<IAuthModal, "onClose">) => void
 export const useStateModal = () => {
   const [state, setState] = useState<IAuthModal["state"]>("fail")
   const [text, setText] = useState<string>("")
@@ -18,7 +23,7 @@ export const useStateModal = () => {
   }
 
   const closeModal = async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    await new Promise((resolve) => setTimeout(resolve, 150000000))
     setStateModal({ state, text, isOpen: false })
   }
 
@@ -41,3 +46,5 @@ export const useStateModal = () => {
 }
 
 export default useStateModal
+
+export type { setStateModalProps }
