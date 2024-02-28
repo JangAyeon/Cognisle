@@ -5,11 +5,16 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import Slide from "@/components/atoms/slide"
 
 import useIsland from "@/hooks/useIsland"
+import { setStateModalProps } from "@/hooks/useStateModal"
 import useSwiper from "@/hooks/useSwiper"
 
 import { ItemIdProps } from "@/types/common/islandProps"
 
-const LandItem = () => {
+interface ILandItem {
+  setStateModal: setStateModalProps
+}
+
+const LandItem = ({ setStateModal }: ILandItem) => {
   const { islandItemExist } = useIsland()
   const { swiperSetting, currentSlide } = useSwiper()
 
@@ -19,7 +24,7 @@ const LandItem = () => {
         <Swiper {...swiperSetting}>
           {islandItemExist.map((id: ItemIdProps, idx: number) => (
             <SwiperSlide key={idx}>
-              <Slide id={id} />
+              <Slide id={id} setStateModal={setStateModal} />
             </SwiperSlide>
           ))}
         </Swiper>

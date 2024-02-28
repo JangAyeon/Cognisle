@@ -92,7 +92,7 @@ const ModalCloseButton = ({
     setTimeout(() => {
       onClose()
       setOverlayClicked(false)
-    }, 150)
+    }, 1500)
   }
 
   return (
