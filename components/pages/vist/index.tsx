@@ -4,19 +4,19 @@ import VisitForm from "@/components/forms/VisitForm"
 
 import Friend from "@/public/assets/green/friend.svg"
 
-const VisitContainer = () => {
+const VisitRequest = () => {
   return (
-    <ContentContainer>
+    <FormContainer>
       <VisitForm />
 
       <Friend width={280} height={381} />
-    </ContentContainer>
+    </FormContainer>
   )
 }
 
-export default VisitContainer
+export default VisitRequest
 
-const ContentContainer = styled.div`
+const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

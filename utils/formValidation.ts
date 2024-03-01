@@ -11,9 +11,9 @@ const passwordCheck = (password: FormDataEntryValue | null) => {
   // console.log("비밀번호", password, password_format.test(password as string))
   if (typeof password === "string") {
     if (!password.length) {
-      return "비밀번호를 입력하시오"
+      return "비밀번호를 입력해 주세요"
     } else if (!password_format.test(password)) {
-      return "8~16자 영문 대소문자, 숫자, 특수문자를 사용하세요"
+      return "비밀번호 8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요"
     }
   }
 }
@@ -24,9 +24,9 @@ const emailCheck = (email: FormDataEntryValue | null) => {
   //console.log("email", email, email_format.test(email as string))
   if (typeof email === "string") {
     if (!email.length) {
-      return "이메일을 입력하시오"
+      return "이메일을 입력해 주세요"
     } else if (!email_format.test(email)) {
-      return "올바른 형식의 이메일을 입력하시오"
+      return "올바른 형식의 이메일을 입력해 주세요"
     }
   }
 }
@@ -37,7 +37,7 @@ export const dsIdCheck = async (
 ) => {
   if (!dsId) {
     setIsDsIdValid(false)
-    return "확인할 디스코드 아이디를 입력하시오"
+    return "확인할 디스코드 아이디를 입력해 주세요"
   } else {
     const { data, error } = await authApi.getDsIdValid(dsId)
     if (error) {
@@ -56,9 +56,9 @@ const nameCheck = (name: FormDataEntryValue | null) => {
   const name_format = /^.{2,8}$/
   if (typeof name === "string") {
     if (!name.length) {
-      return "이름을 입력하시오"
+      return "이름을 입력해 주세요"
     } else if (!name_format.test(name)) {
-      return "최소 2글자, 최대 8글자의 이름을 입력하시오"
+      return "최소 2글자, 최대 8글자로 입력해 주세요"
     }
   }
 }

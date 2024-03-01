@@ -19,7 +19,6 @@ const Myland = () => {
   const getIslandInfo = useCallback(async () => {
     if (id) {
       // 현재 서버에 저장된 섬타입, 아이템 위치, 아이템 소유목록 dispatch
-      setIsLoading(true)
       console.log("현재 저장된 섬 정보 불러오기", id)
       getType(id as User["email"])
       getItemsLoc(id as User["email"])

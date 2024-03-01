@@ -52,3 +52,13 @@ export const getItemExist = async (userEmail: User["email"]) => {
   // console.log("data", data)
   setIslandItemExist(data)
 }
+
+export const getIslandInfo = async (email: User["email"]) => {
+  if (email) {
+    // 현재 서버에 저장된 섬타입, 아이템 위치, 아이템 소유목록 dispatch
+    console.log("현재 저장된 섬 정보 불러오기", email)
+    getType(email as User["email"])
+    getItemsLoc(email as User["email"])
+    getItemExist(email as User["email"])
+  }
+}

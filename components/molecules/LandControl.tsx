@@ -42,7 +42,7 @@ const LandControl = ({
     if (!error) {
       setStateModal({
         state: "success",
-        text: "저장 성공했습니다",
+        text: "저장했습니다",
         isOpen: true,
       })
       setNeedReLoad(true)

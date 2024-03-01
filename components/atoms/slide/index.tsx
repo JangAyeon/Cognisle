@@ -30,7 +30,7 @@ const Slide = ({ id, setStateModal }: ISlide) => {
       setIslandItemLoc({ ...islandItemLoc, [`loc_${id}`]: null })
       setStateModal({
         isOpen: true,
-        text: "선택한 아이템이 섬에서 제거됨",
+        text: "해당 아이템이 섬에서 제거되었습니다",
         state: "fail",
       })
     }

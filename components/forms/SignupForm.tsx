@@ -136,7 +136,7 @@ const SignupForm = () => {
         setUserInfo({ user, session } as IAuthSBInfo)
         setStateModal({
           isOpen: true,
-          text: "회원가입에 성공하였습니다.",
+          text: "회원가입 되었습니다",
           state: "success",
         })
         router.replace("/")
