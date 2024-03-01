@@ -190,8 +190,8 @@ const ITEM_CHOICE: ILandItemChoice = {
   15: {
     id: 15,
     title: "Item_15",
-    thumbImgSrc: "/assets/item/original/item_14.svg",
-    mainImgSrc: "/assets/item/original/item_14.svg",
+    thumbImgSrc: "/assets/item/original/item_15.svg",
+    mainImgSrc: "/assets/item/original/item_15.svg",
 
     ...ITEM_SIZE,
   },

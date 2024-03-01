@@ -79,7 +79,7 @@ const LoginForm = () => {
       if (user && session) {
         setStateModal({
           state: "success",
-          text: "로그인에 성공하였습니다.",
+          text: "로그인 되었습니다",
           isOpen: true,
         })
         router.reload() // middleware.ts 거쳐 가기 위함
