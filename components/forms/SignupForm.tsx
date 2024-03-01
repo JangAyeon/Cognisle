@@ -5,6 +5,7 @@ import { FormEvent, MouseEvent, useEffect, useRef, useState } from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import FormButton from "@/components/atoms/button/FormButton"
+import SubAuthButton from "@/components/atoms/button/SubAuth"
 import UnderLineInput from "@/components/atoms/input/UnderLineInput"
 import Text from "@/components/atoms/typo/Text"
 import AuthModal from "@/components/modal/AuthModal"
@@ -102,14 +103,14 @@ const SignupForm = () => {
     const signupForm = new FormData(form)
     const dsId = signupForm.get("dsId")
     const text = await dsIdCheck(dsId, setIsDsIdValid)
-    console.log(dsId, text)
+    // console.log(dsId, text)
     if (text) {
       setStateModal({
         state: isDsIdValid ? "success" : "fail",
         text,
         isOpen: true,
       })
-      console.log(isDsIdValid)
+      // console.log(isDsIdValid)
       if (!isDsIdValid) {
         form.dsId.value = ""
       }
@@ -211,24 +212,19 @@ const SignupForm = () => {
         </FormWrapper>
       </div>
 
-      <AuthTypeButton>
-        <BorderPointBtn
-          width={28.0}
-          height={4.0}
-          mainColor="transparent"
-          text="로그인"
-          textSize={1.6}
-          textColor="--color-green-04"
-          link="/auth?type=login"
-        />
-      </AuthTypeButton>
+      <SubAuthButton
+        text={"로그인"}
+        onClick={() => router.push("/auth?type=login")}
+      />
     </>
   )
 }
 
 export default SignupForm
 
-const FormWrapper = styled.form``
+const FormWrapper = styled.form`
+  margin-bottom: 3.2rem;
+`
 
 const FormInputWrapper = styled.div`
   display: flex;
@@ -239,9 +235,7 @@ const FormInputWrapper = styled.div`
   width: 28rem;
   margin-bottom: 3rem;
 `
-const AuthTypeButton = styled.div`
-  margin-top: 1.2rem;
-`
+
 const DsIdCheckButton = styled.button`
   width: 5.2rem;
   height: 4rem;

@@ -49,6 +49,6 @@ export const getItemsLoc = async (userEmail: User["email"]) => {
 
 export const getItemExist = async (userEmail: User["email"]) => {
   const data = await islandApi.getItemIds(userEmail)
-  console.log("data", data)
+  // console.log("data", data)
   setIslandItemExist(data)
 }

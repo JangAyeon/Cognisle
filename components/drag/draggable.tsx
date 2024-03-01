@@ -70,7 +70,7 @@ const DragItem = ({
 
   const updateLocation = (item: DraggableState) => {
     const data = { x: item.x, y: item.y, z: item.z, id: item.id }
-    console.log("update", { ...islandItemLoc, [`loc_${data.id}`]: data })
+    // console.log("update", { ...islandItemLoc, [`loc_${data.id}`]: data })
     setIslandItemLoc({ ...islandItemLoc, [`loc_${data.id}`]: data })
   }
 

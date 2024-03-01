@@ -32,7 +32,7 @@ const VisitForm = () => {
       const { email, name } = data
       setFriendName(name)
       setFriendEmail(email)
-      console.log(data)
+      // console.log(data)
       setEmailExist(true)
     } else {
       setStateModal({

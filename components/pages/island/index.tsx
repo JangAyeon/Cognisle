@@ -30,6 +30,7 @@ const Island = () => {
 
   const { userEmail } = useUserProfile()
   useEffect(() => {
+    console.log(id, name)
     if (id && userEmail && id !== userEmail) {
       console.log("user is no island owner")
       setIsOwner(false)
