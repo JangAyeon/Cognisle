@@ -44,34 +44,36 @@ const LandContent = ({ isOwner }: { isOwner: boolean }) => {
   return (
     <>
       <DraggableContext.Provider value={{ zIndex, setZIndex }}>
-        <IslandContainer>
-          <Image
-            src={LAND_CHOICE[islandType].mainImgSrc}
-            alt={LAND_CHOICE[islandType].title}
-            fill
-            priority
-            sizes="100%"
-          />
-          <ItemsContainer>
-            {items.length > 0 &&
-              items.map((item: LocationProps, index: number) => (
-                <DragWrapper isFirst={index === 0 ? true : false}>
-                  <DragItem
-                    isOwner={isOwner}
-                    key={item.id}
-                    id={item.id}
-                    title={ITEM_CHOICE[`${item.id}`].title}
-                    x={item.x}
-                    y={item.y}
-                    z={item.z}
-                    width={ITEM_CHOICE[`${item.id}`].width}
-                    height={ITEM_CHOICE[`${item.id}`].height}
-                    active={false}
-                  />
-                </DragWrapper>
-              ))}
-          </ItemsContainer>
-        </IslandContainer>
+        {items && (
+          <IslandContainer>
+            <Image
+              src={LAND_CHOICE[islandType].mainImgSrc}
+              alt={LAND_CHOICE[islandType].title}
+              fill
+              priority
+              sizes="100%"
+            />
+            <ItemsContainer>
+              {items.length > 0 &&
+                items.map((item: LocationProps, index: number) => (
+                  <DragWrapper isFirst={index === 0 ? true : false}>
+                    <DragItem
+                      isOwner={isOwner}
+                      key={item.id}
+                      id={item.id}
+                      title={ITEM_CHOICE[`${item.id}`].title}
+                      x={item.x}
+                      y={item.y}
+                      z={item.z}
+                      width={ITEM_CHOICE[`${item.id}`].width}
+                      height={ITEM_CHOICE[`${item.id}`].height}
+                      active={false}
+                    />
+                  </DragWrapper>
+                ))}
+            </ItemsContainer>
+          </IslandContainer>
+        )}
       </DraggableContext.Provider>
     </>
   )

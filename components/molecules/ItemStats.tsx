@@ -18,7 +18,7 @@ const ItemStats = () => {
   useEffect(() => {
     if (userEmail) {
       // 현재 서버에 저장된 섬타입, 아이템 위치, 아이템 소유목록 dispatch
-      console.log("현재 저장된 섬 정보 불러오기", userEmail)
+      // console.log("현재 저장된 섬 정보 불러오기", userEmail)
       getItemExist(userEmail)
     }
   }, [userEmail])

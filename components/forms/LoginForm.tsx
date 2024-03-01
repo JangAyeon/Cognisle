@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useRef, useState } from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import FormButton from "@/components/atoms/button/FormButton"
+import SubAuthButton from "@/components/atoms/button/SubAuth"
 import TextInput from "@/components/atoms/input/TextInput"
 import Text from "@/components/atoms/typo/Text"
 import AuthModal from "@/components/modal/AuthModal"
@@ -155,19 +156,11 @@ const LoginForm = () => {
           <FormButton width={28} height={4.0} type="submit" text="로그인" />
         </FormWrapper>
       </div>
-      <div>
-        <AuthTypeButton>
-          <BorderPointBtn
-            width={28.0}
-            height={4.0}
-            mainColor="transparent"
-            text="회원가입"
-            textSize={1.6}
-            textColor="--color-green-04"
-            link="/auth?type=signup"
-          />
-        </AuthTypeButton>
-      </div>
+
+      <SubAuthButton
+        text={"회원가입"}
+        onClick={() => router.push("/auth?type=signup")}
+      />
     </>
   )
 }
@@ -179,24 +172,27 @@ type CheckBoxStyle = {
 
 const CheckBox = styled.input<CheckBoxStyle>`
   border: solid 0.3rem var(--color-green-04);
-  width: 1rem;
-  height: 1rem;
+  width: 2.2rem;
+  height: 2.2rem;
   background-color: ${({ checked }) =>
     checked ? `var(--color-green-04)` : "transparent"};
+  background-image: ${({ checked }) =>
+    checked ? `url("/assets/yellow/marked.png")` : "none"};
+  background-size: 1.5rem 1.2rem;
+  background-repeat: no-repeat;
+  background-position: center;
 `
 
-const FormWrapper = styled.form``
+const FormWrapper = styled.form`
+  margin-bottom: 4.8rem;
+`
 
 const CheckBoxWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 1.2rem;
+  margin-bottom: 2.4rem;
   label {
     margin-left: 0.8rem;
   }
-`
-
-const AuthTypeButton = styled.div`
-  margin-top: 1.2rem;
 `

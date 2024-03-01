@@ -88,7 +88,7 @@ const ModalRoot = ({
 const ModalCloseButton = ({
   imgSrc,
   needClose = true,
-  size = 32,
+  size = 20,
 }: ModalCloseProps) => {
   const { onClose, setOverlayClicked } = useContext(ModalContext)
   if (!setOverlayClicked || !onClose) {
@@ -214,8 +214,8 @@ const CloseButtonWrapper = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  margin-top: 1.5rem;
-  margin-right: 1.5rem;
+  margin-top: 2.4rem;
+  margin-right: 2.4rem;
   background-color: transparent;
 `
 

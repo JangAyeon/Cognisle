@@ -39,7 +39,7 @@ const Bounce = keyframes`
       
     }
     50% {
-      top: 10rem;
+      top: 15rem;
   	   
     }
 

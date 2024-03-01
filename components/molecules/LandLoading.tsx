@@ -16,13 +16,15 @@ const LandLoading = () => {
       degree="180deg"
     >
       <IconWrapper>
-        <Image
-          src="/assets/loading/loading.svg"
-          width="240"
-          height="320"
-          alt="loading"
-          priority
-        />
+        <div>
+          <Image
+            src="/assets/loading/loading.png"
+            width="240"
+            height="245"
+            alt="loading"
+            priority
+          />
+        </div>
       </IconWrapper>
     </BackgroundLayout>
   )
@@ -32,7 +34,10 @@ export default LandLoading
 
 const IconWrapper = styled.div`
   width: 24rem;
-
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   animation: ${Bounce} 2s infinite ease-in-out;
 `

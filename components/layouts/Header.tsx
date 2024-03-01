@@ -6,15 +6,15 @@ import Triangle from "@/components/atoms/triangle/Triangle"
 
 const Header = () => {
   const router = useRouter()
-  const rout = () => {
-    console.log("router")
+  const route = () => {
+    // console.log("router")
     router.replace("/")
   }
 
   return (
     <HeaderWrapper>
       <Triangle type="original" width={139} height={72} alt="header triangle" />
-      <div onClick={rout}>
+      <div onClick={route}>
         <Logo type="header" width={185} height={32} alt="header logo" />
       </div>
     </HeaderWrapper>

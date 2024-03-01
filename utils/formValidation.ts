@@ -8,7 +8,7 @@ import { ILoginForm, ISignupForm } from "@/types/common/authProps"
 
 const passwordCheck = (password: FormDataEntryValue | null) => {
   const password_format = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*?_]).{8,16}$/
-  console.log("비밀번호", password, password_format.test(password as string))
+  // console.log("비밀번호", password, password_format.test(password as string))
   if (typeof password === "string") {
     if (!password.length) {
       return "비밀번호를 입력하시오"
@@ -72,13 +72,13 @@ const LoginValidation = (
   const isEmailValid = emailCheck(email)
   const isPasswordValid = passwordCheck(password)
 
-  console.log(isEmailValid, isPasswordValid)
+  // console.log(isEmailValid, isPasswordValid)
   if (isEmailValid) {
     SetAuthModalState("fail", isEmailValid, setIsModalOpen)
   } else if (isPasswordValid) {
     SetAuthModalState("fail", isPasswordValid, setIsModalOpen)
   } else {
-    console.log("all Login validation pass")
+    // console.log("all Login validation pass")
     SetAuthModalState("success", "", setIsModalOpen)
   }
 }
