@@ -62,7 +62,7 @@ const LandControl = ({
 
   useEffect(() => {
     // 초대 결과로 모달 열린게 아닌 편집에서 완료 저장 누른 경우에만 리로드
-    console.log(needReLoad, isOpen)
+    // console.log(needReLoad, isOpen)
     if (needReLoad && isOpen && router.isReady) {
       router.reload()
     }

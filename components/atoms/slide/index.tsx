@@ -21,7 +21,7 @@ const Slide = ({ id, setStateModal }: ISlide) => {
   const { islandItemLoc } = useIsland()
 
   const handleItemSelect = () => {
-    console.log(islandItemLoc[`loc_${id}`])
+    // console.log(islandItemLoc[`loc_${id}`])
     // 아이템은 가지고 있지만 아직 섬에 위치시킨 적 없는 경우
     if (!islandItemLoc[`loc_${id}`]) {
       const data = { id, x: 200, y: 100, z: 1 }

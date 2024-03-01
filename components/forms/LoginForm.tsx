@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useRef, useState } from "react"
 
 import BorderPointBtn from "@/components/atoms/button/BorderPointBtn"
 import FormButton from "@/components/atoms/button/FormButton"
+import SubAuthButton from "@/components/atoms/button/SubAuth"
 import TextInput from "@/components/atoms/input/TextInput"
 import Text from "@/components/atoms/typo/Text"
 import AuthModal from "@/components/modal/AuthModal"
@@ -155,19 +156,11 @@ const LoginForm = () => {
           <FormButton width={28} height={4.0} type="submit" text="로그인" />
         </FormWrapper>
       </div>
-      <div>
-        <AuthTypeButton>
-          <BorderPointBtn
-            width={28.0}
-            height={4.0}
-            mainColor="transparent"
-            text="회원가입"
-            textSize={1.6}
-            textColor="--color-green-04"
-            link="/auth?type=signup"
-          />
-        </AuthTypeButton>
-      </div>
+
+      <SubAuthButton
+        text={"회원가입"}
+        onClick={() => router.push("/auth?type=signup")}
+      />
     </>
   )
 }
@@ -197,6 +190,10 @@ const CheckBoxWrapper = styled.div`
   }
 `
 
-const AuthTypeButton = styled.div`
-  margin-top: 1.2rem;
+const AuthTypeButton = styled.button`
+  margin-top: 4.8rem;
+  padding: 0 11.6rem;
+  font-size: 1.2rem;
+  color: var(--color-green-04);
+  text-decoration: underline;
 `
