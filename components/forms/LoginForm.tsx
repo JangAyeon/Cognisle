@@ -111,7 +111,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <div>
+      <FormWrapper>
         {text && (
           <AuthModal
             state={state}
@@ -120,7 +120,7 @@ const LoginForm = () => {
             onClose={() => setIsOpen(false)}
           />
         )}
-        <FormWrapper onSubmit={handleLoginValid} ref={formRef}>
+        <form onSubmit={handleLoginValid} ref={formRef}>
           <TextInput
             value={email}
             onChange={onChangeEmail}
@@ -154,8 +154,8 @@ const LoginForm = () => {
             </label>
           </CheckBoxWrapper>
           <FormButton width={28} height={4.0} type="submit" text="로그인" />
-        </FormWrapper>
-      </div>
+        </form>
+      </FormWrapper>
 
       <SubAuthButton
         text={"회원가입"}
@@ -183,13 +183,15 @@ const CheckBox = styled.input<CheckBoxStyle>`
   background-position: center;
 `
 
-const FormWrapper = styled.form``
+const FormWrapper = styled.form`
+  margin-bottom: 4.8rem;
+`
 
 const CheckBoxWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 1.2rem;
+  margin-bottom: 2.4rem;
   label {
     margin-left: 0.8rem;
   }
