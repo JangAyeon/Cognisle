@@ -172,10 +172,15 @@ type CheckBoxStyle = {
 
 const CheckBox = styled.input<CheckBoxStyle>`
   border: solid 0.3rem var(--color-green-04);
-  width: 1rem;
-  height: 1rem;
+  width: 2.2rem;
+  height: 2.2rem;
   background-color: ${({ checked }) =>
     checked ? `var(--color-green-04)` : "transparent"};
+  background-image: ${({ checked }) =>
+    checked ? `url("/assets/yellow/marked.png")` : "none"};
+  background-size: 1.5rem 1.2rem;
+  background-repeat: no-repeat;
+  background-position: center;
 `
 
 const FormWrapper = styled.form``
@@ -188,12 +193,4 @@ const CheckBoxWrapper = styled.div`
   label {
     margin-left: 0.8rem;
   }
-`
-
-const AuthTypeButton = styled.button`
-  margin-top: 4.8rem;
-  padding: 0 11.6rem;
-  font-size: 1.2rem;
-  color: var(--color-green-04);
-  text-decoration: underline;
 `
