@@ -162,7 +162,7 @@ const ModalBody = styled.div`
 `
 
 const Container = styled.div<ModalInnerStyle>`
-  z-index: 100;
+  z-index: 9999;
   animation: ${FADE_IN} 200ms;
   position: fixed;
   top: 0;

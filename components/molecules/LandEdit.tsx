@@ -63,6 +63,7 @@ const EditWrapper = styled.div`
   width: 43rem;
   position: fixed;
   bottom: 7.2rem;
+  z-index: 9998;
 `
 
 const LandSelectWrapper = styled.div`

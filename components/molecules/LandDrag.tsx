@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import { useCallback, useEffect, useState } from "react"
 
@@ -13,7 +14,9 @@ import { LocationProps } from "@/types/common/islandProps"
 import DraggableContext from "@/utils/draggableContext"
 
 const LandContent = ({ isOwner }: { isOwner: boolean }) => {
-  const { islandType, islandItemLoc, islandItemExist } = useIsland()
+  const { islandType, islandItemLoc, islandItemExist, islandIsEdit } =
+    useIsland()
+
   const [zIndex, setZIndex] = useState(3)
   const [items, setItems] = useState<LocationProps[]>([])
 
