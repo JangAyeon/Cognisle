@@ -165,7 +165,7 @@ const SignupForm = () => {
 
   return (
     <>
-      <FormWrapper>
+      <div>
         {text && isOpen && (
           <AuthModal
             state={state}
@@ -174,7 +174,7 @@ const SignupForm = () => {
             onClose={() => setIsOpen(false)}
           />
         )}
-        <form onSubmit={handleSignupValid} ref={formRef}>
+        <FormWrapper onSubmit={handleSignupValid} ref={formRef}>
           {Input_List.map((item, idx) => (
             <FormInputWrapper key={idx}>
               <Text
@@ -209,8 +209,8 @@ const SignupForm = () => {
           ))}
 
           <FormButton width={28} height={4.0} type="submit" text="회원가입" />
-        </form>
-      </FormWrapper>
+        </FormWrapper>
+      </div>
 
       <SubAuthButton
         text={"로그인"}
