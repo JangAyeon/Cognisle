@@ -15,14 +15,21 @@ import { getIslandInfo } from "@/utils/island"
 const Island = () => {
   const [isLoading, setIsLoading] = useState(false)
   const { islandType, islandItemExist } = useIsland()
+  const router = useRouter()
   const {
     query: { id, name },
-  } = useRouter()
+  } = router
   const stopLoading = async () => {
     await new Promise((resolve) => setTimeout(resolve, 3000))
     setIsLoading(false)
   }
 
+  useEffect(() => {
+    setIsLoading(true)
+    if (id && name) {
+      getIslandInfo(id as User["email"])
+    }
+  }, [id, name])
   useEffect(() => {
     if (isLoading && islandItemExist) {
       console.log("stop")

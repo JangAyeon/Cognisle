@@ -22,7 +22,7 @@ const VisitForm = () => {
 
   const visitFriend = () => {
     // 브라우저 url에 사용자 Email, name 노출 안되게
-    router.push(`/visit?id=${friendEmail}&name=${friendName}`, "/visit")
+    router.push(`/visit?id=${friendEmail}&name=${friendName}`)
   }
 
   const checkValidEmail = async (e: FormEvent<HTMLFormElement>) => {
