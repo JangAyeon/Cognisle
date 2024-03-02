@@ -8,23 +8,20 @@ import Island from "@/components/pages/island"
 
 import useIsland from "@/hooks/useIsland"
 
-import { getItemExist, getItemsLoc, getType } from "@/utils/island"
+import {
+  getIslandInfo,
+  getItemExist,
+  getItemsLoc,
+  getType,
+} from "@/utils/island"
 
 const Myland = () => {
   const { islandType, islandItemExist } = useIsland()
   const {
-    query: { id },
+    query: { id, name },
   } = useRouter()
   const [isLoading, setIsLoading] = useState(true)
-  const getIslandInfo = useCallback(async () => {
-    if (id) {
-      // 현재 서버에 저장된 섬타입, 아이템 위치, 아이템 소유목록 dispatch
-      console.log("현재 저장된 섬 정보 불러오기", id)
-      getType(id as User["email"])
-      getItemsLoc(id as User["email"])
-      getItemExist(id as User["email"])
-    }
-  }, [id])
+
   const stopLoading = async () => {
     await new Promise((resolve) => setTimeout(resolve, 3000))
     setIsLoading(false)
@@ -32,8 +29,8 @@ const Myland = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    getIslandInfo()
-  }, [getIslandInfo])
+    getIslandInfo(id as User["email"])
+  }, [id, name])
 
   useEffect(() => {
     if (isLoading && islandItemExist) {
