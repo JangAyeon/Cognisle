@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import { User } from "@supabase/supabase-js"
 import { useRouter } from "next/router"
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
 import LandLoading from "@/components/molecules/LandLoading"
