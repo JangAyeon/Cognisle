@@ -1,5 +1,4 @@
 import styled from "@emotion/styled"
-import dynamic from "next/dynamic"
 import Image from "next/image"
 import { useCallback, useEffect, useState } from "react"
 
