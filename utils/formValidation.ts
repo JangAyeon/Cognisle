@@ -31,24 +31,24 @@ const emailCheck = (email: FormDataEntryValue | null) => {
   }
 }
 
-export const dsIdCheck = async (
-  dsId: FormDataEntryValue | null,
-  setIsDsIdValid: Dispatch<SetStateAction<boolean>>
-) => {
+export const dsIdCheck = async (dsId: FormDataEntryValue | null) => {
+  let state = false
+  let text = ""
   if (!dsId) {
-    setIsDsIdValid(false)
-    return "확인할 디스코드 아이디를 입력해 주세요"
+    state = false
+    text = "확인할 디스코드 아이디를 입력해 주세요"
   } else {
     const { data, error } = await authApi.getDsIdValid(dsId)
     if (error) {
-      setIsDsIdValid(false)
-      return "존재하지 않는 디스코드 아이디입니다."
+      state = false
+      text = "존재하지 않는 디스코드 아이디입니다."
     } else if (data) {
       const { dsTag, dsGlobalName } = data
-      setIsDsIdValid(true)
-      return `${dsTag}는 ${dsGlobalName}님으로\n확인되었습니다.`
+      state = true
+      text = `${dsTag}는 ${dsGlobalName}님으로\n확인되었습니다.`
     }
   }
+  return { state, text }
 }
 
 const nameCheck = (name: FormDataEntryValue | null) => {

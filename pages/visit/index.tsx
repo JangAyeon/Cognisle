@@ -1,16 +1,21 @@
 import styled from "@emotion/styled"
 import { User } from "@supabase/supabase-js"
+import dynamic from "next/dynamic"
 import { useRouter } from "next/router"
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 import BackgroundLayout from "@/components/layouts/BackgroundLayout"
-import LandLoading from "@/components/molecules/LandLoading"
-import Island_ from "@/components/pages/island"
+// import LandLoading from "@/components/molecules/LandLoading";
+// import Island_ from "@/components/pages/island";
 import VisitRequest from "@/components/pages/vist"
 
 import useIsland from "@/hooks/useIsland"
 
 import { getIslandInfo } from "@/utils/island"
+
+const LandLoading = dynamic(() => import("@/components/molecules/LandLoading"))
+
+const Island_ = dynamic(() => import("@/components/pages/island"))
 
 const Island = () => {
   const [isLoading, setIsLoading] = useState(false)

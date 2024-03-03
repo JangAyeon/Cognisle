@@ -7,7 +7,7 @@ const Divider = () => {
       <Image
         src="/assets/divider/pink.png"
         height={3}
-        width={180}
+        width={84}
         alt="pink divider"
       />
     </DividerWrapper>
@@ -17,5 +17,5 @@ const Divider = () => {
 export default Divider
 
 const DividerWrapper = styled.div`
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 `

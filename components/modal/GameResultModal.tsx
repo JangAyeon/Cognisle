@@ -92,7 +92,6 @@ const GameResultModal = ({
                   color={"--color-pink-01"}
                 />
               </PlayResultContainer>
-              <Divider />
             </Container>
           </Modal.Body>
         </Modal.Content>

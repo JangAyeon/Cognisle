@@ -12,7 +12,7 @@ const MyStats = () => {
       <StatItem
         type="dsUser"
         name="아이템 이름"
-        imgSrc={`/assets/item/active/item_0.svg`}
+        imgSrc={`/assets/item/active/item_0.png`}
         status={true}
         content={0}
       />
