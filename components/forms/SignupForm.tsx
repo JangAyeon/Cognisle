@@ -102,16 +102,16 @@ const SignupForm = () => {
     const { form } = e.target as HTMLFormElement
     const signupForm = new FormData(form)
     const dsId = signupForm.get("dsId")
-    const text = await dsIdCheck(dsId, setIsDsIdValid)
-    // console.log(dsId, text)
+    const { state, text } = await dsIdCheck(dsId)
+    setIsDsIdValid(state)
     if (text) {
       setStateModal({
-        state: isDsIdValid ? "success" : "fail",
+        state: state ? "success" : "fail",
         text,
         isOpen: true,
       })
       // console.log(isDsIdValid)
-      if (!isDsIdValid) {
+      if (!state) {
         form.dsId.value = ""
       }
     }
