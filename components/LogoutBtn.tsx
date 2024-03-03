@@ -2,6 +2,7 @@ import styled from "@emotion/styled"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
 
+import Text from "@/components/atoms/typo/Text"
 import AuthModal from "@/components/modal/AuthModal"
 
 import useStateModal from "@/hooks/useStateModal"
@@ -40,20 +41,16 @@ const LogoutBtn = () => {
           onClose={() => setIsOpen(false)}
         />
       )}
-      <Button onClick={handleLogout}>로그아웃 logout</Button>
+      <Button onClick={handleLogout}>로그아웃</Button>
     </>
   )
 }
 
 export default LogoutBtn
 
-const Wrapper = styled.div`
-  position: absolute;
-  height: 100vh;
-  width: 100%;
-`
-
 const Button = styled.button`
-  font-weight: bold;
-  font-size: 2.4px;
+  margin-top: 2.4rem;
+  font-size: 1.2rem;
+  color: var(--color-green-04);
+  text-decoration: underline;
 `
