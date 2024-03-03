@@ -62,10 +62,6 @@ const LAND_CHOICE: ILandTypeChoice[] = [
   },
 ]
 
-const ITEM_SIZE = {
-  width: 20,
-  height: 20,
-}
 const ITEM_CHOICE: ILandItemChoice = {
   0: {
     id: 0,
@@ -73,7 +69,8 @@ const ITEM_CHOICE: ILandItemChoice = {
     thumbImgSrc: "/assets/item/original/item_0.svg",
     mainImgSrc: "/assets/item/original/item_0.svg",
 
-    ...ITEM_SIZE,
+    width: 25,
+    height: 27,
   },
   1: {
     id: 1,
@@ -81,15 +78,16 @@ const ITEM_CHOICE: ILandItemChoice = {
     thumbImgSrc: "/assets/item/original/item_1.svg",
     mainImgSrc: "/assets/item/original/item_1.svg",
 
-    ...ITEM_SIZE,
+    width: 120,
+    height: 129,
   },
   2: {
     id: 2,
     title: "Item_2",
     thumbImgSrc: "/assets/item/original/item_2.svg",
     mainImgSrc: "/assets/item/original/item_2.svg",
-
-    ...ITEM_SIZE,
+    width: 65,
+    height: 48,
   },
   3: {
     id: 3,
@@ -97,135 +95,136 @@ const ITEM_CHOICE: ILandItemChoice = {
     thumbImgSrc: "/assets/item/original/item_3.svg",
     mainImgSrc: "@/public/assets/item/original/item_3.svg",
 
-    ...ITEM_SIZE,
+    width: 25,
+    height: 21,
   },
   4: {
     id: 4,
     title: "Item_4",
     thumbImgSrc: "/assets/item/original/item_4.svg",
     mainImgSrc: "/assets/item/original/item_4.svg",
-
-    ...ITEM_SIZE,
+    width: 30,
+    height: 47,
   },
   5: {
     id: 5,
     title: "Item_5",
     thumbImgSrc: "/assets/item/original/item_5.svg",
     mainImgSrc: "/assets/item/original/item_5.svg",
-
-    ...ITEM_SIZE,
+    width: 10,
+    height: 48,
   },
   6: {
     id: 6,
     title: "Item_6",
     thumbImgSrc: "/assets/item/original/item_6.svg",
     mainImgSrc: "/assets/item/original/item_6.svg",
-
-    ...ITEM_SIZE,
+    width: 25,
+    height: 43,
   },
   7: {
     id: 7,
     title: "Item_7",
     thumbImgSrc: "/assets/item/original/item_7.svg",
     mainImgSrc: "/assets/item/original/item_7.svg",
-
-    ...ITEM_SIZE,
+    width: 60,
+    height: 57,
   },
   8: {
     id: 8,
     title: "Item_8",
     thumbImgSrc: "/assets/item/original/item_8.svg",
     mainImgSrc: "/assets/item/original/item_8.svg",
-
-    ...ITEM_SIZE,
+    width: 20,
+    height: 32,
   },
   9: {
     id: 9,
     title: "Item_9",
     thumbImgSrc: "/assets/item/original/item_9.svg",
     mainImgSrc: "/assets/item/original/item_9.svg",
-
-    ...ITEM_SIZE,
+    width: 40,
+    height: 27,
   },
   10: {
     id: 10,
     title: "Item_10",
     thumbImgSrc: "/assets/item/original/item_10.svg",
     mainImgSrc: "/assets/item/original/item_10.svg",
-
-    ...ITEM_SIZE,
+    width: 40,
+    height: 27,
   },
   11: {
     id: 11,
     title: "Item_11",
     thumbImgSrc: "/assets/item/original/item_11.svg",
     mainImgSrc: "/assets/item/original/item_11.svg",
-
-    ...ITEM_SIZE,
+    width: 35,
+    height: 54,
   },
   12: {
     id: 12,
     title: "Item_12",
     thumbImgSrc: "/assets/item/original/item_12.svg",
     mainImgSrc: "/assets/item/original/item_12.svg",
-
-    ...ITEM_SIZE,
+    width: 35,
+    height: 54,
   },
   13: {
     id: 13,
     title: "Item_13",
     thumbImgSrc: "/assets/item/original/item_13.svg",
     mainImgSrc: "/assets/item/original/item_13.svg",
-
-    ...ITEM_SIZE,
+    width: 25,
+    height: 34,
   },
   14: {
     id: 14,
     title: "Item_14",
     thumbImgSrc: "/assets/item/original/item_14.svg",
     mainImgSrc: "/assets/item/original/item_14.svg",
-
-    ...ITEM_SIZE,
+    width: 35,
+    height: 27,
   },
   15: {
     id: 15,
     title: "Item_15",
     thumbImgSrc: "/assets/item/original/item_15.svg",
     mainImgSrc: "/assets/item/original/item_15.svg",
-
-    ...ITEM_SIZE,
+    width: 20,
+    height: 35,
   },
   16: {
     id: 16,
     title: "Item_16",
     thumbImgSrc: "/assets/item/original/item_16.svg",
     mainImgSrc: "/assets/item/original/item_16.svg",
-
-    ...ITEM_SIZE,
+    width: 30,
+    height: 30,
   },
   17: {
     id: 17,
     title: "Item_17",
     thumbImgSrc: "/assets/item/original/item_17.svg",
     mainImgSrc: "/assets/item/original/item_17.svg",
-
-    ...ITEM_SIZE,
+    width: 30,
+    height: 34,
   },
   18: {
     id: 18,
     title: "Item_18",
     thumbImgSrc: "/assets/item/original/item_18.svg",
     mainImgSrc: "/assets/item/original/item_18.svg",
-
-    ...ITEM_SIZE,
+    width: 30,
+    height: 29,
   },
   19: {
     id: 19,
     title: "Item_19",
     thumbImgSrc: "/assets/item/original/item_19.svg",
     mainImgSrc: "/assets/item/original/item_19.svg",
-
-    ...ITEM_SIZE,
+    width: 25,
+    height: 36,
   },
   20: {
     id: 20,
@@ -233,7 +232,8 @@ const ITEM_CHOICE: ILandItemChoice = {
     thumbImgSrc: "/assets/item/original/item_20.svg",
     mainImgSrc: "/assets/item/original/item_20.svg",
 
-    ...ITEM_SIZE,
+    width: 25,
+    height: 36,
   },
   21: {
     id: 21,
@@ -241,7 +241,8 @@ const ITEM_CHOICE: ILandItemChoice = {
     thumbImgSrc: "/assets/item/original/item_21.svg",
     mainImgSrc: "/assets/item/original/item_21.svg",
 
-    ...ITEM_SIZE,
+    width: 23,
+    height: 40,
   },
   22: {
     id: 22,
@@ -249,23 +250,24 @@ const ITEM_CHOICE: ILandItemChoice = {
     thumbImgSrc: "/assets/item/original/item_22.svg",
     mainImgSrc: "/assets/item/original/item_22.svg",
 
-    ...ITEM_SIZE,
+    width: 30,
+    height: 40,
   },
   23: {
     id: 21,
     title: "Item_23",
     thumbImgSrc: "/assets/item/original/item_23.svg",
     mainImgSrc: "/assets/item/original/item_23.svg",
-
-    ...ITEM_SIZE,
+    width: 23,
+    height: 40,
   },
   24: {
     id: 22,
     title: "Item_24",
     thumbImgSrc: "/assets/item/original/item_24.svg",
     mainImgSrc: "/assets/item/original/item_24.svg",
-
-    ...ITEM_SIZE,
+    width: 29,
+    height: 40,
   },
 }
 
