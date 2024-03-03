@@ -33,7 +33,7 @@ const ItemStats = () => {
             islandItemExist.includes((idx + 1) as ItemIdProps)
               ? "active"
               : "inactive"
-          }/item_${idx + 1}.svg`}
+          }/item_${idx + 1}.png`}
           status={islandItemExist.includes((idx + 1) as ItemIdProps)}
           key={idx}
           content={idx + 1}
