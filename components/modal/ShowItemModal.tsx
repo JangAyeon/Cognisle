@@ -25,7 +25,7 @@ const ShowItemModal = ({
           <Image
             src={
               type === "item"
-                ? `/assets/modal_/item_${itemId}.png`
+                ? `/assets/modal_/item_${itemId}.svg`
                 : `/assets/dsUser/${userDsId}.svg`
             }
             height={480}
