@@ -4,6 +4,8 @@ import { useEffect, useState } from "react"
 import Loading from "@/components/pages/loading"
 import Main from "@/components/pages/main"
 
+import { supabase } from "@/apis/instance"
+
 import Timer from "@/utils/timer"
 
 export default function Home() {
