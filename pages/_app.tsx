@@ -1,5 +1,6 @@
 import styled from "@emotion/styled"
 import type { AppProps } from "next/app"
+import Head from "next/head"
 import { useRouter } from "next/router"
 import { useCallback, useEffect, useState } from "react"
 import { CookiesProvider } from "react-cookie"
@@ -58,15 +59,24 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [setUserProfile])
 
   return (
-    <CookiesProvider>
-      <Provider store={store}>
-        <AppWrapper needBottomTab={needBottomTab} needHeader={needHeader}>
-          {needHeader && <Header />}
-          <Component {...pageProps} />
-          {needBottomTab && <BottomTab />}
-        </AppWrapper>
-      </Provider>
-    </CookiesProvider>
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
+        />
+        <title>COGNISLE</title>
+      </Head>
+      <CookiesProvider>
+        <Provider store={store}>
+          <AppWrapper needBottomTab={needBottomTab} needHeader={needHeader}>
+            {needHeader && <Header />}
+            <Component {...pageProps} />
+            {needBottomTab && <BottomTab />}
+          </AppWrapper>
+        </Provider>
+      </CookiesProvider>
+    </>
   )
 }
 
