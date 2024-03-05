@@ -22,12 +22,14 @@ const setSession = (data: object) =>
 const getSession = () => supabaseClient.auth.getSession()
 
 const getUpdate = () =>
-  adminAuthClient.updateUserById("c638f9b3-984b-406a-b612-76e2c1470f83", {
-    user_metadata: { dsId: "유송_6237" },
+  adminAuthClient.updateUserById("49929d5c-55a4-4d78-9594-18bb5bcb3e47", {
+    user_metadata: { dsId: "hobbang_07002" },
   })
-/* supabase.auth.admin.updateUserById("8e2d808f-bd81-413b-b4f7-362546ccd9d6", {
-    user_metadata: { dsId: "hahah" },
-  })*/
+
+const changePassword = (userId: string, password: string) =>
+  adminAuthClient.updateUserById(userId, {
+    password: password,
+  })
 
 const getUserProfile = () => supabaseClient.auth.getUser()
 
@@ -50,6 +52,7 @@ const authApi = {
   getDsIdValid,
   getUserEmailExist,
   getUpdate,
+  changePassword,
 }
 
 export { authApi }
