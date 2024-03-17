@@ -14,3 +14,20 @@ https://cognisle.vercel.app
 <img width="1182" alt="image" src="https://github.com/JangAyeon/Cognisle/assets/67853616/1476970c-51bd-430c-ba61-6bdce494b959">
 
 
+## 디렉토리 구조
+
+```
+├── 📑.github/workflows <!--깃 액션 플로우->
+├── 📁apis <!--Api 호출-->
+├── 📁components <!-- atom, 드래그, 폼, 레이아웃, 모달 등 컴포넌트-->
+├── 📁constants  <!-- 각종 상수 값 관리 -->
+├── 📁hooks <!--custiom hooks-->
+├── 📁pages <!-- 페이지 -->
+├── 📁public <!-- assets과 fonts -->
+├── 📁redux <!-- 리덕스 slice와 store -->
+├── 📁styles <!-- 공용 스타일 설정 -->
+├── 📁types <!-- 타입 -->
+├── 📁utils <!-- 각종 유틸 함수 -->
+├── 📑middleware.ts <!--페이지 랜더링 전 인증 여부에 따른 라우팅-->
+└── 📑next.config.js <!--Image, rewrites, redirects, SVG config, bundle-analyzer 설정-->
+```
