@@ -16,8 +16,6 @@ https://cognisle.vercel.app
 
 ## 기술 스택
 
-## ⚒️ 기술 스택
-
 <table>
 <tr>
  <td align="center">언어</td>
