@@ -71,6 +71,48 @@ https://cognisle.vercel.app
 </tr>
 </table>
 
+
+## 페이지 소개
+
+### 1. 로그인 및 회원가입
+<table>
+<tr width="100%">
+ <td width="30%" align="center"> 로그인</td>
+ <td width="30%" align="center"> 로그인 오류</td>
+ <td width="30%" align="center"> 로그인 성공</td>
+</tr>
+<tr width="100%">
+ <td width="30%" align="center">
+  <img width="428" alt="로그인 기본" src="https://github.com/JangAyeon/Cognisle/assets/67853616/39a52307-4f0b-4758-ac70-577e6efdab66">
+</td>
+ <td width="30%" align="center">
+<img width="434" alt="로그인 오류" src="https://github.com/JangAyeon/Cognisle/assets/67853616/bf5891d0-6e61-40b0-97b8-7ba0cde74986">
+ </td>
+  <td width="30%" align="center">
+<img width="323" alt="로그인 성공" src="https://github.com/JangAyeon/Cognisle/assets/67853616/3cce6c09-11dd-484c-a050-9f17d508dbc3">
+ </td>
+</tr>
+</table>
+
+<table>
+<tr width="100%">
+ <td width="30%" align="center"> 회원 가입</td>
+ <td width="30%" align="center"> 회원 가입 오류</td>
+</tr>
+<tr width="100%">
+ <td width="30%" align="center">
+  <img width="428" alt="로그인 기본" src="https://github.com/JangAyeon/Cognisle/assets/67853616/39a52307-4f0b-4758-ac70-577e6efdab66">
+</td>
+ <td width="30%" align="center">
+<img width="424" alt="회원가입 기본" src="https://github.com/JangAyeon/Cognisle/assets/67853616/795c2213-dcc8-4d78-8a5d-239ecac473dc">
+ </td>
+  <td width="30%" align="center">
+<img width="424" alt="회원가입 오류" src="https://github.com/JangAyeon/Cognisle/assets/67853616/70ee0f03-132e-4362-b1f6-08178622b7f6">
+ </td>
+</tr>
+</table>
+
+
 ## 디렉토리 구조
 
 ```
