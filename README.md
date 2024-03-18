@@ -75,6 +75,7 @@ https://cognisle.vercel.app
 ## 페이지 소개
 
 ### 1. 로그인 및 회원가입
+
 <table>
 <tr width="100%">
  <td width="30%" align="center"> 로그인</td>
@@ -101,9 +102,6 @@ https://cognisle.vercel.app
 </tr>
 <tr width="100%">
  <td width="30%" align="center">
-  <img width="428" alt="로그인 기본" src="https://github.com/JangAyeon/Cognisle/assets/67853616/39a52307-4f0b-4758-ac70-577e6efdab66">
-</td>
- <td width="30%" align="center">
 <img width="424" alt="회원가입 기본" src="https://github.com/JangAyeon/Cognisle/assets/67853616/795c2213-dcc8-4d78-8a5d-239ecac473dc">
  </td>
   <td width="30%" align="center">
@@ -112,6 +110,63 @@ https://cognisle.vercel.app
 </tr>
 </table>
 
+
+### 2. 나의 섬 꾸미기
+
+<table>
+<tr width="100%">
+ <td width="30%" align="center"> 로딩 </td>
+ <td width="30%" align="center"> 보기 모드</td>
+ <td width="30%" align="center"> 편집 (꾸미기) 모드 </td>
+</tr>
+<tr width="100%">
+ <td width="30%" align="center">
+<img width="287" alt="로딩 중" src="https://github.com/JangAyeon/Cognisle/assets/67853616/52393706-a14d-4415-82ad-481716cc4807">
+</td>
+ <td width="30%" align="center">
+<img width="287" alt="보기모드" src="https://github.com/JangAyeon/Cognisle/assets/67853616/6889ce25-1e15-4134-ab94-1acdcd95987f">
+ </td>
+  <td width="30%" align="center">
+<img width="287" alt="편집모드" src="https://github.com/JangAyeon/Cognisle/assets/67853616/75905d49-2745-40f7-8923-6220176eece8">
+ </td>
+</tr>
+</table>
+
+
+
+<table>
+<tr width="100%">
+ <td width="25%" align="center"> 아이템 추가 및 드래깅 </td>
+ <td width="25%" align="center"> 아이템 삭제하기</td>
+  <td width="25%" align="center"> 저장하기 </td>
+  <td width="25%" align="center"> 초대 코드 복사 붙여넣기 </td>
+</tr>
+<tr width="100%">
+ <td width="26%" align="center">
+<img height="458" width="212"  alt="드래깅" src="https://github.com/JangAyeon/Cognisle/assets/67853616/6c72df46-6d6b-4232-8011-5cd6a15ba3cb"/>
+ </td>
+  <td width="26%" align="center">
+<img  height="458" width="212" alt="아이템 제거" src="https://github.com/JangAyeon/Cognisle/assets/67853616/7527c225-3177-4fa8-a31d-cfa64dd4b8b5">
+  </td>
+    <td width="26%" align="center">
+<img height="458" width="212" alt="섬꾸미기 저장하기" src="https://github.com/JangAyeon/Cognisle/assets/67853616/e8b64d4b-0647-49f6-898a-5752dd72ce51">
+ </td>
+  <td width="26%" align="center">
+<img   height="458" width="212" alt="사용자 코드 복붙" src="https://github.com/JangAyeon/Cognisle/assets/67853616/421854fd-a2fb-4e53-9f5b-305a688d1cbf">
+ </td>
+ </td>
+</tr>
+</table>
+
+
+<table>
+
+<tr width="100%">
+
+  </td>
+ </td>
+</tr>
+</table>
 
 ## 디렉토리 구조
 
