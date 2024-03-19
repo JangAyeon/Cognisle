@@ -170,7 +170,7 @@ https://cognisle.vercel.app
 
 <table>
 <tr width="100%">
- <td width="30%" align="center"> 목록 </td>
+ <td width="30%" align="center"> 획득 & 미획득 아이템 목록 </td>
  <td width="30%" align="center"> 획득한 아이템 클릭 시 상세 정보 모달</td>
  <td width="30%" align="center"> 나만의 아이템 획득 유저를 위한 상세 모달 </td>
 </tr>
