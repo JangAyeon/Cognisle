@@ -122,11 +122,6 @@ https://cognisle.vercel.app
 </tr>
 </table>
 
-![시작로딩](https://github.com/JangAyeon/Cognisle/assets/67853616/07f20235-336c-4939-8a2a-6b6f3366423f)
-
-
-![종료및결과전환](https://github.com/JangAyeon/Cognisle/assets/67853616/0167abf4-154f-4fab-963c-90cf179b265e)
-
 
 ### 8. 게임하기
 
@@ -148,6 +143,27 @@ https://cognisle.vercel.app
  </td>
 </tr>
 </table>
+
+
+<table>
+<tr width="100%">
+ <td width="30%" align="center"> 게임 종료 후 결과 전환 </td>
+ <td width="30%" align="center"> 게임 종료 안내</td>
+ <td width="30%" align="center"> 게임 결과 발표</td>
+</tr>
+<tr width="100%">
+ <td width="30%" align="center">
+  <img width="300" alt="시작로딩" src="https://github.com/JangAyeon/Cognisle/assets/67853616/0167abf4-154f-4fab-963c-90cf179b265e">
+</td>
+ <td width="30%" align="center">
+<img width="300" alt="짝맞추기성공" src="https://github.com/JangAyeon/Cognisle/assets/67853616/4c12a80f-c43a-486b-ab6e-ab7b548f9536">
+ </td>
+  <td width="30%" align="center">
+<img width="300" alt="짝맞추기실패" src="https://github.com/JangAyeon/Cognisle/assets/67853616/befff9f1-9f4b-4c16-8d91-465178dd8b98">
+ </td>
+</tr>
+</table>
+
 
 
 ### 1. 로그인 및 회원가입
