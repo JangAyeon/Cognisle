@@ -122,23 +122,29 @@ https://cognisle.vercel.app
 </tr>
 </table>
 
+![시작로딩](https://github.com/JangAyeon/Cognisle/assets/67853616/07f20235-336c-4939-8a2a-6b6f3366423f)
+
+
+![종료및결과전환](https://github.com/JangAyeon/Cognisle/assets/67853616/0167abf4-154f-4fab-963c-90cf179b265e)
+
+
 ### 8. 게임하기
 
 <table>
 <tr width="100%">
- <td width="30%" align="center"> 로그인</td>
- <td width="30%" align="center"> 로그인 오류</td>
- <td width="30%" align="center"> 로그인 성공</td>
+ <td width="30%" align="center"> 시작로딩 </td>
+ <td width="30%" align="center"> 짝 맞추기 성공</td>
+ <td width="30%" align="center"> 짝 맞추기 실패</td>
 </tr>
 <tr width="100%">
  <td width="30%" align="center">
-  <img width="428" alt="로그인 기본" src="https://github.com/JangAyeon/Cognisle/assets/67853616/39a52307-4f0b-4758-ac70-577e6efdab66">
+  <img width="300" alt="시작로딩" src="https://github.com/JangAyeon/Cognisle/assets/67853616/07f20235-336c-4939-8a2a-6b6f3366423f">
 </td>
  <td width="30%" align="center">
-<img width="434" alt="로그인 오류" src="https://github.com/JangAyeon/Cognisle/assets/67853616/bf5891d0-6e61-40b0-97b8-7ba0cde74986">
+<img width="300" alt="짝맞추기성공" src="https://github.com/JangAyeon/Cognisle/assets/67853616/dd4505ea-49ba-4851-9543-d5b7af7ff459">
  </td>
   <td width="30%" align="center">
-<img width="323" alt="로그인 성공" src="https://github.com/JangAyeon/Cognisle/assets/67853616/3cce6c09-11dd-484c-a050-9f17d508dbc3">
+<img width="300" alt="짝맞추기실패" src="https://github.com/JangAyeon/Cognisle/assets/67853616/0338e328-9768-4c58-92a5-275c3d01b8f7">
  </td>
 </tr>
 </table>
