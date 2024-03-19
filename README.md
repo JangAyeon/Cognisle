@@ -164,6 +164,28 @@ https://cognisle.vercel.app
 </tr>
 </table>
 
+### 2. 나의 아이템 열람하기
+
+
+
+<table>
+<tr width="100%">
+ <td width="30%" align="center"> 목록 </td>
+ <td width="30%" align="center"> 획득한 아이템 클릭 시 상세 정보 모달</td>
+ <td width="30%" align="center"> 나만의 아이템 획득 유저를 위한 상세 모달 </td>
+</tr>
+<tr width="100%">
+ <td width="30%" align="center">
+<img width="425" alt="아이템리스트" src="https://github.com/JangAyeon/Cognisle/assets/67853616/7e807ec4-563b-4913-8176-b3612110cd49">
+</td>
+ <td width="30%" align="center">
+<img width="427" alt="아이템상세모달" src="https://github.com/JangAyeon/Cognisle/assets/67853616/72ea70d0-82a0-4795-aef7-08a94261f84a">
+ </td>
+  <td width="30%" align="center">
+<img width="428" alt="마이아이템상세모달" src="https://github.com/JangAyeon/Cognisle/assets/67853616/507057db-92af-486b-b4b7-df25506e89ed">
+ </td>
+</tr>
+</table>
 
 
 ### 1. 로그인 및 회원가입
