@@ -179,6 +179,24 @@ https://cognisle.vercel.app
 </tr>
 </table>
 
+
+### 3. 방문하기
+
+<table>
+<tr width="100%">
+ <td width="30%" align="center"> 방문하기 </td>
+ <td width="30%" align="center"> 친구 섬 로딩 </td>
+</tr>
+<tr width="100%">
+ <td width="45%" align="center">
+<img width="427" height="667" alt="방문하기" src="https://github.com/JangAyeon/Cognisle/assets/67853616/524f2484-c000-4c4f-a186-a1487d53c3da">
+ <td width="45%" align="center">
+<img width="427"  height="667" alt="로딩 중" src="https://github.com/JangAyeon/Cognisle/assets/67853616/52393706-a14d-4415-82ad-481716cc4807">
+</td>
+</tr>
+</table>
+
+
 ### 3. 나의 아이템 열람하기
 
 
@@ -273,3 +291,35 @@ https://cognisle.vercel.app
 ├── 📑middleware.ts <!--페이지 랜더링 전 인증 여부에 따른 라우팅-->
 └── 📑next.config.js <!--Image, rewrites, redirects, SVG config, bundle-analyzer 설정-->
 ```
+
+
+## ❤️ 친구들의 귀여운 섬 꾸미기 ㅎㅎ
+
+<table>
+<tr width="100%">
+ <td width="33%" align="center">
+  <img width="300" alt="시작로딩" src="https://github.com/JangAyeon/Cognisle/assets/67853616/56e850df-81fa-4a86-92aa-f69bf2ddfd03">
+</td>
+ <td width="33%" align="center">
+<img width="300"  alt="짝맞추기성공" src="https://github.com/JangAyeon/Cognisle/assets/67853616/f5171df6-4163-4185-8d5e-5f18f7be974a">
+ </td>
+  <td width="33%" align="center">
+<img width="300"  alt="짝맞추기실패" src="https://github.com/JangAyeon/Cognisle/assets/67853616/c6ae826f-332e-4fe9-9ed0-53a906952b9f">
+ </td>
+</tr>
+ <tr width="100%">
+ <td width="33%" align="center">
+  <img width="300" alt="시작로딩" src="https://github.com/JangAyeon/Cognisle/assets/67853616/682952b8-b930-4b1a-806a-0ab00d0fd9d8">
+</td>
+ <td width="33%" align="center">
+<img width="300"  alt="짝맞추기성공" src="https://github.com/JangAyeon/Cognisle/assets/67853616/c7e5c34c-2d2a-47c8-82ce-e9643fc4ca55">
+ </td>
+  <td width="33%" align="center">
+<img width="300"  alt="짝맞추기실패" src="https://github.com/JangAyeon/Cognisle/assets/67853616/372087b7-6bae-4ed7-b498-4836428098f8">
+ </td>
+</tr>
+</table>
+
+
+
+
