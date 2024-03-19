@@ -105,10 +105,10 @@ https://cognisle.vercel.app
 </tr>
 <tr width="100%">
  <td width="45%" align="center">
-<img  width="392" height="800" alt="드래깅" src="https://github.com/JangAyeon/Cognisle/assets/67853616/6c72df46-6d6b-4232-8011-5cd6a15ba3cb"/>
+<img  width="392" height="667" alt="드래깅" src="https://github.com/JangAyeon/Cognisle/assets/67853616/6c72df46-6d6b-4232-8011-5cd6a15ba3cb"/>
  </td>
  <td width="45%" align="center">
-<img  width="392"  height="800" alt="섬선택택" src="https://github.com/JangAyeon/Cognisle/assets/67853616/3a63f0d2-e397-4fbd-a7a0-d8e560c4bdb2"/>
+<img  width="392"  height="667" alt="섬선택택" src="https://github.com/JangAyeon/Cognisle/assets/67853616/3a63f0d2-e397-4fbd-a7a0-d8e560c4bdb2"/>
  </td>
 
 
@@ -119,30 +119,26 @@ https://cognisle.vercel.app
 
 <table>
 <tr width="100%">
- <td width="25%" align="center"> 아이템 추가 및 드래깅 </td>
  <td width="25%" align="center"> 아이템 삭제하기</td>
   <td width="25%" align="center"> 저장하기 </td>
   <td width="25%" align="center"> 초대 코드 복사 붙여넣기 </td>
 </tr>
 <tr width="100%">
- <td width="26%" align="center">
-<img height="458" width="212"  alt="드래깅" src="https://github.com/JangAyeon/Cognisle/assets/67853616/6c72df46-6d6b-4232-8011-5cd6a15ba3cb"/>
- </td>
-  <td width="26%" align="center">
-<img  height="458" width="212" alt="아이템 제거" src="https://github.com/JangAyeon/Cognisle/assets/67853616/7527c225-3177-4fa8-a31d-cfa64dd4b8b5">
+  <td width="33%" align="center">
+<img  height="667" width="380" alt="아이템 제거" src="https://github.com/JangAyeon/Cognisle/assets/67853616/7527c225-3177-4fa8-a31d-cfa64dd4b8b5">
   </td>
-    <td width="26%" align="center">
-<img height="458" width="212" alt="섬꾸미기 저장하기" src="https://github.com/JangAyeon/Cognisle/assets/67853616/e8b64d4b-0647-49f6-898a-5752dd72ce51">
+    <td width="33%" align="center">
+<img height="667" width="380" alt="섬꾸미기 저장하기" src="https://github.com/JangAyeon/Cognisle/assets/67853616/e8b64d4b-0647-49f6-898a-5752dd72ce51">
  </td>
-  <td width="26%" align="center">
-<img   height="458" width="212" alt="사용자 코드 복붙" src="https://github.com/JangAyeon/Cognisle/assets/67853616/421854fd-a2fb-4e53-9f5b-305a688d1cbf">
+  <td width="33%" align="center">
+<img   height="667" width="380" alt="사용자 코드 복붙" src="https://github.com/JangAyeon/Cognisle/assets/67853616/421854fd-a2fb-4e53-9f5b-305a688d1cbf">
  </td>
  </td>
 </tr>
 </table>
 
 
-### 8. 게임하기
+### 2. 게임하기
 
 <table>
 <tr width="100%">
@@ -152,13 +148,13 @@ https://cognisle.vercel.app
 </tr>
 <tr width="100%">
  <td width="30%" align="center">
-  <img width="300" alt="시작로딩" src="https://github.com/JangAyeon/Cognisle/assets/67853616/07f20235-336c-4939-8a2a-6b6f3366423f">
+  <img width="300"  alt="시작로딩" src="https://github.com/JangAyeon/Cognisle/assets/67853616/07f20235-336c-4939-8a2a-6b6f3366423f">
 </td>
  <td width="30%" align="center">
-<img width="300" alt="짝맞추기성공" src="https://github.com/JangAyeon/Cognisle/assets/67853616/dd4505ea-49ba-4851-9543-d5b7af7ff459">
+<img width="300"   alt="짝맞추기성공" src="https://github.com/JangAyeon/Cognisle/assets/67853616/dd4505ea-49ba-4851-9543-d5b7af7ff459">
  </td>
   <td width="30%" align="center">
-<img width="300" alt="짝맞추기실패" src="https://github.com/JangAyeon/Cognisle/assets/67853616/0338e328-9768-4c58-92a5-275c3d01b8f7">
+<img width="300"  alt="짝맞추기실패" src="https://github.com/JangAyeon/Cognisle/assets/67853616/0338e328-9768-4c58-92a5-275c3d01b8f7">
  </td>
 </tr>
 </table>
@@ -171,19 +167,19 @@ https://cognisle.vercel.app
  <td width="30%" align="center"> 게임 결과 발표</td>
 </tr>
 <tr width="100%">
- <td width="30%" align="center">
+ <td width="33%" align="center">
   <img width="300" alt="시작로딩" src="https://github.com/JangAyeon/Cognisle/assets/67853616/0167abf4-154f-4fab-963c-90cf179b265e">
 </td>
- <td width="30%" align="center">
-<img width="300" alt="짝맞추기성공" src="https://github.com/JangAyeon/Cognisle/assets/67853616/4c12a80f-c43a-486b-ab6e-ab7b548f9536">
+ <td width="33%" align="center">
+<img width="300"  alt="짝맞추기성공" src="https://github.com/JangAyeon/Cognisle/assets/67853616/4c12a80f-c43a-486b-ab6e-ab7b548f9536">
  </td>
-  <td width="30%" align="center">
-<img width="300" alt="짝맞추기실패" src="https://github.com/JangAyeon/Cognisle/assets/67853616/befff9f1-9f4b-4c16-8d91-465178dd8b98">
+  <td width="33%" align="center">
+<img width="300"  alt="짝맞추기실패" src="https://github.com/JangAyeon/Cognisle/assets/67853616/befff9f1-9f4b-4c16-8d91-465178dd8b98">
  </td>
 </tr>
 </table>
 
-### 2. 나의 아이템 열람하기
+### 3. 나의 아이템 열람하기
 
 
 
@@ -195,19 +191,19 @@ https://cognisle.vercel.app
 </tr>
 <tr width="100%">
  <td width="30%" align="center">
-<img width="425" alt="아이템리스트" src="https://github.com/JangAyeon/Cognisle/assets/67853616/7e807ec4-563b-4913-8176-b3612110cd49">
+<img width="425"  alt="아이템리스트" src="https://github.com/JangAyeon/Cognisle/assets/67853616/7e807ec4-563b-4913-8176-b3612110cd49">
 </td>
  <td width="30%" align="center">
 <img width="427" alt="아이템상세모달" src="https://github.com/JangAyeon/Cognisle/assets/67853616/72ea70d0-82a0-4795-aef7-08a94261f84a">
  </td>
   <td width="30%" align="center">
-<img width="428" alt="마이아이템상세모달" src="https://github.com/JangAyeon/Cognisle/assets/67853616/507057db-92af-486b-b4b7-df25506e89ed">
+<img width="428"  alt="마이아이템상세모달" src="https://github.com/JangAyeon/Cognisle/assets/67853616/507057db-92af-486b-b4b7-df25506e89ed">
  </td>
 </tr>
 </table>
 
 
-### 1. 로그인 및 회원가입
+### 4. 로그인 및 회원가입
 
 <table>
 <tr width="100%">
@@ -217,13 +213,13 @@ https://cognisle.vercel.app
 </tr>
 <tr width="100%">
  <td width="30%" align="center">
-  <img width="428" alt="로그인 기본" src="https://github.com/JangAyeon/Cognisle/assets/67853616/39a52307-4f0b-4758-ac70-577e6efdab66">
+  <img width="428"  height="667" alt="로그인 기본" src="https://github.com/JangAyeon/Cognisle/assets/67853616/39a52307-4f0b-4758-ac70-577e6efdab66">
 </td>
  <td width="30%" align="center">
-<img width="434" alt="로그인 오류" src="https://github.com/JangAyeon/Cognisle/assets/67853616/bf5891d0-6e61-40b0-97b8-7ba0cde74986">
+<img width="428" height="667" alt="로그인 오류" src="https://github.com/JangAyeon/Cognisle/assets/67853616/bf5891d0-6e61-40b0-97b8-7ba0cde74986">
  </td>
   <td width="30%" align="center">
-<img width="323" alt="로그인 성공" src="https://github.com/JangAyeon/Cognisle/assets/67853616/3cce6c09-11dd-484c-a050-9f17d508dbc3">
+<img width="428" height="667" alt="로그인 성공" src="https://github.com/JangAyeon/Cognisle/assets/67853616/3cce6c09-11dd-484c-a050-9f17d508dbc3">
  </td>
 </tr>
 </table>
@@ -235,23 +231,23 @@ https://cognisle.vercel.app
 </tr>
 <tr width="100%">
  <td width="30%" align="center">
-<img width="424" alt="회원가입 기본" src="https://github.com/JangAyeon/Cognisle/assets/67853616/795c2213-dcc8-4d78-8a5d-239ecac473dc">
+<img width="424" height="667" alt="회원가입 기본" src="https://github.com/JangAyeon/Cognisle/assets/67853616/795c2213-dcc8-4d78-8a5d-239ecac473dc">
  </td>
   <td width="30%" align="center">
-<img width="424" alt="회원가입 오류" src="https://github.com/JangAyeon/Cognisle/assets/67853616/70ee0f03-132e-4362-b1f6-08178622b7f6">
+<img width="424" height="667" alt="회원가입 오류" src="https://github.com/JangAyeon/Cognisle/assets/67853616/70ee0f03-132e-4362-b1f6-08178622b7f6">
  </td>
 </tr>
 </table>
 
-### 2. 메인 메뉴 
+### 5. 메인 메뉴 
 
 <table>
 <tr width="100%">
- <td width="80%" align="center"> 메뉴 </td>
+ <td width="80%"  align="center"> 메뉴 </td>
 </tr>
 <tr width="100%">
  <td width="45%" align="center">
-<img width="431" alt="메인메뉴" src="https://github.com/JangAyeon/Cognisle/assets/67853616/29416928-490e-4b3a-9b6d-200489ae9b59">
+<img width="431"  height="667" alt="메인메뉴" src="https://github.com/JangAyeon/Cognisle/assets/67853616/29416928-490e-4b3a-9b6d-200489ae9b59">
  </td>
 </tr>
 </table>
