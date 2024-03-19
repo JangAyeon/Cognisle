@@ -97,6 +97,25 @@ https://cognisle.vercel.app
 </table>
 
 
+<table>
+<tr width="100%">
+ <td width="45%" align="center"> 아이템 추가 및 드래깅 </td>
+ <td width="45%" align="center"> 섬 테마 선택하기</td>
+
+</tr>
+<tr width="100%">
+ <td width="45%" align="center">
+<img  width="392" height="800" alt="드래깅" src="https://github.com/JangAyeon/Cognisle/assets/67853616/6c72df46-6d6b-4232-8011-5cd6a15ba3cb"/>
+ </td>
+ <td width="45%" align="center">
+<img  width="392"  height="800" alt="섬선택택" src="https://github.com/JangAyeon/Cognisle/assets/67853616/3a63f0d2-e397-4fbd-a7a0-d8e560c4bdb2"/>
+ </td>
+
+
+
+</tr>
+</table>
+
 
 <table>
 <tr width="100%">
